@@ -14,10 +14,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     marginTop: '13%',
   },
-  miniicon: {
-    width: '8%',
-    height: '25%'
-  },
   input: {
     width: '95%',
     height: 42,
@@ -28,12 +24,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#e0e0e0',
     color: '#929292',
-  },
-  forgotText: {
-    color: '#FF735C',
-    textAlign: 'center',
-    fontSize: 10,
-    marginTop: 10,
   },
   circulo1: {
     background: '#3F7263',

@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import imgLogin from '../../assets/6737457.jpg'
 
 import styles from './styles'
 
@@ -10,7 +11,7 @@ export default function LognIn() {
       <StatusBar backgroundColor='#fff' transLucent={false} />
 
       <Image
-        source={require('../assets/6737457.jpg')}
+        source={imgLogin}
         style={styles.logo}
       />
 
@@ -27,21 +28,16 @@ export default function LognIn() {
       />
 
       <TouchableOpacity>
-        <Text style={styles.forgotText}>Não tem cadastro? Cadastre-se</Text>
+        <Text style={styles.touchText}>Não tem cadastro? Cadastre-se</Text>
       </TouchableOpacity>
 
       <TouchableOpacity>
-        <Text style={styles.forgotText}>Esqueceu a senha?</Text>
+        <Text style={styles.touchText}>Esqueceu a senha?</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.loginButton}>
         <Text style={styles.loginText}>Fazer login</Text>
       </TouchableOpacity>
-      <View style={styles.circulo1}></View>
-      <View style={styles.circulo2}></View>
-      <View style={styles.circulo3}></View>
-      <View style={styles.circulo4}></View>
-      <View style={styles.circulo5}></View>
     </View>
   );
 }

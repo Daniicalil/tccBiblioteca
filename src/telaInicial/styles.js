@@ -3,16 +3,15 @@ import { StyleSheet, Plataform } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    
   },
   retangGreen: {
-    width: 600, 
+    width: '100%', 
     height: 100, 
     backgroundColor: '#3F7263',
   },
   retangOrange: {
-    width: 600, 
+    width: '100%', 
     height: 19, 
     backgroundColor: '#FF735C',
     marginBottom: 20,

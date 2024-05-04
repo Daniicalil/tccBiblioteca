@@ -1,22 +1,15 @@
-import { StyleSheet, Plataform } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 90,
     alignItems: 'center',
     justifyContent: 'center',
   },
   logo: {
-    width: 270,
-    height: 260,
+    width: '100%',
+    height: '80%',
     alignItems: 'center',
     justifyContent: 'center',
-    display: 'flex',
-    marginTop: '13%',
-  },
-  miniicon: {
-    width: '8%',
-    height: '25%'
   },
   input: {
     width: '95%',
@@ -29,55 +22,11 @@ const styles = StyleSheet.create({
     borderColor: '#e0e0e0',
     color: '#929292',
   },
-  forgotText: {
+  touchText: {
     color: '#FF735C',
     textAlign: 'center',
     fontSize: 10,
     marginBottom: 10,
-  },
-  circulo1: {
-    background: '#3F7263',
-    borderRadius: '50%',
-    width: 258,
-    height: 252,
-    left: 170,
-    top: 30,
-  },
-  circulo2: {
-    background: '#3F7263',
-    borderRadius: '50%',
-    width: 95,
-    height: 93,
-    right: 250,
-    bottom: 260,
-    position: 'absolute'
-  },
-  circulo3: {
-    background: '#3F7263',
-    borderRadius: '50%',
-    width: 95,
-    height: 93,
-    left: 270,
-    bottom: 580,
-    position: 'absolute'
-  },
-  circulo4: {
-    background: '#3F7263',
-    borderRadius: '50%',
-    width: 258,
-    height: 252,
-    right: 180,
-    bottom: 690,
-    position: 'absolute'
-  },
-  circulo5: {
-    background: '#3F7263',
-    borderRadius: '50%',
-    width: 200,
-    height: 194,
-    right: 60,
-    bottom: 760,
-    position: 'absolute'
   },
   paragraph: {
     textAlign: 'center',
@@ -88,7 +37,7 @@ const styles = StyleSheet.create({
   loginButton: {
     marginTop: '5%',
     backgroundColor: '#FF735C',
-    width: '50%',
+    width: '65%',
     height: 42,
     justifyContent: 'center',
     alignItems: 'center',
