@@ -1,74 +1,35 @@
-import { StyleSheet, Plataform } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 // import Shape from 'react-clip-path';
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 90,
+    height: Dimensions.get('window').height,
+    width: '100%',
   },
   logo: {
-    width: 280,
-    height: 180,
-    alignItems: 'center',
-    justifyContent: 'center',
-    display: 'flex',
-    marginTop: '13%',
+    width: '85%',
+    height: '30%',
   },
   input: {
-    width: '80%',
+    width: '70%',
     height: 42,
     backgroundColor: '#DAD7D7',
     marginBottom: 10,
+    paddingLeft: 15,
     padding: 8,
     borderRadius: 15,
     borderWidth: 1,
     borderColor: '#e0e0e0',
     color: '#929292',
   },
-  circulo1: {
-    background: '#3F7263',
-    borderRadius: '50%',
-    width: 258,
-    height: 252,
-    left: 170,
-    top: 100,
-  },
-  circulo2: {
-    background: '#3F7263',
-    borderRadius: '50%',
-    width: 95,
-    height: 93,
-    right: 270,
-    bottom: 260,
-    position: 'absolute'
-  },
-  circulo3: {
-    background: '#3F7263',
-    borderRadius: '50%',
-    width: 95,
-    height: 93,
-    left: 290,
-    bottom: 580,
-    position: 'absolute'
-  },
-  circulo4: {
-    background: '#3F7263',
-    borderRadius: '50%',
-    width: 258,
-    height: 252,
-    right: 220,
-    bottom: 620,
-    position: 'absolute'
-  },
-  circulo5: {
-    background: '#3F7263',
-    borderRadius: '50%',
-    width: 200,
-    height: 194,
-    right: 110,
-    bottom: 700,
-    position: 'absolute'
+  touchText: {
+    color: '#FF735C',
+    textAlign: 'center',
+    fontSize: 10,
+    marginBottom: 7,
+    marginTop: 15,
   },
   paragraph: {
     textAlign: 'center',
@@ -90,8 +51,50 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     fontSize: 16,
   },
-  seletores: {
-    flexDirection: 'row',
+  circle1: {
+    width: 258,
+    height: 252,
+    borderRadius: '50%',
+    backgroundColor: '#3F7263',
+    position: 'absolute',
+    left: 250,
+    top: 700,
+  },
+  circle2: {
+    width: 95,
+    height: 93,
+    borderRadius: '50%',
+    backgroundColor: '#3F7263',
+    position: 'absolute',
+    right: 330,
+    top: 550,
+  },
+  circle3: {
+    width: 95,
+    height: 93,
+    borderRadius: '50%',
+    backgroundColor: '#3F7263',
+    position: 'absolute',
+    left: 350,
+    top: 200,
+  },
+  circle4: {
+    width: 258,
+    height: 252,
+    borderRadius: '50%',
+    backgroundColor: '#3F7263',
+    position: 'absolute',
+    right: 280,
+    bottom: 600,
+  },
+  circle5: {
+    width: 200,
+    height: 194,
+    borderRadius: '50%',
+    backgroundColor: '#3F7263',
+    position: 'absolute',
+    right: 180,
+    bottom: 690,
   },
   text: {
     width: '80%',

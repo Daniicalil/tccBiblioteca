@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
-import imgCadastro from '../../assets/6737457.jpg';
+import { Ionicons } from '@expo/vector-icons';
 
 import styles from './styles'
  
@@ -12,12 +11,25 @@ import styles from './styles'
 export default function SignUp() {
   const [value, setValue] = React.useState('first');
   const [text, setText] = React.useState('');
+  const [passwordVisible1, setPasswordVisible1] = useState(false);
+  const [passwordVisible2, setPasswordVisible2] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const togglePasswordVisibility1 = () => {
+    setPasswordVisible1(!passwordVisible1);
+  };
+
+  const togglePasswordVisibility2 = () => {
+    setPasswordVisible2(!passwordVisible2);
+  };
+  
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#fff' transLucent={false} />
 
       <Image
-        source={imgCadastro}
+        source={require('../assets/6737457.jpg')}
         style={styles.logo}
       />
 
@@ -33,47 +45,64 @@ export default function SignUp() {
         style={styles.input}
       />
       
-      <TextInput
+       <TextInput
         placeholder='e-mail'
         style={styles.input}
+        value={email}
+        onChangeText={setEmail}
       />
-
+      
+      <View style={styles.password}>
         <TextInput
           placeholder='senha'
-          style={styles.input}
-          secureTextEntry={true}
+          style={[styles.input, styles.passwordInput]}
+          secureTextEntry={!passwordVisible1}
+          value={password}
+          onChangeText={setPassword}
         />
 
+         <TouchableOpacity onPress={togglePasswordVisibility1} style={styles.passwordVisibilityIcon}>
+          <Ionicons name={passwordVisible1 ? 'eye-off' : 'eye'} size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.confirmPassword}>
         <TextInput
           placeholder='confirmar senha'
-          style={styles.input}
-          secureTextEntry={true}
+          style={[styles.input, styles.passwordInput]}
+          secureTextEntry={!passwordVisible2}
+          value={password}
+          onChangeText={setPassword}
         />
 
-      <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value} >
-        <Text style={styles.sexo}>Sexo:</Text>
+        <TouchableOpacity onPress={togglePasswordVisibility2} style={styles.passwordVisibilityIcon}>
+          <Ionicons name={passwordVisible2 ? 'eye-off' : 'eye'} size={24} color="black" right={<TextInput.Affix text="/100" />}/>
+        </TouchableOpacity>
+      </View>
+
+         <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value} >
+            <Text style={styles.sexo}>Sexo:</Text>
           <View style={styles.seletores}>
 
-            <Text><RadioButton value="Feminino" />Feminino</Text>
-            <Text> <RadioButton value="Masculino" />Masculino</Text>
-            <Text><RadioButton value="Neutro" />Neutro</Text>
+            <Text><RadioButton value="Feminino" color='#3F7263'/>Feminino</Text>
+            <Text> <RadioButton value="Masculino" color='#3F7263'/>Masculino</Text>
+            <Text><RadioButton value="Neutro" color='#3F7263'/>Neutro</Text>
           </View>
         </RadioButton.Group>
       
-
       <TouchableOpacity>
-        <Text style={styles.forgotText}>Já tem uma conta? Faça login</Text>
+        <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.loginText}>Fazer login</Text>
+        <Text style={styles.loginText}>Fazer cadastro</Text>
       </TouchableOpacity>
       
-      <View style={styles.circulo1}></View>
-      <View style={styles.circulo2}></View>
-      <View style={styles.circulo3}></View>
-      <View style={styles.circulo4}></View>
-      <View style={styles.circulo5}></View>
+      <View style={styles.circle1} />
+      <View style={styles.circle2} />
+      <View style={styles.circle3} />
+      <View style={styles.circle4} />
+      <View style={styles.circle5} />
     </View>
   );
 }

@@ -1,19 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import styles from './styles'
-
-import resetSenha from '../../assets/6333054.jpg';
  
 
 export default function EsqueceuSenha2() {
+  const [passwordVisible1, setPasswordVisible1] = useState(false);
+  const [passwordVisible2, setPasswordVisible2] = useState(false);
+  const [password, setPassword] = useState('');
+
+  const togglePasswordVisibility1 = () => {
+    setPasswordVisible1(!passwordVisible1);
+  };
+
+  const togglePasswordVisibility2 = () => {
+    setPasswordVisible2(!passwordVisible2);
+  };
+  
   return (
     <View style={styles.container}>
-
+      <StatusBar backgroundColor='#fff' transLucent={false} />
 
       <Image
-        source={resetSenha}
+        source={require('../assets/6333054.jpg')}
         style={styles.logo}
       />
 
@@ -25,25 +36,43 @@ export default function EsqueceuSenha2() {
         style={styles.input}
       />
 
-       <TextInput
-        placeholder='nova senha'
-        style={styles.input}
-      />
+       <View style={styles.password}>
+        <TextInput
+          placeholder='senha'
+          style={[styles.input, styles.passwordInput]}
+          secureTextEntry={!passwordVisible1}
+          value={password}
+          onChangeText={setPassword}
+        />
 
-       <TextInput
-        placeholder='digite a nova senha'
-        style={styles.input}
-      />
+         <TouchableOpacity onPress={togglePasswordVisibility1} style={styles.passwordVisibilityIcon}>
+          <Ionicons name={passwordVisible1 ? 'eye-off' : 'eye'} size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.confirmPassword}>
+        <TextInput
+          placeholder='confirme a nova senha'
+          style={[styles.input, styles.passwordInput]}
+          secureTextEntry={!passwordVisible2}
+          value={password}
+          onChangeText={setPassword}
+        />
+
+        <TouchableOpacity onPress={togglePasswordVisibility2} style={styles.passwordVisibilityIcon}>
+          <Ionicons name={passwordVisible2 ? 'eye-off' : 'eye'} size={24} color="black" right={<TextInput.Affix text="/100" />}/>
+        </TouchableOpacity>
+      </View>
 
       <TouchableOpacity style={styles.loginButton}>
         <Text style={styles.loginText}>Redefinir senha</Text>
       </TouchableOpacity>
       
-      {/* <View style={styles.circulo1}></View>
-      <View style={styles.circulo2}></View>
-      <View style={styles.circulo3}></View>
-      <View style={styles.circulo4}></View>
-      <View style={styles.circulo5}></View> */}
+      <View style={styles.circle1} />
+      <View style={styles.circle2} />
+      <View style={styles.circle3} />
+      <View style={styles.circle4} />
+      <View style={styles.circle5} />
     </View>
   );
 }

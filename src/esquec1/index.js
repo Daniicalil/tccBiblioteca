@@ -6,6 +6,7 @@ import styles from './styles'
  
 
 export default function EsqueceuSenha1() {
+  const [email, setEmail] = useState('');
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#fff' transLucent={false} />
@@ -21,22 +22,24 @@ export default function EsqueceuSenha1() {
       <TextInput
         placeholder='e-mail'
         style={styles.input}
+        value={email}
+        onChangeText={setEmail}
       />
       
 
       <TouchableOpacity>
-        <Text style={styles.forgotText}>Já tem uma conta? Faça login</Text>
+        <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.loginButton}>
         <Text style={styles.loginText}>Redefinir</Text>
       </TouchableOpacity>
       
-      <View style={styles.circulo1}></View>
-      <View style={styles.circulo2}></View>
-      <View style={styles.circulo3}></View>
-      <View style={styles.circulo4}></View>
-      <View style={styles.circulo5}></View>
+      <View style={styles.circle1} />
+      <View style={styles.circle2} />
+      <View style={styles.circle3} />
+      <View style={styles.circle4} />
+      <View style={styles.circle5} />
     </View>
   );
 }

@@ -1,21 +1,22 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
+    height: Dimensions.get('window').height,
+    width: '100%'
   },
   logo: {
-    width: '100%',
-    height: '80%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: '80%',
+    height: '35%',
   },
   input: {
-    width: '95%',
+    width: '70%',
     height: 42,
     backgroundColor: '#DAD7D7',
     marginBottom: 10,
+    paddingLeft: 15,
     padding: 8,
     borderRadius: 15,
     borderWidth: 1,
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
   loginButton: {
     marginTop: '5%',
     backgroundColor: '#FF735C',
-    width: '65%',
+    width: '35%',
     height: 42,
     justifyContent: 'center',
     alignItems: 'center',
@@ -47,6 +48,64 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 500,
     fontSize: 16,
+  },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  passwordVisibilityIcon: {
+    padding: 10,
+    position: 'absolute',
+    right: 8,
+    bottom: 8,
+  },
+  passwordInput: {
+    paddingRight: 40,
+  },
+  circle1: {
+    width: 258,
+    height: 252,
+    borderRadius: '50%',
+    backgroundColor: '#3F7263',
+    position: 'absolute',
+    left: 250,
+    top: 700,
+  },
+  circle2: {
+    width: 95,
+    height: 93,
+    borderRadius: '50%',
+    backgroundColor: '#3F7263',
+    position: 'absolute',
+    right: 310,
+    top: 550,
+  },
+  circle3: {
+    width: 95,
+    height: 93,
+    borderRadius: '50%',
+    backgroundColor: '#3F7263',
+    position: 'absolute',
+    left: 350,
+    top: 200,
+  },
+  circle4: {
+    width: 258,
+    height: 252,
+    borderRadius: '50%',
+    backgroundColor: '#3F7263',
+    position: 'absolute',
+    right: 250,
+    bottom: 600,
+  },
+  circle5: {
+    width: 200,
+    height: 194,
+    borderRadius: '50%',
+    backgroundColor: '#3F7263',
+    position: 'absolute',
+    right: 150,
+    bottom: 670,
   },
 })
 
