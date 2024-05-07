@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import imgLogin from '../../assets/6737457.jpg'
+import imgLogin from '../../assets/6737457.jpg';
 
 import styles from './styles'
 
@@ -35,7 +35,7 @@ export default function LognIn() {
       <View style={styles.passwordContainer}>
         <TextInput
           placeholder='senha'
-          style={[styles.input, styles.passwordInput]}
+          style={styles.input}
           secureTextEntry={!passwordVisible}
           value={password}
           onChangeText={setPassword}

@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import imgesqsenha from '../../assets/6333054.jpg';
 
 import styles from './styles'
  
@@ -12,7 +13,7 @@ export default function EsqueceuSenha1() {
       <StatusBar backgroundColor='#fff' transLucent={false} />
 
       <Image
-        source={require('../assets/6333054.jpg')}
+        source={imgesqsenha}
         style={styles.logo}
       />
 

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
+import imgSignup from '../../assets/6737457.jpg';
 
 import styles from './styles'
  
@@ -28,7 +29,7 @@ export default function SignUp() {
       <StatusBar backgroundColor='#fff' transLucent={false} />
 
       <Image
-        source={require('../assets/6737457.jpg')}
+        source={imgSignup}
         style={styles.logo}
       />
 

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     height: '30%',
   },
   input: {
-    width: '70%',
+    width: '65%',
     height: 42,
     backgroundColor: '#DAD7D7',
     marginBottom: 10,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   loginButton: {
     marginTop: '5%',
     backgroundColor: '#FF735C',
-    width: '42%',
+    width: '38%',
     height: 42,
     justifyContent: 'center',
     alignItems: 'center',
@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     borderRadius: '50%',
     backgroundColor: '#3F7263',
     position: 'absolute',
-    left: 250,
-    top: 700,
+    left: 300,
+    top: 750,
   },
   circle2: {
     width: 95,
@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
     borderRadius: '50%',
     backgroundColor: '#3F7263',
     position: 'absolute',
-    right: 330,
-    top: 550,
+    right: 420,
+    top: 600,
   },
   circle3: {
     width: 95,
@@ -92,8 +92,8 @@ const styles = StyleSheet.create({
     borderRadius: '50%',
     backgroundColor: '#3F7263',
     position: 'absolute',
-    left: 350,
-    top: 200,
+    left: 450,
+    top: 250,
   },
   circle4: {
     width: 258,
@@ -101,8 +101,8 @@ const styles = StyleSheet.create({
     borderRadius: '50%',
     backgroundColor: '#3F7263',
     position: 'absolute',
-    right: 280,
-    bottom: 600,
+    right: 320,
+    bottom: 690,
   },
   circle5: {
     width: 200,
@@ -110,8 +110,8 @@ const styles = StyleSheet.create({
     borderRadius: '50%',
     backgroundColor: '#3F7263',
     position: 'absolute',
-    right: 180,
-    bottom: 690,
+    right: 190,
+    bottom: 770,
   },
   text: {
     width: '80%',

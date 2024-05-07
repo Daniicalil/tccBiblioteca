@@ -8,11 +8,11 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   logo: {
-    width: '80%',
+    width: '70%',
     height: '35%',
   },
   input: {
-    width: '70%',
+    width: '65%',
     height: 42,
     backgroundColor: '#DAD7D7',
     marginBottom: 10,
@@ -59,9 +59,6 @@ const styles = StyleSheet.create({
     right: 8,
     bottom: 8,
   },
-  passwordInput: {
-    paddingRight: 40,
-  },
   circle1: {
     width: 258,
     height: 252,
@@ -69,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3F7263',
     position: 'absolute',
     left: 300,
-    top: 800,
+    top: 750,
   },
   circle2: {
     width: 95,
@@ -95,8 +92,8 @@ const styles = StyleSheet.create({
     borderRadius: '50%',
     backgroundColor: '#3F7263',
     position: 'absolute',
-    right: 250,
-    bottom: 600,
+    right: 320,
+    bottom: 690,
   },
   circle5: {
     width: 200,
@@ -104,8 +101,8 @@ const styles = StyleSheet.create({
     borderRadius: '50%',
     backgroundColor: '#3F7263',
     position: 'absolute',
-    right: 150,
-    bottom: 670,
+    right: 190,
+    bottom: 770,
   },
 })
 

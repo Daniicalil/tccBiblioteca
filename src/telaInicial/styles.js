@@ -1,9 +1,12 @@
-import { StyleSheet, Plataform } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 // import Shape from 'react-clip-path';
 
 const styles = StyleSheet.create({
   container: {
-    
+    alignItems: 'center',
+    // justifyContent: 'center',
+    height: Dimensions.get('window').height,
+    width: '100%',
   },
   retangGreen: {
     width: '100%', 
@@ -21,6 +24,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#DAD7D7',
     height: 45,
     color: '#929292',
+    width: '80%',
   },
 });
 
