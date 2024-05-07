@@ -3,11 +3,18 @@ import { View } from 'react-native';
 
 import styles from './styles';
 
-const RetangGreen = () => {
+export const RetangGreen = () => {
   return (
     <View style={styles.retangGreen}>
       {/* Conteúdo dentro do retângulo, se necessário */}
     </View>
   );
 };
-export default RetangGreen;
+
+export const RetangOrange = () => {
+  return (
+    <View style={styles.retangOrange}>
+      {/* Conteúdo dentro do retângulo, se necessário */}
+    </View>
+  );
+};

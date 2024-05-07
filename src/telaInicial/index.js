@@ -1,26 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import { Searchbar } from 'react-native-paper';
-import RetangGreen from './barraVerde';
-import RetangOrange from './barraLaranja';
+import { StyleSheet, Dimensions } from 'react-native';
+// import Shape from 'react-clip-path';
 
-import styles from './styles';
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    // justifyContent: 'center',
+    height: Dimensions.get('window').height,
+    width: '100%',
+  },
+  retangGreen: {
+    width: '100%', 
+    height: 100, 
+    backgroundColor: '#3F7263',
+  },
+  retangOrange: {
+    width: '100%', 
+    height: 19, 
+    backgroundColor: '#FF735C',
+    marginBottom: 20,
+  },
+  barraPesq: {
+    borderRadius: 30,
+    backgroundColor: '#DAD7D7',
+    height: 45,
+    color: '#929292',
+    width: '80%',
+  },
+});
 
-export default function telaInicial() {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor='#fff' transLucent={false} />
-      <RetangGreen />
-      <RetangOrange />
-      <Searchbar
-        placeholder="Pesquisar"
-        onChangeText={setSearchQuery}
-        value={searchQuery}
-        style={styles.barraPesq}
-      />
-    </View>
-  );
-}
+export default styles;
