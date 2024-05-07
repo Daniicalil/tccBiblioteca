@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
     borderRadius: '50%',
     backgroundColor: '#3F7263',
     position: 'absolute',
-    left: 250,
-    top: 700,
+    left: 300,
+    top: 800,
   },
   circle2: {
     width: 95,
@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
     borderRadius: '50%',
     backgroundColor: '#3F7263',
     position: 'absolute',
-    right: 310,
-    top: 550,
+    right: 420,
+    top: 600,
   },
   circle3: {
     width: 95,
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
     borderRadius: '50%',
     backgroundColor: '#3F7263',
     position: 'absolute',
-    left: 350,
-    top: 200,
+    left: 450,
+    top: 250,
   },
   circle4: {
     width: 258,
