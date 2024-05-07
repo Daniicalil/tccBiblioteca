@@ -18,3 +18,59 @@ export const RetangOrange = () => {
     </View>
   );
 };
+
+export const Funcionamento = () => {
+  return (
+    <View style={styles.funcionamento}>
+      {/* Conteúdo dentro do retângulo, se necessário */}
+    </View>
+  );
+};
+
+export const Quad1 = () => {
+  return (
+    <View style={styles.quadrado}>
+      {/* Conteúdo dentro do retângulo, se necessário */}
+    </View>
+  );
+};
+
+export const Quad2 = () => {
+  return (
+    <View style={styles.quadrado}>
+      {/* Conteúdo dentro do retângulo, se necessário */}
+    </View>
+  );
+};
+
+export const Quad3 = () => {
+  return (
+    <View style={styles.quadrado}>
+      {/* Conteúdo dentro do retângulo, se necessário */}
+    </View>
+  );
+};
+
+export const Quad4 = () => {
+  return (
+    <View style={styles.quadrado}>
+      {/* Conteúdo dentro do retângulo, se necessário */}
+    </View>
+  );
+};
+
+export const Quad5 = () => {
+  return (
+    <View style={styles.quadrado}>
+      {/* Conteúdo dentro do retângulo, se necessário */}
+    </View>
+  );
+};
+
+export const Quad6 = () => {
+  return (
+    <View style={styles.quadrado}>
+      {/* Conteúdo dentro do retângulo, se necessário */}
+    </View>
+  );
+};
