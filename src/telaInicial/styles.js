@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { ImportanciaFrase } from './forms';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     width: '100%', 
     height: 19, 
     backgroundColor: '#FF735C',
-    marginBottom: 20,
+    marginBottom: '3%',
   },
   barraPesq: {
     borderRadius: 30,
@@ -31,23 +32,25 @@ const styles = StyleSheet.create({
     height: 180, 
     borderRadius: 10,
     backgroundColor: '#3F7263',
-    marginTop: '4%',
+    marginTop: '3%',
   },
   paragraph: {
     textAlign: 'auto',
     marginTop: 20,
-    marginBottom: 15,
+    marginBottom: 8,
     fontWeight: 600,
     fontSize: 18,
     textAlign: 'left',
     marginLeft: '8%',
   },
   quadrado: {
-    width: '26%', 
-    height: 110, 
+    width: '29%', 
+    height: 120, 
     borderRadius: 10,
     backgroundColor: '#DAD7D7',
-    marginTop: '4%',
+    marginTop: '3%',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   rowQuadrados1: {
     flexDirection: 'row',
@@ -62,6 +65,29 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     marginRight: '3%',
     marginLeft: '3%',
+  },
+  curso: {
+    fontSize: 11,
+    textAlign: 'center',
+    marginTop: 6,
+  },
+  capaLivros: {
+    width: '30%',
+    height: '53%',
+    alignSelf: 'center',
+  },
+  livros: {
+    fontSize: 11,
+    textAlign: 'center',
+    marginRight: 5,
+    marginLeft: 5,
+  },
+  importanciaFrase: {
+    width: '85%', 
+    height: 100, 
+    borderRadius: 10,
+    backgroundColor: '#3F7263',
+    // marginTop: '4%',
   },
 });
 
