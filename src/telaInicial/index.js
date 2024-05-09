@@ -1,18 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+// import { StatusBar } from 'expo-status-bar';
+import * as React from 'react';
+import {useState} from 'react';
+import { ScrollView ,View, Text } from 'react-native';
 import { Searchbar } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {RetangGreen, RetangOrange, Funcionamento, Quad1, Quad2, Quad3, Quad4, Quad5, Quad6, ImportanciaFrase} from './forms';
 
 import styles from './styles';
 
 export default function TelaInicial() {
   const [searchQuery, setSearchQuery] = useState('');
-
+  
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.inicio}>
-        <StatusBar backgroundColor='#fff' transLucent={false} />
+      {/* <StatusBar backgroundColor='#fff' transLucent={false} /> */}
         <RetangGreen />
         <RetangOrange />
         <Searchbar
@@ -20,6 +22,9 @@ export default function TelaInicial() {
           onChangeText={setSearchQuery}
           value={searchQuery}
           style={styles.barraPesq}
+          icon={({size, color}) => (
+            <Icon name="add" size={20} color="#000" />
+          )}
         />
         <Funcionamento />
       </View>
@@ -35,7 +40,7 @@ export default function TelaInicial() {
             <Quad6 />
           </View>
         <ImportanciaFrase />
-    </View>
+    </ScrollView>
     
   );
 }

@@ -1,5 +1,4 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { ImportanciaFrase } from './forms';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,11 +20,8 @@ const styles = StyleSheet.create({
     marginBottom: '3%',
   },
   barraPesq: {
-    borderRadius: 30,
     backgroundColor: '#DAD7D7',
-    height: 45,
-    color: '#929292',
-    width: '75%',
+    width: '85%',
   },
   funcionamento: {
     width: '85%', 
@@ -35,16 +31,16 @@ const styles = StyleSheet.create({
     marginTop: '3%',
   },
   paragraph: {
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 5,
-    fontWeight: 600,
+    // fontWeight: 600,
     fontSize: 18,
     textAlign: 'left',
     marginLeft: '8%',
   },
   quadrado: {
     width: '28%', 
-    height: 105, 
+    height: 112, 
     borderRadius: 10,
     backgroundColor: '#DAD7D7',
     marginTop: '3%',
@@ -88,6 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3F7263',
     marginTop: '5%',
     alignSelf: 'center',
+    marginBottom: '10%',
   },
   componentsMenu: {
     flex: 1,
