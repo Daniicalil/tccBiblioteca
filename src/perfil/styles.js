@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   inicio: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   retangGreen: {
     width: '100%', 
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     width: '65%',
     height: 42,
     backgroundColor: '#DAD7D7',
+    marginTop: 2,
     marginBottom: 10,
     paddingLeft: 15,
     padding: 8,
@@ -38,60 +39,30 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#e0e0e0',
     color: '#929292',
-  },
-  quadrado: {
-    width: '28%', 
-    height: 112, 
-    borderRadius: 10,
-    backgroundColor: '#DAD7D7',
-    marginTop: '3%',
-    marginLeft: 6,
-    marginRight: 6,
-  },
-  rowQuadrados1: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
-  },
-  rowQuadrados2: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
-  },
-  curso: {
-    fontSize: 10,
-    textAlign: 'center',
-    marginTop: '2%',
-  },
-  capaLivros: {
-    width: 35,
-    height: 54,
     alignSelf: 'center',
   },
-  livros: {
-    fontSize: 10,
-    textAlign: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
-  },
-  importanciaFrase: {
-    width: '85%', 
-    height: 180, 
-    borderRadius: 10,
-    backgroundColor: '#3F7263',
-    marginTop: '5%',
+  circle1: {
+    width: 170,
+    height: 165,
+    borderRadius: '50%',
+    backgroundColor: '#5DA38E',
     alignSelf: 'center',
-    marginBottom: '10%',
+    marginBottom: 30,
   },
-  componentsMenu: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  texto: {
+    marginLeft: 90,
   },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignSelf: 'center',
+  },
+  passwordVisibilityIcon: {
+    padding: 10,
+    position: 'absolute',
+    right: 8,
+    bottom: 8,
+  },
+  
 });
 
 export default styles;
