@@ -5,8 +5,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 // import SignUp from './src/signUp/index';
 // import EsqueceuSenha1 from './src/esquec1/index';
 // import EsqueceuSenha2 from './src/esquec2/index';
-// import TelaInicial from './src/telaInicial/index';
-import Perfil from './src/perfil/index';
+import TelaInicial from './src/telaInicial/index';
+// import Perfil from './src/perfil/index';
 
 export default function App() {
   return (
@@ -14,7 +14,7 @@ export default function App() {
     //   <Perfil />
     // </View>
     <SafeAreaProvider>
-      <Perfil />
+      <TelaInicial />
     </SafeAreaProvider>
   );
 }

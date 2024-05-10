@@ -85,11 +85,26 @@ const styles = StyleSheet.create({
     marginTop: '5%',
     alignSelf: 'center',
     marginBottom: '10%',
+    flexDirection: 'row',
+    // alignItems: 'center',
+    justifyContent: 'space-evenly',
+    padding: 0,
   },
-  componentsMenu: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  imgFrase: {
+    width: '46%',
+    height: '100%',
+    // marginTop: 10,
+    marginLeft: 10,
+    marginBottom: 0,
+  },
+  frase: {
+    color: '#fff',
+    fontWeight: '400',
+    textAlign: 'center',
+    width: '30%',
+    fontSize: 17,
+    marginRight: 5,
+    alignSelf: 'center',
   },
 });
 

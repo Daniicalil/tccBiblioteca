@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 
-import AnneFrank from '../../assets/Capa dos livros/o diário de anne frank.jpg';
-import DomCasmurro from '../../assets/Capa dos livros/dom casmurro.jpg';
-import RomeueJulieta from '../../assets/Capa dos livros/romeu e julieta.jpg';
-import MilNovecentoseOitentaeQuatro from '../../assets/Capa dos livros/1984.jpg';
-import OsMiseráveis from '../../assets/Capa dos livros/os miseráveis.jpg';
-import OrgulhoePreconceito from '../../assets/Capa dos livros/orgulho e preconceito.png';
+import AnneFrank from '../../assets/Capa_dos_livros/o diário de anne frank.jpg';
+import DomCasmurro from '../../assets/Capa_dos_livros/dom casmurro.jpg';
+import RomeueJulieta from '../../assets/Capa_dos_livros/romeu e julieta.jpg';
+import MilNovecentoseOitentaeQuatro from '../../assets/Capa_dos_livros/1984.jpg';
+import OsMiseráveis from '../../assets/Capa_dos_livros/os miseráveis.jpg';
+import OrgulhoePreconceito from '../../assets/Capa_dos_livros/orgulho e preconceito.png';
+import ImgFrase from '../../assets/frase.png';
 
 import styles from './styles';
 
@@ -97,7 +98,8 @@ export const Quad6 = () => {
 export const ImportanciaFrase = () => {
   return (
     <View style={styles.importanciaFrase}>
-      {/* Conteúdo dentro do retângulo, se necessário */}
+      <Image source={ImgFrase} style={styles.imgFrase}/>
+      <Text style={styles.frase}>A leitura é uma porta aberta para um mundo de descobertas sem fim.</Text>
     </View>
   );
 };
