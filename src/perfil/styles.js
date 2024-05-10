@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     width: '100%', 
     height: 19, 
     backgroundColor: '#FF735C',
-    marginBottom: '3%',
+    // marginBottom: '3%',
   },
   paragraph: {
     marginTop: 10,
