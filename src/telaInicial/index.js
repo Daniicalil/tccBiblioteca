@@ -1,4 +1,4 @@
-// import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
 import {useState} from 'react';
 import { ScrollView ,View, Text } from 'react-native';
@@ -14,7 +14,7 @@ export default function TelaInicial() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
-      {/* <StatusBar backgroundColor='#fff' transLucent={false} /> */}
+      <StatusBar backgroundColor='#3F7263' transLucent={false} />
         <RetangGreen />
         <RetangOrange />
         <Searchbar

@@ -8,13 +8,16 @@ import MilNovecentoseOitentaeQuatro from '../../assets/Capa_dos_livros/1984.jpg'
 import OsMiseráveis from '../../assets/Capa_dos_livros/os miseráveis.jpg';
 import OrgulhoePreconceito from '../../assets/Capa_dos_livros/orgulho e preconceito.png';
 import ImgFrase from '../../assets/frase.png';
+import ImgLogo from '../../assets/logo.png';
+import ImgEtec from '../../assets/etec.png';
 
 import styles from './styles';
 
 export const RetangGreen = () => {
   return (
     <View style={styles.retangGreen}>
-      {/* Conteúdo dentro do retângulo, se necessário */}
+      <Image source={ImgLogo} style={styles.imgLogo}/>
+      <Image source={ImgEtec} style={styles.imgEtec}/>
     </View>
   );
 };

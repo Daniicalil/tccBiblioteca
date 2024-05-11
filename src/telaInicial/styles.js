@@ -12,6 +12,22 @@ const styles = StyleSheet.create({
     width: '100%', 
     height: 100, 
     backgroundColor: '#3F7263',
+    justifyContent: 'space-between',
+  },
+  imgLogo: {
+    width: '20%',
+    height: '30%',
+    alignSelf: 'center',
+    position: 'absolute',
+    bottom: 8
+  },
+  imgEtec: {
+    width: '15%',
+    height: '25%',
+    bottom: 8,
+    alignSelf: 'flex-end',
+    position: 'absolute',
+    right: 27,
   },
   retangOrange: {
     width: '100%', 
@@ -86,16 +102,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: '10%',
     flexDirection: 'row',
-    // alignItems: 'center',
     justifyContent: 'space-evenly',
-    padding: 0,
   },
   imgFrase: {
-    width: '46%',
+    width: '47%',
     height: '100%',
-    // marginTop: 10,
     marginLeft: 10,
-    marginBottom: 0,
   },
   frase: {
     color: '#fff',
