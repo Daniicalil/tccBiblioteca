@@ -1,14 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import imgLogin from '../../assets/6737457.jpg';
+import imgDesign from '../../assets/designPage.png';
 
 import styles from './styles'
 
 export default function LognIn() {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const togglePasswordVisibility = () => {
@@ -17,6 +17,7 @@ export default function LognIn() {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#3F7263' transLucent={false} />
+      {/* <ImageBackground source={imgDesign} style={styles.background}/> */}
 
       <Image
         source={imgLogin}
@@ -26,10 +27,8 @@ export default function LognIn() {
       <Text style={styles.paragraph}>Login</Text>
      
       <TextInput
-        placeholder='e-mail'
+        placeholder='RM'
         style={styles.input}
-        value={email}
-        onChangeText={setEmail}
       />
       
       <View style={styles.passwordContainer}>
@@ -57,11 +56,11 @@ export default function LognIn() {
         <Text style={styles.loginText}>Fazer login</Text>
       </TouchableOpacity>
 
-      <View style={styles.circle1}/>
+      {/* <View style={styles.circle1}/>
       <View style={styles.circle2}/>
       <View style={styles.circle3}/>
       <View style={styles.circle4}/>
-      <View style={styles.circle5}/>
+      <View style={styles.circle5}/> */}
     </View>
   );
 }

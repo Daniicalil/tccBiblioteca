@@ -98,11 +98,11 @@ export default function SignUp() {
         <Text style={styles.loginText}>Fazer cadastro</Text>
       </TouchableOpacity>
       
-      <View style={styles.circle1} />
+      {/* <View style={styles.circle1} />
       <View style={styles.circle2} />
       <View style={styles.circle3} />
       <View style={styles.circle4} />
-      <View style={styles.circle5} />
+      <View style={styles.circle5} /> */}
     </View>
   );
 }
