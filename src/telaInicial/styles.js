@@ -1,5 +1,28 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
+// import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
+// import { AppLoading } from 'expo';
+// import * as Font from 'expo-font';
+
+// const fetchFonts = () => {
+//   return Font.loadAsync({
+//     'DancingScript-Regular': require('@expo-google-fonts/dancing-script'),
+//   });
+// };
+
+// const App = () => {
+//   const [fontLoaded, setFontLoaded] = useState(false);
+
+//   if (!fontLoaded) {
+//     return (
+//       <AppLoading
+//         startAsync={fetchFonts}
+//         onFinish={() => setFontLoaded(true)}
+//         onError={(err) => console.error(err)}
+//       />
+//     );
+//   }
+
 const styles = StyleSheet.create({
   container: {
     height: Dimensions.get('window').height,
@@ -40,7 +63,7 @@ const styles = StyleSheet.create({
     width: '85%',
   },
   funcionamento: {
-    width: '85%', 
+    width: 360, 
     height: 180, 
     borderRadius: 10,
     backgroundColor: '#3F7263',
