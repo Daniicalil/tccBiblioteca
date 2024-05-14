@@ -8,9 +8,18 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
     width: '100%',
   },
+  background: {
+    width: '100%',
+    height: '100%',
+  },
   logo: {
     width: '70%',
     height: '35%',
+  },
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   input: {
     width: '65%',
@@ -36,6 +45,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     fontWeight: 'bold',
     fontSize: 20,
+    marginTop: 5,
   },
   loginButton: {
     marginTop: '3%',

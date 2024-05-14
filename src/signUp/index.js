@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
-import imgSignup from '../../assets/6737457.jpg';
+import imgSignup from '../../assets/img_cadastro.png';
+import imgDesign from '../../assets/designPage.png';
+
 
 import styles from './styles'
  
-
 export default function SignUp() {
   const [value, setValue] = React.useState('first');
   const [text, setText] = React.useState('');
@@ -27,6 +28,9 @@ export default function SignUp() {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#fff' transLucent={false} />
+      <ImageBackground source={imgDesign} style={styles.background}>
+
+      <View style={styles.contentContainer}>
 
       <Image
         source={imgSignup}
@@ -97,12 +101,14 @@ export default function SignUp() {
       <TouchableOpacity style={styles.loginButton}>
         <Text style={styles.loginText}>Fazer cadastro</Text>
       </TouchableOpacity>
-      
+
       {/* <View style={styles.circle1} />
       <View style={styles.circle2} />
       <View style={styles.circle3} />
       <View style={styles.circle4} />
       <View style={styles.circle5} /> */}
+      </View>
+      </ImageBackground>
     </View>
   );
 }

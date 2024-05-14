@@ -5,15 +5,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: Dimensions.get('window').height,
-    width: '100%'
+    width: '100%',
+    // height: '50%',
   },
-  // background: {
-  //   width: '100%',
-  //   height: '100%',
-  // },
+  background: {
+    width: '100%',
+    height: '100%',
+  },
   logo: {
     width: '70%',
     height: '35%',
+  },
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   input: {
     width: '65%',
