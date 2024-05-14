@@ -69,6 +69,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#3F7263',
     marginTop: '3%',
   },
+  imgFunc: {
+    width: '90%',
+    height: '100%',
+    alignSelf: 'center',
+  },
   paragraph: {
     marginTop: 10,
     marginBottom: 5,
@@ -116,7 +121,7 @@ const styles = StyleSheet.create({
     marginRight: '3%',
     marginLeft: '3%',
   },
-  importanciaFrase: {
+  importancia: {
     width: '85%', 
     height: 180, 
     borderRadius: 10,
@@ -127,19 +132,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
-  imgFrase: {
-    width: '47%',
+  imgImportancia: {
+    width: '90%',
     height: '100%',
-    marginLeft: 10,
-  },
-  frase: {
-    color: '#fff',
-    fontWeight: '400',
-    textAlign: 'center',
-    width: '30%',
-    fontSize: 17,
-    marginRight: 5,
-    alignSelf: 'center',
   },
 });
 

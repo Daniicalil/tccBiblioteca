@@ -4,7 +4,7 @@ import {useState} from 'react';
 import { ScrollView ,View, Text } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {RetangGreen, RetangOrange, Funcionamento, Quad1, Quad2, Quad3, Quad4, Quad5, Quad6, ImportanciaFrase} from './forms';
+import {RetangGreen, RetangOrange, Funcionamento, Quad1, Quad2, Quad3, Quad4, Quad5, Quad6, Importancia} from './forms';
 
 import styles from './styles';
 
@@ -39,7 +39,7 @@ export default function TelaInicial() {
             <Quad5 />
             <Quad6 />
           </View>
-        <ImportanciaFrase />
+        <Importancia/>
     </ScrollView>
     
   );
