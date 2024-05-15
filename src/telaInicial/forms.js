@@ -7,11 +7,9 @@ import RomeueJulieta from '../../assets/Capa_dos_livros/romeu e julieta.jpg';
 import MilNovecentoseOitentaeQuatro from '../../assets/Capa_dos_livros/1984.jpg';
 import OsMiseráveis from '../../assets/Capa_dos_livros/os miseráveis.jpg';
 import OrgulhoePreconceito from '../../assets/Capa_dos_livros/orgulho e preconceito.png';
-// import ImgFrase from '../../assets/imgFrase.png';
 import ImgLogo from '../../assets/logo.png';
 import ImgEtec from '../../assets/etec.png';
 import ImgFunc from '../../assets/horario.png';
-// import Frase from '../../assets/frase.png';
 import ImgImportancia from '../../assets/fraseimportancia.png'
 
 import styles from './styles';
@@ -105,8 +103,6 @@ export const Importancia = () => {
   return (
     <View style={styles.importancia}>
       <Image source={ImgImportancia} style={styles.imgImportancia}/>
-      {/* <Image source={Frase} style={styles.frase}/> */}
-      {/* <Text style={styles.frase}>A leitura é uma porta aberta para um mundo de descobertas sem fim.</Text> */}
     </View>
   );
 };

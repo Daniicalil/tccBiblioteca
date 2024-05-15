@@ -1,28 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
-// import { useFonts, DancingScript_400Regular } from '@expo-google-fonts/dancing-script';
-// import { AppLoading } from 'expo';
-// import * as Font from 'expo-font';
-
-// const fetchFonts = () => {
-//   return Font.loadAsync({
-//     'DancingScript-Regular': require('@expo-google-fonts/dancing-script'),
-//   });
-// };
-
-// const App = () => {
-//   const [fontLoaded, setFontLoaded] = useState(false);
-
-//   if (!fontLoaded) {
-//     return (
-//       <AppLoading
-//         startAsync={fetchFonts}
-//         onFinish={() => setFontLoaded(true)}
-//         onError={(err) => console.error(err)}
-//       />
-//     );
-//   }
-
 const styles = StyleSheet.create({
   container: {
     height: Dimensions.get('window').height,
@@ -77,7 +54,6 @@ const styles = StyleSheet.create({
   paragraph: {
     marginTop: 10,
     marginBottom: 5,
-    // fontWeight: 600,
     fontSize: 18,
     textAlign: 'left',
     marginLeft: '8%',

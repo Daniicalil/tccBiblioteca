@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: Dimensions.get('window').height,
     width: '100%',
-    // height: '50%',
   },
   background: {
     width: '100%',
@@ -56,64 +55,34 @@ const styles = StyleSheet.create({
   },
   loginText: {
     color: '#fff',
-    fontWeight: 500,
+    fontWeight: 'bold', // alterado para 'bold'
     fontSize: 16,
   },
   passwordContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    width: '65%', // ajustado para 65% para manter o alinhamento
+    position: 'relative', // adicionado para posicionar o ícone
+  },
+  passwordInput: {
+    paddingRight: 50, // ajusta o espaço para o ícone
   },
   passwordVisibilityIcon: {
-    padding: 10,
     position: 'absolute',
-    right: 8,
-    bottom: 8,
+    right: 10, // ajusta a posição do ícone
+    bottom: 12, // ajusta a posição do ícone
   },
-  // circle1: {
-  //   width: 258,
-  //   height: 252,
-  //   borderRadius: '50%',
-  //   backgroundColor: '#3F7263',
-  //   position: 'absolute',
-  //   left: 300,
-  //   top: 750,
-  // },
-  // circle2: {
-  //   width: 95,
-  //   height: 93,
-  //   borderRadius: '50%',
-  //   backgroundColor: '#3F7263',
-  //   position: 'absolute',
-  //   right: 420,
-  //   top: 600,
-  // },
-  // circle3: {
-  //   width: 95,
-  //   height: 93,
-  //   borderRadius: '50%',
-  //   backgroundColor: '#3F7263',
-  //   position: 'absolute',
-  //   left: 450,
-  //   top: 250,
-  // },
-  // circle4: {
-  //   width: 258,
-  //   height: 252,
-  //   borderRadius: '50%',
-  //   backgroundColor: '#3F7263',
-  //   position: 'absolute',
-  //   right: 320,
-  //   bottom: 690,
-  // },
-  // circle5: {
-  //   width: 200,
-  //   height: 194,
-  //   borderRadius: '50%',
-  //   backgroundColor: '#3F7263',
-  //   position: 'absolute',
-  //   right: 190,
-  //   bottom: 770,
-  // },
-})
+  iconContainer: {    
+    position: 'absolute',
+    right: 10,
+    marginRight: 10,
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 export default styles;

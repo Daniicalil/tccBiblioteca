@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
-import imgesqsenha from '../../assets/6333054.jpg';
+import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
+import imgesqsenha from '../../assets/6333054.png';
+import imgDesign from '../../assets/designPage.png';
 
 import styles from './styles'
  
@@ -11,6 +12,10 @@ export default function EsqueceuSenha1() {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#fff' transLucent={false} />
+      <ImageBackground source={imgDesign} style={styles.background}>
+
+      <View style={styles.contentContainer}>
+
 
       <Image
         source={imgesqsenha}
@@ -35,12 +40,9 @@ export default function EsqueceuSenha1() {
       <TouchableOpacity style={styles.loginButton}>
         <Text style={styles.loginText}>Redefinir</Text>
       </TouchableOpacity>
-      
-      <View style={styles.circle1} />
-      <View style={styles.circle2} />
-      <View style={styles.circle3} />
-      <View style={styles.circle4} />
-      <View style={styles.circle5} />
+
+      </View>
+      </ImageBackground>
     </View>
   );
 }

@@ -1,5 +1,4 @@
 import { StyleSheet, Dimensions } from 'react-native';
-// import Shape from 'react-clip-path';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,9 +7,18 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
     width: '100%',
   },
+  background: {
+    width: '100%',
+    height: '100%',
+  },
   logo: {
-    width: '85%',
-    height: '30%',
+    width: '55%',
+    height: '26%',
+  },
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   input: {
     width: '65%',
@@ -36,6 +44,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     fontWeight: 'bold',
     fontSize: 20,
+    marginTop: 5,
   },
   loginButton: {
     marginTop: '5%',
@@ -50,51 +59,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 500,
     fontSize: 16,
-  },
-  circle1: {
-    width: 258,
-    height: 252,
-    borderRadius: '50%',
-    backgroundColor: '#3F7263',
-    position: 'absolute',
-    left: 300,
-    top: 750,
-  },
-  circle2: {
-    width: 95,
-    height: 93,
-    borderRadius: '50%',
-    backgroundColor: '#3F7263',
-    position: 'absolute',
-    right: 420,
-    top: 600,
-  },
-  circle3: {
-    width: 95,
-    height: 93,
-    borderRadius: '50%',
-    backgroundColor: '#3F7263',
-    position: 'absolute',
-    left: 450,
-    top: 250,
-  },
-  circle4: {
-    width: 258,
-    height: 252,
-    borderRadius: '50%',
-    backgroundColor: '#3F7263',
-    position: 'absolute',
-    right: 320,
-    bottom: 690,
-  },
-  circle5: {
-    width: 200,
-    height: 194,
-    borderRadius: '50%',
-    backgroundColor: '#3F7263',
-    position: 'absolute',
-    right: 190,
-    bottom: 770,
   },
   text: {
     width: '80%',
