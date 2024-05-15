@@ -37,10 +37,10 @@ const styles = StyleSheet.create({
   },
   barraPesq: {
     backgroundColor: '#DAD7D7',
-    width: '85%',
+    width: '75%',
   },
   funcionamento: {
-    width: 360, 
+    width: '85%', 
     height: 180, 
     borderRadius: 10,
     backgroundColor: '#3F7263',
