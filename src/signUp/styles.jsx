@@ -68,12 +68,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  // passwordVisibilityIcon: {
-  //   padding: 10,
-  //   position: 'absolute',
-  //   right: 8,
-  //   bottom: 8,
-  // },
+  passwordVisibilityIcon: {
+    padding: 10,
+    position: 'absolute',
+    right: 8,
+    bottom: 8,
+  },
   passwordInput: {
     paddingRight: 40,
   },

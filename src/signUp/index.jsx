@@ -9,7 +9,7 @@ import imgDesign from '../../assets/designPage.png';
 
 import styles from './styles'
  
-export default function SignUp() {
+ function SignUp() {
   const [value, setValue] = React.useState('first');
   const [text, setText] = React.useState('');
   const [passwordVisible1, setPasswordVisible1] = useState(false);
@@ -108,3 +108,4 @@ export default function SignUp() {
   );
 }
 
+export default SignUp;
