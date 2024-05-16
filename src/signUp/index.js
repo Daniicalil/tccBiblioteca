@@ -16,6 +16,7 @@ import styles from './styles'
   const [passwordVisible2, setPasswordVisible2] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConf, setPasswordConf] = useState('');
 
   const togglePasswordVisibility1 = () => {
     setPasswordVisible1(!passwordVisible1);
@@ -75,8 +76,8 @@ import styles from './styles'
           placeholder='confirmar senha'
           style={[styles.input, styles.passwordInput]}
           secureTextEntry={!passwordVisible2}
-          value={password}
-          onChangeText={setPassword}
+          value={passwordConf}
+          onChangeText={setPasswordConf}
         />
 
         <TouchableOpacity onPress={togglePasswordVisibility2} style={styles.passwordVisibilityIcon}>
