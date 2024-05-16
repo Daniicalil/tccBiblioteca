@@ -9,9 +9,8 @@ import imgDesign from '../../assets/designPage.png';
 
 import styles from './styles'
  
- function SignUp() {
+export default function SignUp() {
   const [value, setValue] = React.useState('first');
-  const [text, setText] = React.useState('');
   const [passwordVisible1, setPasswordVisible1] = useState(false);
   const [passwordVisible2, setPasswordVisible2] = useState(false);
   const [email, setEmail] = useState('');
@@ -41,7 +40,7 @@ import styles from './styles'
       <Text style={styles.paragraph}>Cadastro</Text>
 
       <TextInput
-        placeholder='RA'
+        placeholder='RM'
         style={styles.input}
       />
      
@@ -109,4 +108,3 @@ import styles from './styles'
   );
 }
 
-export default SignUp;

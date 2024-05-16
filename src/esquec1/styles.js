@@ -4,8 +4,9 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: Dimensions.get('window').height,
-    width: '100%',
+    // height: Dimensions.get('window').height,
+    // width: '100%',
+    flex: 1,
   },
   background: {
     width: '100%',

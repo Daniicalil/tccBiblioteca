@@ -4,8 +4,9 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: Dimensions.get('window').height,
-    width: '100%',
+    // height: Dimensions.get('window').height,
+    // width: '100%', 
+    flex: 1,
   },
   background: {
     width: '100%',
@@ -36,16 +37,18 @@ const styles = StyleSheet.create({
     color: '#FF735C',
     textAlign: 'center',
     fontSize: 10,
-    marginBottom: 10,
+    marginBottom: 7,
+    marginTop: 15,
   },
   paragraph: {
     textAlign: 'center',
     marginBottom: 15,
     fontWeight: 'bold',
     fontSize: 20,
+    marginTop: 5,
   },
   loginButton: {
-    marginTop: '5%',
+    marginTop: '3%',
     backgroundColor: '#FF735C',
     width: '35%',
     height: 42,
@@ -55,34 +58,29 @@ const styles = StyleSheet.create({
   },
   loginText: {
     color: '#fff',
-    fontWeight: 'bold', // alterado para 'bold'
+    fontWeight: 'bold',
     fontSize: 16,
   },
-  passwordContainer: {
+  password: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '65%', // ajustado para 65% para manter o alinhamento
-    position: 'relative', // adicionado para posicionar o ícone
   },
-  passwordInput: {
-    paddingRight: 50, // ajusta o espaço para o ícone
+  confirmPassword: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   passwordVisibilityIcon: {
+    padding: 10,
     position: 'absolute',
-    right: 10, // ajusta a posição do ícone
-    bottom: 12, // ajusta a posição do ícone
+    right: 8,
+    bottom: 8,
   },
-  iconContainer: {    
-    position: 'absolute',
-    right: 10,
-    marginRight: 10,
+  passwordInput: {
+    paddingRight: 40,
   },
-  inputContainer: {
+  seletores: {
     flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
-});
+})
 
 export default styles;
