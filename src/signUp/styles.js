@@ -1,11 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    // height: Dimensions.get('window').height,
-    // width: '100%',
+  container: {   
     flex: 1,
   },
   background: {
@@ -43,7 +39,7 @@ const styles = StyleSheet.create({
   paragraph: {
     textAlign: 'center',
     marginBottom: 15,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     fontSize: 20,
     marginTop: 5,
   },
@@ -58,7 +54,7 @@ const styles = StyleSheet.create({
   },
   loginText: {
     color: '#fff',
-    fontWeight: 500,
+    fontWeight: 'bold',
     fontSize: 16,
   },
   password: {

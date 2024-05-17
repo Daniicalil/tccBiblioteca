@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native'; 
+import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 // import LognIn from './src/LognIn/index';
@@ -10,17 +11,16 @@ import SignUp from './src/signUp';
 
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <SignUp />
-    </SafeAreaProvider>
+    <View style={styles.container}>
+      <SignUp /> 
+      <StatusBar backgroundColor='#fff' transLucent={false} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     backgroundColor: '#fff',
-    alignItems: 'center',
   },
 });

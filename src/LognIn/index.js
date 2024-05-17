@@ -18,7 +18,6 @@ export default function LognIn() {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor='#FFF' transLucent={false} />
       <ImageBackground source={imgDesign} style={styles.background}>
 
         <View style={styles.contentContainer}>
