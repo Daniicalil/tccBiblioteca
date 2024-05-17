@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   loginText: {
     color: '#fff',
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     fontSize: 16,
   },
   password: {
