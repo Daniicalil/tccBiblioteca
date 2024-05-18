@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import imgesqsenha from '../../assets/6333054.png';
 import imgDesign from '../../assets/designPage.png';

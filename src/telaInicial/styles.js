@@ -2,8 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height,
-    width: '100%',
+    flex: 1,
   },
   inicio: {
     alignItems: 'center'

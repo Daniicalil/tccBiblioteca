@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import imgLogin from '../../assets/6737457.png';
@@ -19,7 +19,7 @@ export default function LognIn() {
   return (
     <View style={styles.container}>
       <ImageBackground source={imgDesign} style={styles.background}>
-
+      <StatusBar backgroundColor='#fff' transLucent={false} />
         <View style={styles.contentContainer}>
 
           <Image

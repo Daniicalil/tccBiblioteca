@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import imgesqsenha from '../../assets/6333054.png';
@@ -10,22 +10,24 @@ import styles from './styles'
  
 
 export default function EsqueceuSenha2() {
-  const [passwordVisible1, setPasswordVisible1] = useState(false);
-  const [passwordVisible2, setPasswordVisible2] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisibleConf, setPasswordVisibleConf] = useState(false);
   const [password, setPassword] = useState('');
+  const [passwordConf, setPasswordConf] = useState('');
 
-  const togglePasswordVisibility1 = () => {
-    setPasswordVisible1(!passwordVisible1);
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
-  const togglePasswordVisibility2 = () => {
-    setPasswordVisible2(!passwordVisible2);
+  const togglePasswordVisibilityConf = () => {
+    setPasswordVisibleConf(!passwordVisibleConf);
   };
   
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor='#fff' transLucent={false} />
+      
       <ImageBackground source={imgDesign} style={styles.background}>
+      <StatusBar backgroundColor='#fff' transLucent={false} />
 
       <View style={styles.contentContainer}>
 
@@ -40,19 +42,20 @@ export default function EsqueceuSenha2() {
       <TextInput
         placeholder='código'
         style={styles.input}
+        keyboardType="numeric"
       />
 
        <View style={styles.password}>
         <TextInput
           placeholder='senha'
           style={[styles.input, styles.passwordInput]}
-          secureTextEntry={!passwordVisible1}
+          secureTextEntry={!passwordVisible}
           value={password}
           onChangeText={setPassword}
         />
 
-         <TouchableOpacity onPress={togglePasswordVisibility1} style={styles.passwordVisibilityIcon}>
-          <Ionicons name={passwordVisible1 ? 'eye-off' : 'eye'} size={24} color="black" />
+         <TouchableOpacity onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
+          <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
         </TouchableOpacity>
       </View>
 
@@ -60,13 +63,13 @@ export default function EsqueceuSenha2() {
         <TextInput
           placeholder='confirme a nova senha'
           style={[styles.input, styles.passwordInput]}
-          secureTextEntry={!passwordVisible2}
-          value={password}
-          onChangeText={setPassword}
+          secureTextEntry={!passwordVisibleConf}
+          value={passwordConf}
+          onChangeText={setPasswordConf}
         />
 
-        <TouchableOpacity onPress={togglePasswordVisibility2} style={styles.passwordVisibilityIcon}>
-          <Ionicons name={passwordVisible2 ? 'eye-off' : 'eye'} size={24} color="black" right={<TextInput.Affix text="/100" />}/>
+        <TouchableOpacity onPress={togglePasswordVisibilityConf} style={styles.passwordVisibilityIcon}>
+          <Ionicons name={passwordVisibleConf ? 'eye-off' : 'eye'} size={24} color="black" />
         </TouchableOpacity>
       </View>
 

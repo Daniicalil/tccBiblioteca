@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
@@ -10,27 +11,27 @@ import styles from './styles'
 
 export default function SignUp() {
   const [value, setValue] = useState('first');
-  const [passwordVisible1, setPasswordVisible1] = useState(false);
-  const [passwordVisible2, setPasswordVisible2] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisibleConf, setPasswordVisibleConf] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConf, setPasswordConf] = useState('');
 
-  const togglePasswordVisibility1 = () => {
-    setPasswordVisible1(!passwordVisible1);
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
-  const togglePasswordVisibility2 = () => {
-    setPasswordVisible2(!passwordVisible2);
+  const togglePasswordVisibilityConf = () => {
+    setPasswordVisibleConf(!passwordVisibleConf);
   };
 
   return (
     <View style={styles.container}>
-
+      
       <ImageBackground source={imgDesign} style={styles.background}>
-
+      <StatusBar backgroundColor='#fff' transLucent={false} />
          <View style={styles.contentContainer}>
-{/*
+
           <Image
             source={imgSignup}
             style={styles.logo}
@@ -59,13 +60,13 @@ export default function SignUp() {
             <TextInput
               placeholder='senha'
               style={[styles.input, styles.passwordInput]}
-              secureTextEntry={!passwordVisible1}
+              secureTextEntry={!passwordVisible}
               value={password}
               onChangeText={setPassword}
             />
 
-            <TouchableOpacity onPress={togglePasswordVisibility1} style={styles.passwordVisibilityIcon}>
-              <Ionicons name={passwordVisible1 ? 'eye-off' : 'eye'} size={24} color="black" />
+            <TouchableOpacity onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
+              <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
             </TouchableOpacity>
           </View>
 
@@ -73,13 +74,13 @@ export default function SignUp() {
             <TextInput
               placeholder='confirmar senha'
               style={[styles.input, styles.passwordInput]}
-              secureTextEntry={!passwordVisible2}
+              secureTextEntry={!passwordVisibleConf}
               value={passwordConf}
               onChangeText={setPasswordConf}
             />
 
-            <TouchableOpacity onPress={togglePasswordVisibility2} style={styles.passwordVisibilityIcon}>
-              <Ionicons name={passwordVisible2 ? 'eye-off' : 'eye'} size={24} color="black" right={<TextInput.Affix text="/100" />} />
+            <TouchableOpacity onPress={togglePasswordVisibilityConf} style={styles.passwordVisibilityIcon}>
+              <Ionicons name={passwordVisibleConf ? 'eye-off' : 'eye'} size={24} color="black" />
             </TouchableOpacity>
           </View>
 
@@ -92,7 +93,7 @@ export default function SignUp() {
               <Text><RadioButton value="Neutro" color='#3F7263' />Neutro</Text>
             </View>
           </RadioButton.Group>
-*/}
+
           <TouchableOpacity>
             <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
           </TouchableOpacity>

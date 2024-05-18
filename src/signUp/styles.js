@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   logo: {
-    width: '70%',
-    height: '35%',
+    width: 300,
+    height: 300,
   },
   contentContainer: {
     flex: 1,
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   paragraph: {
     textAlign: 'center',
     marginBottom: 15,
-    // fontWeight: 'bold',
+    fontWeight: 'bold',
     fontSize: 20,
     marginTop: 5,
   },
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   loginText: {
     color: '#fff',
-    // fontWeight: 'bold',
+    fontWeight: 'bold',
     fontSize: 16,
   },
   password: {

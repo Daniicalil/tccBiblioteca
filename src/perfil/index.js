@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Appbar } from 'react-native-paper';
-import Ionicons from 'react-native-vector-icons/Ionicons'; // Importe Ionicons corretamente
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RetangGreen, RetangOrange } from './forms';
 
 import styles from './styles';
@@ -19,7 +20,7 @@ export default function Perfil() {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.inicio}>
-                {/* <StatusBar backgroundColor='#fff' transLucent={false} /> */}
+                <StatusBar backgroundColor='#fff' transLucent={false} />
                 <RetangGreen />
                 <RetangOrange />
             </View>

@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   logo: {
-    width: '70%',
-    height: '35%',
+    width: 320,
+    height: 290,
   },
   contentContainer: {
     flex: 1,

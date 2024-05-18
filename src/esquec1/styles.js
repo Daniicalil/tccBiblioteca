@@ -2,10 +2,6 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    // height: Dimensions.get('window').height,
-    // width: '100%',
     flex: 1,
   },
   background: {
@@ -13,8 +9,8 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   logo: {
-    width: '55%',
-    height: '26%',
+    width: 230,
+    height: 240,
   },
   contentContainer: {
     flex: 1,
@@ -58,7 +54,7 @@ const styles = StyleSheet.create({
   },
   loginText: {
     color: '#fff',
-    fontWeight: 500,
+    fontWeight: 'bold',
     fontSize: 16,
   },
   text: {
