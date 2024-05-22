@@ -5,13 +5,13 @@ import { StatusBar } from 'expo-status-bar';
 // import SignUp from './src/signUp';
 // import EsqueceuSenha1 from './src/esquec1/index';
 // import EsqueceuSenha2 from './src/esquec2/index';
-// import TelaInicial from './src/telaInicial/index';
-import Perfil from './src/perfil/index';
+import TelaInicial from './src/telaInicial/index';
+// import Perfil from './src/perfil/index';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Perfil /> 
+      <TelaInicial /> 
     </View>
   );
 }

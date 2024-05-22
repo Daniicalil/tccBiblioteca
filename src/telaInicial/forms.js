@@ -44,7 +44,8 @@ export const Quad1 = () => {
     <View style={styles.quadrado}>
         <Text style={styles.curso}>Téc. Recursos Humanos</Text>
         <Image source={AnneFrank} style={styles.capaLivros}/>
-        <Text style={styles.livros}>O diário de Anne Frank - Anne Frank</Text>
+        <Text style={styles.livros
+}>O diário de Anne Frank - Anne Frank</Text>
     </View>
   );
 };

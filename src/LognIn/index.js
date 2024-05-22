@@ -48,7 +48,6 @@ export default function LognIn() {
         </TouchableOpacity>
       </View>
 
-          
 
           <TouchableOpacity>
             <Text style={styles.touchText}>Não tem cadastro? Cadastre-se</Text>
