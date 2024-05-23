@@ -2,11 +2,25 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height,
-    width: '100%',
+    flex: 1,
   },
   inicio: {
     alignItems: 'center',
+  },
+  imgLogo: {
+    width: '20%',
+    height: '30%',
+    alignSelf: 'center',
+    position: 'absolute',
+    bottom: 8
+  },
+  imgEtec: {
+    width: '15%',
+    height: '25%',
+    bottom: 8,
+    alignSelf: 'flex-end',
+    position: 'absolute',
+    right: 27,
   },
   retangGreen: {
     width: '100%', 
@@ -41,14 +55,6 @@ const styles = StyleSheet.create({
     color: '#929292',
     alignSelf: 'center',
   },
-  circle1: {
-    width: 170,
-    height: 165,
-    borderRadius: '50%',
-    backgroundColor: '#5DA38E',
-    alignSelf: 'center',
-    marginBottom: 30,
-  },
   texto: {
     marginLeft: 90,
   },
@@ -61,6 +67,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 8,
     bottom: 8,
+  },
+  seletores: {
+    flexDirection: 'row',
   },
   
 });

@@ -1,14 +1,15 @@
-import * as React from 'react';
-import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Appbar } from 'react-native-paper';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { RetangGreen, RetangOrange } from './forms';
+import * as React from 'react';
+import {useState} from 'react';
+import { ScrollView ,View, Text, TextInput, Pressable } from 'react-native';
+import { RadioButton } from 'react-native-paper';
+import { Ionicons } from '@expo/vector-icons';
+import {RetangGreen, RetangOrange} from './forms';
 
 import styles from './styles';
 
 export default function Perfil() {
+    const [value, setValue] = useState('first');
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,20 +17,16 @@ export default function Perfil() {
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     };
+  
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.inicio}>
+      <StatusBar backgroundColor='#3F7263' transLucent={false} />
+        <RetangGreen />
+        <RetangOrange />
+      </View>
 
-    return (
-        <ScrollView style={styles.container}>
-            <View style={styles.inicio}>
-                <StatusBar backgroundColor='#fff' transLucent={false} />
-                <RetangGreen />
-                <RetangOrange />
-            </View>
-            <Appbar.Header>
-                <Appbar.Action icon={() => <Ionicons name='menu' />} onPress={() => console.log('Menu pressionado')} /> {/* Substitua Icon por Ionicons aqui */}
-                <Appbar.Content title="Perfil" />
-            </Appbar.Header>
-            <View style={styles.circle1} />
-            <Text style={styles.texto}>Nome social:</Text>
+      <Text style={styles.texto}>Nome social:</Text>
             <TextInput
                 style={styles.input}
             />
@@ -53,16 +50,21 @@ export default function Perfil() {
                     value={password}
                     onChangeText={setPassword}
                 />
-                <TouchableOpacity onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
+                <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
                     <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
-                </TouchableOpacity>
+                </Pressable>
             </View>
 
-            <Text style={styles.texto}>Sexo:</Text>
-            <TextInput
-                style={styles.input}
-            />
-        </ScrollView>
+            <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value} >
+            <Text style={styles.sexo}>Sexo:</Text>
+            <View style={styles.seletores}>
 
-    );
+              <Text><RadioButton value="Feminino" color='#3F7263' />Feminino</Text>
+              <Text> <RadioButton value="Masculino" color='#3F7263' />Masculino</Text>
+              <Text><RadioButton value="Neutro" color='#3F7263' />Neutro</Text>
+            </View>
+          </RadioButton.Group>
+    </ScrollView>
+    
+  );
 }
