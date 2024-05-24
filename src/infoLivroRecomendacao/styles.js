@@ -57,11 +57,67 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     opacity: 0.2,
     top: 30,
+    mariginVertical: 10,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
   },
   title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  description: {
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  available: {
+    fontSize: 14,
+    marginBottom: 8,
+  },
+  bold: {
+    fontWeight: 'bold',
+  },
+  infoContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    height: 60,
+    justifyContent: 'space-around',
+    width: '100%',
+    marginBottom: 16,
+  },
+  infoBox: {
+    alignItems: 'center',
+  },
+  infoTitle: {
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  infoText: {
+    fontSize: 12,
+  },
+  recommendationTitle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginBottom: 4,
+  },
+  recommendation: {
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  button: {
+    backgroundColor: '#FF6F61',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 8,
+    marginTop: 16,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   squareQuant: {
     width: 70,
