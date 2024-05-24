@@ -4,6 +4,7 @@ import {useState} from 'react';
 import { ScrollView ,View, Text, TextInput, Pressable } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange, Quad1, Quad2, Quad3, Quad4, Quad5, Quad6} from './forms';
 
 import styles from './styles';
@@ -17,7 +18,10 @@ export default function Recomendacao() {
       <StatusBar backgroundColor='#3F7263' transLucent={false} />
         <RetangGreen />
         <RetangOrange />
-        <Text style={styles.paragraph}>Recomendações dos professores</Text>
+        <View style={styles.title}>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}/>
+          <Text style={styles.paragraph}>Recomendações dos professores</Text>
+        </View>
         <Searchbar
             placeholder="Pesquisar"
             onChangeText={setSearchQuery}

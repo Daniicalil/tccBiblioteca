@@ -1,0 +1,101 @@
+import React from 'react';
+import { View, Text, Image } from 'react-native';
+
+import ImgLogo from '../../assets/logo.png';
+import ImgEtec from '../../assets/etec.png';
+
+import styles from './styles';
+
+export const RetangGreen = () => {
+  return (
+    <View style={styles.retangGreen}>
+      <Image source={ImgLogo} style={styles.imgLogo}/>
+      <Image source={ImgEtec} style={styles.imgEtec}/>
+    </View>
+  );
+};
+
+export const RetangOrange = () => {
+  return (
+    <View style={styles.retangOrange}>
+      {/* Conteúdo dentro do retângulo, se necessário */}
+    </View>
+  );
+};
+
+export const Funcionamento = () => {
+  return (
+    <View style={styles.funcionamento}>
+      <Image source={ImgFunc} style={styles.imgFunc}/>
+    </View>
+  );
+};
+
+export const Quad1 = () => {
+  return (
+    <View style={styles.quadrado}>
+        <Text style={styles.curso}>Téc. Recursos Humanos</Text>
+        <Image source={AnneFrank} style={styles.capaLivros}/>
+        <Text style={styles.livros
+}>O diário de Anne Frank - Anne Frank</Text>
+    </View>
+  );
+};
+
+export const Quad2 = () => {
+  return (
+    <View style={styles.quadrado}>
+        <Text style={styles.curso}>Téc. Contabilidade</Text>
+        <Image source={DomCasmurro} style={styles.capaLivros}/>
+        <Text style={styles.livros}>Dom Casmurro - Machado de Assís</Text>
+    </View>
+  );
+};
+
+export const Quad3 = () => {
+  return (
+    <View style={styles.quadrado}>
+        <Text style={styles.curso}>Téc. Design de Interiores</Text>
+        <Image source={RomeueJulieta} style={styles.capaLivros}/>
+        <Text style={styles.livros}>Romeu e Julieta - William Shakespeare</Text>
+    </View>
+  );
+};
+
+export const Quad4 = () => {
+  return (
+    <View style={styles.quadrado}>
+        <Text style={styles.curso}>Téc. Informática</Text>
+        <Image source={MilNovecentoseOitentaeQuatro} style={styles.capaLivros}/>
+        <Text style={styles.livros}>1984 - George Orwell</Text>
+    </View>
+  );
+};
+
+export const Quad5 = () => {
+  return (
+    <View style={styles.quadrado}>
+        <Text style={styles.curso}>Téc. Administração</Text>
+        <Image source={OsMiseráveis} style={styles.capaLivros}/>
+        <Text style={styles.livros}>Os Miseráveis - Victor Hugo</Text>
+    </View>
+  );
+};
+
+export const Quad6 = () => {
+  return (
+    <View style={styles.quadrado}>
+        <Text style={styles.curso}>Téc. Farmácia</Text>
+        <Image source={OrgulhoePreconceito} style={styles.capaLivros}/>
+        <Text style={styles.livros}>Orgulho e Preconceito - Jane Austen</Text>
+    </View>
+  );
+};
+
+export const Importancia = () => {
+  return (
+    <View style={styles.importancia}>
+      <Image source={ImgImportancia} style={styles.imgImportancia}/>
+    </View>
+  );
+};

@@ -1,5 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
+const { width } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -34,16 +36,40 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
-  barraPesq: {
-    backgroundColor: '#DAD7D7',
-    width: '75%',
-    marginBottom: '4%',
+  lineSquare: {
+    width: '90%',
+    height: 580,
+    backgroundColor: 'transparent', 
+    borderColor: 'black', 
+    borderWidth: 1, 
+    borderRadius: 10,
+  },
+  capaLivros: {
+    top: 15,
+    width: 100,
+    height: 160,
+    alignSelf: 'center',
+  },
+  line: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    width: '90%',
+    alignSelf: 'center',
+    opacity: 0.2,
+    top: 30,
   },
   title: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
     height: 60,
+  },
+  squareQuant: {
+    width: 70,
+    height: 45,
+    backgroundColor: 'transparent', 
+    borderColor: 'black', 
+    borderWidth: 1, 
+    borderRadius: 10,
   },
   icon: {
     position: 'absolute',
@@ -56,49 +82,7 @@ const styles = StyleSheet.create({
     // fontWeight: 'bold',
     fontSize: 18,
     flex: 1,
-    textAlign: 'center'
-  },
-  quadrado: {
-    width: '28%', 
-    height: 112, 
-    borderRadius: 10,
-    backgroundColor: '#DAD7D7',
-    marginTop: '3%',
-    marginLeft: 6,
-    marginRight: 6,
-  },
-  curso: {
-    fontSize: 10,
-    textAlign: 'center',
-    marginTop: '2%',
-  },
-  capaLivros: {
-    width: 35,
-    height: 54,
-    alignSelf: 'center',
-  },
-  livros: {
-    fontSize: 10,
-    textAlign: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
-  },
-  texto: {
-    marginLeft: 90,
-  },
-  rowQuadrados1: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
-  },
-  rowQuadrados2: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
+    left: 75,
   },
   
 });
