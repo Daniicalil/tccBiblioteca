@@ -30,13 +30,19 @@ return (
         </View>
         <View style={styles.lineSquare}>
         <Image source={AnneFrank} style={styles.capaLivros}/>
-          <Text style={styles.sectionTitle}>Visão geral</Text>
-          <Text style={styles.title}>O diário de Anne Frank</Text>
-          <Text style={styles.description}>
-            O Diário de Anne Frank é um livro que relata a história de uma jovem judia chamada Anne Frank, que viveu durante a Segunda Guerra Mundial e se escondeu com sua família e outros judeus em um anexo secreto em Amsterdã, nos Países Baixos, para escapar da perseguição nazista.
-          </Text>
-          <Text style={styles.available}>Disponíveis: <Text style={styles.bold}>5</Text></Text>
-          
+        <Line />
+          <View style={styles.sectionTitle}>
+            <Text style={styles.general}>Visão geral</Text>
+            <Text style={styles.title}>O diário de Anne Frank</Text>
+          </View>
+          <View style={styles.smallineSquare}>
+            <Text style={styles.available}>Disp.: </Text>
+            <Text style={styles.bold}>5</Text>
+          </View>
+            <Text style={styles.description}>
+              O Diário de Anne Frank é um livro que relata a história de uma jovem judia chamada Anne Frank, que viveu durante a Segunda Guerra Mundial e se escondeu com sua família e outros judeus em um anexo secreto em Amsterdã, nos Países Baixos, para escapar da perseguição nazista.
+            </Text>
+
           <View style={styles.infoContainer}>
             <View style={styles.infoBox}>
               <Text style={styles.infoTitle}>Autor(a)</Text>
@@ -52,11 +58,14 @@ return (
             </View>
           </View>
 
+          <Line />
+
           <Text style={styles.recommendationTitle}>Descrição do professor:</Text>
           <Text style={styles.recommendation}>Recursos Humanos</Text>
-
-          <Text style={styles.recommendationTitle}>Recomendado para:</Text>
-          <Text style={styles.recommendation}>1º Mod., 2º Mod., 3º Mod., 4º Mod.</Text>
+          <View>
+            <Text style={styles.recommendationTitle}>Recomendado para:</Text>
+            <Text style={styles.recommendation}>1º Mod., 2º Mod., 3º Mod., 4º Mod.</Text>
+          </View>
         </View>
 
         <Pressable style={styles.button}>

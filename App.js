@@ -8,7 +8,7 @@ import { StyleSheet, Text, View } from 'react-native';
 // import TelaInicial from './src/telaInicial/index';
 // import Perfil from './src/perfil/index';
 // import Recomendacao from './src/recomendacao';
-import InformacaoLivro from './src/infoLivro';
+import InformacaoLivro from './src/infoLivroRecomendacao';
 
 export default function App() {
   return (

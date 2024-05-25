@@ -53,66 +53,104 @@ const styles = StyleSheet.create({
   line: {
     borderBottomColor: 'black',
     borderBottomWidth: 1,
-    width: '90%',
+    width: '92%',
     alignSelf: 'center',
     opacity: 0.2,
     top: 30,
     mariginVertical: 10,
   },
   sectionTitle: {
+    top: 40,
+    left: 22,
+  },
+  general: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
   },
   title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 8,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 60,
+  },
+  icon: {
+    position: 'absolute',
+    left: 28,
+    top: 10
+  },
+  paragraph: {
+    marginTop: '3%',
+    marginBottom: '6%',
+    // fontWeight: 'bold',
+    fontSize: 18,
+    flex: 1,
+    left: 70
+  },
+  smallineSquare: {
+    width: '16%',
+    height: 45,
+    backgroundColor: 'transparent', 
+    borderColor: 'black', 
+    borderWidth: 1, 
+    borderRadius: 10,
+    justifyContent: 'center',
+    position: 'absolute',
+    right: 30,
+    top: 205,
   },
   description: {
     fontSize: 14,
     textAlign: 'center',
     marginBottom: 8,
+    top: 8,
+    textAlign: 'justify',
+    width: '89%',
+    alignSelf: 'center'
   },
   available: {
     fontSize: 14,
     marginBottom: 8,
+    textAlign: 'center',
   },
   bold: {
     fontWeight: 'bold',
+    textAlign: 'center',
+    top: -6,
   },
   infoContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
     marginBottom: 16,
+    top: 10
   },
   infoBox: {
     alignItems: 'center',
   },
   infoTitle: {
     fontSize: 12,
-    fontWeight: 'bold',
   },
   infoText: {
     fontSize: 12,
   },
   recommendationTitle: {
     fontSize: 14,
-    fontWeight: 'bold',
     marginBottom: 4,
+    left: 20
   },
   recommendation: {
     fontSize: 14,
-    textAlign: 'center',
     marginBottom: 8,
+    left: 20
   },
   button: {
     backgroundColor: '#FF6F61',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 8,
+    borderRadius: 30,
     marginTop: 16,
+   
   },
   buttonText: {
     color: '#fff',
@@ -127,19 +165,7 @@ const styles = StyleSheet.create({
     borderWidth: 1, 
     borderRadius: 10,
   },
-  icon: {
-    position: 'absolute',
-    left: 28,
-    top: 10
-  },
-  paragraph: {
-    marginTop: '3%',
-    marginBottom: '6%',
-    // fontWeight: 'bold',
-    fontSize: 18,
-    flex: 1,
-    left: 75,
-  },
+ 
   
 });
 
