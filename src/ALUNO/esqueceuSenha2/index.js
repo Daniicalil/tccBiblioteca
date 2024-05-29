@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import imgesqsenha from '../../assets/6333054.png';
-import imgDesign from '../../assets/designPage.png';
+import imgesqsenha from '../../../assets/6333054.png';
+import imgDesign from '../../../assets/designPage.png';
 
 
 import styles from './styles'

@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 
-import ImgLogo from '../../assets/logo.png';
-import ImgEtec from '../../assets/etec.png';
+import ImgLogo from '../../../assets/logo.png';
+import ImgEtec from '../../../assets/etec.png';
 
 import styles from './styles';
 
@@ -26,7 +26,7 @@ export const RetangOrange = () => {
 export const Funcionamento = () => {
   return (
     <View style={styles.funcionamento}>
-      {/* Conteúdo dentro do retângulo, se necessário */}
+      <Image source={ImgFunc} style={styles.imgFunc}/>
     </View>
   );
 };
@@ -36,7 +36,8 @@ export const Quad1 = () => {
     <View style={styles.quadrado}>
         <Text style={styles.curso}>Téc. Recursos Humanos</Text>
         <Image source={AnneFrank} style={styles.capaLivros}/>
-        <Text style={styles.livros}>O diário de Anne Frank - Anne Frank</Text>
+        <Text style={styles.livros
+}>O diário de Anne Frank - Anne Frank</Text>
     </View>
   );
 };
@@ -91,10 +92,10 @@ export const Quad6 = () => {
   );
 };
 
-export const ImportanciaFrase = () => {
+export const Importancia = () => {
   return (
-    <View style={styles.importanciaFrase}>
-      {/* Conteúdo dentro do retângulo, se necessário */}
+    <View style={styles.importancia}>
+      <Image source={ImgImportancia} style={styles.imgImportancia}/>
     </View>
   );
 };

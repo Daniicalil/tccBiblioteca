@@ -1,8 +1,16 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 
-import ImgLogo from '../../assets/logo.png';
-import ImgEtec from '../../assets/etec.png';
+import AnneFrank from '../../../assets/Capa_dos_livros/o diário de anne frank.jpg';
+import DomCasmurro from '../../../assets/Capa_dos_livros/dom casmurro.jpg';
+import RomeueJulieta from '../../../assets/Capa_dos_livros/romeu e julieta.jpg';
+import MilNovecentoseOitentaeQuatro from '../../../assets/Capa_dos_livros/1984.jpg';
+import OsMiseráveis from '../../../assets/Capa_dos_livros/os miseráveis.jpg';
+import OrgulhoePreconceito from '../../../assets/Capa_dos_livros/orgulho e preconceito.png';
+import ImgLogo from '../../../assets/logo.png';
+import ImgEtec from '../../../assets/etec.png';
+import ImgFunc from '../../../assets/horario.png';
+import ImgImportancia from '../../../assets/fraseimportancia.png'
 
 import styles from './styles';
 
@@ -36,8 +44,7 @@ export const Quad1 = () => {
     <View style={styles.quadrado}>
         <Text style={styles.curso}>Téc. Recursos Humanos</Text>
         <Image source={AnneFrank} style={styles.capaLivros}/>
-        <Text style={styles.livros
-}>O diário de Anne Frank - Anne Frank</Text>
+        <Text style={styles.livros}>O diário de Anne Frank - Anne Frank</Text>
     </View>
   );
 };

@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange} from './forms';
 
-import AnneFrank from '../../assets/Capa_dos_livros/o diário de anne frank.jpg';
+import AnneFrank from '../../../assets/Capa_dos_livros/o diário de anne frank.jpg';
 
 import styles from './styles';
 
@@ -16,7 +16,7 @@ const Line = () => {
   );
 };
 
-export default function InformacaoLivro() {
+export default function InfoLivroRecomendacao() {
 return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
