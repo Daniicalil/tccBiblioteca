@@ -153,14 +153,13 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#FF6F61',
     paddingVertical: 12,
-    paddingHorizontal: 32,
+    paddingHorizontal: 28,
     borderRadius: 30,
     marginTop: 16,
   },
   buttonText: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
   },
 });
 

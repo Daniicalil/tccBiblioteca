@@ -24,7 +24,7 @@ return (
         <RetangGreen />
         <RetangOrange />
             
-        <View style={styles.title}>
+        <View style={styles.titlePagina}>
           <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}/>
           <Text style={styles.paragraph}>Informações do livro</Text>
         </View>
@@ -65,9 +65,6 @@ return (
             </Text>
           </View>
 
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>Reservar livro</Text>
-        </Pressable>
       </View>
     </ScrollView>
     

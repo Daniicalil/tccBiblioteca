@@ -36,8 +36,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
-  title: {
-    left: 30,
+  titlePagina: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 60,
   },
   icon: {
     position: 'absolute',
@@ -122,7 +125,7 @@ const styles = StyleSheet.create({
   buttonConf: {
     backgroundColor: '#FF6F61',
     paddingVertical: 6,
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
     borderRadius: 30,
     marginTop: 16,
     width: '30%',
@@ -137,7 +140,7 @@ const styles = StyleSheet.create({
   buttonCanc: {
     backgroundColor: '#FFF',
     paddingVertical: 6,
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
     borderRadius: 30,
     marginTop: 16,
     borderWidth: 1,
@@ -158,17 +161,6 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     fontSize: 12,
   },
-  button: {
-    backgroundColor: '#FF6F61',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    // fontWeight: 'bold',
-  },
   squareQuant: {
     width: 70,
     height: 45,
@@ -177,8 +169,6 @@ const styles = StyleSheet.create({
     borderWidth: 1, 
     borderRadius: 10,
   },
- 
-  
 });
 
 export default styles;
