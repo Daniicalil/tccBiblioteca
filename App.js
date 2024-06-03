@@ -10,12 +10,15 @@ import { StyleSheet, Text, View } from 'react-native';
 // import Recomendacao from './src/ALUNO/recomendacao';
 // import InfoLivroRecomendacao from './src/ALUNO/infoLivroRecomendacao';
 // import InfoLivroBiblioteca from './src/ALUNO/infoLivroBiblioteca';
-import InformacoesReserva from './src/ALUNO/informacoesReserva';
+// import InformacoesReserva from './src/ALUNO/informacoesReserva';
+// import Notificacoes from './src/ALUNO/notificacoes';
+// import InformacoesContato from './src/ALUNO/infoContato';
+import CalendarScreen from './src/ALUNO/reservarLivro';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <InformacoesReserva /> 
+      <CalendarScreen /> 
     </View>
   );
 }
