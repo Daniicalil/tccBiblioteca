@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
+import { Text, View, Image, TextInput, Pressable, ImageBackground } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 import imgSignup from '../../assets/img_cadastro.png';
@@ -65,9 +65,9 @@ export default function SignUp() {
               onChangeText={setPassword}
             />
 
-            <TouchableOpacity onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
+            <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
               <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
-            </TouchableOpacity>
+            </Pressable>
           </View>
 
           <View style={styles.confirmPassword}>
@@ -79,9 +79,9 @@ export default function SignUp() {
               onChangeText={setPasswordConf}
             />
 
-            <TouchableOpacity onPress={togglePasswordVisibilityConf} style={styles.passwordVisibilityIcon}>
+            <Pressable onPress={togglePasswordVisibilityConf} style={styles.passwordVisibilityIcon}>
               <Ionicons name={passwordVisibleConf ? 'eye-off' : 'eye'} size={24} color="black" />
-            </TouchableOpacity>
+            </Pressable>
           </View>
 
           <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value} >
@@ -94,13 +94,13 @@ export default function SignUp() {
             </View>
           </RadioButton.Group>
 
-          <TouchableOpacity>
+          <Pressable>
             <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
-          </TouchableOpacity>
+          </Pressable>
 
-          <TouchableOpacity style={styles.loginButton}>
+          <Pressable style={styles.loginButton}>
             <Text style={styles.loginText}>Fazer cadastro</Text>
-          </TouchableOpacity>
+          </Pressable>
 
         </View> 
       </ImageBackground>

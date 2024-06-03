@@ -36,6 +36,25 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
+  title: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 60,
+  },
+  icon: {
+    position: 'absolute',
+    left: 28,
+    top: 10
+  },
+  paragraph: {
+    marginTop: '3%',
+    marginBottom: '6%',
+    // fontWeight: 'bold',
+    fontSize: 18,
+    flex: 1,
+    left: 70
+  },
   lineSquare: {
     width: '90%',
     height: 580,
@@ -68,24 +87,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
   },
-  title: {
+  titleLivro: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,
-  },
-  icon: {
-    position: 'absolute',
-    left: 28,
-    top: 10
-  },
-  paragraph: {
-    marginTop: '3%',
-    marginBottom: '6%',
-    // fontWeight: 'bold',
-    fontSize: 18,
-    flex: 1,
-    left: 70
   },
   smallineSquare: {
     width: '16%',
@@ -99,15 +105,6 @@ const styles = StyleSheet.create({
     right: 30,
     top: 205,
   },
-  description: {
-    fontSize: 14,
-    textAlign: 'center',
-    marginBottom: 8,
-    top: 8,
-    textAlign: 'justify',
-    width: '89%',
-    alignSelf: 'center'
-  },
   available: {
     fontSize: 14,
     marginBottom: 8,
@@ -117,6 +114,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     top: -6,
+  },
+  description: {
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: 8,
+    top: 8,
+    textAlign: 'justify',
+    width: '89%',
+    alignSelf: 'center'
   },
   infoContainer: {
     flexDirection: 'row',
@@ -134,39 +140,18 @@ const styles = StyleSheet.create({
   infoText: {
     fontSize: 12,
   },
-  recommendationTitle: {
-    fontSize: 14,
-    marginBottom: 4,
-    left: 20
-  },
-  recommendation: {
-    fontSize: 14,
-    marginBottom: 8,
-    left: 20
-  },
   button: {
     backgroundColor: '#FF6F61',
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 30,
     marginTop: 16,
-   
   },
   buttonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
   },
-  squareQuant: {
-    width: 70,
-    height: 45,
-    backgroundColor: 'transparent', 
-    borderColor: 'black', 
-    borderWidth: 1, 
-    borderRadius: 10,
-  },
- 
-  
 });
 
 export default styles;

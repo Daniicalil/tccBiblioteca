@@ -33,7 +33,7 @@ return (
         <Line />
           <View style={styles.sectionTitle}>
             <Text style={styles.general}>Visão geral</Text>
-            <Text style={styles.title}>O diário de Anne Frank</Text>
+            <Text style={styles.titleLivro}>O diário de Anne Frank</Text>
           </View>
           <View style={styles.smallineSquare}>
             <Text style={styles.available}>Disp.: </Text>

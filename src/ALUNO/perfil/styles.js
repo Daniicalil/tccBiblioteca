@@ -7,6 +7,11 @@ const styles = StyleSheet.create({
   inicio: {
     alignItems: 'center',
   },
+  retangGreen: {
+    width: '100%', 
+    height: 100, 
+    backgroundColor: '#3F7263',
+  },
   imgLogo: {
     width: '20%',
     height: '30%',
@@ -22,24 +27,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 27,
   },
-  retangGreen: {
-    width: '100%', 
-    height: 100, 
-    backgroundColor: '#3F7263',
-  },
   retangOrange: {
     width: '100%', 
     height: 19, 
     backgroundColor: '#FF735C',
     // marginBottom: '3%',
   },
-  paragraph: {
-    marginTop: 10,
-    marginBottom: 5,
-    // fontWeight: 600,
-    fontSize: 18,
-    textAlign: 'left',
-    marginLeft: '8%',
+  texto: {
+    marginLeft: 90,
   },
   input: {
     width: '65%',
@@ -55,9 +50,6 @@ const styles = StyleSheet.create({
     color: '#929292',
     alignSelf: 'center',
   },
-  texto: {
-    marginLeft: 90,
-  },
   passwordContainer: {
     flexDirection: 'row',
     alignSelf: 'center',
@@ -71,7 +63,6 @@ const styles = StyleSheet.create({
   seletores: {
     flexDirection: 'row',
   },
-  
 });
 
 export default styles;

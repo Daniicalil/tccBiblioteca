@@ -32,7 +32,7 @@ return (
           <View style={styles.infoLivro}>
             <Image source={AnneFrank} style={styles.capaLivros}/>
               <View style={styles.sectionTitle}>
-                <Text style={styles.title}>O diário de anne frank</Text>
+                <Text style={styles.titleLivro}>O diário de anne frank</Text>
                 <Text style={styles.autor}>Por: Anne Frank</Text>
               </View>
           </View>
@@ -49,17 +49,20 @@ return (
               </Text>
             </View>
         <Line />
-              <Text style={styles.dataReserva}>
+              <Text style={styles.conf}>
                 Confirmar retirada do livro
               </Text>
             <View style={styles.buttonsReserva}>
               <Pressable style={styles.buttonConf}>
-                <Text style={styles.buttonTextRes}>Retirada confirmada</Text>
+                <Text style={styles.buttonTextConfReserv}>Retirada confirmada</Text>
               </Pressable>
               <Pressable style={styles.buttonCanc}>
-                <Text style={styles.buttonTextRes}>Cancelar retirada</Text>
+                <Text style={styles.buttonTextCancReserv}>Cancelar retirada</Text>
               </Pressable>
             </View>
+            <Text style={styles.observacao}>
+              OBS: se após 3 dias da data inicial da reserva não for declarada nenhuma informação a respeito da retirada, a reserva será automaticamente cancelada.
+            </Text>
           </View>
 
         <Pressable style={styles.button}>

@@ -9,14 +9,25 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  logo: {
-    width: 230,
-    height: 240,
-  },
   contentContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  logo: {
+    width: 230,
+    height: 240,
+  },
+  paragraph: {
+    textAlign: 'center',
+    marginBottom: 15,
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  text: {
+    width: '80%',
+    marginBottom: 20,
+    textAlign: 'center',
   },
   input: {
     width: '65%',
@@ -30,18 +41,22 @@ const styles = StyleSheet.create({
     borderColor: '#e0e0e0',
     color: '#929292',
   },
-  touchText: {
-    color: '#FF735C',
-    textAlign: 'center',
-    fontSize: 10,
-    marginBottom: 7,
-    marginTop: 15,
+  password: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  paragraph: {
-    textAlign: 'center',
-    marginBottom: 15,
-    fontWeight: 'bold',
-    fontSize: 20,
+  passwordInput: {
+    paddingRight: 40,
+  },
+  passwordVisibilityIcon: {
+    padding: 10,
+    position: 'absolute',
+    right: 8,
+    bottom: 8,
+  },
+  confirmPassword: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   loginButton: {
     marginTop: '5%',
@@ -56,28 +71,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
-  },
-  password: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  confirmPassword: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  passwordVisibilityIcon: {
-    padding: 10,
-    position: 'absolute',
-    right: 8,
-    bottom: 8,
-  },
-  passwordInput: {
-    paddingRight: 40,
-  },
-  text: {
-    width: '80%',
-    marginBottom: 20,
-    textAlign: 'center',
   },
 })
 

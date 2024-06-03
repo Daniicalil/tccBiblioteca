@@ -36,45 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
-  lineSquare: {
-    width: '90%',
-    height: 580,
-    backgroundColor: 'transparent', 
-    borderColor: 'black', 
-    borderWidth: 1, 
-    borderRadius: 10,
-  },
-  capaLivros: {
-    top: 25,
-    width: 45,
-    height: 70,
-    left: 35,
-  },
-  line: {
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-    width: '92%',
-    alignSelf: 'center',
-    opacity: 0.2,
-    top: 40,
-    mariginVertical: 10,
-  },
-  sectionTitle: {
-    top: 40,
-    left: 22,
-  },
-  infoLivro: {
-    flexDirection: 'row',
-  },
-  autor: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    left: 30,
-    top: 5,
-  },
   title: {
-    justifyContent: 'center',
-    alignItems: 'center',
     left: 30,
   },
   icon: {
@@ -90,6 +52,48 @@ const styles = StyleSheet.create({
     flex: 1,
     left: 70
   },
+  lineSquare: {
+    width: '90%',
+    height: 410,
+    backgroundColor: 'transparent', 
+    borderColor: 'black', 
+    borderWidth: 1, 
+    borderRadius: 10,
+  },
+  capaLivros: {
+    top: 25,
+    width: 45,
+    height: 70,
+    left: 35,
+  },
+  sectionTitle: {
+    top: 40,
+    left: 22,
+  },
+  titleLivro: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    left: 30,
+  },
+  autor: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    left: 30,
+    top: 5,
+  },
+  line: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    width: '92%',
+    alignSelf: 'center',
+    opacity: 0.2,
+    top: 40,
+    mariginVertical: 10,
+  },
+ 
+  infoLivro: {
+    flexDirection: 'row',
+  },
   dadosReservado: {
     fontSize: 14,
     marginBottom: 8,
@@ -99,54 +103,71 @@ const styles = StyleSheet.create({
     left: 35,
   },
   reservado: {
-    lineHeight: 25,
+    paddingTop: 5,
+    paddingBottom: 2,
   },
   dataReserva: {
-    lineHeight: 25,
+    paddingTop: 5,
+    paddingBottom: 2,
   },
   periodoReserva: {
-    lineHeight: 25,
+    paddingTop: 5,
+    paddingBottom: 18,
   },
-  infoContainer: {
+  conf: {
+    paddingTop: 55,
+    textAlign: 'center',
+    fontSize: 16,
+  },
+  buttonConf: {
+    backgroundColor: '#FF6F61',
+    paddingVertical: 6,
+    paddingHorizontal: 20,
+    borderRadius: 30,
+    marginTop: 16,
+    width: '30%',
+  },
+  buttonTextConfReserv: {
+    color: '#fff',
+    textAlign: 'center',
+  },
+  buttonTextCancReserv: {
+    textAlign: 'center',
+  },
+  buttonCanc: {
+    backgroundColor: '#FFF',
+    paddingVertical: 6,
+    paddingHorizontal: 20,
+    borderRadius: 30,
+    marginTop: 16,
+    borderWidth: 1,
+    borderColor: '#000',
+    width: '30%',
+  },
+  buttonsReserva: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginBottom: 16,
-    top: 10
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    paddingTop: 5,
+  },
+  observacao: {
+    opacity: 0.5,
+    paddingTop: 10,
+    marginLeft: 20,
+    marginRight: 20,
+    textAlign: 'justify',
+    fontSize: 12,
   },
   button: {
     backgroundColor: '#FF6F61',
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 30,
-    marginTop: 16,
-   
-  },
-  buttonConf: {
-    backgroundColor: '#FF6F61',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    marginTop: 16,
-    color: '#fff',
-  },
-  buttonCanc: {
-    backgroundColor: '#FFF',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    marginTop: 16,
-    borderWidth: 1,
-    borderColor: '#000',
-  },
-  buttonsReserva: {
-    flexDirection: 'row',
-
   },
   buttonText: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
   },
   squareQuant: {
     width: 70,

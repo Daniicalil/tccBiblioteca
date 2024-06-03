@@ -33,7 +33,7 @@ return (
         <Line />
           <View style={styles.sectionTitle}>
             <Text style={styles.general}>Visão geral</Text>
-            <Text style={styles.title}>Procure nas Cinzas</Text>
+            <Text style={styles.titleLivro}>Procure nas Cinzas</Text>
           </View>
           <View style={styles.smallineSquare}>
             <Text style={styles.available}>Disp.: </Text>

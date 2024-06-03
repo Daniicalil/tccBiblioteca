@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
+import { Text, View, Image, TextInput, Pressable, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import imgesqsenha from '../../../assets/6333054.png';
 import imgDesign from '../../../assets/designPage.png';
@@ -54,9 +54,9 @@ export default function EsqueceuSenha2() {
           onChangeText={setPassword}
         />
 
-         <TouchableOpacity onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
+         <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
           <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
-        </TouchableOpacity>
+        </Pressable>
       </View>
 
       <View style={styles.confirmPassword}>
@@ -68,14 +68,14 @@ export default function EsqueceuSenha2() {
           onChangeText={setPasswordConf}
         />
 
-        <TouchableOpacity onPress={togglePasswordVisibilityConf} style={styles.passwordVisibilityIcon}>
+        <Pressable onPress={togglePasswordVisibilityConf} style={styles.passwordVisibilityIcon}>
           <Ionicons name={passwordVisibleConf ? 'eye-off' : 'eye'} size={24} color="black" />
-        </TouchableOpacity>
+        </Pressable>
       </View>
 
-      <TouchableOpacity style={styles.loginButton}>
+      <Pressable style={styles.loginButton}>
         <Text style={styles.loginText}>Redefinir senha</Text>
-      </TouchableOpacity>
+      </Pressable>
 
         </View>
       </ImageBackground>

@@ -8,14 +8,26 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  logo: {
-    width: 230,
-    height: 240,
-  },
   contentContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  logo: {
+    width: 230,
+    height: 240,
+  },
+  paragraph: {
+    textAlign: 'center',
+    marginBottom: 15,
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginTop: 5,
+  },
+  text: {
+    width: '80%',
+    marginBottom: 20,
+    textAlign: 'center',
   },
   input: {
     width: '65%',
@@ -36,13 +48,6 @@ const styles = StyleSheet.create({
     marginBottom: 7,
     marginTop: 15,
   },
-  paragraph: {
-    textAlign: 'center',
-    marginBottom: 15,
-    fontWeight: 'bold',
-    fontSize: 20,
-    marginTop: 5,
-  },
   loginButton: {
     marginTop: '5%',
     backgroundColor: '#FF735C',
@@ -56,11 +61,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
-  },
-  text: {
-    width: '80%',
-    marginBottom: 20,
-    textAlign: 'center',
   },
 })
 

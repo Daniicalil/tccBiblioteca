@@ -31,14 +31,6 @@ export const RetangOrange = () => {
   );
 };
 
-export const Funcionamento = () => {
-  return (
-    <View style={styles.funcionamento}>
-      <Image source={ImgFunc} style={styles.imgFunc}/>
-    </View>
-  );
-};
-
 export const Quad1 = () => {
   return (
     <View style={styles.quadrado}>
@@ -96,14 +88,6 @@ export const Quad6 = () => {
         <Text style={styles.curso}>Téc. Farmácia</Text>
         <Image source={OrgulhoePreconceito} style={styles.capaLivros}/>
         <Text style={styles.livros}>Orgulho e Preconceito - Jane Austen</Text>
-    </View>
-  );
-};
-
-export const Importancia = () => {
-  return (
-    <View style={styles.importancia}>
-      <Image source={ImgImportancia} style={styles.imgImportancia}/>
     </View>
   );
 };

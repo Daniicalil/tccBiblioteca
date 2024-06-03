@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import  { useState } from 'react';
-import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
+import { Text, View, Image, TextInput, Pressable, ImageBackground } from 'react-native';
 import imgesqsenha from '../../../assets/6333054.png';
 import imgDesign from '../../../assets/designPage.png';
 
@@ -33,13 +33,13 @@ export default function EsqueceuSenha1() {
       />
       
 
-      <TouchableOpacity>
+      <Pressable>
         <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
-      </TouchableOpacity>
+      </Pressable>
 
-      <TouchableOpacity style={styles.loginButton}>
+      <Pressable style={styles.loginButton}>
         <Text style={styles.loginText}>Redefinir</Text>
-      </TouchableOpacity>
+      </Pressable>
 
       </View>
       </ImageBackground>
