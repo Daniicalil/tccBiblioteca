@@ -1,16 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native'; 
 // import { StatusBar } from 'expo-status-bar';
 
-// import LognIn from './src/LognIn';
-// import SignUp from './src/signUp';
-<<<<<<< HEAD
-// import EsqueceuSenha1 from './src/esqueceuSenha1';
-// import EsqueceuSenha2 from './src/esqueceuSenha2';
-// import TelaInicial from './src/telaInicial';
-// import Perfil from './src/perfil';
-// import Recomendacao from './src/recomendacao';
-import InformacaoLivro from './src/infoLivroRecomendacao';
-=======
+// import LognIn from './src/ALUNO/lognIn';
+// import SignUp from './src/ALUNO/signUp';
 // import EsqueceuSenha1 from './src/ALUNO/esqueceuSenha1';
 // import EsqueceuSenha2 from './src/ALUNO/esqueceuSenha2';
 // import TelaInicial from './src/ALUNO/telaInicial';
@@ -22,7 +14,6 @@ import InformacaoLivro from './src/infoLivroRecomendacao';
 // import Notificacoes from './src/ALUNO/notificacoes';
 // import InformacoesContato from './src/ALUNO/infoContato';
 import CalendarScreen from './src/ALUNO/reservarLivro';
->>>>>>> 51464513304e6316d35092203fb28ee4ec791c3c
 
 export default function App() {
   return (

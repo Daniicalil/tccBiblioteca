@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import imgLogin from '../../assets/6737457.png';
-import imgDesign from '../../assets/designPage.png';
+import imgLogin from '../../../assets/6737457.png';
+import imgDesign from '../../../assets/designPage.png';
 // import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './styles';

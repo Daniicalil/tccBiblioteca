@@ -4,8 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, TextInput, Pressable, ImageBackground } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
-import imgSignup from '../../assets/img_cadastro.png';
-import imgDesign from '../../assets/designPage.png';
+import imgSignup from '../../../assets/img_cadastro.png';
+import imgDesign from '../../../assets/designPage.png';
 
 import styles from './styles'
 

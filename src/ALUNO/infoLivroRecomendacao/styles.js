@@ -79,13 +79,8 @@ const styles = StyleSheet.create({
     mariginVertical: 10,
   },
   sectionTitle: {
-<<<<<<< HEAD:src/infoLivroRecomendacao/styles.js
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-=======
     top: 40,
     left: 22,
->>>>>>> 51464513304e6316d35092203fb28ee4ec791c3c:src/ALUNO/infoLivroRecomendacao/styles.js
   },
   general: {
     fontSize: 18,
@@ -115,48 +110,21 @@ const styles = StyleSheet.create({
   available: {
     fontSize: 14,
     marginBottom: 8,
-<<<<<<< HEAD:src/infoLivroRecomendacao/styles.js
-    marginLeft: 25,
-  },
-  smallineSquare: {
-    width: '22%',
-    height: 38,
-    backgroundColor: 'transparent', 
-    borderColor: 'black', 
-    borderWidth: 1, 
-    borderRadius: 10,
-    justifyContent: 'center',
-    marginRight: 25,
-    marginTop: 0,
-=======
     textAlign: 'center',
   },
   bold: {
     fontWeight: 'bold',
     textAlign: 'center',
     top: -6,
->>>>>>> 51464513304e6316d35092203fb28ee4ec791c3c:src/ALUNO/infoLivroRecomendacao/styles.js
   },
   description: {
     fontSize: 14,
     textAlign: 'center',
     marginBottom: 8,
-<<<<<<< HEAD:src/infoLivroRecomendacao/styles.js
-    textAlign: 'justify',
-  },
-  available: {
-    fontSize: 14,
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  bold: {
-    fontWeight: 'bold',
-=======
     top: 8,
     textAlign: 'justify',
     width: '89%',
     alignSelf: 'center'
->>>>>>> 51464513304e6316d35092203fb28ee4ec791c3c:src/ALUNO/infoLivroRecomendacao/styles.js
   },
   infoContainer: {
     flexDirection: 'row',

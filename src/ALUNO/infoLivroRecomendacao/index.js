@@ -30,20 +30,6 @@ return (
         </View>
         <View style={styles.lineSquare}>
         <Image source={AnneFrank} style={styles.capaLivros}/>
-<<<<<<< HEAD:src/infoLivroRecomendacao/index.js
-          <Line />
-          
-            <View style={styles.sectionTitle}>
-            <Text style={styles.general}>Visão geral</Text>
-              <View style={styles.smallineSquare}>
-                <Text style={styles.available}>Disp.: <Text style={styles.bold}>5</Text></Text>
-              </View>
-            </View>
-            <Text style={styles.title}>O diário de Anne Frank</Text>
-          <Text style={styles.description}>
-            O Diário de Anne Frank é um livro que relata a história de uma jovem judia chamada Anne Frank, que viveu durante a Segunda Guerra Mundial e se escondeu com sua família e outros judeus em um anexo secreto em Amsterdã, nos Países Baixos, para escapar da perseguição nazista.
-          </Text>
-=======
         <Line />
           <View style={styles.sectionTitle}>
             <Text style={styles.general}>Visão geral</Text>
@@ -56,8 +42,6 @@ return (
             <Text style={styles.description}>
               O Diário de Anne Frank é um livro que relata a história de uma jovem judia chamada Anne Frank, que viveu durante a Segunda Guerra Mundial e se escondeu com sua família e outros judeus em um anexo secreto em Amsterdã, nos Países Baixos, para escapar da perseguição nazista.
             </Text>
-
->>>>>>> 51464513304e6316d35092203fb28ee4ec791c3c:src/ALUNO/infoLivroRecomendacao/index.js
           <View style={styles.infoContainer}>
             <View style={styles.infoBox}>
               <Text style={styles.infoTitle}>Autor(a)</Text>
