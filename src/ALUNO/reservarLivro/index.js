@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { Calendar } from 'react-native-calendars';
-import DatePicker from 'react-native-datepicker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
-const CalendarScreen = () => {
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+const ReservarLivro = () => {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [showStartPicker, setShowStartPicker] = useState(false);
+  const [showEndPicker, setShowEndPicker] = useState(false);
+
+  const onChangeStart = (event, selectedDate) => {
+    const currentDate = selectedDate || startDate;
+    setShowStartPicker(Platform.OS === 'ios');
+    setStartDate(currentDate);
+  };
+
+  const onChangeEnd = (event, selectedDate) => {
+    const currentDate = selectedDate || endDate;
+    setShowEndPicker(Platform.OS === 'ios');
+    setEndDate(currentDate);
+  };
 
   return (
     <View style={styles.container}>
@@ -23,41 +37,41 @@ const CalendarScreen = () => {
       />
       <View style={styles.datePickerContainer}>
         <Text>Reservar de:</Text>
-        <DatePicker
-          style={styles.datePicker}
-          date={startDate}
-          mode="date"
-          placeholder="Selecione a data"
-          format="DD-MM-YYYY"
-          confirmBtnText="Confirmar"
-          cancelBtnText="Cancelar"
-          onDateChange={(date) => {
-            setStartDate(date);
-          }}
-        />
+        <TouchableOpacity onPress={() => setShowStartPicker(true)}>
+          <Text style={styles.dateText}>
+            {startDate.toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </Text>
+        </TouchableOpacity>
+        {showStartPicker && (
+          <DateTimePicker
+            value={startDate}
+            mode="date"
+            display="default"
+            onChange={onChangeStart}
+          />
+        )}
       </View>
       <View style={styles.datePickerContainer}>
         <Text>Até:</Text>
-        <DatePicker
-          style={styles.datePicker}
-          date={endDate}
-          mode="date"
-          placeholder="Selecione a data"
-          format="DD-MM-YYYY"
-          confirmBtnText="Confirmar"
-          cancelBtnText="Cancelar"
-          onDateChange={(date) => {
-            setEndDate(date);
-          }}
-        />
+        <TouchableOpacity onPress={() => setShowEndPicker(true)}>
+          <Text style={styles.dateText}>
+            {endDate.toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </Text>
+        </TouchableOpacity>
+        {showEndPicker && (
+          <DateTimePicker
+            value={endDate}
+            mode="date"
+            display="default"
+            onChange={onChangeEnd}
+          />
+        )}
       </View>
-      <Button
-        title="Finalizar reserva"
-        color="#ff6347"
-        onPress={() => {
-          console.log(`Reserva de: ${startDate} até ${endDate}`);
-        }}
-      />
+      <TouchableOpacity style={styles.button} onPress={() => {
+        console.log(`Reserva de: ${startDate.toLocaleDateString()} até ${endDate.toLocaleDateString()}`);
+      }}>
+        <Text style={styles.buttonText}>Finalizar reserva</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -79,9 +93,25 @@ const styles = StyleSheet.create({
   datePickerContainer: {
     marginBottom: 16,
   },
-  datePicker: {
-    width: '100%',
+  dateText: {
+    fontSize: 18,
+    color: '#000',
+    padding: 10,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 5,
+    textAlign: 'center',
+  },
+  button: {
+    backgroundColor: '#ff6347',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
   },
 });
 
-export default CalendarScreen;
+export default ReservarLivro;
