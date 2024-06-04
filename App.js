@@ -13,12 +13,13 @@ import { StyleSheet, Text, View } from 'react-native';
 // import InformacoesReserva from './src/ALUNO/informacoesReserva';
 // import Notificacoes from './src/ALUNO/notificacoes';
 // import InformacoesContato from './src/ALUNO/infoContato';
-import CalendarScreen from './src/ALUNO/reservarLivro';
+import ReservarLivro from './src/ALUNO/reservarLivro';
+import createDrawerNavigator from './src/ALUNO/signUp';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <CalendarScreen /> 
+      <createDrawerNavigator /> 
     </View>
   );
 }

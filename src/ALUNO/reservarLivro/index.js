@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Alert, StatusBar } from 'react-native';
+import { View, Text, ScrollView, Alert, StatusBar, Pressable } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import { RetangGreen, RetangOrange } from './forms';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -18,11 +17,8 @@ LocaleConfig.locales['pt'] = {
 LocaleConfig.defaultLocale = 'pt';
 
 const ReservarLivro = () => {
-
   const [startDate, setStartDate] = useState(null);
-  const [showStartPicker, setShowStartPicker] = useState(false);
   const [endDate, setEndDate] = useState(null);
-  const [showEndPicker, setShowEndPicker] = useState(false);
   const [markedDates, setMarkedDates] = useState({});
 
   const formatarData = (data) => {
@@ -36,7 +32,7 @@ const ReservarLivro = () => {
     let currentDate = new Date(dataInicio);
     while (currentDate <= new Date(dataFim)) {
       const formattedDate = currentDate.toISOString().split('T')[0];
-      dates[formattedDate] = { selected: true, marked: true, selectedColor: '#FF735C' };
+      dates[formattedDate] = { selected: true, marked: true, selectedColor: '#FFAD9F' };
       currentDate.setDate(currentDate.getDate() + 1);
     }
     return dates;
@@ -44,6 +40,11 @@ const ReservarLivro = () => {
 
   const onDayPress = (dia) => {
     const dataSelecionada = dia.dateString;
+    const hoje = new Date().toISOString().split('T')[0];
+    if (dataSelecionada < hoje) {
+      Alert.alert('Erro', 'Não é possível selecionar uma data que já passou.');
+      return;
+    }
     const novaDataFim = new Date(dataSelecionada);
     novaDataFim.setDate(novaDataFim.getDate() + 14);
     setStartDate(dataSelecionada);
@@ -52,26 +53,8 @@ const ReservarLivro = () => {
     setMarkedDates(markedDates);
   };
 
-  const onChangeStart = (evento, dataSelecionada) => {
-    setShowStartPicker(false);
-    if (dataSelecionada) {
-      const novaDataFim = new Date(dataSelecionada);
-      novaDataFim.setDate(novaDataFim.getDate() + 14);
-      setStartDate(dataSelecionada.toISOString().split('T')[0]);
-      setEndDate(novaDataFim.toISOString().split('T')[0]);
-      const markedDates = marcarDatasSelecionadas(dataSelecionada, novaDataFim);
-      setMarkedDates(markedDates);
-    }
-  };
-
-  const onChangeEnd = (evento, dataSelecionada) => {
-    setShowEndPicker(false);
-    if (dataSelecionada) {
-      setEndDate(dataSelecionada.toISOString().split('T')[0]);
-      const markedDates = marcarDatasSelecionadas(startDate, dataSelecionada);
-      setMarkedDates(markedDates);
-    }
-  };
+  // Obter a data de hoje
+  const hoje = new Date().toISOString().split('T')[0];
 
   return (
     <ScrollView style={styles.container}>
@@ -81,7 +64,7 @@ const ReservarLivro = () => {
         <RetangOrange />
 
         <View style={styles.titlePagina}>
-        <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}/>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}/>
           <Text style={styles.paragraph}>Reservar livro</Text>
         </View>
       </View>
@@ -91,43 +74,26 @@ const ReservarLivro = () => {
         <Calendar
           style={styles.calendar}
           onDayPress={onDayPress}
+          minDate={hoje}
           markedDates={{
             ...markedDates,
-            [startDate ? startDate : '']: { selected: true, marked: true, selectedColor: '#3F7263' },
-            [endDate ? endDate : '']: { selected: true, marked: true, selectedColor: '#3F7263' }
+            [startDate ? startDate : '']: { selected: true, marked: true, selectedColor: '#FF735C' },
+            [endDate ? endDate : '']: { selected: true, marked: true, selectedColor: '#FF735C' }
           }}
         />
         <View style={styles.datePickerContainer}>
           <Text>Reservar de:</Text>
-          <TouchableOpacity onPress={() => setShowStartPicker(true)}>
-            <Text style={styles.dateText}>
-              {formatarData(startDate)}
-            </Text>
-          </TouchableOpacity>
-          {showStartPicker && (
-            <DateTimePicker
-              value={startDate ? new Date(startDate) : new Date()}
-              mode="date"
-              onChange={onChangeStart}
-            />
-          )}
+          <Text style={styles.dateText}>
+            {formatarData(startDate)}
+          </Text>
         </View>
         <View style={styles.datePickerContainer}>
           <Text>Até:</Text>
-          <TouchableOpacity onPress={() => setShowEndPicker(true)}>
-            <Text style={styles.dateText}>
-              {formatarData(endDate)}
-            </Text>
-          </TouchableOpacity>
-          {showEndPicker && (
-            <DateTimePicker
-              value={endDate ? new Date(endDate) : new Date()}
-              mode="date"
-              onChange={onChangeEnd}
-            />
-          )}
+          <Text style={styles.dateText}>
+            {formatarData(endDate)}
+          </Text>
         </View>
-        <TouchableOpacity style={styles.button} onPress={() => {
+        <Pressable style={styles.button} onPress={() => {
           if (startDate && endDate) {
             Alert.alert('Livro reservado com sucesso!', `Reserva de: ${formatarData(startDate)} até ${formatarData(endDate)}`);
           } else {
@@ -135,9 +101,10 @@ const ReservarLivro = () => {
           }
         }}>
           <Text style={styles.buttonText}>Finalizar reserva</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </ScrollView>
   );
 };
+
 export default ReservarLivro;

@@ -9,20 +9,20 @@ const styles = StyleSheet.create({
       },
       retangGreen: {
         width: '100%', 
-        height: 100, 
+        height: 60, 
         backgroundColor: '#3F7263',
       },
       imgLogo: {
-        width: '20%',
-        height: '30%',
+        width: 80,
+        height: 50,
         alignSelf: 'center',
         position: 'absolute',
-        bottom: 8
+        bottom: 0,
       },
       imgEtec: {
-        width: '15%',
-        height: '25%',
-        bottom: 8,
+        width: 65,
+        height: 25,
+        bottom: 12,
         alignSelf: 'flex-end',
         position: 'absolute',
         right: 27,
@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
       icon: {
         position: 'absolute',
         left: 28,
-        top: 10
+        top: 20
       },
       paragraph: {
         marginTop: '3%',
-        marginBottom: '6%',
+        marginBottom: '0%',
         // fontWeight: 'bold',
         fontSize: 18,
         flex: 1,
@@ -54,13 +54,15 @@ const styles = StyleSheet.create({
       },
     containerCalendar: {
       flex: 1,
-      padding: 16,
+      padding: 20,
+      top: 0,
       backgroundColor: '#fff',
     },
     title: {
-      fontSize: 24,
+      fontSize: 18,
       textAlign: 'center',
       marginVertical: 0,
+      top: 0
     },
     calendar: {
       marginBottom: 16,
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
       color: '#000',
       padding: 10,
       backgroundColor: '#f0f0f0',
-      borderRadius: 5,
+      borderRadius: 30,
       textAlign: 'center',
     },
     button: {
