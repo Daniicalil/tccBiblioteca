@@ -1,117 +1,143 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
-import { Calendar } from 'react-native-calendars';
+import { View, Text, TouchableOpacity, ScrollView, Alert, StatusBar } from 'react-native';
+import { Calendar, LocaleConfig } from 'react-native-calendars';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { RetangGreen, RetangOrange } from './forms';
+import { FontAwesome } from '@expo/vector-icons';
+
+import styles from './styles';
+
+// Configurar o idioma para o calendário
+LocaleConfig.locales['pt'] = {
+  monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+  monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+  dayNames: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
+  dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+  today: 'Hoje'
+};
+LocaleConfig.defaultLocale = 'pt';
 
 const ReservarLivro = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [showStartPicker, setShowStartPicker] = useState(false);
-  const [showEndPicker, setShowEndPicker] = useState(false);
 
-  const onChangeStart = (event, selectedDate) => {
-    const currentDate = selectedDate || startDate;
-    setShowStartPicker(Platform.OS === 'ios');
-    setStartDate(currentDate);
+  const [startDate, setStartDate] = useState(null);
+  const [showStartPicker, setShowStartPicker] = useState(false);
+  const [endDate, setEndDate] = useState(null);
+  const [showEndPicker, setShowEndPicker] = useState(false);
+  const [markedDates, setMarkedDates] = useState({});
+
+  const formatarData = (data) => {
+    if (!data) return 'Selecionar data';
+    const [ano, mes, dia] = data.split('-');
+    return `${dia} de ${LocaleConfig.locales['pt'].monthNames[parseInt(mes) - 1]} de ${ano}`;
   };
 
-  const onChangeEnd = (event, selectedDate) => {
-    const currentDate = selectedDate || endDate;
-    setShowEndPicker(Platform.OS === 'ios');
-    setEndDate(currentDate);
+  const marcarDatasSelecionadas = (dataInicio, dataFim) => {
+    const dates = {};
+    let currentDate = new Date(dataInicio);
+    while (currentDate <= new Date(dataFim)) {
+      const formattedDate = currentDate.toISOString().split('T')[0];
+      dates[formattedDate] = { selected: true, marked: true, selectedColor: '#FF735C' };
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    return dates;
+  };
+
+  const onDayPress = (dia) => {
+    const dataSelecionada = dia.dateString;
+    const novaDataFim = new Date(dataSelecionada);
+    novaDataFim.setDate(novaDataFim.getDate() + 14);
+    setStartDate(dataSelecionada);
+    setEndDate(novaDataFim.toISOString().split('T')[0]);
+    const markedDates = marcarDatasSelecionadas(dataSelecionada, novaDataFim);
+    setMarkedDates(markedDates);
+  };
+
+  const onChangeStart = (evento, dataSelecionada) => {
+    setShowStartPicker(false);
+    if (dataSelecionada) {
+      const novaDataFim = new Date(dataSelecionada);
+      novaDataFim.setDate(novaDataFim.getDate() + 14);
+      setStartDate(dataSelecionada.toISOString().split('T')[0]);
+      setEndDate(novaDataFim.toISOString().split('T')[0]);
+      const markedDates = marcarDatasSelecionadas(dataSelecionada, novaDataFim);
+      setMarkedDates(markedDates);
+    }
+  };
+
+  const onChangeEnd = (evento, dataSelecionada) => {
+    setShowEndPicker(false);
+    if (dataSelecionada) {
+      setEndDate(dataSelecionada.toISOString().split('T')[0]);
+      const markedDates = marcarDatasSelecionadas(startDate, dataSelecionada);
+      setMarkedDates(markedDates);
+    }
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>CALENDAR</Text>
-      <Calendar
-        style={styles.calendar}
-        onDayPress={(day) => {
-          console.log('selected day', day);
-        }}
-        markedDates={{
-          '2024-03-15': { selected: true, marked: true, selectedColor: 'orange' },
-          '2024-03-16': { marked: true },
-          '2024-03-17': { marked: true, dotColor: 'red', activeOpacity: 0 },
-        }}
-      />
-      <View style={styles.datePickerContainer}>
-        <Text>Reservar de:</Text>
-        <TouchableOpacity onPress={() => setShowStartPicker(true)}>
-          <Text style={styles.dateText}>
-            {startDate.toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </Text>
-        </TouchableOpacity>
-        {showStartPicker && (
-          <DateTimePicker
-            value={startDate}
-            mode="date"
-            display="default"
-            onChange={onChangeStart}
-          />
-        )}
+    <ScrollView style={styles.container}>
+      <View style={styles.inicio}>
+        <StatusBar backgroundColor='#3F7263' transLucent={false} />
+        <RetangGreen />
+        <RetangOrange />
+
+        <View style={styles.titlePagina}>
+        <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}/>
+          <Text style={styles.paragraph}>Reservar livro</Text>
+        </View>
       </View>
-      <View style={styles.datePickerContainer}>
-        <Text>Até:</Text>
-        <TouchableOpacity onPress={() => setShowEndPicker(true)}>
-          <Text style={styles.dateText}>
-            {endDate.toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </Text>
+
+      <View style={styles.containerCalendar}>
+        <Text style={styles.title}>Calendário</Text>
+        <Calendar
+          style={styles.calendar}
+          onDayPress={onDayPress}
+          markedDates={{
+            ...markedDates,
+            [startDate ? startDate : '']: { selected: true, marked: true, selectedColor: '#3F7263' },
+            [endDate ? endDate : '']: { selected: true, marked: true, selectedColor: '#3F7263' }
+          }}
+        />
+        <View style={styles.datePickerContainer}>
+          <Text>Reservar de:</Text>
+          <TouchableOpacity onPress={() => setShowStartPicker(true)}>
+            <Text style={styles.dateText}>
+              {formatarData(startDate)}
+            </Text>
+          </TouchableOpacity>
+          {showStartPicker && (
+            <DateTimePicker
+              value={startDate ? new Date(startDate) : new Date()}
+              mode="date"
+              onChange={onChangeStart}
+            />
+          )}
+        </View>
+        <View style={styles.datePickerContainer}>
+          <Text>Até:</Text>
+          <TouchableOpacity onPress={() => setShowEndPicker(true)}>
+            <Text style={styles.dateText}>
+              {formatarData(endDate)}
+            </Text>
+          </TouchableOpacity>
+          {showEndPicker && (
+            <DateTimePicker
+              value={endDate ? new Date(endDate) : new Date()}
+              mode="date"
+              onChange={onChangeEnd}
+            />
+          )}
+        </View>
+        <TouchableOpacity style={styles.button} onPress={() => {
+          if (startDate && endDate) {
+            Alert.alert('Livro reservado com sucesso!', `Reserva de: ${formatarData(startDate)} até ${formatarData(endDate)}`);
+          } else {
+            Alert.alert('Erro', 'Por favor, selecione uma data de início e término.');
+          }
+        }}>
+          <Text style={styles.buttonText}>Finalizar reserva</Text>
         </TouchableOpacity>
-        {showEndPicker && (
-          <DateTimePicker
-            value={endDate}
-            mode="date"
-            display="default"
-            onChange={onChangeEnd}
-          />
-        )}
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => {
-        console.log(`Reserva de: ${startDate.toLocaleDateString()} até ${endDate.toLocaleDateString()}`);
-      }}>
-        <Text style={styles.buttonText}>Finalizar reserva</Text>
-      </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 24,
-    textAlign: 'center',
-    marginVertical: 16,
-  },
-  calendar: {
-    marginBottom: 16,
-  },
-  datePickerContainer: {
-    marginBottom: 16,
-  },
-  dateText: {
-    fontSize: 18,
-    color: '#000',
-    padding: 10,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 5,
-    textAlign: 'center',
-  },
-  button: {
-    backgroundColor: '#ff6347',
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-  },
-});
-
 export default ReservarLivro;
