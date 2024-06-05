@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   lineSquare: {
     width: '90%',
-    height: 580,
+    height: 650,
     backgroundColor: 'transparent', 
     borderColor: 'black', 
     borderWidth: 1, 
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     mariginVertical: 10,
   },
   sectionTitle: {
-    top: 40,
+    top: 4,
     left: 22,
   },
   general: {
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '100%',
     marginBottom: 16,
-    top: 10
+    top: 15
   },
   infoBox: {
     alignItems: 'center',
@@ -141,6 +141,18 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 12,
+  },
+  imgAutor: {
+    width: 40,
+    height: 40,
+  },
+  imgEditora: {
+    width: 40,
+    height: 40,
+  },
+  imgGenero: {
+    width: 45,
+    height: 40,
   },
   recommendationTitle: {
     fontSize: 14,

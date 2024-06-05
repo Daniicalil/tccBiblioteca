@@ -6,8 +6,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange} from './forms';
 
-import IconWarning from '../../../assets/warning.png';
 import styles from './styles';
+import imgContato from '../../../assets/contato.jpg';
 
 export default function InformacoesContato() {
 return (
@@ -21,6 +21,7 @@ return (
         <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}/>
           <Text style={styles.paragraph}>Informações de Contato</Text>
         </View>
+          <Image source={imgContato} style={styles.imgcontato} />
           <Text style={styles.escola}>ETEC PROF. MASSUYUKI KAWANO</Text>
           <Text style={styles.informacoes}>
           (14) 3496 1520 - (14) 3491 5393

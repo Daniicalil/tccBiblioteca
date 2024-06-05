@@ -55,9 +55,15 @@ const styles = StyleSheet.create({
     flex: 1,
     left: 70
   },
+  imgcontato: {
+    width: '35%',
+    height: '35%',
+    paddingTop: 10,
+  },
   escola: {
     fontWeight: 'bold',
     fontSize: 16,
+    paddingTop: 20,
   },
   informacoes: {
     top: 20,

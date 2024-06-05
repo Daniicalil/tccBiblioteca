@@ -7,6 +7,9 @@ import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange} from './forms';
 
 import AnneFrank from '../../../assets/Capa_dos_livros/procure nas cinzas.jpg';
+import Autor from '../../../assets/autora.png';
+import Editora from '../../../assets/editora.png';
+import Genero from '../../../assets/genero.png';
 
 import styles from './styles';
 
@@ -45,14 +48,17 @@ return (
           <View style={styles.infoContainer}>
             <View style={styles.infoBox}>
               <Text style={styles.infoTitle}>Autor(a)</Text>
+              <Image source={Autor} style={styles.imgAutor}/>
               <Text style={styles.infoText}>Charlie Donlea</Text>
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.infoTitle}>Editora</Text>
+              <Image source={Editora} style={styles.imgEditora}/>
               <Text style={styles.infoText}>Faro Editorial</Text>
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.infoTitle}>Gênero</Text>
+              <Image source={Genero} style={styles.imgGenero}/>
               <Text style={styles.infoText}>Suspense, mistério</Text>
             </View>
           </View>

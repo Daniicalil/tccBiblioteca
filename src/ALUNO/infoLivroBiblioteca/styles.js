@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   lineSquare: {
     width: '90%',
-    height: 580,
+    height: 500,
     backgroundColor: 'transparent', 
     borderColor: 'black', 
     borderWidth: 1, 
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '100%',
     marginBottom: 16,
-    top: 10
+    top: 15
   },
   infoBox: {
     alignItems: 'center',
@@ -140,12 +140,25 @@ const styles = StyleSheet.create({
   infoText: {
     fontSize: 12,
   },
+  imgAutor: {
+    width: 40,
+    height: 40,
+  },
+  imgEditora: {
+    width: 40,
+    height: 40,
+  },
+  imgGenero: {
+    width: 45,
+    height: 40,
+
+  },
   button: {
     backgroundColor: '#FF6F61',
     paddingVertical: 12,
     paddingHorizontal: 28,
     borderRadius: 30,
-    marginTop: 16,
+    marginTop: 100,
   },
   buttonText: {
     color: '#fff',
