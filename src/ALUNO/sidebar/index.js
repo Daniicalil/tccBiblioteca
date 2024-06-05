@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { View, Text, StyleSheet } from 'react-native'; // Removi a importação desnecessária de Image e DrawerItem
+import { View, Text, StyleSheet } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 
 const Drawer = createDrawerNavigator();
@@ -52,7 +52,6 @@ export default function App() {
         <Drawer.Screen name="Início" component={HomeScreen} />
         <Drawer.Screen name="Perfil" component={ProfileScreen} />
         <Drawer.Screen name="Recomendações" component={RecommendationsScreen} />
-        {/* Adicione outras telas aqui */}
       </Drawer.Navigator>
     </NavigationContainer>
   );

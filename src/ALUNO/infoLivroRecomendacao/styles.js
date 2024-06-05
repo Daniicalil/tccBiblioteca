@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   lineSquare: {
     width: '90%',
-    height: 650,
+    height: 610,
     backgroundColor: 'transparent', 
     borderColor: 'black', 
     borderWidth: 1, 
@@ -87,13 +87,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
     marginTop: 40,
-    marginLeft: 25,
+    // marginLeft: 15,
   },
   titleLivro: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,
+    height: 30,
   },
   smallineSquare: {
     width: '16%',
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
     marginBottom: 8,
-    top: 8,
+    // top: 8,
     textAlign: 'justify',
     width: '89%',
     alignSelf: 'center'
@@ -130,8 +130,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    marginBottom: 16,
-    top: 15
+    top: 10,
   },
   infoBox: {
     alignItems: 'center',
@@ -143,26 +142,40 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   imgAutor: {
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
   },
   imgEditora: {
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
   },
   imgGenero: {
-    width: 45,
-    height: 40,
+    width: 40,
+    height: 35,
   },
   recommendationTitle: {
     fontSize: 14,
     marginBottom: 4,
-    left: 20
+    left: 20,
+    top: 40,
   },
   recommendation: {
     fontSize: 14,
-    marginBottom: 8,
-    left: 20
+    marginBottom: 10,
+    left: 20,
+    top: 40,
+  },
+  recommendationMod: {
+    fontSize: 14,
+    marginBottom: 4,
+    left: 20,
+    top: 35,
+  },
+  RadioButtonQuad: {
+    flexDirection: 'row',
+    top: 40,
+    left: 2,
+    justifyContent: 'space-evenly',
   },
   button: {
     backgroundColor: '#FF6F61',

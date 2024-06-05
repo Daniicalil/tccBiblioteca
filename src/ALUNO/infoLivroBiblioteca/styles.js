@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: 28,
-    top: 10
+    top: 10,
   },
   paragraph: {
     marginTop: '3%',
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '100%',
     marginBottom: 16,
-    top: 15
+    top: 15,
   },
   infoBox: {
     alignItems: 'center',
@@ -141,16 +141,16 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   imgAutor: {
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
   },
   imgEditora: {
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
   },
   imgGenero: {
-    width: 45,
-    height: 40,
+    width: 40,
+    height: 35,
 
   },
   button: {
