@@ -14,12 +14,12 @@ import { StyleSheet, Text, View } from 'react-native';
 // import Notificacoes from './src/ALUNO/notificacoes';
 // import InformacoesContato from './src/ALUNO/infoContato';
 // import ReservarLivro from './src/ALUNO/reservarLivro';
-import createDrawerNavigator from './src/ALUNO/signUp';
+import MainNavigation from './src/ALUNO/sidebar';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <createDrawerNavigator /> 
+      <MainNavigation /> 
     </View>
   );
 }
