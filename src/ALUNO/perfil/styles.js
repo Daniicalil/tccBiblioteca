@@ -33,20 +33,43 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     // marginBottom: '3%',
   },
+  circle: {
+    width: 140,
+    height: 140,
+    borderRadius: 100, 
+    backgroundColor: '#3F7263', 
+    alignSelf: 'center',
+    paddingBottom: 20,
+  },
+  titlePagina: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 60,
+  },
+  icon: {
+    position: 'absolute',
+    left: 28,
+    top: 10
+  },
+  paragraph: {
+    marginTop: '3%',
+    marginBottom: '6%',
+    // fontWeight: 'bold',
+    fontSize: 18,
+    flex: 1,
+    left: 70
+  },
   texto: {
     marginLeft: 90,
   },
   input: {
     width: '65%',
     height: 42,
-    backgroundColor: '#DAD7D7',
     marginTop: 2,
     marginBottom: 10,
     paddingLeft: 15,
     padding: 8,
-    borderRadius: 15,
-    borderWidth: 1,
-    borderColor: '#e0e0e0',
     color: '#929292',
     alignSelf: 'center',
   },

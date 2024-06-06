@@ -7,9 +7,9 @@ import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange} from './forms';
 
 import AnneFrank from '../../../assets/Capa_dos_livros/procure nas cinzas.jpg';
-import Autor from '../../../assets/autora.png';
-import Editora from '../../../assets/editora.png';
-import Genero from '../../../assets/genero.png';
+import Autor from '../../../assets/imagens_telas/autora.png';
+import Editora from '../../../assets/imagens_telas/editora.png';
+import Genero from '../../../assets/imagens_telas/genero.png';
 
 import styles from './styles';
 

@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import  { useState } from 'react';
 import { Text, View, Image, TextInput, Pressable, ImageBackground } from 'react-native';
-import imgesqsenha from '../../../assets/6333054.png';
-import imgDesign from '../../../assets/designPage.png';
+import imgesqsenha from '../../../assets/imagens_telas/6333054.png';
+import imgDesign from '../../../assets/imagens_telas/designPage.png';
 
 import styles from './styles'
  
 
-export default function EsqueceuSenha1() {
+export default function EsqueceuSenha1({ navigation }) {
   const [email, setEmail] = useState('');
   return (
     <View style={styles.container}>
@@ -33,11 +33,11 @@ export default function EsqueceuSenha1() {
       />
       
 
-      <Pressable>
+      <Pressable onPress={() => navigation.navigate('lognin')}>
         <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
       </Pressable>
 
-      <Pressable style={styles.loginButton}>
+      <Pressable onPress={() => navigation.navigate('esqueceusenha2')} style={styles.loginButton}>
         <Text style={styles.loginText}>Redefinir</Text>
       </Pressable>
 

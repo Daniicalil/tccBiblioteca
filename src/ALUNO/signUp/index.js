@@ -4,12 +4,12 @@ import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, TextInput, Pressable, ImageBackground } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
-import imgSignup from '../../../assets/img_cadastro.png';
-import imgDesign from '../../../assets/designPage.png';
+import imgSignup from '../../../assets/imagens_telas/img_cadastro.png';
+import imgDesign from '../../../assets/imagens_telas/designPage.png';
 
 import styles from './styles'
 
-export default function SignUp() {
+export default function SignUp({ navigation }) {
   const [value, setValue] = useState('first');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisibleConf, setPasswordVisibleConf] = useState(false);
@@ -94,11 +94,11 @@ export default function SignUp() {
             </View>
           </RadioButton.Group>
 
-          <Pressable>
+          <Pressable onPress={() => navigation.navigate('lognin')}>
             <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
           </Pressable>
 
-          <Pressable style={styles.loginButton}>
+          <Pressable onPress={() => navigation.navigate('lognin')} style={styles.loginButton}>
             <Text style={styles.loginText}>Fazer cadastro</Text>
           </Pressable>
 

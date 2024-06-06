@@ -7,7 +7,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange} from './forms';
 
 import styles from './styles';
-import imgContato from '../../../assets/contato.jpg';
+import imgContato from '../../../assets/imagens_telas/contato.jpg';
 
 export default function InformacoesContato() {
 return (

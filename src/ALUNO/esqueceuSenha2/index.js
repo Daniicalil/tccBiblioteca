@@ -2,14 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Text, View, Image, TextInput, Pressable, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import imgesqsenha from '../../../assets/6333054.png';
-import imgDesign from '../../../assets/designPage.png';
+import imgesqsenha from '../../../assets/imagens_telas/6333054.png';
+import imgDesign from '../../../assets/imagens_telas/designPage.png';
 
 
 import styles from './styles'
  
 
-export default function EsqueceuSenha2() {
+export default function EsqueceuSenha2({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisibleConf, setPasswordVisibleConf] = useState(false);
   const [password, setPassword] = useState('');
@@ -73,7 +73,7 @@ export default function EsqueceuSenha2() {
         </Pressable>
       </View>
 
-      <Pressable style={styles.loginButton}>
+      <Pressable onPress={() => navigation.navigate('lognin')} style={styles.loginButton}>
         <Text style={styles.loginText}>Redefinir senha</Text>
       </Pressable>
 

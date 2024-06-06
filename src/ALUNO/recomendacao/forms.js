@@ -7,10 +7,10 @@ import RomeueJulieta from '../../../assets/Capa_dos_livros/romeu e julieta.jpg';
 import MilNovecentoseOitentaeQuatro from '../../../assets/Capa_dos_livros/1984.jpg';
 import OsMiseráveis from '../../../assets/Capa_dos_livros/os miseráveis.jpg';
 import OrgulhoePreconceito from '../../../assets/Capa_dos_livros/orgulho e preconceito.png';
-import ImgLogo from '../../../assets/logo.png';
-import ImgEtec from '../../../assets/etec.png';
-import ImgFunc from '../../../assets/horario.png';
-import ImgImportancia from '../../../assets/fraseimportancia.png'
+import ImgLogo from '../../../assets/imagens_telas/logo.png';
+import ImgEtec from '../../../assets/imagens_telas/etec.png';
+import ImgFunc from '../../../assets/imagens_telas/horario.png';
+import ImgImportancia from '../../../assets/imagens_telas/fraseimportancia.png'
 
 import styles from './styles';
 

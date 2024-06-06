@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange} from './forms';
 
-import IconWarning from '../../../assets/warning.png';
+import IconWarning from '../../../assets/imagens_telas/warning.png';
 import styles from './styles';
 
 export default function Notificacoes() {
