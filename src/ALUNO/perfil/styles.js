@@ -3,17 +3,17 @@ import { StyleSheet, Dimensions } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
+  }, 
   inicio: {
     alignItems: 'center',
   },
   retangGreen: {
-    width: '100%', 
-    height: 60, 
+    width: '100%',
+    height: 90,
     backgroundColor: '#3F7263',
   },
   imgLogo: {
-    width: 80,
+    width: 70,
     height: 50,
     alignSelf: 'center',
     position: 'absolute',
@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     right: 27,
   },
   retangOrange: {
-    width: '100%', 
-    height: 19, 
+    width: '100%',
+    height: 19,
     backgroundColor: '#FF735C',
     // marginBottom: '3%',
   },
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
   },
   fotoPadraoPerfil: {
@@ -98,10 +98,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#3F7263',
-    overflow: 'hidden',
-    position: 'absolute',
-    right: 50,
-    bottom: 50,
+    // overflow: 'hidden',
+    // position: 'absolute',
+    // right: 50,
+    // bottom: 50,
   },
   iconeEditar: {
     width: '65%',
