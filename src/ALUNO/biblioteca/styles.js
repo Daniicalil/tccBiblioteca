@@ -80,6 +80,38 @@ const styles = StyleSheet.create({
     marginLeft: '3%',
     top: 15,
   },
+  flatListContainer: {
+    justifyContent: 'center',
+  },
+  item: {
+    flex: 1,
+    alignItems: 'center',
+    margin: 5,
+    padding: 10,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  image: {
+    width: 60,
+    height: 90,
+    borderRadius: 4,
+    marginBottom: 10,
+  },
+  title: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  author: {
+    fontSize: 12,
+    color: '#555',
+    textAlign: 'center',
+  },
   texto: {
     marginLeft: 90,
   },
