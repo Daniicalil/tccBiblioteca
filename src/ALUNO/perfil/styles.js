@@ -9,20 +9,20 @@ const styles = StyleSheet.create({
   },
   retangGreen: {
     width: '100%', 
-    height: 100, 
+    height: 60, 
     backgroundColor: '#3F7263',
   },
   imgLogo: {
-    width: '20%',
-    height: '30%',
+    width: 80,
+    height: 50,
     alignSelf: 'center',
     position: 'absolute',
-    bottom: 8
+    bottom: 0,
   },
   imgEtec: {
-    width: '15%',
-    height: '25%',
-    bottom: 8,
+    width: 65,
+    height: 25,
+    bottom: 12,
     alignSelf: 'flex-end',
     position: 'absolute',
     right: 27,
@@ -32,14 +32,6 @@ const styles = StyleSheet.create({
     height: 19, 
     backgroundColor: '#FF735C',
     // marginBottom: '3%',
-  },
-  circle: {
-    width: 140,
-    height: 140,
-    borderRadius: 100, 
-    backgroundColor: '#3F7263', 
-    alignSelf: 'center',
-    paddingBottom: 20,
   },
   titlePagina: {
     flexDirection: 'row',
@@ -60,16 +52,29 @@ const styles = StyleSheet.create({
     flex: 1,
     left: 70
   },
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  fotoPadraoPerfil: {
+    backgroundColor: '#3F7263',
+    alignSelf: 'center',
+  },
   texto: {
     marginLeft: 90,
   },
   input: {
     width: '65%',
     height: 42,
+    backgroundColor: '#DAD7D7',
     marginTop: 2,
     marginBottom: 10,
     paddingLeft: 15,
     padding: 8,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
     color: '#929292',
     alignSelf: 'center',
   },
@@ -85,6 +90,23 @@ const styles = StyleSheet.create({
   },
   seletores: {
     flexDirection: 'row',
+  },
+  botaoEditar: {
+    width: 45,
+    height: 45,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#3F7263',
+    overflow: 'hidden',
+    position: 'absolute',
+    right: 50,
+    bottom: 50,
+  },
+  iconeEditar: {
+    width: '65%',
+    height: '65%',
+    resizeMode: 'cover',
   },
 });
 

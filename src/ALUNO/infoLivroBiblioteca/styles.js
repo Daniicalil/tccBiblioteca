@@ -11,21 +11,20 @@ const styles = StyleSheet.create({
   },
   retangGreen: {
     width: '100%', 
-    height: 100, 
+    height: 60, 
     backgroundColor: '#3F7263',
-    justifyContent: 'space-between',
   },
   imgLogo: {
-    width: '20%',
-    height: '30%',
+    width: 80,
+    height: 50,
     alignSelf: 'center',
     position: 'absolute',
-    bottom: 8
+    bottom: 0,
   },
   imgEtec: {
-    width: '15%',
-    height: '25%',
-    bottom: 8,
+    width: 65,
+    height: 25,
+    bottom: 12,
     alignSelf: 'flex-end',
     position: 'absolute',
     right: 27,
