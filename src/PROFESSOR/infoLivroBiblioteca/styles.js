@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   retangGreen: {
     width: '100%', 
-    height: 90, 
+    height: 60, 
     backgroundColor: '#3F7263',
   },
   imgLogo: {
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
-  title: {
+  titlePagina: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: 28,
-    top: 10
+    top: 10,
   },
   paragraph: {
     marginTop: '3%',
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   lineSquare: {
     width: '90%',
-    height: 610,
+    height: 500,
     backgroundColor: 'transparent', 
     borderColor: 'black', 
     borderWidth: 1, 
@@ -78,21 +78,19 @@ const styles = StyleSheet.create({
     mariginVertical: 10,
   },
   sectionTitle: {
-    top: 4,
+    top: 40,
     left: 22,
   },
   general: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
-    marginTop: 40,
-    // marginLeft: 15,
   },
   titleLivro: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 30,
+    height: 60,
   },
   smallineSquare: {
     width: '16%',
@@ -120,7 +118,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
     marginBottom: 8,
-    // top: 8,
+    top: 8,
     textAlign: 'justify',
     width: '89%',
     alignSelf: 'center'
@@ -129,7 +127,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    top: 10,
+    marginBottom: 16,
+    top: 15,
   },
   infoBox: {
     alignItems: 'center',
@@ -151,41 +150,14 @@ const styles = StyleSheet.create({
   imgGenero: {
     width: 40,
     height: 35,
-  },
-  recommendationTitle: {
-    fontSize: 14,
-    marginBottom: 4,
-    left: 20,
-    top: 40,
-  },
-  recommendation: {
-    fontSize: 14,
-    marginBottom: 10,
-    left: 20,
-    top: 40,
-  },
-  recommendationMod: {
-    fontSize: 14,
-    marginBottom: 4,
-    left: 20,
-    top: 35,
-  },
-  RadioButtonQuad: {
-    flexDirection: 'row',
-    top: 40,
-    left: 2,
-    justifyContent: 'space-evenly',
+
   },
   button: {
-    backgroundColor: '#FF735C',
+    backgroundColor: '#FF6F61',
     paddingVertical: 12,
     paddingHorizontal: 28,
     borderRadius: 30,
-    marginTop: 16,
-    marginBottom: 10,
-  },
-  btnPress: {
-    backgroundColor: '#3F7263',
+    marginTop: 100,
   },
   buttonText: {
     color: '#fff',

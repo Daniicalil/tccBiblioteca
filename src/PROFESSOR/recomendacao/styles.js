@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   retangGreen: {
     width: '100%', 
-    height: 90, 
+    height: 60, 
     backgroundColor: '#3F7263',
   },
   imgLogo: {
@@ -59,58 +59,28 @@ const styles = StyleSheet.create({
   },
   quadrado: {
     width: '28%', 
-    height: 110, 
+    height: 112, 
     borderRadius: 10,
     backgroundColor: '#DAD7D7',
     marginTop: '3%',
     marginLeft: 6,
     marginRight: 6,
   },
+  curso: {
+    fontSize: 10,
+    textAlign: 'center',
+    marginTop: '2%',
+  },
   capaLivros: {
     width: 35,
     height: 54,
     alignSelf: 'center',
-    top: 12,
   },
   livros: {
     fontSize: 10,
     textAlign: 'center',
     marginRight: '3%',
     marginLeft: '3%',
-    top: 15,
-  },
-  flatListContainer: {
-    justifyContent: 'center',
-  },
-  item: {
-    flex: 1,
-    alignItems: 'center',
-    margin: 5,
-    padding: 10,
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOpacity: 0.5,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 3,
-
-  },
-  image: {
-    width: 60,
-    height: 90,
-    borderRadius: 4,
-    marginBottom: 10,
-  },
-  title: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  author: {
-    fontSize: 12,
-    color: '#555',
-    textAlign: 'center',
   },
   texto: {
     marginLeft: 90,
