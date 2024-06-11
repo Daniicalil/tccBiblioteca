@@ -69,4 +69,3 @@ const Biblioteca = () => {
 };
 
 export default Biblioteca;
-

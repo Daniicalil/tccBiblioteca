@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -81,12 +81,12 @@ const styles = StyleSheet.create({
   },
   flatListContainer: {
     justifyContent: 'center',
+    padding: 10, // Adicione
   },
   item: {
-    flex: 1,
+    width: '30%', // Definindo a largura para ocupar 30% do contêiner pai
     alignItems: 'center',
-    margin: 5,
-    padding: 10,
+    margin: '1.5%', // Adicionando um pequeno espaçamento entre os itens
     backgroundColor: '#fff',
     borderRadius: 8,
     shadowColor: '#000',
@@ -94,42 +94,30 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
     elevation: 3,
-
   },
   image: {
-    width: 60,
-    height: 90,
+    marginTop: 10,
+    width: '50%', // Definindo a largura da imagem para 80% do contêiner pai
+    height: 95, // Definindo uma altura fixa para a imagem
     borderRadius: 4,
     marginBottom: 10,
+    resizeMode: 'cover', // Ajustando o modo de redimensionamento da imagem
   },
+  
   title: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   author: {
-    fontSize: 12,
+    fontSize: 11,
     color: '#555',
     textAlign: 'center',
+    marginBottom: 10,
   },
   texto: {
     marginLeft: 90,
   },
-  rowQuadrados1: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
-  },
-  rowQuadrados2: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
-  },
-  
 });
 
 export default styles;
