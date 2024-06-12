@@ -35,8 +35,9 @@ const styles = StyleSheet.create({
   },
   barraPesq: {
     backgroundColor: '#DAD7D7',
-    width: '75%',
+    width: '80%',
     marginBottom: '4%',
+    alignSelf: 'center',
   },
   title: {
     flexDirection: 'row',
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     // fontWeight: 'bold',
     fontSize: 18,
     flex: 1,
-    textAlign: 'center'
+    marginLeft: 70,
   },
   quadrado: {
     width: '28%', 
@@ -81,7 +82,11 @@ const styles = StyleSheet.create({
   },
   flatListContainer: {
     justifyContent: 'center',
-    padding: 10, // Adicione
+    paddingHorizontal: 8,
+    // padding: 10, // Adicione
+  },
+  flatList: {
+    flex: 1, // Garantir que a FlatList ocupe todo o espaço disponível
   },
   item: {
     width: '30%', // Definindo a largura para ocupar 30% do contêiner pai
@@ -97,14 +102,14 @@ const styles = StyleSheet.create({
   },
   image: {
     marginTop: 10,
-    width: '50%', // Definindo a largura da imagem para 80% do contêiner pai
+    width: 60, // Definindo a largura da imagem para 80% do contêiner pai
     height: 95, // Definindo uma altura fixa para a imagem
     borderRadius: 4,
     marginBottom: 10,
     resizeMode: 'cover', // Ajustando o modo de redimensionamento da imagem
   },
   
-  title: {
+  titleBook: {
     fontSize: 12,
     fontWeight: 'bold',
     textAlign: 'center',
