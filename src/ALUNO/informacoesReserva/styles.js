@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   retangGreen: {
     width: '100%', 
-    height: 60, 
+    height: 90, 
     backgroundColor: '#3F7263',
   },
   imgLogo: {
@@ -63,6 +63,9 @@ const styles = StyleSheet.create({
     borderWidth: 1, 
     borderRadius: 10,
   },
+  infoLivro: {
+    flexDirection: 'row',
+  },
   capaLivros: {
     top: 25,
     width: 45,
@@ -93,10 +96,6 @@ const styles = StyleSheet.create({
     top: 40,
     mariginVertical: 10,
   },
- 
-  infoLivro: {
-    flexDirection: 'row',
-  },
   dadosReservado: {
     fontSize: 14,
     marginBottom: 8,
@@ -122,6 +121,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
   },
+  buttonsReserva: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    paddingTop: 5,
+  },
   buttonConf: {
     backgroundColor: '#FF6F61',
     paddingVertical: 6,
@@ -134,9 +139,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
   },
-  buttonTextCancReserv: {
-    textAlign: 'center',
-  },
   buttonCanc: {
     backgroundColor: '#FFF',
     paddingVertical: 6,
@@ -147,11 +149,8 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     width: '30%',
   },
-  buttonsReserva: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    paddingTop: 5,
+  buttonTextCancReserv: {
+    textAlign: 'center',
   },
   observacao: {
     opacity: 0.5,
@@ -160,14 +159,6 @@ const styles = StyleSheet.create({
     marginRight: 20,
     textAlign: 'justify',
     fontSize: 12,
-  },
-  squareQuant: {
-    width: 70,
-    height: 45,
-    backgroundColor: 'transparent', 
-    borderColor: 'black', 
-    borderWidth: 1, 
-    borderRadius: 10,
   },
 });
 

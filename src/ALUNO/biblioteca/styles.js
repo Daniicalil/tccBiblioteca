@@ -1,9 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   retangGreen: {
     width: '100%', 
     height: 90, 
@@ -30,16 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
-  scrollViewContainer: {
-    backgroundColor: '#fff',
-  },
-  barraPesq: {
-    backgroundColor: '#DAD7D7',
-    width: '80%',
-    marginBottom: '4%',
-    alignSelf: 'center',
-  },
-  title: {
+  titleContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -58,34 +46,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 70,
   },
-  quadrado: {
-    width: '28%', 
-    height: 110, 
-    borderRadius: 10,
+  barraPesq: {
     backgroundColor: '#DAD7D7',
-    marginTop: '3%',
-    marginLeft: 6,
-    marginRight: 6,
-  },
-  capaLivros: {
-    width: 35,
-    height: 54,
+    width: '80%',
+    marginBottom: '4%',
     alignSelf: 'center',
-    top: 12,
-  },
-  livros: {
-    fontSize: 10,
-    textAlign: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
-    top: 15,
-  },
-  flatListContainer: {
-    justifyContent: 'center',
-    paddingHorizontal: 8,
-  },
-  flatList: {
-    flex: 1, 
   },
   item: {
     width: '31.2%', 
@@ -119,8 +84,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 10,
   },
-  texto: {
-    marginLeft: 90,
+  flatList: {
+    flex: 1, 
+  },
+  flatListContainer: {
+    justifyContent: 'center',
+    paddingHorizontal: 8,
+  },
+  scrollViewContainer: {
+    backgroundColor: '#fff',
   },
 });
 

@@ -8,7 +8,7 @@ import { StyleSheet, Text, View } from 'react-native';
 // import TelaInicial from './src/ALUNO/telaInicial';
 // import Perfil from './src/ALUNO/perfil';
 // import Recomendacao from './src/ALUNO/recomendacao';
-// import InfoLivroRecomendacao from './src/ALUNO/infoLivroRecomendacao';
+import InfoLivroRecomendacao from './src/ALUNO/infoLivroRecomendacao';
 // import Biblioteca from './src/ALUNO/biblioteca';
 // import InfoLivroBiblioteca from './src/ALUNO/infoLivroBiblioteca';
 // import InformacoesReserva from './src/ALUNO/informacoesReserva';
@@ -18,13 +18,13 @@ import { StyleSheet, Text, View } from 'react-native';
 // import MainNavigation from './src/ALUNO/sidebar';
 
 
-import Navegacao from './src/ALUNO/rotas/drawerNavigation';
+// import Navegacao from './src/ALUNO/rotas/drawerNavigation';
 // import Navegacao from './src/PROFESSOR/rotas';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Navegacao /> 
+      <InfoLivroRecomendacao /> 
     </View>
   );
 }

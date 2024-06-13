@@ -59,6 +59,7 @@ const ReservarLivro = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
+      <StatusBar backgroundColor='#3F7263' transLucent={false} />
         <StatusBar backgroundColor='#3F7263' transLucent={false} />
         <RetangGreen />
         <RetangOrange />

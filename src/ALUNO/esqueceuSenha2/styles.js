@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  loginButton: {
+  redefinirButton: {
     marginTop: '5%',
     backgroundColor: '#FF735C',
     width: '38%',
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 20,
   },
-  loginText: {
+  redefinirText: {
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,

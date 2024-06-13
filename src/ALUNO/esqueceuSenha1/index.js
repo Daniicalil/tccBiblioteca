@@ -13,15 +13,11 @@ export default function EsqueceuSenha1({ navigation }) {
     <View style={styles.container}>
       <StatusBar backgroundColor='#fff' transLucent={false} />
       <ImageBackground source={imgDesign} style={styles.background}>
-
       <View style={styles.contentContainer}>
-
-
       <Image
         source={imgesqsenha}
         style={styles.logo}
       />
-
       <Text style={styles.paragraph}>Redefinir senha</Text>
       <Text style={styles.text}>Digite o seu e-mail no campo abaixo e lhe enviaremos um código de ativação.</Text>
       
@@ -31,14 +27,13 @@ export default function EsqueceuSenha1({ navigation }) {
         value={email}
         onChangeText={setEmail}
       />
-      
 
       <Pressable onPress={() => navigation.navigate('lognin')}>
         <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
       </Pressable>
 
-      <Pressable onPress={() => navigation.navigate('esqueceusenha2')} style={styles.loginButton}>
-        <Text style={styles.loginText}>Redefinir</Text>
+      <Pressable onPress={() => navigation.navigate('esqueceusenha2')} style={styles.redefinirButton}>
+        <Text style={styles.redefinirText}>Redefinir</Text>
       </Pressable>
 
       </View>

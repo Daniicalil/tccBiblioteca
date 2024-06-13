@@ -53,19 +53,13 @@ const styles = StyleSheet.create({
     flex: 1,
     left: 70
   },
-  contentContainer: {
-    flex: 1,
-    // justifyContent: 'center',
-    alignItems: 'center',
-  },
   fotoPadraoPerfil: {
     backgroundColor: '#3F7263',
     alignSelf: 'center',
     paddingBottom: '5'
   },
   texto: {
-    marginLeft: 90,
-    
+    marginLeft: 90, 
   },
   input: {
     width: '65%',
@@ -91,6 +85,11 @@ const styles = StyleSheet.create({
     right: 8,
     bottom: 8,
   },
+  contentContainer: {
+    flex: 1,
+    // justifyContent: 'center',
+    alignItems: 'center',
+  },
   seletores: {
     flexDirection: 'row',
   },
@@ -111,9 +110,6 @@ const styles = StyleSheet.create({
     // position: 'absolute',
     // right: 50,
     // bottom: 50,
-  },
-  btnPress: {
-    backgroundColor: '#000',
   },
   iconeEditar: {
     width: '65%',

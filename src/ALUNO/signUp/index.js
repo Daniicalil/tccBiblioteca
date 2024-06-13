@@ -27,16 +27,13 @@ export default function SignUp({ navigation }) {
 
   return (
     <View style={styles.container}>
-      
       <ImageBackground source={imgDesign} style={styles.background}>
       <StatusBar backgroundColor='#fff' transLucent={false} />
          <View style={styles.contentContainer}>
-
           <Image
             source={imgSignup}
             style={styles.logo}
           />
-
           <Text style={styles.paragraph}>Cadastro</Text>
 
           <TextInput
@@ -98,8 +95,8 @@ export default function SignUp({ navigation }) {
             <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
           </Pressable>
 
-          <Pressable onPress={() => navigation.navigate('lognin')} style={styles.loginButton}>
-            <Text style={styles.loginText}>Fazer cadastro</Text>
+          <Pressable onPress={() => navigation.navigate('lognin')} style={styles.signUpButton}>
+            <Text style={styles.signUpText}>Fazer cadastro</Text>
           </Pressable>
 
         </View> 

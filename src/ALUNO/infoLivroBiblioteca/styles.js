@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   retangGreen: {
     width: '100%', 
-    height: 60, 
+    height: 90, 
     backgroundColor: '#3F7263',
   },
   imgLogo: {
@@ -150,14 +150,13 @@ const styles = StyleSheet.create({
   imgGenero: {
     width: 40,
     height: 35,
-
   },
   button: {
     backgroundColor: '#FF6F61',
     paddingVertical: 12,
     paddingHorizontal: 28,
     borderRadius: 30,
-    marginTop: 100,
+    marginTop: 16,
   },
   buttonText: {
     color: '#fff',

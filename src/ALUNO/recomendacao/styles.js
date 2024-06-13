@@ -1,12 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  inicio: {
-    alignItems: 'center',
-  },
   retangGreen: {
     width: '100%', 
     height: 60, 
@@ -33,16 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
-  scrollViewContainer: {
-    backgroundColor: '#fff',
-  },
-  barraPesq: {
-    backgroundColor: '#DAD7D7',
-    width: '80%',
-    marginBottom: '4%',
-    alignSelf: 'center',
-  },
-  title: {
+  titleContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -61,40 +46,11 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center'
   },
-  quadrado: {
-    width: '28%', 
-    height: 112, 
-    borderRadius: 10,
+  barraPesq: {
     backgroundColor: '#DAD7D7',
-    marginTop: '3%',
-    marginLeft: 6,
-    marginRight: 6,
-  },
-  curso: {
-    fontSize: 10,
-    textAlign: 'center',
-    marginTop: '2%',
-  },
-  capaLivros: {
-    width: 35,
-    height: 54,
+    width: '80%',
+    marginBottom: '4%',
     alignSelf: 'center',
-  },
-  livros: {
-    fontSize: 10,
-    textAlign: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
-  },
-  texto: {
-    marginLeft: 90,
-  },
-  flatListContainer: {
-    justifyContent: 'center',
-    paddingHorizontal: 8,
-  },
-  flatList: {
-    flex: 1, 
   },
   item: {
     width: '31.2%', 
@@ -108,6 +64,12 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 3,
   },
+  course: {
+    marginTop: 10,
+    fontSize: 12,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   image: {
     marginTop: 6,
     width: 60, 
@@ -116,7 +78,6 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     resizeMode: 'cover', 
   },
-  
   titleBook: {
     fontSize: 13,
     fontWeight: 'bold',
@@ -128,16 +89,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 10,
   },
-  course: {
-    marginTop: 10,
-    fontSize: 12,
-    fontWeight: 'bold',
-    textAlign: 'center',
+  flatList: {
+    flex: 1, 
   },
-  texto: {
-    marginLeft: 90,
+  flatListContainer: {
+    justifyContent: 'center',
+    paddingHorizontal: 8,
   },
-  
+  scrollViewContainer: {
+    backgroundColor: '#fff',
+  },
 });
 
 export default styles;

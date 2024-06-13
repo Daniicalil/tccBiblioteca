@@ -59,7 +59,6 @@ const Header = () => {
   
   return (
     <View style={styles.headerContainer}>
-      
       <StatusBar backgroundColor='#3F7263' transLucent={false} />
         <RetangGreen />
         <RetangOrange />

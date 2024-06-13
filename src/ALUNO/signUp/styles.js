@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     marginBottom: 7,
     marginTop: 15,
   },
-  loginButton: {
+  signUpButton: {
     marginTop: '3%',
     backgroundColor: '#FF735C',
     width: '35%',
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 20,
   },
-  loginText: {
+  signUpText: {
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,

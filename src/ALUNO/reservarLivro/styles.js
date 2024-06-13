@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
       },
       retangGreen: {
         width: '100%', 
-        height: 60, 
+        height: 50, 
         backgroundColor: '#3F7263',
       },
       imgLogo: {

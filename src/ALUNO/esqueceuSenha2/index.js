@@ -5,9 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import imgesqsenha from '../../../assets/imagens_telas/6333054.png';
 import imgDesign from '../../../assets/imagens_telas/designPage.png';
 
-
 import styles from './styles'
- 
 
 export default function EsqueceuSenha2({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -25,17 +23,13 @@ export default function EsqueceuSenha2({ navigation }) {
   
   return (
     <View style={styles.container}>
-      
       <ImageBackground source={imgDesign} style={styles.background}>
       <StatusBar backgroundColor='#fff' transLucent={false} />
-
       <View style={styles.contentContainer}>
-
       <Image
         source={imgesqsenha}
         style={styles.logo}
       />
-
       <Text style={styles.paragraph}>Redefinir senha</Text>
       <Text style={styles.text}>Por favor, insira no campo abaixo o código de ativação que você recebeu por e-mail e redefina uma nova senha.</Text>
       
@@ -73,8 +67,8 @@ export default function EsqueceuSenha2({ navigation }) {
         </Pressable>
       </View>
 
-      <Pressable onPress={() => navigation.navigate('login')} style={styles.loginButton}>
-        <Text style={styles.loginText}>Redefinir senha</Text>
+      <Pressable onPress={() => navigation.navigate('login')} style={styles.redefinirButton}>
+        <Text style={styles.redefinirText}>Redefinir senha</Text>
       </Pressable>
 
         </View>

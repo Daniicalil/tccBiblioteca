@@ -1,7 +1,7 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { SimpleLineIcons } from '@expo/vector-icons';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 
 import TelaInicial from '../telaInicial';
 import Perfil from '../perfil';
@@ -14,21 +14,10 @@ import Login from '../login';
 
 const Drawer = createDrawerNavigator();
 
-function CustomDrawerContent(props) {
-  return (
-    <DrawerContentScrollView {...props}>
-      <View style={styles.drawerContainer}>
-        <DrawerItemList {...props} />
-      </View>
-    </DrawerContentScrollView>
-  );
-}
-
 export default function DrawerNavigation() {
   return (
     <NavigationContainer>
         <Drawer.Navigator
-          rawerContent={props => <CustomDrawerContent {...props} />}
           screenOptions={{
             drawerActiveBackgroundColor: '#FF735C', // Cor de fundo ativa
             drawerInactiveBackgroundColor: '#C6C6C6', // Cor de fundo inativa

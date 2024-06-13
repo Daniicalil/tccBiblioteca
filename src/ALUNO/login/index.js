@@ -21,19 +21,15 @@ export default function Login({ navigation }) {
       <ImageBackground source={imgDesign} style={styles.background}>
       <StatusBar backgroundColor='#fff' transLucent={false} />
         <View style={styles.contentContainer}>
-
           <Image
             source={imgLogin}
             style={styles.logo}
           />
-
           <Text style={styles.paragraph}>Login</Text>
-
           <TextInput
             placeholder='RM'
             style={styles.input}
           />
-
       <View style={styles.password}>
         <TextInput
           placeholder='senha'
