@@ -34,16 +34,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
+  scrollViewContainer: {
+    backgroundColor: '#fff',
+  },
   barraPesq: {
     backgroundColor: '#DAD7D7',
-    width: '75%',
+    width: '80%',
+    marginBottom: '2%',
+    alignSelf: 'center',
   },
   funcionamento: {
-    width: '85%', 
+    width: '90%', 
     height: 180, 
     borderRadius: 10,
     backgroundColor: '#3F7263',
     marginTop: '3%',
+    alignSelf: 'center',
   },
   imgFunc: {
     width: '90%',
@@ -51,8 +57,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   paragraph: {
-    marginTop: 10,
-    marginBottom: 5,
+    marginTop: 20,
+    marginBottom: 7,
     fontSize: 18,
     textAlign: 'left',
     marginLeft: '8%',
@@ -66,19 +72,53 @@ const styles = StyleSheet.create({
     marginLeft: 6,
     marginRight: 6,
   },
-  rowQuadrados1: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  flatListContainer: {
     justifyContent: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
+    paddingHorizontal: 8,
   },
-  rowQuadrados2: {
-    flexDirection: 'row',
+  flatList: {
+    flex: 1, 
+  },
+  item: {
+    width: '31.2%', 
     alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: '3%',
-    marginLeft: '3%',
+    margin: '1%', 
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  image: {
+    marginTop: 6,
+    width: 55, 
+    height: 85, 
+    borderRadius: 4,
+    marginBottom: 6,
+    resizeMode: 'cover', 
+  },
+  
+  titleBook: {
+    fontSize: 13,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  author: {
+    fontSize: 11.5,
+    color: '#555',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  course: {
+    marginTop: 10,
+    fontSize: 12,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  texto: {
+    marginLeft: 90,
   },
   curso: {
     fontSize: 10,
@@ -97,7 +137,7 @@ const styles = StyleSheet.create({
     marginLeft: '3%',
   },
   importancia: {
-    width: '85%', 
+    width: '90%', 
     height: 180, 
     borderRadius: 10,
     backgroundColor: '#3F7263',

@@ -21,12 +21,7 @@ export default function DrawerNavigation() {
             <Drawer.Screen 
               name="Início" 
               component={TelaInicial} 
-              options={({ navigation, route, focused }) => ({
-                drawerLabel: 'Home',
-                drawerIcon: () => (
-                  <Icon name="home" size={24} color={focused? 'blue' : 'gray'} />
-                ),
-              })}
+              
               />
             <Drawer.Screen name="Perfil" component={Perfil} />
             <Drawer.Screen name="Recomendações" component={Recomendacao} />

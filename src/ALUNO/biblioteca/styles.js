@@ -4,9 +4,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  inicio: {
-    alignItems: 'center',
-  },
   retangGreen: {
     width: '100%', 
     height: 90, 
@@ -32,6 +29,9 @@ const styles = StyleSheet.create({
     height: 19, 
     backgroundColor: '#FF735C',
     marginBottom: '3%',
+  },
+  scrollViewContainer: {
+    backgroundColor: '#fff',
   },
   barraPesq: {
     backgroundColor: '#DAD7D7',
@@ -83,15 +83,14 @@ const styles = StyleSheet.create({
   flatListContainer: {
     justifyContent: 'center',
     paddingHorizontal: 8,
-    // padding: 10, // Adicione
   },
   flatList: {
-    flex: 1, // Garantir que a FlatList ocupe todo o espaço disponível
+    flex: 1, 
   },
   item: {
-    width: '30%', // Definindo a largura para ocupar 30% do contêiner pai
+    width: '31.2%', 
     alignItems: 'center',
-    margin: '1.5%', // Adicionando um pequeno espaçamento entre os itens
+    margin: '1%', 
     backgroundColor: '#fff',
     borderRadius: 8,
     shadowColor: '#000',
@@ -102,20 +101,20 @@ const styles = StyleSheet.create({
   },
   image: {
     marginTop: 10,
-    width: 60, // Definindo a largura da imagem para 80% do contêiner pai
-    height: 95, // Definindo uma altura fixa para a imagem
+    width: 60, 
+    height: 95, 
     borderRadius: 4,
     marginBottom: 10,
-    resizeMode: 'cover', // Ajustando o modo de redimensionamento da imagem
+    resizeMode: 'cover', 
   },
   
   titleBook: {
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   author: {
-    fontSize: 11,
+    fontSize: 11.5,
     color: '#555',
     textAlign: 'center',
     marginBottom: 10,
