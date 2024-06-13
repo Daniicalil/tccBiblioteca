@@ -8,7 +8,7 @@ import imgDesign from '../../../assets/imagens_telas/designPage.png';
 
 import styles from './styles';
 
-export default function LognIn({ navigation }) {
+export default function Login({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [password, setPassword] = useState('');
   

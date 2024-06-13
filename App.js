@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'; 
 // import { StatusBar } from 'expo-status-bar';
 
-// import LognIn from './src/ALUNO/lognIn';
+// import Login from './src/ALUNO/login';
 // import SignUp from './src/ALUNO/signUp';
 // import EsqueceuSenha1 from './src/ALUNO/esqueceuSenha1';
 // import EsqueceuSenha2 from './src/ALUNO/esqueceuSenha2';
