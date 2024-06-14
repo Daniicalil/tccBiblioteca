@@ -1,8 +1,10 @@
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import React from 'react';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
-import { View, Image } from 'react-native';
 
+// Screens
 import TelaInicial from '../telaInicial';
 import Perfil from '../perfil';
 import Recomendacao from '../recomendacao';
@@ -12,129 +14,190 @@ import Notificacoes from '../notificacoes';
 import InformacoesContato from '../infoContato';
 import Login from '../login';
 
+// Custom Drawer Footer
+const CustomDrawerFooter = ({ navigation }) => {
+  return (
+    <View style={styles.footerContainer}>
+        <Text style={styles.footerText}>Contato das desenvolvedoras</Text>
+    </View>
+  );
+};
+
+// Styles
+const styles = StyleSheet.create({
+  drawerHeader: {
+    backgroundColor: '#fff',
+    height: 150,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  drawerImage: {
+    marginTop: 40,
+    marginBottom: 10,
+    height: 120,
+    width: 120,
+  },
+  contentContainer: {
+    flexGrow: 1,
+    justifyContent: 'space-between',
+  },
+  footerContainer: {
+    borderTopWidth: 1,
+    borderTopColor: '#ccc',
+    paddingVertical: 100,
+    paddingHorizontal: 20,
+  },
+  footerText: {
+    fontSize: 14,
+    color: '#555',
+  },
+});
+
+// Drawer Navigator
 const Drawer = createDrawerNavigator();
 
-export default function DrawerNavigation() {
+export default function Navegacao() {
   return (
     <NavigationContainer>
-        <Drawer.Navigator
-          screenOptions={{
-            drawerActiveBackgroundColor: '#FF735C', // Cor de fundo ativa
-            drawerInactiveBackgroundColor: '#C6C6C6', // Cor de fundo inativa
-            drawerLabelStyle: {
-              marginLeft: -20,
-              marginRight: 2,
-              color: '#000', // Cor da letra do título (azul)
-            },
-            drawerItemStyle: {
-              borderRadius: 30, // Define border radius para os itens
-              marginVertical: 2,
-              width: '90%', // Define a largura dos itens
-              alignSelf: 'center', // Alinha os itens ao centro
-            },
-            drawerStyle: {
-              width: '55%', // Define a largura do Drawer
-              backgroundColor: '#fff',
-            },
+      <Drawer.Navigator
+        screenOptions={{
+          drawerActiveBackgroundColor: '#FF735C',
+          drawerInactiveBackgroundColor: '#C6C6C6',
+          drawerLabelStyle: {
+            marginLeft: -20,
+            width: '100%',
+            color: '#000',
+            flexShrink: 1,
+            flex: 1,
+          },
+          drawerItemStyle: {
+            borderRadius: 30,
+            marginVertical: 4,
+            width: '90%',
+            alignSelf: 'center',
+          },
+          drawerStyle: {
+            width: '55%',
+            backgroundColor: '#fff',
+          },
+          drawerIcon: {
+            marginLeft: -50,
+          },
+        }}
+        drawerContent={props => (
+          <DrawerContentScrollView {...props}>
+            {/* Drawer Header */}
+            <View style={styles.drawerHeader}>
+              <Image
+                source={require('../../../assets/imgs/drawer.png')} // Update this path
+                style={styles.drawerImage}
+              />
+              {/* Add more header content if needed */}
+            </View>
+
+            {/* Drawer Items */}
+            <DrawerItemList {...props} />
+
+            {/* Drawer Footer */}
+            <CustomDrawerFooter {...props} />
+          </DrawerContentScrollView>
+        )}
+      >
+        {/* Define your screens here */}
+        <Drawer.Screen
+          name="Início"
+          component={TelaInicial}
+          options={{
+            drawerIcon: ({ size, color }) => (
+ 		        <View style={{ marginLeft: 10 }}>
+              <SimpleLineIcons name="home" size={20} color="black" />
+            </View>
+            ),
           }}
-        >
-            <Drawer.Screen 
-              name="Início" 
-              component={TelaInicial} 
-              options={{
-                drawerIcon: ({ size, color }) => (
-                  <View style={{ marginLeft: 10 }}> {/* Ajuste para mover o ícone para a direita */}
-                    <SimpleLineIcons name="home" size={20} color="black" />
-                  </View>
-                ),
-                drawerLabel: 'Início',
-              }}
-            />
-            <Drawer.Screen 
-              name="Perfil" 
-              component={Perfil} 
-              options={{
-                drawerIcon: ({ size, color }) => (
-                  <View style={{ marginLeft: 10 }}>
-                    <SimpleLineIcons name="user" size={20} color="black" />
-                  </View>
-                ),
-                drawerLabel: 'Perfil',
-              }}
-            />
-            <Drawer.Screen 
-              name="Recomendações" 
-              component={Recomendacao} 
-              options={{
-                drawerIcon: ({ size, color }) => (
-                  <View style={{ marginLeft: 10 }}>
-                    <SimpleLineIcons name="star" size={20} color="black" />
-                  </View>
-                ),
-                drawerLabel: 'Recomendações',
-              }}
-            />
-            <Drawer.Screen 
-              name="Biblioteca" 
-              component={Biblioteca} 
-              options={{
-                drawerIcon: ({ size, color }) => (
-                  <View style={{ marginLeft: 10 }}>
-                    <SimpleLineIcons name="book-open" size={20} color="black" />
-                  </View>
-                ),
-                drawerLabel: 'Biblioteca',
-              }}
-            />
-            <Drawer.Screen 
-              name="Reservas" 
-              component={InformacoesReserva} 
-              options={{
-                drawerIcon: ({ size, color }) => (
-                  <View style={{ marginLeft: 10 }}>
-                    <SimpleLineIcons name="calendar" size={20} color="black" />
-                  </View>
-                ),
-                drawerLabel: 'Reservas',
-              }}
-            />
-            <Drawer.Screen 
-              name="Notificações" 
-              component={Notificacoes} 
-              options={{
-                drawerIcon: ({ size, color }) => (
-                  <View style={{ marginLeft: 10 }}>
-                    <SimpleLineIcons name="bell" size={20} color="black" />
-                  </View>
-                ),
-                drawerLabel: 'Notificações',
-              }}
-            />
-            <Drawer.Screen 
-              name="Informações" 
-              component={InformacoesContato} 
-              options={{
-                drawerIcon: ({ size, color }) => (
-                  <View style={{ marginLeft: 10 }}>
-                    <SimpleLineIcons name="info" size={20} color="black" />
-                  </View>
-                ),
-                drawerLabel: 'Informações',
-              }}
-            />
-            <Drawer.Screen 
-              name="Sair" 
-              component={Login} 
-              options={{
-                drawerIcon: ({ size, color }) => (
-                  <View style={{ marginLeft: 10 }}>
-                    <SimpleLineIcons name="logout" size={20} color="red" />
-                  </View>
-                ),
-                drawerLabel: 'Sair',
-              }}
-            />
-        </Drawer.Navigator>
+        />
+        <Drawer.Screen
+          name="Perfil"
+          component={Perfil}
+          options={{
+            drawerIcon: ({ size, color }) => (
+            <View style={{ marginLeft: 10 }}>
+              <SimpleLineIcons name="user" size={20} color="black" />
+            </View>
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Recomendações"
+          component={Recomendacao}
+          options={{
+            drawerIcon: ({ size, color }) => (
+            <View style={{ marginLeft: 10 }}>
+              <SimpleLineIcons name="star" size={20} color="black" />
+            </View>
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Biblioteca"
+          component={Biblioteca}
+          options={{
+            drawerIcon: ({ size, color }) => (
+            <View style={{ marginLeft: 10 }}>
+              <SimpleLineIcons name="book-open" size={20} color="black" />
+            </View>
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Reservas"
+          component={InformacoesReserva}
+          options={{
+            drawerIcon: ({ size, color }) => (
+            <View style={{ marginLeft: 10 }}>
+              <SimpleLineIcons name="calendar" size={20} color="black" />
+            </View>
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Notificações"
+          component={Notificacoes}
+          options={{
+            drawerIcon: ({ size, color }) => (
+            <View style={{ marginLeft: 10 }}>
+              <SimpleLineIcons name="bell" size={20} color="black" />
+            </View>
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Informações"
+          component={InformacoesContato}
+          options={{
+            drawerIcon: ({ size, color }) => (
+            <View style={{ marginLeft: 10 }}>
+              <SimpleLineIcons name="info" size={20} color="black" />
+            </View>
+            ),
+          }}
+        />
+        <Drawer.Screen screenOptions={{headerShown:false}}
+          name="Sair"
+          component={Login}
+          options={{
+            drawerIcon: ({ size, color }) => (
+            <View style={{ marginLeft: 10 }}>
+              <SimpleLineIcons 
+                name="logout" 
+                size={20} 
+                color="red" 
+
+              />
+            </View>
+            ),
+          }}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }

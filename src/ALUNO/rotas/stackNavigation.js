@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import LognIn from '../lognIn';
+import Login from '../login';
 import SignUp from '../signUp';
 import EsqueceuSenha1 from '../esqueceuSenha1';
 import EsqueceuSenha2 from '../esqueceuSenha2';
@@ -22,7 +22,7 @@ export default function Navegacao() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="lognin" component={LognIn}/>
+                <Stack.Screen name="login" component={Login}/>
                 <Stack.Screen name="signup" component={SignUp}/>
                 <Stack.Screen name="esqueceusenha1" component={EsqueceuSenha1}/>
                 <Stack.Screen name="esqueceusenha2" component={EsqueceuSenha2}/>
