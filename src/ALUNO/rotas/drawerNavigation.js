@@ -1,8 +1,7 @@
 import React from 'react';
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerActions } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { StackNavigator, StackScreen } from 'react-navigation';
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
 // Screens
@@ -14,36 +13,6 @@ import InformacoesReserva from '../informacoesReserva';
 import Notificacoes from '../notificacoes';
 import InformacoesContato from '../infoContato';
 import Login from '../login';
-
-
-const CustomHeader = ({ navigation }) => {
-  return (
-    <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-      <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-        <Icon name="menu" size={24} color="#000" />
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const AppNavigator = () => {
-  return (
-    <StackNavigator>
-      <StackScreen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          headerLeft: () => <CustomHeader />,
-          headerTitle: null,
-          headerStyle: {
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-        }}
-      />
-    </StackNavigator>
-  );
-};
 
 // Custom Drawer Footer
 const CustomDrawerFooter = ({ navigation }) => {
@@ -75,7 +44,7 @@ const styles = StyleSheet.create({
   footerContainer: {
     borderTopWidth: 1,
     borderTopColor: '#ccc',
-    paddingVertical: 100,
+    paddingVertical: 20,
     paddingHorizontal: 20,
   },
   footerText: {
@@ -134,11 +103,14 @@ export default function Navegacao() {
           </DrawerContentScrollView>
         )}
       >
+
+       
         {/* Define your screens here */}
         <Drawer.Screen
           name="Início"
           component={TelaInicial}
           options={{
+            
             drawerIcon: ({ size, color }) => (
  		        <View style={{ marginLeft: 10 }}>
               <SimpleLineIcons name="home" size={20} color="black" />

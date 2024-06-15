@@ -5,6 +5,8 @@ import { ScrollView ,View, Text, FlatList, Image } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {RetangGreen, RetangOrange, Funcionamento, Quad1, Quad2, Quad3, Quad4, Quad5, Quad6, Importancia} from './forms';
+import DrawerNavigation from '../rotas/drawerNavigation'; // Importe o DrawerNavigation aqui
+
 
 import styles from './styles';
 
@@ -60,7 +62,9 @@ const Header = () => {
   return (
     <View style={styles.headerContainer}>
       <StatusBar backgroundColor='#3F7263' transLucent={false} />
-        <RetangGreen />
+      <RetangGreen>
+        <DrawerNavigation /> {/* Renderiza o DrawerNavigation dentro do RetangGreen */}
+      </RetangGreen>
         <RetangOrange />
         <Searchbar
           placeholder="Pesquisar"
