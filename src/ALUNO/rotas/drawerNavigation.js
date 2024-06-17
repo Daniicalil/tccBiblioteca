@@ -23,11 +23,7 @@ const CustomDrawerFooter = ({ navigation }) => {
   );
 };
 
-const CustomHeaderMenu = ({ navigation }) => (
-  <TouchableOpacity onPress={() => navigation.openDrawer()}>
-    <Ionicons name="menu" size={30} />
-  </TouchableOpacity>
-);
+
 
 // Styles
 const styles = StyleSheet.create({
