@@ -8,8 +8,8 @@ import { RetangGreen, RetangOrange } from './forms';
 
 import styles from './styles';
 
-import FotoPadraoPerfil from '../../../assets/imagens_telas/perfil.png';
-import IconeEditar from '../../../assets/imagens_telas/editar_perfil.png';
+import FotoPadraoPerfil from '../../../../assets/imagens_telas/perfil.png';
+import IconeEditar from '../../../../assets/imagens_telas/editar_perfil.png';
 
 export default function Perfil() {
   const [value, setValue] = useState('first');

@@ -6,10 +6,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange} from './forms';
 
+import IconWarning from '../../../../assets/imagens_telas/warning.png';
 import styles from './styles';
-import imgContato from '../../../assets/imagens_telas/contato.jpg';
 
-export default function InformacoesContato() {
+export default function Notificacoes() {
 return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
@@ -19,20 +19,16 @@ return (
             
         <View style={styles.titlePagina}>
         <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}/>
-          <Text style={styles.paragraph}>Informações de Contato</Text>
+          <Text style={styles.paragraph}>Notificações</Text>
         </View>
-          <Image source={imgContato} style={styles.imgcontato} />
-          <Text style={styles.escola}>ETEC PROF. MASSUYUKI KAWANO</Text>
-          <Text style={styles.informacoes}>
-          (14) 3496 1520 - (14) 3491 5393
-          {'\n'}
-          RUA: BEZERRA DE MENEZES, 215
-          {'\n'}
-          CEP 17605-440
-          {'\n'}
-          E136DIR@CPS.SP.GOV.BR
-          {'\n'}
-          </Text>
+        <View style={styles.lineSquare}>
+          <Text style={styles.postedTime}>há 10 minutos</Text>
+          <View style={styles.popWarning}>
+            <Image source={IconWarning} style={styles.iconWarning}/>
+            <Text style={styles.warningText}>Caro aluno, daqui 3 dias o livro reservado deverá ser devolvido.</Text>
+          </View>
+        </View>
+
       </View>
     </ScrollView>
     

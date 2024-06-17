@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 
-import ImgLogo from '../../../assets/imagens_telas/logo.png';
-import ImgEtec from '../../../assets/imagens_telas/etec.png';
+import ImgLogo from '../../../../assets/imagens_telas/logo.png';
+import ImgEtec from '../../../../assets/imagens_telas/etec.png';
 
 import styles from './styles';
 

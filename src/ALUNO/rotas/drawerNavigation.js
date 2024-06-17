@@ -5,14 +5,14 @@ import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
 // Screens
-import TelaInicial from '../telaInicial';
-import Perfil from '../perfil';
-import Recomendacao from '../recomendacao';
-import Biblioteca from '../biblioteca';
-import InformacoesReserva from '../informacoesReserva';
-import Notificacoes from '../notificacoes';
-import InformacoesContato from '../infoContato';
-import Login from '../login';
+import TelaInicial from '../pages/telaInicial';
+import Perfil from '../pages/perfil';
+import Recomendacao from '../pages/recomendacao';
+import Biblioteca from '../pages/biblioteca';
+import InformacoesReserva from '../pages/informacoesReserva';
+import Notificacoes from '../pages/notificacoes';
+import InformacoesContato from '../pages/infoContato';
+import Login from '../pages/login';
 
 // Custom Drawer Footer
 const CustomDrawerFooter = ({ navigation }) => {
@@ -22,6 +22,12 @@ const CustomDrawerFooter = ({ navigation }) => {
     </View>
   );
 };
+
+const CustomHeaderMenu = ({ navigation }) => (
+  <TouchableOpacity onPress={() => navigation.openDrawer()}>
+    <Ionicons name="menu" size={30} />
+  </TouchableOpacity>
+);
 
 // Styles
 const styles = StyleSheet.create({

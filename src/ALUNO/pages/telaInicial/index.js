@@ -4,8 +4,8 @@ import {useState} from 'react';
 import { ScrollView ,View, Text, FlatList, Image } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {RetangGreen, RetangOrange, Funcionamento, Quad1, Quad2, Quad3, Quad4, Quad5, Quad6, Importancia} from './forms';
-import DrawerNavigation from '../rotas/drawerNavigation'; // Importe o DrawerNavigation aqui
+import {RetangGreen, RetangOrange, Funcionamento, Importancia} from './forms';
+import DrawerNavigation from '../../rotas/drawerNavigation';
 
 
 import styles from './styles';
@@ -15,42 +15,42 @@ const books = [
       id: '1', 
       title: 'O diário de Anne Frank', 
       author: 'Anne Frank', 
-      image: require('../../../assets/Capa_dos_livros/o diário de anne frank.jpg'), 
+      image: require('../../../../assets/Capa_dos_livros/o diário de anne frank.jpg'), 
       course: 'Téc. Recursos Humanos' 
   },
   { 
       id: '2', 
       title: 'Dom Casmurro', 
       author: 'Machado de Assis', 
-      image: require('../../../assets/Capa_dos_livros/dom casmurro.jpg'), 
+      image: require('../../../../assets/Capa_dos_livros/dom casmurro.jpg'), 
       course: 'Téc. Contabilidade' 
   },
   { 
       id: '3', 
       title: 'Romeu e Julieta', 
       author: 'William Shakespeare', 
-      image: require('../../../assets/Capa_dos_livros/romeu e julieta.jpg'), 
+      image: require('../../../../assets/Capa_dos_livros/romeu e julieta.jpg'), 
       course: 'Téc. Design de Interiores' 
   },
   { 
       id: '4', 
       title: '1984', 
       author: 'George Orwell', 
-      image: require('../../../assets/Capa_dos_livros/1984.jpg'), 
+      image: require('../../../../assets/Capa_dos_livros/1984.jpg'), 
       course: 'Téc. Informática' 
   },
   { 
       id: '5', 
       title: 'Os Miseráveis', 
       author: 'Victor Hugo', 
-      image: require('../../../assets/Capa_dos_livros/os miseráveis.jpg'), 
+      image: require('../../../../assets/Capa_dos_livros/os miseráveis.jpg'), 
       course: 'Téc. Administração' 
   },
   { 
       id: '6', 
       title: 'Orgulho e Preconceito', 
       author: 'Jane Austen', 
-      image: require('../../../assets/Capa_dos_livros/orgulho e preconceito.png'), 
+      image: require('../../../../assets/Capa_dos_livros/orgulho e preconceito.png'), 
       course: 'Téc. Farmácia' 
   }
 ];
@@ -62,9 +62,7 @@ const Header = () => {
   return (
     <View style={styles.headerContainer}>
       <StatusBar backgroundColor='#3F7263' transLucent={false} />
-      <RetangGreen>
-        <DrawerNavigation /> {/* Renderiza o DrawerNavigation dentro do RetangGreen */}
-      </RetangGreen>
+      <RetangGreen/>
         <RetangOrange />
         <Searchbar
           placeholder="Pesquisar"

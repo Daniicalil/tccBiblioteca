@@ -16,10 +16,10 @@ import { View, Text, Image } from 'react-native';
 // import ARevolucaodosBichos from '../../../assets/Capa_dos_livros/a revolução dos bichos.jpg';
 // import DeixadaparaTrás from '../../../assets/Capa_dos_livros/deixada para trás.jpg';
 
-import ImgLogo from '../../../assets/imagens_telas/logo.png';
-import ImgEtec from '../../../assets/imagens_telas/etec.png';
-import ImgFunc from '../../../assets/imagens_telas/horario.png';
-import ImgImportancia from '../../../assets/imagens_telas/fraseimportancia.png'
+import ImgLogo from '../../../../assets/imagens_telas/logo.png';
+import ImgEtec from '../../../../assets/imagens_telas/etec.png';
+import ImgFunc from '../../../../assets/imagens_telas/horario.png';
+import ImgImportancia from '../../../../assets/imagens_telas/fraseimportancia.png'
 
 import styles from './styles';
 
