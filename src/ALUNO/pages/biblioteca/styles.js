@@ -53,6 +53,12 @@ const styles = StyleSheet.create({
     marginBottom: '4%',
     alignSelf: 'center',
   },
+  placeholderStyle: {
+    opacity: 0.5, 
+  },
+  iconStyle: {
+    opacity: 0.5, 
+  },
   item: {
     width: '31.2%', 
     alignItems: 'center',

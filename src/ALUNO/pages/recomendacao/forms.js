@@ -13,12 +13,12 @@ import ImgFunc from '../../../../assets/imagens_telas/horario.png';
 import ImgImportancia from '../../../../assets/imagens_telas/fraseimportancia.png'
 
 import styles from './styles';
-import TopHeader from '../../rotas/header';
+import HeaderDrawer from '../../rotas/headerDrawer';
 
 export const RetangGreen = () => {
   return (
     <View style={styles.retangGreen}>
-      <TopHeader/>
+      <HeaderDrawer/>
       <Image source={ImgLogo} style={styles.imgLogo}/>
       <Image source={ImgEtec} style={styles.imgEtec}/>
     </View>

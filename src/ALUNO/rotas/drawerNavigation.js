@@ -14,16 +14,18 @@ import Notificacoes from '../pages/notificacoes';
 import InformacoesContato from '../pages/infoContato';
 import Login from '../pages/login';
 
-// Custom Drawer Footer
-const CustomDrawerFooter = ({ navigation }) => {
-  return (
-    <View style={styles.footerContainer}>
-        <Text style={styles.footerText}>Contato das desenvolvedoras</Text>
-    </View>
-  );
-};
+// // Custom Drawer Footer
+// const CustomDrawerFooter = ({ navigation }) => {
+//   return (
+//     <View style={styles.footerContainer}>
+//         <Text style={styles.footerText}>Contato das desenvolvedoras</Text>
+//     </View>
+//   );
+// };
 
-
+const CustomDrawerLabel = () => (
+  <Text style={{ color: 'red', marginLeft: -18 }}>Sair</Text>
+);
 
 // Styles
 const styles = StyleSheet.create({
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
   },
   drawerImage: {
     marginTop: 40,
-    marginBottom: 10,
+    marginBottom: 20,
     height: 120,
     width: 120,
   },
@@ -48,10 +50,12 @@ const styles = StyleSheet.create({
     borderTopColor: '#ccc',
     paddingVertical: 20,
     paddingHorizontal: 20,
+    alignItems: 'flex-end'
   },
   footerText: {
     fontSize: 14,
     color: '#555',
+    alignItems: 'flex-end'
   },
 });
 
@@ -89,22 +93,24 @@ export default function Navegacao() {
           },
         }}
         drawerContent={props => (
-          <DrawerContentScrollView {...props}>
-            {/* Drawer Header */}
-            <View style={styles.drawerHeader}>
-              <Image
-                source={require('../../../assets/imgs/drawer.png')} // Update this path
-                style={styles.drawerImage}
-              />
-              {/* Add more header content if needed */}
-            </View>
+          <View style={{flex: 1}}>
+            <DrawerContentScrollView {...props}>
+              {/* Drawer Header */}
+              <View style={styles.drawerHeader}>
+                <Image
+                  source={require('../../../assets/imgs/drawer.png')} // Update this path
+                  style={styles.drawerImage}
+                />
+                {/* Add more header content if needed */}
+              </View>
 
-            {/* Drawer Items */}
-            <DrawerItemList {...props} />
-
-            {/* Drawer Footer */}
-            <CustomDrawerFooter {...props} />
-          </DrawerContentScrollView>
+              {/* Drawer Items */}
+              <DrawerItemList {...props} />
+            </DrawerContentScrollView>
+            <View style={styles.footerContainer}>
+              <Text style={styles.footerText}>Contato das desenvolvedoras</Text>
+             </View>
+          </View>
         )}
       >
 
@@ -114,7 +120,8 @@ export default function Navegacao() {
           name="Início"
           component={TelaInicial}
           options={{
-            
+            drawerLabel:"Início",
+            title: "Início",
             drawerIcon: ({ size, color }) => (
  		        <View style={{ marginLeft: 10 }}>
               <SimpleLineIcons name="home" size={20} color="black" />
@@ -126,6 +133,8 @@ export default function Navegacao() {
           name="Perfil"
           component={Perfil}
           options={{
+            drawerLabel:"Perfil",
+            title: "Perfil",
             drawerIcon: ({ size, color }) => (
             <View style={{ marginLeft: 10 }}>
               <SimpleLineIcons name="user" size={20} color="black" />
@@ -137,6 +146,8 @@ export default function Navegacao() {
           name="Recomendações"
           component={Recomendacao}
           options={{
+            drawerLabel:"Recomendações",
+            title: "Recomendações",
             drawerIcon: ({ size, color }) => (
             <View style={{ marginLeft: 10 }}>
               <SimpleLineIcons name="star" size={20} color="black" />
@@ -148,6 +159,8 @@ export default function Navegacao() {
           name="Biblioteca"
           component={Biblioteca}
           options={{
+            drawerLabel:"Biblioteca",
+            title: "Biblioteca",
             drawerIcon: ({ size, color }) => (
             <View style={{ marginLeft: 10 }}>
               <SimpleLineIcons name="book-open" size={20} color="black" />
@@ -159,6 +172,8 @@ export default function Navegacao() {
           name="Reservas"
           component={InformacoesReserva}
           options={{
+          drawerLabel:"Reservas",
+          title: "Reservas",
             drawerIcon: ({ size, color }) => (
             <View style={{ marginLeft: 10 }}>
               <SimpleLineIcons name="calendar" size={20} color="black" />
@@ -170,6 +185,8 @@ export default function Navegacao() {
           name="Notificações"
           component={Notificacoes}
           options={{
+            drawerLabel:"Notificações",
+            title: "Notificações",
             drawerIcon: ({ size, color }) => (
             <View style={{ marginLeft: 10 }}>
               <SimpleLineIcons name="bell" size={20} color="black" />
@@ -181,6 +198,8 @@ export default function Navegacao() {
           name="Informações"
           component={InformacoesContato}
           options={{
+            drawerLabel:"Informações",
+            title: "Informações",
             drawerIcon: ({ size, color }) => (
             <View style={{ marginLeft: 10 }}>
               <SimpleLineIcons name="info" size={20} color="black" />
@@ -192,10 +211,12 @@ export default function Navegacao() {
           name="Sair" 
           component={Login}
           options={{
+            drawerLabel: () => <CustomDrawerLabel />,
+            title: "Sair",
             drawerIcon: ({ size, color }) => (
             <View style={{ marginLeft: 10 }}>
               <SimpleLineIcons 
-                name="logout" size={20} color="red" />
+                name="logout" size={18} color="red" />
             </View>
             ),
           }}

@@ -22,12 +22,12 @@ import ImgFunc from '../../../../assets/imagens_telas/horario.png';
 import ImgImportancia from '../../../../assets/imagens_telas/fraseimportancia.png'
 
 import styles from './styles';
-import TopHeader from '../../rotas/header';
+import HeaderDrawer from '../../rotas/headerDrawer';
 
 export const RetangGreen = () => {
   return (
     <View style={styles.retangGreen}>
-      <TopHeader />
+      <HeaderDrawer />
       <Image source={ImgLogo} style={styles.imgLogo}/>
       <Image source={ImgEtec} style={styles.imgEtec}/>
     </View>
@@ -41,130 +41,3 @@ export const RetangOrange = () => {
     </View>
   );
 };
-
-// export const Quad1 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={AnneFrank} style={styles.capaLivros}/>
-//         <Text style={styles.livros
-// }>O diário de Anne Frank - Anne Frank</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad2 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={DomCasmurro} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>Dom Casmurro - Machado de Assís</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad3 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={RomeueJulieta} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>Romeu e Julieta - William Shakespeare</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad4 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={MilNovecentoseOitentaeQuatro} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>1984 - George Orwell</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad5 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={OsMiseráveis} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>Os Miseráveis - Victor Hugo</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad6 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={OrgulhoePreconceito} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>Orgulho e Preconceito - Jane Austen</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad7 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={Heartstopper} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>Heartstopper - Alice Oseman</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad8 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={ProcurenasCinzas} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>Procure nas cinzas - Charlie Donlea</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad9 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={OsSeteMaridosdeEvelynHugo} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>Os Sete Maridos de Evelyn Hugo - Taylor Jenkins Reid</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad10 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={AGarotadoLago} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>A garota do lago - Charlie Donlea</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad11 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={Verity} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>Verity - Colleen Hoover</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad12 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={HarryPottereaPedraFilosofal} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>Harry Potter e a pedra filosofal - J.K. Rowling</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad13 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={ARevolucaodosBichos} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>A revolução dos bichos - George Orwell</Text>
-//     </View>
-//   );
-// };
-
-// export const Quad14 = () => {
-//   return (
-//     <View style={styles.quadrado}>
-//         <Image source={DeixadaparaTrás} style={styles.capaLivros}/>
-//         <Text style={styles.livros}>Deixada para trás - Charlie Donlea</Text>
-//     </View>
-//   );
-// };

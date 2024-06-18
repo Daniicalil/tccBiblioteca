@@ -8,11 +8,9 @@ import { FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from './forms';
 import styles from './styles';
 
-import Books from './books';
-import Header from './header';
 import BookList from './booklist';
 
-const Header = () => {
+export default function Principal() {
     const [searchQuery, setSearchQuery] = useState('');
     return (
       <View style={styles.headerContainer}>
@@ -28,12 +26,11 @@ const Header = () => {
           onChangeText={setSearchQuery}
           value={searchQuery}
           style={styles.barraPesq}
+          inputStyle={styles.placeholderStyle}
           icon={({ size, color }) => (
-            <Icon name="search" size={20} color="#000" />
+            <Icon name="search" size={20} color="#000" style={styles.iconStyle}/>
           )}
         />
       </View>
     );
   };
-
-  export default Header;

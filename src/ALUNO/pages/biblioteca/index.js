@@ -8,17 +8,15 @@ import { FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from './forms';
 import styles from './styles';
 
-import Header from './header';
+import Principal from './principal';
 import BookList from './booklist';
 
 
-const Biblioteca = () => {
+export default function Biblioteca() {
   return (
     <ScrollView style={styles.scrollViewContainer}>
-      <Header />
+      <Principal />
       <BookList />
     </ScrollView>
   );
 };
-
-export default Biblioteca;

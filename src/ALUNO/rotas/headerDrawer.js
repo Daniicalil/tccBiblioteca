@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
-const TopHeader = ({ title, onPress }) => {
+const HeaderDrawer = ({ title, onPress }) => {
     const navigation = useNavigation();
 
     return(
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default TopHeader;
+export default HeaderDrawer;

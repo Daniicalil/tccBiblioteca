@@ -8,9 +8,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from './forms';
 import styles from './styles';
 
-import Books from './books';
-import Header from './header';
-import BookList from './booklist';
+import Principal from './principal';
 
 const books = [
     { 
@@ -99,7 +97,7 @@ const books = [
     },
   ];
 
-const BookList = () => {
+  export default function BookList() {
     const renderItem = ({ item }) => (
       <View style={styles.item}>
         <Image source={item.image} style={styles.image} />
@@ -118,5 +116,3 @@ const BookList = () => {
       />
     );
   };
-
-  export default BookList;

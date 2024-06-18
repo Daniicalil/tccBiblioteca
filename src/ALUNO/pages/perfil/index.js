@@ -11,7 +11,7 @@ import styles from './styles';
 import FotoPadraoPerfil from '../../../../assets/imagens_telas/perfil.png';
 import IconeEditar from '../../../../assets/imagens_telas/editar_perfil.png';
 
-export default function Perfil() {
+export default function Perfil({ navigation }) {
   const [value, setValue] = useState('first');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
@@ -28,7 +28,7 @@ export default function Perfil() {
         <RetangGreen />
         <RetangOrange />
         <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} />
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={navigation.goBack}/>
           <Text style={styles.paragraph}>Perfil</Text>
         </View>
       </View>

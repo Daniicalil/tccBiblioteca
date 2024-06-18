@@ -34,6 +34,12 @@ const styles = StyleSheet.create({
     marginBottom: '2%',
     alignSelf: 'center',
   },
+  placeholderStyle: {
+    opacity: 0.5, 
+  },
+  iconStyle: {
+    opacity: 0.5, 
+  },
   funcionamento: {
     width: '90%', 
     height: 180, 
