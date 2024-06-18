@@ -5,10 +5,12 @@ import ImgLogo from '../../../assets/imagens_telas/logo.png';
 import ImgEtec from '../../../assets/imagens_telas/etec.png';
 
 import styles from './styles';
+import TopHeader from '../../rotas/header';
 
 export const RetangGreen = () => {
   return (
     <View style={styles.retangGreen}>
+      <TopHeader />
       <Image source={ImgLogo} style={styles.imgLogo}/>
       <Image source={ImgEtec} style={styles.imgEtec}/>
     </View>

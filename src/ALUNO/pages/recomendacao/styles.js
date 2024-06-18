@@ -3,20 +3,21 @@ import { StyleSheet, Dimensions } from 'react-native';
 const styles = StyleSheet.create({
   retangGreen: {
     width: '100%', 
-    height: 60, 
+    height: 100, 
     backgroundColor: '#3F7263',
+    justifyContent: 'space-between',
   },
   imgLogo: {
-    width: 80,
-    height: 50,
+    width: '20%',
+    height: '30%',
     alignSelf: 'center',
     position: 'absolute',
-    bottom: 0,
+    bottom: 8
   },
   imgEtec: {
-    width: 65,
-    height: 25,
-    bottom: 12,
+    width: '15%',
+    height: '25%',
+    bottom: 8,
     alignSelf: 'flex-end',
     position: 'absolute',
     right: 27,

@@ -64,7 +64,16 @@ return (
           </View>
         </View>
 
-        <Pressable style={styles.button}>
+        <Image source={Genero} style={styles.imgGenero}/>
+        
+        <Pressable 
+            style={
+              ({pressed}) => pressed ?
+                [styles.button, styles.btnPress]
+              :
+                styles.button
+              }  
+          >
           <Text style={styles.buttonText}>Reservar livro</Text>
         </Pressable>
       </View>
