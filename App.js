@@ -15,7 +15,6 @@ import { StyleSheet, Text, View } from 'react-native';
 // import Notificacoes from './src/ALUNO/notificacoes';
 // import InformacoesContato from './src/ALUNO/infoContato';
 // import ReservarLivro from './src/ALUNO/reservarLivro';
-// import MainNavigation from './src/ALUNO/sidebar';
 
 
 import Navegacao from './src/ALUNO/rotas/drawerNavigation';

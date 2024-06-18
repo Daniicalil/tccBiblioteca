@@ -16,7 +16,7 @@ LocaleConfig.locales['pt'] = {
 };
 LocaleConfig.defaultLocale = 'pt';
 
-const ReservarLivro = () => {
+export default function ReservarLivro({ navigation }) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [markedDates, setMarkedDates] = useState({});
@@ -65,7 +65,7 @@ const ReservarLivro = () => {
         <RetangOrange />
 
         <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}/>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={navigation.goBack}/>
           <Text style={styles.paragraph}>Reservar livro</Text>
         </View>
       </View>
@@ -108,4 +108,3 @@ const ReservarLivro = () => {
   );
 };
 
-export default ReservarLivro;

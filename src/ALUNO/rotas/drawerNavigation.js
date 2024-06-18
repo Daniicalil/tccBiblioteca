@@ -4,7 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
-// Screens
 import TelaInicial from '../pages/telaInicial';
 import Perfil from '../pages/perfil';
 import Recomendacao from '../pages/recomendacao';
@@ -13,15 +12,6 @@ import InformacoesReserva from '../pages/informacoesReserva';
 import Notificacoes from '../pages/notificacoes';
 import InformacoesContato from '../pages/infoContato';
 import Login from '../pages/login';
-
-// // Custom Drawer Footer
-// const CustomDrawerFooter = ({ navigation }) => {
-//   return (
-//     <View style={styles.footerContainer}>
-//         <Text style={styles.footerText}>Contato das desenvolvedoras</Text>
-//     </View>
-//   );
-// };
 
 const CustomDrawerLabel = () => (
   <Text style={{ color: 'red', marginLeft: -18 }}>Sair</Text>

@@ -10,7 +10,7 @@ import styles from './styles';
 
 import BookList from './booklist';
 
-export default function Principal() {
+export default function Principal({ navigation }) {
     const [searchQuery, setSearchQuery] = useState('');
     return (
       <View style={styles.headerContainer}>
@@ -18,7 +18,7 @@ export default function Principal() {
         <RetangGreen />
         <RetangOrange />
         <View style={styles.titleContainer}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}/>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={navigation.goBack}/>
           <Text style={styles.paragraph}>Biblioteca</Text>
         </View>
         <Searchbar
