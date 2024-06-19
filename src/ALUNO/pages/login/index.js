@@ -42,16 +42,17 @@ export default function Login({ navigation }) {
           </View>
 
           <Pressable onPress={() => navigation.navigate('SignUp')}>
-            <Text style={styles.touchText}>Não tem cadastro? Cadastre-se</Text>
+              <Text style={styles.touchText}>Não tem cadastro? Cadastre-se</Text>
           </Pressable>
 
           <Pressable onPress={() => navigation.navigate('EsqueceuSenha1')}>
-            <Text style={styles.touchText}>Esqueceu a senha?</Text>
+              <Text style={styles.touchText}>Esqueceu a senha?</Text>
           </Pressable>
 
           <Pressable onPress={() => navigation.navigate('TelaInicial')} style={styles.loginButton}>
-            <Text style={styles.loginText}>Fazer login</Text>
+              <Text style={styles.loginText}>Fazer login</Text>
           </Pressable>
+
         </View>
       </ImageBackground>
     </View>

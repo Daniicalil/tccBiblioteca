@@ -22,10 +22,10 @@ export default function Navegacao() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName="login">
                 <Stack.Screen name="login" component={Login} />
-                <Stack.Screen name="signup" component={SignUp} />
-                <Stack.Screen name="esqueceusenha1" component={EsqueceuSenha1} />
-                <Stack.Screen name="esqueceusenha2" component={EsqueceuSenha2} />
-                <Stack.Screen name="telainicial" component={TelaInicial} />
+                <Stack.Screen name="SignUp" component={SignUp} />
+                <Stack.Screen name="EsqueceuSenha1" component={EsqueceuSenha1} />
+                <Stack.Screen name="EsqueceuSenha2" component={EsqueceuSenha2} />
+                <Stack.Screen name="TelaInicial" component={TelaInicial} />
                 <Stack.Screen name="perfil" component={Perfil} />
                 <Stack.Screen name="recomendacao" component={Recomendacao} />
                 <Stack.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />
