@@ -1,20 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native'; 
-// import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, View } from 'react-native'; 
 
-// import Login from './src/ALUNO/login';
-// import SignUp from './src/ALUNO/signUp';
-// import EsqueceuSenha1 from './src/ALUNO/esqueceuSenha1';
-// import EsqueceuSenha2 from './src/ALUNO/esqueceuSenha2';
-// import TelaInicial from './src/ALUNO/telaInicial';
-// import Perfil from './src/ALUNO/perfil';
-// import Recomendacao from './src/ALUNO/recomendacao';
-// import InfoLivroRecomendacao from './src/ALUNO/infoLivroRecomendacao';
-// import Biblioteca from './src/ALUNO/biblioteca';
-// import InfoLivroBiblioteca from './src/ALUNO/infoLivroBiblioteca';
-// import InformacoesReserva from './src/ALUNO/informacoesReserva';
-// import Notificacoes from './src/ALUNO/notificacoes';
-// import InformacoesContato from './src/ALUNO/infoContato';
-// import ReservarLivro from './src/ALUNO/reservarLivro';
+// import Login from './src/ALUNO/screens/login';
+// import SignUp from './src/ALUNO/screens/signUp';
+// import EsqueceuSenha1 from './src/ALUNO/screens/esqueceuSenha1';
+// import EsqueceuSenha2 from './src/ALUNO/screens/esqueceuSenha2';
+// import TelaInicial from './src/ALUNO/screens/telaInicial';
+// import Perfil from './src/ALUNO/screens/perfil';
+// import Recomendacao from './src/ALUNO/screens/recomendacao';
+// import InfoLivroRecomendacao from './src/ALUNO/screens/infoLivroRecomendacao';
+// import Biblioteca from './src/ALUNO/screens/biblioteca';
+// import InfoLivroBiblioteca from './src/ALUNO/screens/infoLivroBiblioteca';
+// import InformacoesReserva from './src/ALUNO/screens/informacoesReserva';
+// import Notificacoes from './src/ALUNO/screens/notificacoes';
+// import InformacoesContato from './src/ALUNO/screens/infoContato';
+// import ReservarLivro from './src/ALUNO/screens/reservarLivro';
 
 
 import Navegacao from './src/ALUNO/rotas/drawerNavigation';

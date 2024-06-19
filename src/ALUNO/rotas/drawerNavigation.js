@@ -4,14 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
-import TelaInicial from '../pages/telaInicial';
-import Perfil from '../pages/perfil';
-import Recomendacao from '../pages/recomendacao';
-import Biblioteca from '../pages/biblioteca';
-import InformacoesReserva from '../pages/informacoesReserva';
-import Notificacoes from '../pages/notificacoes';
-import InformacoesContato from '../pages/infoContato';
-import Login from '../pages/login';
+import TelaInicial from '../screens/telaInicial';
+import Perfil from '../screens/perfil';
+import Recomendacao from '../screens/recomendacao';
+import Biblioteca from '../screens/biblioteca';
+import InformacoesReserva from '../screens/informacoesReserva';
+import Notificacoes from '../screens/notificacoes';
+import InformacoesContato from '../screens/infoContato';
+import Login from '../screens/login';
 
 const CustomDrawerLabel = () => (
   <Text style={{ color: 'red', marginLeft: -18 }}>Sair</Text>

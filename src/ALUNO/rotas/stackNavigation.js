@@ -1,19 +1,20 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Login from '../pages/login';
-import SignUp from '../pages/signUp';
-import EsqueceuSenha1 from '../pages/esqueceuSenha1';
-import EsqueceuSenha2 from '../pages/esqueceuSenha2';
-import TelaInicial from '../pages/telaInicial';
-import Perfil from '../pages/perfil';
-import Recomendacao from '../pages/recomendacao';
-import InfoLivroRecomendacao from '../pages/infoLivroRecomendacao';
-import Biblioteca from '../pages/biblioteca';
-import InfoLivroBiblioteca from '../pages/infoLivroBiblioteca';
-import ReservarLivro from '../pages/reservarLivro';
-import InformacoesReserva from '../pages/informacoesReserva';
-import Notificacoes from '../pages/notificacoes';
-import InformacoesContato from '../pages/infoContato';
+
+import Login from '../screens/login';
+import SignUp from '../screens/signUp';
+import EsqueceuSenha1 from '../screens/esqueceuSenha1';
+import EsqueceuSenha2 from '../screens/esqueceuSenha2';
+import TelaInicial from '../screens/telaInicial';
+import Perfil from '../screens/perfil';
+import Recomendacao from '../screens/recomendacao';
+import InfoLivroRecomendacao from '../screens/infoLivroRecomendacao';
+import Biblioteca from '../screens/biblioteca';
+import InfoLivroBiblioteca from '../screens/infoLivroBiblioteca';
+import ReservarLivro from '../screens/reservarLivro';
+import InformacoesReserva from '../screens/informacoesReserva';
+import Notificacoes from '../screens/notificacoes';
+import InformacoesContato from '../screens/infoContato';
 
 const Stack = createNativeStackNavigator();
 
