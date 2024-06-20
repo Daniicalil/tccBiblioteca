@@ -91,12 +91,28 @@ export default function SignUp({ navigation }) {
             </View>
           </RadioButton.Group>
 
-          <Pressable onPress={() => navigation.navigate('login')}>
+          <Pressable 
+            onPress={() => navigation.navigate('Login')}
+            style={
+              ({pressed}) => pressed ?
+                [styles.touchText, styles.TouchPress]
+              :
+                styles.touchText
+              }  
+          >
               <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
           </Pressable>
 
 
-          <Pressable onPress={() => navigation.navigate('login')} style={styles.signUpButton}>
+          <Pressable 
+            onPress={() => navigation.navigate('Login')} 
+            style={
+              ({pressed}) => pressed ?
+                [styles.signUpButton, styles.btnPress]
+              :
+                styles.signUpButton
+              }
+          >
             <Text style={styles.signUpText}>Fazer cadastro</Text>
           </Pressable>
 

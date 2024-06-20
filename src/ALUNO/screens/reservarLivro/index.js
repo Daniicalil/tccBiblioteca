@@ -94,7 +94,14 @@ export default function ReservarLivro({ navigation }) {
             {formatarData(endDate)}
           </Text>
         </View>
-        <Pressable style={styles.button} onPress={() => {
+        <Pressable 
+          style={
+            ({pressed}) => pressed ?
+              [styles.button, styles.btnPress]
+            :
+              styles.button
+            }   
+          onPress={() => {
           if (startDate && endDate) {
             Alert.alert('Livro reservado com sucesso!', `Reserva de: ${formatarData(startDate)} até ${formatarData(endDate)}`);
           } else {

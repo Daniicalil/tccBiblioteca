@@ -5,7 +5,7 @@ import ImgLogo from '../../../../assets/imagens_telas/logo.png';
 import ImgEtec from '../../../../assets/imagens_telas/etec.png';
 
 import styles from './styles';
-import HeaderDrawer from '../rotas/headerDrawer';
+import HeaderDrawer from '../../rotas/headerDrawer';
 
 export const RetangGreen = () => {
   return (

@@ -89,6 +89,9 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       alignItems: 'center',
     },
+    btnPress: {
+      backgroundColor: '#3F7263',
+    },
     buttonText: {
       color: '#fff',
       fontSize: 16,

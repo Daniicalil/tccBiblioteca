@@ -117,6 +117,9 @@ const styles = StyleSheet.create({
     height: '65%',
     resizeMode: 'cover',
   },
+  btnPress: {
+    backgroundColor: '#FF735C',
+  },
 });
 
 export default styles;

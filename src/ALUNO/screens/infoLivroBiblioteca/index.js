@@ -17,7 +17,7 @@ const Line = () => {
   );
 };
 
-export default function InfoLivroBiblioteca() {
+export default function InfoLivroBiblioteca({ navigation }) {
 return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
@@ -26,7 +26,7 @@ return (
         <RetangOrange />
             
         <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}/>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
           <Text style={styles.paragraph}>Informações do livro</Text>
         </View>
         <View style={styles.lineSquare}>

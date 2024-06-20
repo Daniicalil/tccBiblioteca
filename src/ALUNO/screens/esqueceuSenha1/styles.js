@@ -45,8 +45,11 @@ const styles = StyleSheet.create({
     color: '#FF735C',
     textAlign: 'center',
     fontSize: 10,
-    marginBottom: 7,
-    marginTop: 15,
+    marginBottom: 4,
+    marginTop: 5,
+  },
+  TouchPress: {
+    opacity: 0.5,
   },
   redefinirButton: {
     marginTop: '5%',
@@ -56,6 +59,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
+  },
+  btnPress: {
+    opacity: 0.5,
   },
   redefinirText: {
     color: '#fff',

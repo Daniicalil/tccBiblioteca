@@ -67,6 +67,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 20,
   },
+  btnPress: {
+    opacity: 0.5,
+  },
   redefinirText: {
     color: '#fff',
     fontWeight: 'bold',

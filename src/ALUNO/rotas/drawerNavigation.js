@@ -91,7 +91,6 @@ export default function Navegacao() {
                   source={require('../../../assets/imgs/drawer.png')} // Update this path
                   style={styles.drawerImage}
                 />
-                {/* Add more header content if needed */}
               </View>
 
               {/* Drawer Items */}
@@ -105,7 +104,7 @@ export default function Navegacao() {
       >
 
        
-        {/* Define your screens here */}
+        {/* Definido as telas da drawer aqui */}
         <Drawer.Screen
           name="Início"
           component={TelaInicial}

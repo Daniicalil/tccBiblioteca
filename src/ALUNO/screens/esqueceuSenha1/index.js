@@ -10,7 +10,7 @@ export default function EsqueceuSenha1({ navigation }) {
   const [email, setEmail] = useState('');
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor='#fff' transLucent={false} />
+      <StatusBar backgroundColor='#fff' translucent ={false} />
       <ImageBackground source={imgDesign} style={styles.background}>
       <View style={styles.contentContainer}>
       <Image
@@ -27,11 +27,27 @@ export default function EsqueceuSenha1({ navigation }) {
         onChangeText={setEmail}
       />
 
-      <Pressable onPress={() => navigation.navigate('lognin')}>
+      <Pressable 
+        onPress={() => navigation.navigate('Login')}
+            style={
+              ({pressed}) => pressed ?
+                [styles.touchText, styles.TouchPress]
+              :
+                styles.touchText
+              }
+      >
         <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
       </Pressable>
 
-      <Pressable onPress={() => navigation.navigate('esqueceusenha2')} style={styles.redefinirButton}>
+      <Pressable 
+        onPress={() => navigation.navigate('EsqueceuSenha2')} 
+        style={
+          ({pressed}) => pressed ?
+            [styles.redefinirButton, styles.btnPress]
+          :
+            styles.redefinirButton
+          }
+      >
         <Text style={styles.redefinirText}>Redefinir</Text>
       </Pressable>
 

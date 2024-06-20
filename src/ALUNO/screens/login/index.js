@@ -40,15 +40,39 @@ export default function Login({ navigation }) {
             </Pressable>
           </View>
 
-          <Pressable onPress={() => navigation.navigate('SignUp')}>
+          <Pressable 
+            onPress={() => navigation.navigate('signUp')}
+            style={
+              ({pressed}) => pressed ?
+                [styles.touchText, styles.TouchPress]
+              :
+                styles.touchText
+              }
+          >
               <Text style={styles.touchText}>Não tem cadastro? Cadastre-se</Text>
           </Pressable>
 
-          <Pressable onPress={() => navigation.navigate('EsqueceuSenha1')}>
+          <Pressable 
+            onPress={() => navigation.navigate('EsqueceuSenha1')}
+            style={
+              ({pressed}) => pressed ?
+                [styles.touchText, styles.TouchPress]
+              :
+                styles.touchText
+              }
+          >
               <Text style={styles.touchText}>Esqueceu a senha?</Text>
           </Pressable>
 
-          <Pressable onPress={() => navigation.navigate('TelaInicial')} style={styles.loginButton}>
+          <Pressable 
+            onPress={() => navigation.navigate('TelaInicial')} 
+            style={
+              ({pressed}) => pressed ?
+                [styles.loginButton, styles.btnPress]
+              :
+                styles.loginButton
+              }
+          >
               <Text style={styles.loginText}>Fazer login</Text>
           </Pressable>
 

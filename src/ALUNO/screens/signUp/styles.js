@@ -63,6 +63,9 @@ const styles = StyleSheet.create({
     marginBottom: 7,
     marginTop: 15,
   },
+  TouchPress: {
+    opacity: 0.5,
+  },
   signUpButton: {
     marginTop: '3%',
     backgroundColor: '#FF735C',
@@ -71,6 +74,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
+  },
+  btnPress: {
+    opacity: 0.5,
   },
   signUpText: {
     color: '#fff',

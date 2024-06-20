@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native'; 
+import 'react-native-gesture-handler';
 
 // import Login from './src/ALUNO/screens/login';
 // import SignUp from './src/ALUNO/screens/signUp';

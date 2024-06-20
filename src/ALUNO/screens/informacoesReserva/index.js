@@ -51,10 +51,26 @@ return (
                 Confirmar retirada do livro
               </Text>
             <View style={styles.buttonsReserva}>
-              <Pressable onPress={() => navigation.navigate('Login')} style={styles.buttonConf}>
+              <Pressable 
+                onPress={() => navigation.navigate('Login')} 
+                style={
+                  ({pressed}) => pressed ?
+                    [styles.buttonConf, styles.btnConfPress]
+                  :
+                    styles.buttonConf
+                  }  
+              >
                 <Text style={styles.buttonTextConfReserv}>Retirada confirmada</Text>
               </Pressable>
-              <Pressable style={styles.buttonCanc}>
+
+              <Pressable 
+                style={
+                  ({pressed}) => pressed ?
+                    [styles.buttonCanc, styles.btnCancPress]
+                  :
+                    styles.buttonCanc
+                  }  
+              >
                 <Text style={styles.buttonTextCancReserv}>Cancelar retirada</Text>
               </Pressable>
             </View>

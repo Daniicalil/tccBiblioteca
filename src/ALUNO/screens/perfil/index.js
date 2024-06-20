@@ -77,7 +77,14 @@ export default function Perfil({ navigation }) {
         </RadioButton.Group>        
       </View>
       <View style={styles.viewEditar}>
-          <Pressable style={styles.botaoEditar}>
+          <Pressable 
+            style={
+              ({pressed}) => pressed ?
+                [styles.botaoEditar, styles.btnPress]
+              :
+                styles.botaoEditar
+              }  
+          >
             <Image source={IconeEditar} style={styles.iconeEditar} />
           </Pressable>
         </View>

@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Login from '../screens/login';
@@ -20,8 +19,7 @@ const Stack = createNativeStackNavigator();
 
 export default function Navegacao() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator initialRouteName="login">
+            <Stack.Navigator initialRouteName="Login">
                 <Stack.Screen name="login" component={Login} />
                 <Stack.Screen name="signUp" component={SignUp} />
                 <Stack.Screen name="esqueceuSenha1" component={EsqueceuSenha1} />
@@ -37,6 +35,5 @@ export default function Navegacao() {
                 <Stack.Screen name="notificacoes" component={Notificacoes} />
                 <Stack.Screen name="informacoescontato" component={InformacoesContato} />
             </Stack.Navigator>
-        </NavigationContainer>
     );
 }

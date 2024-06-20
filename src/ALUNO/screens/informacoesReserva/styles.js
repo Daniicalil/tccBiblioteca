@@ -136,6 +136,9 @@ const styles = StyleSheet.create({
     marginTop: 16,
     width: '30%',
   },
+  btnConfPress: {
+    opacity: 0.5,
+  },
   buttonTextConfReserv: {
     color: '#fff',
     textAlign: 'center',
@@ -149,6 +152,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#000',
     width: '30%',
+  },
+  btnCancPress: {
+    opacity: 0.5,
   },
   buttonTextCancReserv: {
     textAlign: 'center',

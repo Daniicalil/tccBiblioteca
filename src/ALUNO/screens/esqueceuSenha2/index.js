@@ -67,7 +67,15 @@ export default function EsqueceuSenha2({ navigation }) {
         </Pressable>
       </View>
 
-      <Pressable onPress={() => navigation.navigate('login')} style={styles.redefinirButton}>
+      <Pressable 
+        onPress={() => navigation.navigate('Login')} 
+        style={
+          ({pressed}) => pressed ?
+            [styles.redefinirButton, styles.btnPress]
+          :
+            styles.redefinirButton
+          }
+      >
         <Text style={styles.redefinirText}>Redefinir senha</Text>
       </Pressable>
 
