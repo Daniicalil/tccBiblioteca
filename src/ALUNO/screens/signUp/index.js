@@ -96,7 +96,7 @@ export default function SignUp({ navigation }) {
           </Pressable>
 
 
-          <Pressable onPress={() => navigation.navigate('lognin')} style={styles.signUpButton}>
+          <Pressable onPress={() => navigation.navigate('login')} style={styles.signUpButton}>
             <Text style={styles.signUpText}>Fazer cadastro</Text>
           </Pressable>
 

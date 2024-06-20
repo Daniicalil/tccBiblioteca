@@ -51,7 +51,7 @@ return (
                 Confirmar retirada do livro
               </Text>
             <View style={styles.buttonsReserva}>
-              <Pressable style={styles.buttonConf}>
+              <Pressable onPress={() => navigation.navigate('Login')} style={styles.buttonConf}>
                 <Text style={styles.buttonTextConfReserv}>Retirada confirmada</Text>
               </Pressable>
               <Pressable style={styles.buttonCanc}>

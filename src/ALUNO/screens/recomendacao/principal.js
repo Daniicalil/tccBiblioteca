@@ -18,7 +18,7 @@ export default function Principal({ navigation }) {
             <RetangGreen />
             <RetangOrange />
             <View style={styles.titleContainer}>
-                <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={navigation.goBack} />
+                <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
                 <Text style={styles.paragraph}>Recomendações dos professores</Text>
             </View>
             <Searchbar

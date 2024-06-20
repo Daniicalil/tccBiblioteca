@@ -61,9 +61,9 @@ const styles = StyleSheet.create({
     marginLeft: '8%',
   },
   item: {
-    width: '31.2%', 
+    width: '31.6%', 
     alignItems: 'center',
-    margin: '1%', 
+    margin: 3, 
     backgroundColor: '#fff',
     borderRadius: 8,
     shadowColor: '#000',
@@ -102,8 +102,6 @@ const styles = StyleSheet.create({
   },
   flatListContainer: {
     justifyContent: 'center',
-    paddingHorizontal: 8,
-    margin: 20
   },
   scrollViewContainer: {
     backgroundColor: '#fff',

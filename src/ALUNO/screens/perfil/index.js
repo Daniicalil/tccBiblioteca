@@ -28,7 +28,7 @@ export default function Perfil({ navigation }) {
         <RetangGreen />
         <RetangOrange />
         <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={navigation.goBack}/>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
           <Text style={styles.paragraph}>Perfil</Text>
         </View>
       </View>

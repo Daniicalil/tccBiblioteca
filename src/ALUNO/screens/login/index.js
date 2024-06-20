@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { Text, View, Image, TextInput, Pressable, ImageBackground } from 'react-native';
+import { StatusBar, Text, View, Image, TextInput, Pressable, ImageBackground, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import imgLogin from '../../../../assets/imagens_telas/6737457.png';
 import imgDesign from '../../../../assets/imagens_telas/designPage.png';
@@ -9,7 +8,7 @@ import styles from './styles';
 export default function Login({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [password, setPassword] = useState('');
-  
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -41,15 +40,15 @@ export default function Login({ navigation }) {
             </Pressable>
           </View>
 
-          <Pressable onPress={() => navigation.navigate('SignUp')}>
+          <Pressable onPress={() => Alert.alert('Pressed')}>
               <Text style={styles.touchText}>Não tem cadastro? Cadastre-se</Text>
           </Pressable>
 
-          <Pressable onPress={() => navigation.navigate('EsqueceuSenha1')}>
+          <Pressable onPress={() => Alert.alert('Pressed')}>
               <Text style={styles.touchText}>Esqueceu a senha?</Text>
           </Pressable>
 
-          <Pressable onPress={() => navigation.navigate('TelaInicial')} style={styles.loginButton}>
+          <Pressable onPress={() => Alert.alert('Pressed')} style={styles.loginButton}>
               <Text style={styles.loginText}>Fazer login</Text>
           </Pressable>
 
