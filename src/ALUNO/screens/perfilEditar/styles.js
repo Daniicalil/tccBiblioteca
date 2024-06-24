@@ -59,6 +59,28 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingBottom: '5'
   },
+  fotoContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  iconeEditarContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FF735C',
+    position: 'absolute',
+    top: 90,
+    right: 150,
+  },
+  iconeEditar: {
+    width: 30,
+    height: 30,
+  },
+  iconeFotoPress: {
+    opacity: 0.5,
+  },
   texto: {
     marginLeft: 90, 
   },
@@ -103,32 +125,27 @@ const styles = StyleSheet.create({
   TouchPress: {
     opacity: 0.5,
   },
-  viewEditar: {
+  viewSalvar: {
     width: '100%', 
-    alignItems: 'flex-end', 
-    paddingRight: 20, 
-    paddingBottom: 10,
     flex: 1,
   },
-  botaoEditar: {
-    width: 45,
-    height: 45,
-    borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#3F7263',
-    // overflow: 'hidden',
-    position: 'absolute',
-    right: 20,
-    bottom: 30,
+  botaoSalvar: {
+    marginTop: '3%',
+    backgroundColor: '#FF735C',
+    width: '35%',
+    height: 42,
+    alignSelf: 'center',
+    justifyContent:'center',
+    borderRadius: 20,
   },
-  iconeEditar: {
-    width: '65%',
-    height: '65%',
-    resizeMode: 'cover',
+  salvarText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+    alignSelf: 'center',
   },
   btnPress: {
-    backgroundColor: '#FF735C',
+    backgroundColor: '#3F7263',
   },
 });
 

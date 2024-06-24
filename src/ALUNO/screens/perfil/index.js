@@ -13,13 +13,13 @@ import IconeEditar from '../../../../assets/imagens_telas/editar_perfil.png';
 
 export default function Perfil({ navigation }) {
   const [value, setValue] = useState('first');
-  const [passwordVisible, setPasswordVisible] = useState(false);
+  // const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [password, setPassword] = useState('');
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
+  // const togglePasswordVisibility = () => {
+  //   setPasswordVisible(!passwordVisible);
+  // };
 
   return (
     <View style={styles.container}>
@@ -38,13 +38,20 @@ export default function Perfil({ navigation }) {
         <Image source={FotoPadraoPerfil} style={{height: 100, width: 100, borderRadius: 90,}}  />
       </View> */}
 
+      <Text style={styles.texto}>RM:</Text>
+      <TextInput
+        style={styles.input}
+        disabled={true}
+      />
       <Text style={styles.texto}>Nome social:</Text>
       <TextInput
         style={styles.input}
+        disabled={true}
       />
       <Text style={styles.texto}>Nome completo:</Text>
       <TextInput
         style={styles.input}
+        disabled={true}
       />
 
       <Text style={styles.texto}>E-mail:</Text>
@@ -52,9 +59,10 @@ export default function Perfil({ navigation }) {
         style={styles.input}
         value={email}
         onChangeText={setEmail}
+        disabled={true}
       />
 
-      <Text style={styles.texto}>Senha:</Text>
+      {/* <Text style={styles.texto}>Senha:</Text>
       <View style={styles.passwordContainer}>
         <TextInput
           style={styles.input}
@@ -65,19 +73,34 @@ export default function Perfil({ navigation }) {
         <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
           <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
         </Pressable>
-      </View>
+      </View> */}
+
       <View style={styles.contentContainer}>
         <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value} >
           <Text style={styles.sexo}>Sexo:</Text>
           <View style={styles.seletores}>
-            <Text><RadioButton value="Feminino" color='#3F7263' />Feminino</Text>
-            <Text> <RadioButton value="Masculino" color='#3F7263' />Masculino</Text>
-            <Text><RadioButton value="Neutro" color='#3F7263' />Neutro</Text>
+            <Text><RadioButton value="Feminino" color='#3F7263' disabled={true} />Feminino</Text>
+            <Text> <RadioButton value="Masculino" color='#3F7263' disabled={true} />Masculino</Text>
+            <Text><RadioButton value="Neutro" color='#3F7263' disabled={true} />Neutro</Text>
           </View>
         </RadioButton.Group>        
       </View>
+
+      <Pressable 
+        onPress={() => navigation.navigate('esqueceuSenha1')}
+          style={
+            ({pressed}) => pressed ?
+              [styles.touchText, styles.TouchPress]
+            :
+              styles.touchText
+            }
+        >
+          <Text style={styles.touchText}>Esqueceu a senha?</Text>
+      </Pressable>
+
       <View style={styles.viewEditar}>
           <Pressable 
+            onPress={() => navigation.navigate('perfilEditar')}
             style={
               ({pressed}) => pressed ?
                 [styles.botaoEditar, styles.btnPress]

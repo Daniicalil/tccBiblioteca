@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   touchText: {
     color: '#FF735C',
     textAlign: 'center',
-    fontSize: 10,
+    fontSize: 12,
     marginBottom: 7,
     marginTop: 15,
   },

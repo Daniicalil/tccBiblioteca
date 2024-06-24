@@ -8,7 +8,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from './forms';
 import styles from './styles';
 
-export default function Principal({ navigation }) {
+export default function Principal({voltar}) {
     const [searchQuery, setSearchQuery] = useState('');
     return (
       <View style={styles.headerContainer}>
@@ -16,7 +16,7 @@ export default function Principal({ navigation }) {
         <RetangGreen />
         <RetangOrange />
         <View style={styles.titleContainer}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}  onPress={() => navigation.goBack()}/>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}  onPress={() => voltar.goBack()}/>
           <Text style={styles.paragraph}>Biblioteca</Text>
         </View>
         <Searchbar

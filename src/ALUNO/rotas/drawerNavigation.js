@@ -1,6 +1,5 @@
 import React from 'react';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
@@ -52,9 +51,8 @@ const styles = StyleSheet.create({
 // Drawer Navigator
 const Drawer = createDrawerNavigator();
 
-export default function Navegacao() {
+export default function NavegacaoDrawer() {
   return (
-    <NavigationContainer>
       <Drawer.Navigator
         screenOptions={{
           headerShown: false,
@@ -211,6 +209,5 @@ export default function Navegacao() {
           }}
         />
       </Drawer.Navigator>
-    </NavigationContainer>
   );
 }

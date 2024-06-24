@@ -9,7 +9,7 @@ import {RetangGreen, RetangOrange} from './forms';
 
 import styles from './styles';
 
-export default function Principal({ navigation }) {
+export default function Principal({voltar}) {
     const [searchQuery, setSearchQuery] = useState('');
 
     return (
@@ -18,7 +18,7 @@ export default function Principal({ navigation }) {
             <RetangGreen />
             <RetangOrange />
             <View style={styles.titleContainer}>
-                <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
+            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}  onPress={() => voltar.goBack()}/>
                 <Text style={styles.paragraph}>Recomendações dos professores</Text>
             </View>
             <Searchbar

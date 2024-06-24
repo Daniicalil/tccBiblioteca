@@ -53,7 +53,7 @@ export default function Login({ navigation }) {
           </Pressable>
 
           <Pressable 
-            onPress={() => navigation.navigate('EsqueceuSenha1')}
+            onPress={() => navigation.navigate('esqueceuSenha1')}
             style={
               ({pressed}) => pressed ?
                 [styles.touchText, styles.TouchPress]
@@ -65,7 +65,7 @@ export default function Login({ navigation }) {
           </Pressable>
 
           <Pressable 
-            onPress={() => navigation.navigate('TelaInicial')} 
+            onPress={() => navigation.navigate('Home')} 
             style={
               ({pressed}) => pressed ?
                 [styles.loginButton, styles.btnPress]

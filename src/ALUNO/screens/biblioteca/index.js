@@ -4,11 +4,11 @@ import { FlatList } from 'react-native';
 import Principal from './principal';
 import BookList from './booklist';
 
-export default function Biblioteca() {
+export default function Biblioteca({ navigation }) {
   const renderItem = ({ item }) => {
     switch (item.type) {
       case 'principal':
-        return <Principal />;
+        return <Principal  voltar={navigation}/>;
       case 'booklist':
         return <BookList />;
       default:

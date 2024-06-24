@@ -143,6 +143,17 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
   },
+  confirmation: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 20,
+  },
+  confirmationText: {
+    color: 'black',
+    marginRight: 8,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
   buttonCanc: {
     backgroundColor: '#FFF',
     paddingVertical: 6,
@@ -152,6 +163,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#000',
     width: '30%',
+  },
+  cancellation: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 20,
+  },
+
+  cancellationText: {
+    color: 'black',
+    marginRight: 8,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   btnCancPress: {
     opacity: 0.5,

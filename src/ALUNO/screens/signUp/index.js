@@ -92,7 +92,7 @@ export default function SignUp({ navigation }) {
           </RadioButton.Group>
 
           <Pressable 
-            onPress={() => navigation.navigate('Login')}
+            onPress={() => navigation.navigate('login')}
             style={
               ({pressed}) => pressed ?
                 [styles.touchText, styles.TouchPress]
@@ -105,7 +105,7 @@ export default function SignUp({ navigation }) {
 
 
           <Pressable 
-            onPress={() => navigation.navigate('Login')} 
+            onPress={() => navigation.navigate('login')} 
             style={
               ({pressed}) => pressed ?
                 [styles.signUpButton, styles.btnPress]
