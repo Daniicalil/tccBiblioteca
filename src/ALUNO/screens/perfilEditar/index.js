@@ -79,7 +79,7 @@ export default function PerfilEditar({ navigation }) {
       <Text style={styles.texto}>RM:</Text>
       <TextInput 
         style={styles.input} 
-        disabled={true}
+        editable={false}
       />
       <Text style={styles.texto}>Nome social:</Text>
       <TextInput 
