@@ -1,10 +1,10 @@
 import { StyleSheet, View } from 'react-native'; 
 import 'react-native-gesture-handler';
 
-import Login from './src/ALUNO/screens/login';
-import SignUp from './src/ALUNO/screens/signUp';
-import EsqueceuSenha1 from './src/ALUNO/screens/esqueceuSenha1';
-import EsqueceuSenha2 from './src/ALUNO/screens/esqueceuSenha2';
+// import Login from './src/ALUNO/screens/login';
+// import SignUp from './src/ALUNO/screens/signUp';
+// import EsqueceuSenha1 from './src/ALUNO/screens/esqueceuSenha1';
+// import EsqueceuSenha2 from './src/ALUNO/screens/esqueceuSenha2';
 // import TelaInicial from './src/ALUNO/screens/telaInicial';**
 // import Perfil from './src/ALUNO/screens/perfil';**
 // import PerfilEditar from './src/ALUNO/screens/perfilEditar';**
@@ -18,8 +18,8 @@ import EsqueceuSenha2 from './src/ALUNO/screens/esqueceuSenha2';
 // import ReservarLivro from './src/ALUNO/screens/reservarLivro';**
 
 
-import Navegacao from './src/ALUNO/rotas/stackNavigation';
-// import Navegacao from './src/PROFESSOR/rotas';
+// import Navegacao from './src/ALUNO/rotas/stackNavigation';
+import Navegacao from './src/PROFESSOR/rotas/stackNavigation';
 
 
 
