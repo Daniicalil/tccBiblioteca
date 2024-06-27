@@ -51,6 +51,15 @@ export default function InfoLivroRecomendacao({ navigation }) {
           <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}  />
           <Text style={styles.paragraph}>Informações do livro</Text>
         </View>
+
+        <Pressable 
+                style={({ pressed }) => pressed ?
+                    [styles.buttonRem, styles.btnRemPress]
+                    : styles.buttonRem}
+                >
+                <Text style={styles.buttonTextRem}>- Remover</Text>
+        </Pressable>
+
         <View style={styles.lineSquare}>
           <Image source={AnneFrank} style={styles.capaLivros} />
           <Line />

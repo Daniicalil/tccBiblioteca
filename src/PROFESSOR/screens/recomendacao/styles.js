@@ -106,6 +106,23 @@ const styles = StyleSheet.create({
   scrollViewContainer: {
     backgroundColor: '#fff',
   },
+  buttonAdd: {
+    backgroundColor: '#3F7263',
+    paddingVertical: 6,
+    paddingHorizontal: 16,
+    borderRadius: 30,
+    width: '26%',
+    alignSelf: 'flex-end',
+    marginRight: 20,
+  },
+  btnAddPress: {
+    opacity: 0.5,
+  },
+  buttonTextAdd: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
 });
 
 export default styles;

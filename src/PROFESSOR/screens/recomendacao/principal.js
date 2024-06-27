@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
 import {useState} from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FontAwesome } from '@expo/vector-icons';
@@ -31,6 +31,13 @@ export default function Principal({ voltar }) {
                     <Icon name="search" size={20} color="#000" style={styles.iconStyle} />
                 )}
             />
+            <Pressable 
+                style={({ pressed }) => pressed ?
+                    [styles.buttonAdd, styles.btnAddPress]
+                    : styles.buttonAdd}
+                >
+                <Text style={styles.buttonTextAdd}>+ Adicionar</Text>
+            </Pressable>
         </View>
     );
 }
