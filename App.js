@@ -9,8 +9,8 @@ import 'react-native-gesture-handler';
 // import Perfil from './src/ALUNO/screens/perfil';**
 // import PerfilEditar from './src/ALUNO/screens/perfilEditar';**
 // import Recomendacao from './src/ALUNO/screens/recomendacao';**
-// import InfoLivroRecomendacao from './src/ALUNO/screens/infoLivroRecomendacao';**
-import AddRecomendacao from './src/PROFESSOR/screens/addRecomendacao';
+import InfoLivroRecomendacao from './src/ALUNO/screens/infoLivroRecomendacao';
+// import AddRecomendacao from './src/PROFESSOR/screens/addRecomendacao';
 // import Biblioteca from './src/ALUNO/screens/biblioteca';**
 // import InfoLivroBiblioteca from './src/ALUNO/screens/infoLivroBiblioteca';**
 // import InformacoesReserva from './src/ALUNO/screens/informacoesReserva';**
@@ -27,7 +27,7 @@ import Navegacao from './src/PROFESSOR/rotas/stackNavigation';
 export default function App() {
   return (
     <View style={styles.container}>
-      <AddRecomendacao /> 
+      <InfoLivroRecomendacao /> 
     </View>
   );
 }

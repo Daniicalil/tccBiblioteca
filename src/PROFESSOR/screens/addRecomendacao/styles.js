@@ -8,9 +8,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  inicio: {
-    alignItems: 'center',
-  },
+  // inicio: {
+  //   alignItems: 'center',
+  // },
   retangGreen: {
     width: '100%', 
     height: 100, 
@@ -59,13 +59,55 @@ const styles = StyleSheet.create({
   pickerContainer: {
     width: '85%',
     marginBottom: 20,
-    borderWidth: 1, // Adiciona borda
-    borderColor: '#000', // Cor da borda
-    borderRadius: 8, // Borda arredondada
+    borderWidth: 1,
+    borderColor: '#000',
+    borderRadius: 8,
+    alignSelf: 'center'
   },
-  picker: {
-    
-    
+  textPicker: {
+    fontSize: 16,
+    left: 36
+  },
+  input: {
+    height: 200, // Altura do TextInput
+    width: '85%',
+    borderRadius: 8,
+    borderColor: '#000',
+    borderWidth: 1,
+    padding: 10,
+    textAlignVertical: 'top', // Alinha o texto no topo
+    alignSelf: 'center'
+  },
+  recommendationMod: {
+    fontSize: 14,
+    marginBottom: 4,
+    left: 20,
+    top: 20,
+    fontSize: 16,
+  },
+  RadioButtonQuad: {
+    flexDirection: 'row',
+    top: 24,
+    left: 2,
+    justifyContent: 'space-evenly',
+  },
+  button: {
+    backgroundColor: '#FF735C',
+    paddingVertical: 12,
+    paddingHorizontal: 28,
+    borderRadius: 30,
+    marginTop: 16,
+    marginTop: 50,
+    width: '35%',
+    alignSelf: 'center',
+  },
+  btnPress: {
+    backgroundColor: '#3F7263',
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#fff',
+    fontSize: 16,
   },
 });
 

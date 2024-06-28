@@ -33,7 +33,7 @@ const Line = () => {
   );
 };
 
-export default function InfoLivroRecomendacao({ navigation }) {
+export default function InfoLivroRecomendacao() {
   const [selectedMode, setSelectedMode] = useState(null);
 
   const handleModeChange = (mode) => {

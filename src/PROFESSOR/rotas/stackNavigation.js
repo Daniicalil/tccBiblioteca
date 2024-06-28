@@ -10,6 +10,7 @@ import Perfil from '../screens/perfil';
 import PerfilEditar from '../screens/perfilEditar';
 import Recomendacao from '../screens/recomendacao';
 import InfoLivroRecomendacao from '../screens/infoLivroRecomendacao';
+import AddRecomendacao from '../screens/addRecomendacao';
 import Biblioteca from '../screens/biblioteca';
 import InfoLivroBiblioteca from '../screens/infoLivroBiblioteca';
 import ReservarLivro from '../screens/reservarLivro';
@@ -40,6 +41,7 @@ export default function Navegacao() {
                 <Stack.Screen name="perfilEditar" component={PerfilEditar} />
                 <Stack.Screen name="recomendacao" component={Recomendacao} />
                 <Stack.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />
+                <Stack.Screen name="addRecomendacao" component={AddRecomendacao} />
                 <Stack.Screen name="biblioteca" component={Biblioteca} />
                 <Stack.Screen name="infolivrobiblioteca" component={InfoLivroBiblioteca} />
                 <Stack.Screen name="reservarlivro" component={ReservarLivro} />
