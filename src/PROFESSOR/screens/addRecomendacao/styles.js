@@ -1,3 +1,4 @@
+import { CgEnter } from 'react-icons/cg';
 import { StyleSheet, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
@@ -51,27 +52,21 @@ const styles = StyleSheet.create({
   paragraph: {
     marginTop: '3%',
     marginBottom: '6%',
-    // fontWeight: 'bold',
     fontSize: 18,
     flex: 1,
     left: 70
   },
-  imgcontato: {
-    width: 220,
-    height: 140,
-    paddingTop: 10,
+  pickerContainer: {
+    width: '85%',
+    marginBottom: 20,
+    borderWidth: 1, // Adiciona borda
+    borderColor: '#000', // Cor da borda
+    borderRadius: 8, // Borda arredondada
   },
-  escola: {
-    fontWeight: 'bold',
-    fontSize: 16,
-    paddingTop: 20,
+  picker: {
+    
+    
   },
-  informacoes: {
-    top: 20,
-    fontSize: 14,
-    lineHeight: 25,
-  },
-
 });
 
 export default styles;
