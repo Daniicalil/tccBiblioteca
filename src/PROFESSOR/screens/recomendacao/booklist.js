@@ -1,11 +1,12 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import styles from './styles';
 import Principal from './principal';
-
-const books = [
+ 
+ export default function BookList() {
+  const [books, setBooks] = useState([
     { 
         id: '1', 
         image: require('../../../../assets/Capa_dos_livros/o diário de anne frank.jpg'),
@@ -72,10 +73,15 @@ const books = [
         genero: 'Romance',
         course: 'Téc. Farmácia' 
     }
-  ];
-  
-  
- export default function BookList() {
+  ]);
+  const route = useRoute();
+
+  useEffect(() => {
+    if (route.params?.removedBookId) {
+      setBooks((prevBooks) => prevBooks.filter(book => book.id !== route.params.removedBookId));
+    }
+  }, [route.params?.removedBookId]);
+
   const navigation = useNavigation();
     const renderItem = ({ item }) => (
       <View style={styles.item}>
@@ -93,7 +99,7 @@ const books = [
       <FlatList style={Flatstyles.FlatList}
         data={books}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         numColumns={3}
         contentContainerStyle={styles.flatListContainer}
       />

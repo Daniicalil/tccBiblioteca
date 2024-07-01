@@ -13,7 +13,7 @@ import InfoLivroRecomendacao from '../screens/infoLivroRecomendacao';
 import AddRecomendacao from '../screens/addRecomendacao';
 import Biblioteca from '../../ALUNO/screens/biblioteca';
 import InfoLivroBiblioteca from '../../ALUNO/screens/infoLivroBiblioteca';
-import ReservarLivro from '../../ALUNO/screens/reservarLivro';
+import ReservarLivro from '../screens/reservarLivro';
 import InformacoesReserva from '../../ALUNO/screens/informacoesReserva';
 import Notificacoes from '../../ALUNO/screens/notificacoes';
 import InformacoesContato from '../../ALUNO/screens/infoContato';

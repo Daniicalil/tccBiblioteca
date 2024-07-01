@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View, Text, Image, Pressable } from 'react-native';
+import { ScrollView, View, Text, Image, Pressable, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { RetangGreen, RetangOrange } from './forms';
@@ -43,6 +43,29 @@ export default function InfoLivroRecomendacao({ route }) {
     setSelectedMode(mode);
   };
 
+  const handleRemove = () => {
+    Alert.alert(
+      'Confirmação',
+      'Tem certeza que deseja excluir esta recomendação?',
+      [
+        {
+          text: 'Não',
+          onPress: () => console.log('Ação cancelada'),
+          style: 'cancel',
+        },
+        {
+          text: 'Sim',
+          onPress: () => {
+            // Realiza a ação de exclusão aqui
+            // Após exclusão, navega de volta para a tela anterior
+            navigation.goBack();
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
@@ -51,11 +74,12 @@ export default function InfoLivroRecomendacao({ route }) {
         <RetangOrange />
 
         <View style={styles.title}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
           <Text style={styles.paragraph}>Informações do livro</Text>
         </View>
 
-        <Pressable 
+        <Pressable
+          onPress={handleRemove}
           style={({ pressed }) => pressed ?
             [styles.buttonRem, styles.btnRemPress]
             : styles.buttonRem}
@@ -102,7 +126,7 @@ export default function InfoLivroRecomendacao({ route }) {
           <Text style={styles.recommendationMod}>Recomendado para:</Text>
           <View style={styles.RadioButtonQuad}>
             <SquareRadioButton
-              label="1º Mod. "
+              label="1º Mod."
               checked={selectedMode === "1stMod"}
               onPress={() => handleModeChange("1stMod")}
             />
@@ -124,7 +148,8 @@ export default function InfoLivroRecomendacao({ route }) {
           </View>
         </View>
 
-        <Pressable 
+        <Pressable
+          onPress={() => navigation.navigate('reservarlivro')}
           style={({ pressed }) => pressed ?
             [styles.button, styles.btnPress]
             : styles.button}
