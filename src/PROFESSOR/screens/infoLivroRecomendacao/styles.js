@@ -5,6 +5,7 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
   },
   inicio: {
     alignItems: 'center',
@@ -62,7 +63,9 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     width: '26%',
     alignSelf: 'flex-end',
-    marginRight: 20,
+    marginRight: 25,
+    marginBottom: 10,
+    marginTop: -10,
   },
   btnRemPress: {
     opacity: 0.5,
@@ -73,15 +76,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   lineSquare: {
-    width: '90%',
-    height: 610,
+    paddingVertical: 10,
     backgroundColor: 'transparent', 
     borderColor: 'black', 
     borderWidth: 1, 
     borderRadius: 10,
+    marginBottom: 20,
+    marginRight: 20,
+    marginLeft: 20,
   },
   capaLivros: {
-    top: 15,
+    top: 10,
     width: 100,
     height: 160,
     alignSelf: 'center',

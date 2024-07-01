@@ -101,6 +101,10 @@ const styles = StyleSheet.create({
   scrollViewContainer: {
     backgroundColor: '#fff',
   },
+  containerAny: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
 });
 
 export default styles;

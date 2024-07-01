@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { Importancia } from './forms';
 
+import styles from './styles'
 import Principal from './principal';
 import BookList from './booklist';
 
@@ -26,11 +27,13 @@ const TelaInicial = () => {
   ];
 
   return (
+    <View style={styles.containerAny}>
     <FlatList
       data={data}
       renderItem={renderItem}
       keyExtractor={item => item.id}
     />
+    </View>
   );
 };
 

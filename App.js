@@ -27,7 +27,7 @@ import Navegacao from './src/PROFESSOR/rotas/stackNavigation';
 export default function App() {
   return (
     <View style={styles.container}>
-      <InfoLivroRecomendacao /> 
+      <Navegacao /> 
     </View>
   );
 }

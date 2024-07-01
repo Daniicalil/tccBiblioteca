@@ -10,7 +10,7 @@ import HeaderDrawer from '../../rotas/headerDrawer';
 export const RetangGreen = () => {
   return (
     <View style={styles.retangGreen}>
-      {/* <HeaderDrawer /> */}
+      <HeaderDrawer />
       <Image source={ImgLogo} style={styles.imgLogo}/>
       <Image source={ImgEtec} style={styles.imgEtec}/>
     </View>

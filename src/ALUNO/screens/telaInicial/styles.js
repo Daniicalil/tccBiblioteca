@@ -121,6 +121,10 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '100%',
   },
+  containerAny: {
+    flex: 1,
+    backgroundColor: '#fff',
+  }
 });
 
 export default styles;

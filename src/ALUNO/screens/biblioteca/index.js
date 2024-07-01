@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 
+import styles from './styles';
 import Principal from './principal';
 import BookList from './booklist';
 
@@ -22,10 +23,12 @@ export default function Biblioteca({ navigation }) {
   ];
 
   return (
-    <FlatList
-      data={data}
-      renderItem={renderItem}
-      keyExtractor={item => item.id}
-    />
+    <View style={styles.containerAny}>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
+    </View>
   );
 }

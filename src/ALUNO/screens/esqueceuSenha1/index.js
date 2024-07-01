@@ -15,8 +15,6 @@ export default function EsqueceuSenha1({ navigation }) {
 
   // Função para lidar com o pressionamento do botão 'Redefinir'
   const handleRedefinirPress = () => {
-    console.log('Botão Redefinir pressionado'); // Verifique se a função está sendo chamada
-    console.log('Email:', email); // Verifique o valor do email
 
     // Verifique se o email não está vazio
     if (email.trim() === '') {
