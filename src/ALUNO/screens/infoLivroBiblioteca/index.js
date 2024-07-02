@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView ,View, Text, Image, Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange} from './forms';
+import { useNavigation } from '@react-navigation/native';
 
 import AnneFrank from '../../../../assets/Capa_dos_livros/procure nas cinzas.jpg';
 import Autor from '../../../../assets/imagens_telas/autora.png';
@@ -17,7 +18,9 @@ const Line = () => {
   );
 };
 
-export default function InfoLivroBiblioteca({ navigation }) {
+export default function InfoLivroBiblioteca({ route }) {
+  const navigation = useNavigation();
+  const { book } = route.params;
 return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
@@ -30,41 +33,41 @@ return (
           <Text style={styles.paragraph}>Informações do livro</Text>
         </View>
         <View style={styles.lineSquare}>
-        <Image source={AnneFrank} style={styles.capaLivros}/>
+        <Image source={book.image} style={styles.capaLivros}/>
         <Line />
           <View style={styles.sectionTitle}>
             <Text style={styles.general}>Visão geral</Text>
-            <Text style={styles.titleLivro}>Procure nas Cinzas</Text>
+            <Text style={styles.titleLivro}>{book.title}</Text>
           </View>
           <View style={styles.smallineSquare}>
             <Text style={styles.available}>Disp.: </Text>
-            <Text style={styles.bold}>5</Text>
+            <Text style={styles.bold}>{book.disponivel}</Text>
           </View>
             <Text style={styles.description}>
-            O ataque terrorista às Torres Gêmeas do World Trade Center chocou o mundo vinte anos atrás, mas, para uma família, esse atentado teve um gosto mais amargo. A destruição dos edifícios deu fim à vida de Victória, a principal suspeita de um crime brutal - sem que ela tivesse a chance de se defender.            </Text>
+              {book.description}
+            </Text>
 
           <View style={styles.infoContainer}>
             <View style={styles.infoBox}>
               <Text style={styles.infoTitle}>Autor(a)</Text>
               <Image source={Autor} style={styles.imgAutor}/>
-              <Text style={styles.infoText}>Charlie Donlea</Text>
+              <Text style={styles.infoText}>{book.author}</Text>
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.infoTitle}>Editora</Text>
               <Image source={Editora} style={styles.imgEditora}/>
-              <Text style={styles.infoText}>Faro Editorial</Text>
+              <Text style={styles.infoText}>{book.editora}</Text>
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.infoTitle}>Gênero</Text>
               <Image source={Genero} style={styles.imgGenero}/>
-              <Text style={styles.infoText}>Suspense, mistério</Text>
+              <Text style={styles.infoText}>{book.genero}</Text>
             </View>
           </View>
         </View>
-
-        <Image source={Genero} style={styles.imgGenero}/>
         
         <Pressable 
+            onPress={() => navigation.navigate('reservarlivro')}
             style={
               ({pressed}) => pressed ?
                 [styles.button, styles.btnPress]

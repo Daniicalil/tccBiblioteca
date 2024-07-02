@@ -72,12 +72,13 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   image: {
-    marginTop: 10,
+    marginTop: 6,
     width: 60, 
     height: 95, 
     borderRadius: 4,
-    marginBottom: 10,
+    marginBottom: 6,
     resizeMode: 'cover', 
+    alignSelf: 'center',
   },
   
   titleBook: {

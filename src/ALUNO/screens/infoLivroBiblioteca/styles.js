@@ -5,6 +5,7 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
   },
   inicio: {
     alignItems: 'center',
@@ -56,15 +57,18 @@ const styles = StyleSheet.create({
     left: 70
   },
   lineSquare: {
-    width: '90%',
-    height: 500,
-    backgroundColor: 'transparent', 
-    borderColor: 'black', 
-    borderWidth: 1, 
+    backgroundColor: 'transparent',
+    borderColor: 'black',
+    borderWidth: 1,
     borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginBottom: 20,
+    marginHorizontal: 20,
+    flex: 1,
+    width: width * 0.9, // 90% da largura da tela
   },
   capaLivros: {
-    top: 15,
     width: 100,
     height: 160,
     alignSelf: 'center',
@@ -72,29 +76,26 @@ const styles = StyleSheet.create({
   line: {
     borderBottomColor: 'black',
     borderBottomWidth: 1,
-    width: '92%',
+    width: '100%',
     alignSelf: 'center',
     opacity: 0.2,
-    top: 30,
-    mariginVertical: 10,
+    marginVertical: 10,
   },
   sectionTitle: {
-    top: 40,
-    left: 22,
+    marginTop: 10,
   },
   general: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
+    width: '100%'
   },
   titleLivro: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 60,
+    height: 30,
   },
   smallineSquare: {
-    width: '16%',
+    width: '18%',
     height: 45,
     backgroundColor: 'transparent', 
     borderColor: 'black', 
@@ -107,29 +108,24 @@ const styles = StyleSheet.create({
   },
   available: {
     fontSize: 14,
-    marginBottom: 8,
     textAlign: 'center',
   },
   bold: {
     fontWeight: 'bold',
     textAlign: 'center',
-    top: -6,
   },
   description: {
     fontSize: 14,
-    textAlign: 'center',
-    marginBottom: 8,
-    top: 8,
     textAlign: 'justify',
-    width: '89%',
-    alignSelf: 'center'
+    marginBottom: 5,
+    width: '100%',
+    alignSelf: 'center',
   },
   infoContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    marginBottom: 16,
-    top: 15,
+    marginTop: 5,
   },
   infoBox: {
     alignItems: 'center',

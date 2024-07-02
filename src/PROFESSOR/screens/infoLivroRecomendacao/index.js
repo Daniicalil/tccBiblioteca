@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View, Text, Image, Pressable, Alert } from 'react-native';
+import { ScrollView, View, Text, Image, Pressable, Alert, Dimensions } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { RetangGreen, RetangOrange } from './forms';

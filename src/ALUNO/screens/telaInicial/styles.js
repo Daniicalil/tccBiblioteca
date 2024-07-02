@@ -80,11 +80,12 @@ const styles = StyleSheet.create({
   },
   image: {
     marginTop: 6,
-    width: 55, 
-    height: 85, 
+    width: 60, 
+    height: 95, 
     borderRadius: 4,
     marginBottom: 6,
     resizeMode: 'cover', 
+    alignSelf: 'center',
   },
   titleBook: {
     fontSize: 13,
