@@ -1,10 +1,12 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
 import Principal from './principal';
 
-const books = [
+export default function BookList() {
+  const [books] = useState([
     { 
         id: '1', 
         title: 'O diário de Anne Frank', 
@@ -47,16 +49,18 @@ const books = [
         image: require('../../../../assets/Capa_dos_livros/orgulho e preconceito.png'), 
         course: 'Téc. Farmácia' 
     }
-  ];
+  ]);
   
-  
- export default function BookList() {
+    const navigation = useNavigation();
     const renderItem = ({ item }) => (
       <View style={styles.item}>
+        <Pressable
+        onPress={() => navigation.navigate('infolivrorecomendacao', { book: item })}>
         <Text style={styles.course}>{item.course}</Text>
         <Image source={item.image} style={styles.image} />
         <Text style={styles.titleBook}>{item.title}</Text>
         <Text style={styles.author}>{item.author}</Text>
+        </Pressable>
       </View>
     );
   

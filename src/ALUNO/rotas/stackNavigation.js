@@ -29,7 +29,7 @@ export default function Navegacao() {
              screenOptions={{
                 headerShown: false // Aqui é onde você desativa o cabeçalho
               }}
-            initialRouteName="Login">
+                initialRouteName="Login">
                 <Stack.Screen name="login" component={Login} />
                 <Stack.Screen name="signUp" component={SignUp} />
                 <Stack.Screen name="esqueceuSenha1" component={EsqueceuSenha1} />

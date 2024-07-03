@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
-export default function BookList() {
+export default function BookList({ searchQuery }) {
   const [books] = useState([
     { 
       id: '1', 
@@ -147,8 +147,28 @@ export default function BookList() {
     },
   ]);
 
+  const [filteredBooks, setFilteredBooks] = useState(books);
   const navigation = useNavigation();
 
+  const normalizeString = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  };
+
+  useEffect(() => {
+    if (typeof searchQuery === 'string' && searchQuery.trim() !== "") {
+      const lowerCaseQuery = normalizeString(searchQuery);
+      const filtered = books.filter(book =>
+        normalizeString(book.title).includes(lowerCaseQuery) ||
+        normalizeString(book.author).includes(lowerCaseQuery) ||
+        normalizeString(book.description).includes(lowerCaseQuery)
+      );
+      setFilteredBooks(filtered);
+    } else {
+      setFilteredBooks([]); // Define um array vazio quando a pesquisa está vazia
+    }
+  }, [searchQuery, books]);
+  
+  
   const renderItem = ({ item }) => (
     <View style={styles.item}>
       <Pressable onPress={() => navigation.navigate('infolivrobiblioteca', { book: item })}>
@@ -162,7 +182,7 @@ export default function BookList() {
   return (
     <FlatList
       style={Flatstyles.FlatList}
-      data={books}
+      data={filteredBooks}
       renderItem={renderItem}
       keyExtractor={(item) => item.id.toString()}
       numColumns={3}

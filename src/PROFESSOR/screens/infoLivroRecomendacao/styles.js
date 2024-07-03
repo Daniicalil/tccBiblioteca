@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    marginBottom: 20,
+    marginBottom: 10,
     marginHorizontal: 20,
     flex: 1,
     width: width * 0.9, // 90% da largura da tela
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 28,
     borderRadius: 30,
-    marginTop: 16,
+    marginTop: 10,
     marginBottom: 10,
   },
   btnPress: {

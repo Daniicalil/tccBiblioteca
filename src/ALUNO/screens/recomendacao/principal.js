@@ -6,10 +6,12 @@ import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange} from './forms';
+import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
 
 export default function Principal({ voltar }) {
+    const navigation = useNavigation();
     const [searchQuery, setSearchQuery] = useState('');
 
     return (

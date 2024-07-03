@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
 import Principal from './principal';
  
  export default function BookList() {
-  const [books, setBooks] = useState([
+  const [books] = useState([
     { 
         id: '1', 
         image: require('../../../../assets/Capa_dos_livros/o diário de anne frank.jpg'),
@@ -74,13 +74,6 @@ import Principal from './principal';
         course: 'Téc. Farmácia' 
     }
   ]);
-  const route = useRoute();
-
-  useEffect(() => {
-    if (route.params?.removedBookId) {
-      setBooks((prevBooks) => prevBooks.filter(book => book.id !== route.params.removedBookId));
-    }
-  }, [route.params?.removedBookId]);
 
   const navigation = useNavigation();
     const renderItem = ({ item }) => (
