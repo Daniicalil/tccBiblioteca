@@ -10,8 +10,6 @@ import imgContato from '../../../../assets/imagens_telas/contato.jpg';
 
 export default function AddLivroExistente({ navigation }) {
   const [selectedlivros, setSelectedlivros] = useState('');
-  const [description, setDescription] = useState('');
-  const [selectedMode, setSelectedMode] = useState(null);
 
   const livros = [
     { label: '(Selecione)', value: '' },

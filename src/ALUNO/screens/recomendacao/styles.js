@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   },
   item: {
     width: '31.2%', 
+    alignContent: 'center',
     alignItems: 'center',
     margin: '1%', 
     backgroundColor: '#fff',
@@ -84,6 +85,9 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginBottom: 6,
     resizeMode: 'cover', 
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center'
   },
   titleBook: {
     fontSize: 13,

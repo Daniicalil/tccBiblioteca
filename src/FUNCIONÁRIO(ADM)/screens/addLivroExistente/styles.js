@@ -53,21 +53,6 @@ const styles = StyleSheet.create({
     flex: 1,
     left: 70
   },
-  imgcontato: {
-    width: 220,
-    height: 140,
-    paddingTop: 10,
-  },
-  escola: {
-    fontWeight: 'bold',
-    fontSize: 16,
-    paddingTop: 20,
-  },
-  informacoes: {
-    top: 20,
-    fontSize: 14,
-    lineHeight: 25,
-  },
   pickerContainer: {
     width: '85%',
     marginBottom: 20,
@@ -79,6 +64,14 @@ const styles = StyleSheet.create({
   textPicker: {
     fontSize: 16,
     left: 36,
+  },
+  image: {
+    marginTop: 6,
+    width: 60, 
+    height: 95, 
+    borderRadius: 4,
+    marginBottom: 6,
+    resizeMode: 'cover', 
   },
   button: {
     backgroundColor: '#FF735C',

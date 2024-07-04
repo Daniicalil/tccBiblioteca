@@ -5,6 +5,7 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
   },
   inicio: {
     alignItems: 'center',
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     height: '30%',
     alignSelf: 'center',
     position: 'absolute',
-    bottom: 8
+    bottom: 8,
   },
   imgEtec: {
     width: '15%',
@@ -45,26 +46,47 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: 28,
-    top: 10
+    top: 10,
   },
   paragraph: {
     marginTop: '3%',
     marginBottom: '6%',
-    // fontWeight: 'bold',
     fontSize: 18,
     flex: 1,
-    left: 70
+    left: 70,
+  },
+  buttonRem: {
+    backgroundColor: '#FF735C',
+    paddingVertical: 6,
+    paddingHorizontal: 16,
+    borderRadius: 30,
+    width: '26%',
+    alignSelf: 'flex-end',
+    marginRight: 25,
+    marginBottom: 10,
+    marginTop: -10,
+  },
+  btnRemPress: {
+    opacity: 0.5,
+  },
+  buttonTextRem: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
   lineSquare: {
-    width: '90%',
-    height: 610,
-    backgroundColor: 'transparent', 
-    borderColor: 'black', 
-    borderWidth: 1, 
+    backgroundColor: 'transparent',
+    borderColor: 'black',
+    borderWidth: 1,
     borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginBottom: 10,
+    marginHorizontal: 20,
+    flex: 1,
+    width: width * 0.9, // 90% da largura da tela
   },
   capaLivros: {
-    top: 15,
     width: 100,
     height: 160,
     alignSelf: 'center',
@@ -72,31 +94,26 @@ const styles = StyleSheet.create({
   line: {
     borderBottomColor: 'black',
     borderBottomWidth: 1,
-    width: '92%',
+    width: '100%',
     alignSelf: 'center',
     opacity: 0.2,
-    top: 30,
-    mariginVertical: 10,
+    marginVertical: 10,
   },
   sectionTitle: {
-    top: 4,
-    left: 22,
+    marginTop: 10,
   },
   general: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
-    marginTop: 40,
-    // marginLeft: 15,
+    width: '100%'
   },
   titleLivro: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     height: 30,
   },
   smallineSquare: {
-    width: '16%',
+    width: '18%',
     height: 45,
     backgroundColor: 'transparent', 
     borderColor: 'black', 
@@ -109,28 +126,24 @@ const styles = StyleSheet.create({
   },
   available: {
     fontSize: 14,
-    marginBottom: 8,
     textAlign: 'center',
   },
   bold: {
     fontWeight: 'bold',
     textAlign: 'center',
-    top: -6,
   },
   description: {
     fontSize: 14,
-    textAlign: 'center',
-    marginBottom: 8,
-    // top: 8,
     textAlign: 'justify',
-    width: '89%',
-    alignSelf: 'center'
+    marginBottom: 5,
+    width: '100%',
+    alignSelf: 'center',
   },
   infoContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    top: 10,
+    marginTop: 5,
   },
   infoBox: {
     alignItems: 'center',
@@ -156,33 +169,27 @@ const styles = StyleSheet.create({
   recommendationTitle: {
     fontSize: 14,
     marginBottom: 4,
-    left: 20,
-    top: 40,
+    marginTop: 5,
   },
   recommendation: {
     fontSize: 14,
     marginBottom: 10,
-    left: 20,
-    top: 40,
   },
   recommendationMod: {
     fontSize: 14,
     marginBottom: 4,
-    left: 20,
-    top: 35,
   },
   RadioButtonQuad: {
     flexDirection: 'row',
-    top: 40,
-    left: 2,
     justifyContent: 'space-evenly',
+    marginTop: 5,
   },
   button: {
     backgroundColor: '#FF735C',
     paddingVertical: 12,
     paddingHorizontal: 28,
     borderRadius: 30,
-    marginTop: 16,
+    marginTop: 10,
     marginBottom: 10,
   },
   btnPress: {

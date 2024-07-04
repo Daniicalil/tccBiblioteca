@@ -4,13 +4,13 @@ import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
 import TelaInicial from '../screens/telaInicial';
-import Perfil from '../screens/perfil';
+import Perfil from '../../ALUNO/screens/perfil';
 import Recomendacao from '../screens/recomendacao';
 import Biblioteca from '../screens/biblioteca';
 import InformacoesReserva from '../screens/informacoesReserva';
-import Notificacoes from '../screens/notificacoes';
+import Notificacoes from '../../ALUNO/screens/notificacoes';
 import InformacoesContato from '../screens/infoContato';
-import Login from '../screens/login';
+import Login from '../../ALUNO/screens/login';
 
 const CustomDrawerLabel = () => (
   <Text style={{ color: 'red', marginLeft: -18 }}>Sair</Text>

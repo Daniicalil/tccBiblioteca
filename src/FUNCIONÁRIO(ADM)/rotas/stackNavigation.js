@@ -1,13 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import Login from '../screens/login';
-import SignUp from '../screens/signUp';
-import EsqueceuSenha1 from '../screens/esqueceuSenha1';
-import EsqueceuSenha2 from '../screens/esqueceuSenha2';
+import Login from '../../ALUNO/screens/login';
+import SignUp from '../../ALUNO/screens/signUp';
+import EsqueceuSenha1 from '../../ALUNO/screens/esqueceuSenha1';
+import EsqueceuSenha2 from '../../ALUNO/screens/esqueceuSenha2';
 import TelaInicial from '../screens/telaInicial';
-import Perfil from '../screens/perfil';
-import PerfilEditar from '../screens/perfilEditar';
+import Perfil from '../../ALUNO/screens/perfil';
+import PerfilEditar from '../../ALUNO/screens/perfilEditar';
 import Recomendacao from '../screens/recomendacao';
 import InfoLivroRecomendacao from '../screens/infoLivroRecomendacao';
 import Biblioteca from '../screens/biblioteca';
@@ -17,7 +17,7 @@ import AddLivroNovo from '../screens/addLivroNovo';
 import InfoLivroBiblioteca from '../screens/infoLivroBiblioteca';
 import ReservarLivro from '../screens/reservarLivro';
 import InformacoesReserva from '../screens/informacoesReserva';
-import Notificacoes from '../screens/notificacoes';
+import Notificacoes from '../../ALUNO/screens/notificacoes';
 import InformacoesContato from '../screens/infoContato';
 
 

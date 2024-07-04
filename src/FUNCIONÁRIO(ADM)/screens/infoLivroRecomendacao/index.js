@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View, Text, Image, Pressable } from 'react-native';
+import { ScrollView, View, Text, Image, Pressable, Alert, Dimensions } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { RetangGreen, RetangOrange } from './forms';
 import { useNavigation } from '@react-navigation/native';
+import styles from './styles';
 
-import AnneFrank from '../../../../assets/Capa_dos_livros/o diário de anne frank.jpg';
 import Autor from '../../../../assets/imagens_telas/autora.png';
 import Editora from '../../../../assets/imagens_telas/editora.png';
 import Genero from '../../../../assets/imagens_telas/genero.png';
-import styles from './styles';
 
 const SquareRadioButton = ({ label, checked, onPress }) => {
   return (
@@ -44,6 +43,29 @@ export default function InfoLivroRecomendacao({ route }) {
     setSelectedMode(mode);
   };
 
+  const handleRemove = () => {
+    Alert.alert(
+      'Confirmação',
+      'Tem certeza que deseja excluir esta recomendação?',
+      [
+        {
+          text: 'Não',
+          onPress: () => console.log('Ação cancelada'),
+          style: 'cancel',
+        },
+        {
+          text: 'Sim',
+          onPress: () => {
+            // Realiza a ação de exclusão aqui
+            // Após exclusão, navega de volta para a tela anterior
+            navigation.goBack();
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
@@ -52,9 +74,19 @@ export default function InfoLivroRecomendacao({ route }) {
         <RetangOrange />
 
         <View style={styles.title}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}  />
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
           <Text style={styles.paragraph}>Informações do livro</Text>
         </View>
+
+        <Pressable
+          onPress={handleRemove}
+          style={({ pressed }) => pressed ?
+            [styles.buttonRem, styles.btnRemPress]
+            : styles.buttonRem}
+        >
+          <Text style={styles.buttonTextRem}>- Remover</Text>
+        </Pressable>
+
         <View style={styles.lineSquare}>
           <Image source={book.image} style={styles.capaLivros} />
           <Line />
@@ -91,40 +123,37 @@ export default function InfoLivroRecomendacao({ route }) {
 
           <Text style={styles.recommendationTitle}>Descrição do professor:</Text>
           <Text style={styles.recommendation}>{book.course}</Text>
-            <Text style={styles.recommendationMod}>Recomendado para:</Text>
-            <View style={styles.RadioButtonQuad}>
-              <SquareRadioButton
-                label="1º Mod. "
-                checked={selectedMode === "1stMod"}
-                onPress={() => handleModeChange("1stMod")}
-              />
-              <SquareRadioButton
-                label="2º Mod."
-                checked={selectedMode === "2ndMod"}
-                onPress={() => handleModeChange("2ndMod")}
-              />
-              <SquareRadioButton
-                label="3º Mod."
-                checked={selectedMode === "3rdMod"}
-                onPress={() => handleModeChange("3rdMod")}
-              />
-              <SquareRadioButton
-                label="4º Mod."
-                checked={selectedMode === "4thMod"}
-                onPress={() => handleModeChange("4thMod")}
-              />
-            </View>
+          <Text style={styles.recommendationMod}>Recomendado para:</Text>
+          <View style={styles.RadioButtonQuad}>
+            <SquareRadioButton
+              label="1º Mod."
+              checked={selectedMode === "1stMod"}
+              onPress={() => handleModeChange("1stMod")}
+            />
+            <SquareRadioButton
+              label="2º Mod."
+              checked={selectedMode === "2ndMod"}
+              onPress={() => handleModeChange("2ndMod")}
+            />
+            <SquareRadioButton
+              label="3º Mod."
+              checked={selectedMode === "3rdMod"}
+              onPress={() => handleModeChange("3rdMod")}
+            />
+            <SquareRadioButton
+              label="4º Mod."
+              checked={selectedMode === "4thMod"}
+              onPress={() => handleModeChange("4thMod")}
+            />
+          </View>
         </View>
 
-        <Pressable 
+        <Pressable
           onPress={() => navigation.navigate('reservarlivro')}
-            style={
-              ({pressed}) => pressed ?
-                [styles.button, styles.btnPress]
-              :
-                styles.button
-              }  
-          >
+          style={({ pressed }) => pressed ?
+            [styles.button, styles.btnPress]
+            : styles.button}
+        >
           <Text style={styles.buttonText}>Reservar livro</Text>
         </Pressable>
       </View>
