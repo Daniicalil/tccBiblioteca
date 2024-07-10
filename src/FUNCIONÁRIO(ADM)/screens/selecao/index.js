@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View, Text, Image, Pressable } from 'react-native';
+import { ScrollView, View, Text, Pressable, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import { Picker } from '@react-native-picker/picker';
 import { RetangGreen, RetangOrange } from './forms';
-
-import AnneFrank from '../../../../assets/Capa_dos_livros/o diário de anne frank.jpg';
 
 import styles from './styles';
 
@@ -16,17 +15,15 @@ const Line = () => {
 };
 
 export default function Selecao({ navigation }) {
-  const [isConfirmed, setIsConfirmed] = useState(false);
-  const [isCanceled, setIsCanceled] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [confirmedLevel, setConfirmedLevel] = useState("");
 
   const handleConfirm = () => {
-    setIsConfirmed(true);
-    setIsCanceled(false); // Garantir que o estado de cancelamento seja falso
-  };
-
-  const handleCancel = () => {
-    setIsCanceled(true);
-    setIsConfirmed(false); // Garantir que o estado de confirmação seja falso
+    if (selectedOption === "") {
+      Alert.alert("Erro", "Por favor, selecione um nível.");
+    } else {
+      setConfirmedLevel(selectedOption);
+    }
   };
 
   return (
@@ -37,12 +34,12 @@ export default function Selecao({ navigation }) {
         <RetangOrange />
 
         <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
           <Text style={styles.paragraph}>Seleção de usuários</Text>
         </View>
         <View style={styles.lineSquare}>
           <View style={styles.dados}>
-          <Text style={styles.dataCadastro}>
+            <Text style={styles.dataCadastro}>
               Cadastro realizado no dia: 12/03/2024
             </Text>
             <Text style={styles.nome}>
@@ -57,39 +54,39 @@ export default function Selecao({ navigation }) {
           </View>
           <Line />
           <Text style={styles.conf}>
-            Confirmar retirada do livro
+            Confirmar nível do usuário
           </Text>
-          <View style={styles.buttonsReserva}>
-            {isConfirmed ? (
-              <View style={styles.confirmation}>
-                <Text style={styles.confirmationText}>Livro retirado</Text>
-                <FontAwesome name="check-circle" size={24} color="green" />
-              </View>
-            ) : isCanceled ? (
-              <View style={styles.cancellation}>
-                <Text style={styles.cancellationText}>Retirada cancelada</Text>
-                <FontAwesome name="times-circle" size={24} color="red" />
-              </View>
-            ) : (
+          <View style={styles.buttonsSelecao}>
+            {confirmedLevel === "" ? (
               <>
+              <View style={styles.pickerContainer}>
+                <Picker
+                  selectedValue={selectedOption}
+                  style={styles.picker}
+                  onValueChange={(itemValue) => setSelectedOption(itemValue)}
+                >
+                  <Picker.Item label="Selecione uma opção" value="" />
+                  <Picker.Item label="Funcionário(a) - ADM" value="Funcionário(a) - ADM" />
+                  <Picker.Item label="Professor(a)" value="Professor(a)" />
+                  <Picker.Item label="Aluno(a)" value="Aluno(a)" />
+                </Picker>
+              </View>
                 <Pressable
                   style={({ pressed }) => pressed ?
                     [styles.buttonConf, styles.btnConfPress]
                     : styles.buttonConf}
                   onPress={handleConfirm}
                 >
-                  <Text style={styles.buttonTextConfReserv}>Retirada confirmada</Text>
-                </Pressable>
-
-                <Pressable
-                  style={({ pressed }) => pressed ?
-                    [styles.buttonCanc, styles.btnCancPress]
-                    : styles.buttonCanc}
-                  onPress={handleCancel}
-                >
-                  <Text style={styles.buttonTextCancReserv}>Cancelar retirada</Text>
+                  <Text style={styles.buttonTextConfSel}>Confirmar</Text>
                 </Pressable>
               </>
+            ) : (
+              <View style={styles.confirmation}>
+                <Text style={styles.confirmationText}>
+                  Nível do usuário selecionado = {confirmedLevel}
+                </Text>
+                <FontAwesome name="check-circle" size={24} color="green" />
+              </View>
             )}
           </View>
         </View>

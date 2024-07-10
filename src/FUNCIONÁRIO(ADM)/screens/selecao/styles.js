@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   lineSquare: {
     width: '90%',
-    height: 410,
+    height: 300,
     backgroundColor: 'transparent', 
     borderColor: 'black', 
     borderWidth: 1, 
@@ -94,13 +94,13 @@ const styles = StyleSheet.create({
     width: '92%',
     alignSelf: 'center',
     opacity: 0.2,
-    top: 40,
+    top: 20,
     mariginVertical: 10,
   },
   dados: {
     fontSize: 14,
     marginBottom: 8,
-    top: 50,
+    top: 20,
     textAlign: 'justify',
     width: '89%',
     left: 35,
@@ -118,11 +118,11 @@ const styles = StyleSheet.create({
     paddingBottom: 18,
   },
   conf: {
-    paddingTop: 55,
+    paddingTop: 40,
     textAlign: 'center',
     fontSize: 16,
   },
-  buttonsReserva: {
+  buttonsSelecao: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   },
   buttonConf: {
     backgroundColor: '#FF6F61',
-    paddingVertical: 6,
+    paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 30,
     marginTop: 16,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   btnConfPress: {
     opacity: 0.5,
   },
-  buttonTextConfReserv: {
+  buttonTextConfSel: {
     color: '#fff',
     textAlign: 'center',
   },
@@ -154,41 +154,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  buttonCanc: {
-    backgroundColor: '#FFF',
-    paddingVertical: 6,
-    paddingHorizontal: 16,
-    borderRadius: 30,
-    marginTop: 16,
+  pickerContainer: {
+    width: '40%',
+    marginTop: 10,
     borderWidth: 1,
     borderColor: '#000',
-    width: '30%',
-  },
-  cancellation: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    margin: 20,
-  },
-
-  cancellationText: {
-    color: 'black',
-    marginRight: 8,
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  btnCancPress: {
-    opacity: 0.5,
-  },
-  buttonTextCancReserv: {
-    textAlign: 'center',
-  },
-  observacao: {
-    opacity: 0.5,
-    paddingTop: 10,
-    marginLeft: 20,
-    marginRight: 20,
-    textAlign: 'justify',
-    fontSize: 12,
+    borderRadius: 8,
+    alignSelf: 'center',
   },
 });
 
