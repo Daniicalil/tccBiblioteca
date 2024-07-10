@@ -5,10 +5,12 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 
 import TelaInicial from '../screens/telaInicial';
 import Perfil from '../../ALUNO/screens/perfil';
+import Selecao from '../screens/selecao';
 import Recomendacao from '../screens/recomendacao';
 import Biblioteca from '../screens/biblioteca';
 import InformacoesReserva from '../screens/informacoesReserva';
 import Notificacoes from '../../ALUNO/screens/notificacoes';
+import Emprestimos from '../screens/emprestimos';
 import InformacoesContato from '../screens/infoContato';
 import Login from '../../ALUNO/screens/login';
 
@@ -130,6 +132,19 @@ export default function NavegacaoDrawer() {
           }}
         />
         <Drawer.Screen
+          name="Seleção"
+          component={Selecao}
+          options={{
+            drawerLabel:"Seleção",
+            title: "Seleção",
+            drawerIcon: ({ size, color }) => (
+            <View style={{ marginLeft: 10 }}>
+              <SimpleLineIcons name="directions" size={20} color="black" />
+            </View>
+            ),
+          }}
+        />
+        <Drawer.Screen
           name="Recomendações"
           component={Recomendacao}
           options={{
@@ -177,6 +192,19 @@ export default function NavegacaoDrawer() {
             drawerIcon: ({ size, color }) => (
             <View style={{ marginLeft: 10 }}>
               <SimpleLineIcons name="bell" size={20} color="black" />
+            </View>
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Empréstimos"
+          component={Emprestimos}
+          options={{
+            drawerLabel:"Empréstimos",
+            title: "Empréstimos",
+            drawerIcon: ({ size, color }) => (
+            <View style={{ marginLeft: 10 }}>
+              <SimpleLineIcons name="notebook" size={20} color="black" />
             </View>
             ),
           }}

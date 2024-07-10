@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   pickerContainer: {
     width: '85%',
-    marginBottom: 20,
+    marginBottom: 10,
     borderWidth: 1,
     borderColor: '#000',
     borderRadius: 8,
@@ -81,9 +81,6 @@ const styles = StyleSheet.create({
     marginTop: 16,
     width: '35%',
     alignSelf: 'center',
-    position: 'absolute',
-    right: 20,
-    bottom: 30,
   },
   btnPress: {
     backgroundColor: '#3F7263',
@@ -93,13 +90,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
   },
-  viewEditar: {
-    width: '100%', 
-    alignItems: 'flex-end', 
-    paddingRight: 20, 
-    paddingBottom: 10,
-    flex: 1,
-  },
+  // viewEditar: {
+  //   width: '100%', 
+  //   alignItems: 'flex-end', 
+  //   paddingRight: 20, 
+  //   paddingBottom: 10,
+  //   flex: 1,
+  // },
 });
 
 export default styles;

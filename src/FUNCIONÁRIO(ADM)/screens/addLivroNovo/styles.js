@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontSize: 16,
-    left: 36
+    left: 36,
+    color: '#000',
   },
   input: {
     height: 50, // Altura do TextInput
@@ -100,7 +101,8 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlignVertical: 'top', // Alinha o texto no topo
     alignSelf: 'flex-start',
-    marginLeft: 35
+    marginLeft: 35,
+    marginBottom: 15,
   },
   button: {
     backgroundColor: '#FF735C',
@@ -108,7 +110,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 28,
     borderRadius: 30,
     marginTop: 16,
-    marginTop: 50,
     width: '35%',
     alignSelf: 'center',
   },
@@ -124,7 +125,33 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     marginTop: 20,
-},
+  },
+  lineSquareImg: {
+    backgroundColor: 'transparent',
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginBottom: 20,
+    marginHorizontal: 20,
+    flex: 1,
+    width: width * 0.85, // 85% da largura da tela
+    alignItems: 'center',
+    alignSelf: 'center'
+  },
+  btnImg: {
+    backgroundColor: '#3F7263',
+    width: '45%',
+    paddingVertical: 12,
+    paddingHorizontal: 28,
+    borderRadius: 30,
+    marginTop: 6,
+    alignSelf: 'center'
+  },
+  btnText: {
+    color: '#fff'
+  },
 });
 
 export default styles;

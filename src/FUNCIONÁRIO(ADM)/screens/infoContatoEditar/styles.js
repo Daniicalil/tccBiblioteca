@@ -71,33 +71,49 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 25,
   },
-  viewEditar: {
+  viewSalvar: {
     width: '100%', 
-    alignItems: 'flex-end', 
-    paddingRight: 20, 
-    paddingBottom: 10,
     flex: 1,
   },
-  botaoEditar: {
-    width: 45,
-    height: 45,
-    borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#3F7263',
-    // overflow: 'hidden',
-    position: 'absolute',
-    right: 20,
-    bottom: 30,
+  botaoSalvar: {
+    marginTop: '3%',
+    backgroundColor: '#FF735C',
+    width: '35%',
+    height: 42,
+    alignSelf: 'center',
+    justifyContent:'center',
+    borderRadius: 20,
   },
-  iconeEditar: {
-    width: '65%',
-    height: '65%',
-    resizeMode: 'cover',
+  salvarText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+    alignSelf: 'center',
   },
   btnPress: {
-    backgroundColor: '#FF735C',
+    backgroundColor: '#3F7263',
   },
+  informacoesInput: {
+    width: '85%',
+    borderRadius: 8,
+    borderColor: '#000',
+    borderWidth: 1,
+    padding: 10,
+    textAlignVertical: 'top', // Alinha o texto no topo
+    alignSelf: 'center',
+    marginBottom: 15
+  },
+  escolaInput: {
+    width: '85%',
+    borderRadius: 8,
+    borderColor: '#000',
+    borderWidth: 1,
+    padding: 10,
+    textAlignVertical: 'top', // Alinha o texto no topo
+    alignSelf: 'center',
+    marginBottom: 15,
+    marginTop: 15,
+  }
 });
 
 export default styles;

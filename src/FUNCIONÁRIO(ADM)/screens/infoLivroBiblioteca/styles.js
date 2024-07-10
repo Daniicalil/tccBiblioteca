@@ -56,6 +56,25 @@ const styles = StyleSheet.create({
     flex: 1,
     left: 70
   },
+  buttonRem: {
+    backgroundColor: '#FF735C',
+    paddingVertical: 6,
+    paddingHorizontal: 16,
+    borderRadius: 30,
+    width: '26%',
+    alignSelf: 'flex-end',
+    marginRight: 25,
+    marginBottom: 10,
+    marginTop: -10,
+  },
+  btnRemPress: {
+    opacity: 0.5,
+  },
+  buttonTextRem: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
   lineSquare: {
     backgroundColor: 'transparent',
     borderColor: 'black',

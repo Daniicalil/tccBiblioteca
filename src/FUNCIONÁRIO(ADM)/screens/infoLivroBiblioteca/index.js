@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView ,View, Text, Image, Pressable } from 'react-native';
+import { ScrollView ,View, Text, Image, Pressable, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange} from './forms';
 import { useNavigation } from '@react-navigation/native';
@@ -21,6 +21,30 @@ const Line = () => {
 export default function InfoLivroBiblioteca({ route }) {
   const navigation = useNavigation();
   const { book } = route.params;
+
+  const handleRemove = () => {
+    Alert.alert(
+      'Confirmação',
+      'Tem certeza que deseja excluir este livro?',
+      [
+        {
+          text: 'Não',
+          onPress: () => console.log('Ação cancelada'),
+          style: 'cancel',
+        },
+        {
+          text: 'Sim',
+          onPress: () => {
+            // Realiza a ação de exclusão aqui
+            // Após exclusão, navega de volta para a tela anterior
+            navigation.goBack();
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
+
 return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
@@ -32,6 +56,16 @@ return (
           <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
           <Text style={styles.paragraph}>Informações do livro</Text>
         </View>
+
+        <Pressable
+          onPress={handleRemove}
+          style={({ pressed }) => pressed ?
+            [styles.buttonRem, styles.btnRemPress]
+            : styles.buttonRem}
+        >
+          <Text style={styles.buttonTextRem}>- Remover</Text>
+        </Pressable>
+
         <View style={styles.lineSquare}>
         <Image source={book.image} style={styles.capaLivros}/>
         <Line />
