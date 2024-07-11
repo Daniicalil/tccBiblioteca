@@ -68,6 +68,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
+  errorText: {
+    color: 'red',
+    marginTop: -6, 
+    marginBottom: 10,
+  },
+  inputError: {
+    borderColor: 'red', // Define a borda vermelha quando houver erro
+  },
 })
 
 export default styles;

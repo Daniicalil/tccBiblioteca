@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   background: {
+    flex: 1,
     width: '100%',
     height: '100%',
   },
@@ -82,6 +83,15 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  inputError: {
+    borderColor: 'red',
+    borderWidth: 1,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 5,
+    marginTop: -6,
   },
 })
 
