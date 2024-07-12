@@ -5,15 +5,19 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   background: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   contentContainer: {
-    flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
   },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
   logo: {
+    marginTop: 50,
     width: 230,
     height: 240,
   },
@@ -59,6 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
+    marginBottom: 20,
   },
   btnPress: {
     opacity: 0.5,

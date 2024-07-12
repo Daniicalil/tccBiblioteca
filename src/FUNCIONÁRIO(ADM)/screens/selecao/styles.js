@@ -162,6 +162,15 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignSelf: 'center',
   },
+  errorMessage: {
+    color: 'red',
+    marginBottom: 8,
+    marginTop: -6,
+  },
+  inputError: {
+    borderColor: 'red',
+    borderWidth: 1,
+  },
 });
 
 export default styles;

@@ -5,15 +5,19 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   background: {
-    width: '100%',
-    height: '100%',
-  },
-  contentContainer: {
     flex: 1,
     justifyContent: 'center',
+    resizeMode: 'cover',
+  },
+  contentContainer: {
     alignItems: 'center',
   },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
   logo: {
+    marginTop: 50,
     width: 320,
     height: 290,
   },
@@ -35,6 +39,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#e0e0e0',
     color: '#929292',
+  },
+  inputError: {
+    borderColor: 'red',
+    borderWidth: 1,
   },
   password: {
     flexDirection: 'row',
@@ -60,18 +68,24 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   loginButton: {
-    marginTop: '3%',
+    marginTop: 10,
     backgroundColor: '#FF735C',
     width: '35%',
     height: 42,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
+    marginBottom: 20,
   },
   loginText: {
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 8,
+    marginTop: -6,
   },
   btnPress: {
     opacity: 0.5,

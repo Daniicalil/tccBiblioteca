@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StatusBar, Text, View, Image, TextInput, Pressable, ImageBackground, Alert } from 'react-native';
+import { ScrollView, StatusBar, Text, View, Image, TextInput, Pressable, ImageBackground, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import imgLogin from '../../../../assets/imagens_telas/6737457.png';
 import imgDesign from '../../../../assets/imagens_telas/designPage.png';
@@ -8,14 +8,31 @@ import styles from './styles';
 export default function Login({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [password, setPassword] = useState('');
+  const [rm, setRm] = useState('');
+  const [errors, setErrors] = useState({});
+
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
+  const handleLogin = () => {
+    const newErrors = {};
+    if (!rm) newErrors.rm = '*Preeencha o campo';
+    if (!password) newErrors.password = '*Preeencha o campo';
+  
+    setErrors(newErrors);
+  
+    if (Object.keys(newErrors).length === 0) {
+      // Aqui você pode realizar a lógica de autenticação
+      navigation.navigate('Home');
+    }    
+  };
+  
+
   return (
-    <View style={styles.container}>
-      <ImageBackground source={imgDesign} style={styles.background}>
+    <ImageBackground source={imgDesign} style={styles.background}>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
         <StatusBar backgroundColor='#fff' translucent={false} />
         <View style={styles.contentContainer}>
           <Image
@@ -25,20 +42,26 @@ export default function Login({ navigation }) {
           <Text style={styles.paragraph}>Login</Text>
           <TextInput
             placeholder='RM'
-            style={styles.input}
+            style={[styles.input, errors.rm && styles.inputError]}
+            value={rm}
+            onChangeText={setRm}
+            keyboardType='numeric'
           />
+          {errors.rm && <Text style={styles.errorText}>{errors.rm}</Text>}
+
           <View style={styles.password}>
             <TextInput
-              placeholder='senha'
-              style={[styles.input, styles.passwordInput]}
-              secureTextEntry={!passwordVisible}
-              value={password}
-              onChangeText={setPassword}
+               placeholder='Senha'
+               style={[styles.input, styles.passwordInput, errors.password && styles.inputError]}
+               secureTextEntry={!passwordVisible}
+               value={password}
+               onChangeText={setPassword}
             />
             <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
               <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
             </Pressable>
           </View>
+          {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
 
           <Pressable 
             onPress={() => navigation.navigate('signUp')}
@@ -65,7 +88,7 @@ export default function Login({ navigation }) {
           </Pressable>
 
           <Pressable 
-            onPress={() => navigation.navigate('Home')} 
+            onPress={handleLogin}
             style={
               ({pressed}) => pressed ?
                 [styles.loginButton, styles.btnPress]
@@ -75,9 +98,8 @@ export default function Login({ navigation }) {
           >
               <Text style={styles.loginText}>Fazer login</Text>
           </Pressable>
-
-        </View>
+          </View>
+        </ScrollView>
       </ImageBackground>
-    </View>
   );
 }

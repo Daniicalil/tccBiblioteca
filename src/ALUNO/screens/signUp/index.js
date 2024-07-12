@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Image, TextInput, Pressable, ImageBackground, ScrollView } from 'react-native';
+import { Text, View, Image, TextInput, Pressable, ImageBackground, ScrollView, Alert } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 import imgSignup from '../../../../assets/imagens_telas/img_cadastro.png';
 import imgDesign from '../../../../assets/imagens_telas/designPage.png';
 
 import styles from './styles';
-
 
 export default function SignUp({ navigation }) {
   const [value, setValue] = useState('');
@@ -38,22 +37,30 @@ export default function SignUp({ navigation }) {
     if (!passwordConf) newErrors.passwordConf = '*Campo obrigatório';
     if (!value) newErrors.value = '*Campo obrigatório';
 
+    // Verificar se as senhas são iguais
+    if (password !== passwordConf) {
+      newErrors.password = '*As senhas não correspondem';
+      newErrors.passwordConf = '*As senhas não correspondem';
+    }
+
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      navigation.navigate('login');
+      // Aqui você pode exibir o alerta
+      Alert.alert(
+        'Cadastro realizado',
+        'Aguarde o administrador verificar qual o seu nível de acesso.',
+        [{ text: 'OK', onPress: () => navigation.navigate('login') }]
+      );
     }
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <ImageBackground source={imgDesign} style={styles.background}>
+    <ImageBackground source={imgDesign} style={styles.background}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
         <StatusBar backgroundColor='#fff' transLucent={false} />
         <View style={styles.contentContainer}>
-          <Image
-            source={imgSignup}
-            style={styles.logo}
-          />
+          <Image source={imgSignup} style={styles.logo} />
           <Text style={styles.paragraph}>Cadastro</Text>
 
           <TextInput
@@ -93,12 +100,11 @@ export default function SignUp({ navigation }) {
               <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
             </Pressable>
           </View>
-          {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
 
           <View style={styles.confirmPassword}>
             <TextInput
               placeholder='Confirmar senha'
-              style={[styles.input, styles.passwordInput, errors.passwordConf && styles.inputError]}
+              style={[styles.input, styles.passwordInput, errors.password && styles.inputError]}
               secureTextEntry={!passwordVisibleConf}
               value={passwordConf}
               onChangeText={setPasswordConf}
@@ -107,42 +113,42 @@ export default function SignUp({ navigation }) {
               <Ionicons name={passwordVisibleConf ? 'eye-off' : 'eye'} size={24} color="black" />
             </Pressable>
           </View>
-          {errors.passwordConf && <Text style={styles.errorText}>{errors.passwordConf}</Text>}
+          {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
 
           <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
             <Text style={styles.sexo}>Sexo:</Text>
-            <View style={styles.seletores}>
-              <Text>
+            <View style={styles.radioOptions}>
+              <View style={styles.radioOption}>
                 <RadioButton value="Feminino" color='#3F7263' />
-                Feminino
-              </Text>
-              <Text>
+                <Text style={styles.radioText}>Feminino</Text>
+              </View>
+              <View style={styles.radioOption}>
                 <RadioButton value="Masculino" color='#3F7263' />
-                Masculino
-              </Text>
-              <Text>
+                <Text style={styles.radioText}>Masculino</Text>
+              </View>
+              <View style={styles.radioOption}>
                 <RadioButton value="Neutro" color='#3F7263' />
-                Neutro
-              </Text>
+                <Text style={styles.radioText}>Neutro</Text>
+              </View>
             </View>
           </RadioButton.Group>
           {errors.value && <Text style={styles.errorText}>{errors.value}</Text>}
 
-          <Pressable 
+          <Pressable
             onPress={() => navigation.navigate('login')}
-            style={({pressed}) => pressed ? [styles.touchText, styles.TouchPress] : styles.touchText}
+            style={({ pressed }) => pressed ? [styles.touchText, styles.TouchPress] : styles.touchText}
           >
             <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
           </Pressable>
 
-          <Pressable 
+          <Pressable
             onPress={handleSignUp}
-            style={({pressed}) => pressed ? [styles.signUpButton, styles.btnPress] : styles.signUpButton}
+            style={({ pressed }) => pressed ? [styles.signUpButton, styles.btnPress] : styles.signUpButton}
           >
             <Text style={styles.signUpText}>Fazer cadastro</Text>
           </Pressable>
-        </View> 
-      </ImageBackground>
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </ImageBackground>
   );
 }

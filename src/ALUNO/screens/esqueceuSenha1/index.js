@@ -1,6 +1,6 @@
 import { StatusBar, Alert } from 'react-native'; 
 import { useState } from 'react';
-import { Text, View, Image, TextInput, Pressable, ImageBackground } from 'react-native';
+import { ScrollView, Text, View, Image, TextInput, Pressable, ImageBackground } from 'react-native';
 import imgesqsenha from '../../../../assets/imagens_telas/6333054.png';
 import imgDesign from '../../../../assets/imagens_telas/designPage.png';
 
@@ -39,9 +39,9 @@ export default function EsqueceuSenha1({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground source={imgDesign} style={styles.background}>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
       <StatusBar backgroundColor='#fff' translucent={false} />
-      <ImageBackground source={imgDesign} style={styles.background}>
         <View style={styles.contentContainer}>
           <Image source={imgesqsenha} style={styles.logo} />
           <Text style={styles.paragraph}>Redefinir senha</Text>
@@ -81,7 +81,7 @@ export default function EsqueceuSenha1({ navigation }) {
           </Pressable>
 
         </View>
+        </ScrollView>
       </ImageBackground>
-    </View>
   );
 }
