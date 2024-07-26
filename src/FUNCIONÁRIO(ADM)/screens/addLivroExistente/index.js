@@ -26,6 +26,8 @@ export default function AddLivroExistente({ navigation }) {
     { label: 'A revolução dos bichos - George Orwell', value: 'Arevoluçãodosbichos(GeorgeOrwell)' },
     { label: 'Procure nas cinzas - Charlie Donlea', value: 'Procurenascinzas(CharlieDonlea)' },
     { label: 'Harry Potter e a Pedra Filosofal - J.K. Rowling', value: 'HarryPottereaPedraFilosofal(J.K.Rowling)' },
+    { label: 'Drácula - Bram Stoker', value: 'Dracula(BramStoker)' },
+    { label: 'Os Sete Maridos de Evelyn Hugo - Taylor Jekins Reid', value: 'Ossetemaridosdeevelynhugo(TaylorJekinsReid)' },
   ]; 
 
   const handleAddLivroExist = () => {
