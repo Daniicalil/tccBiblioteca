@@ -22,14 +22,14 @@ const CustomDrawerLabel = () => (
 const styles = StyleSheet.create({
   drawerHeader: {
     backgroundColor: '#fff',
-    height: 150,
+    height: 170,
     alignItems: 'center',
     justifyContent: 'center',
   },
   drawerImage: {
-    marginTop: 40,
-    marginBottom: 20,
-    height: 120,
+    marginTop: 50,
+    marginBottom: 30,
+    height: 130,
     width: 120,
   },
   contentContainer: {
@@ -88,7 +88,7 @@ export default function NavegacaoDrawer() {
               {/* Drawer Header */}
               <View style={styles.drawerHeader}>
                 <Image
-                  source={require('../../../assets/imgs/drawer.png')} // Update this path
+                  source={require('../../../assets/imgs/logocomescrita.png')}
                   style={styles.drawerImage}
                 />
               </View>

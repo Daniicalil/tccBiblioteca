@@ -8,11 +8,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   imgLogo: {
-    width: '20%',
-    height: '30%',
+    width: '10%',
+    height: '42%',
     alignSelf: 'center',
     position: 'absolute',
-    bottom: 8
+    bottom: 4
   },
   imgEtec: {
     width: '15%',
