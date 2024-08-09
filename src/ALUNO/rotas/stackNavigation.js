@@ -16,7 +16,7 @@ import ReservarLivro from '../screens/reservarLivro';
 import InformacoesReserva from '../screens/informacoesReserva';
 import Notificacoes from '../screens/notificacoes';
 import InformacoesContato from '../screens/infoContato';
-
+import SobreNos from '../screens/sobreNos';
 
 import NavegacaoDrawer from './drawerNavigation';
 
@@ -46,6 +46,7 @@ export default function Navegacao() {
                 <Stack.Screen name="informacoesreserva" component={InformacoesReserva} />
                 <Stack.Screen name="notificacoes" component={Notificacoes} />
                 <Stack.Screen name="informacoescontato" component={InformacoesContato} />
+                <Stack.Screen name="sobrenos" component={SobreNos} />
             </Stack.Navigator>
         </NavigationContainer>
     );

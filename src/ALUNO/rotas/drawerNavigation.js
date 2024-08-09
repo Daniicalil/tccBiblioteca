@@ -39,19 +39,26 @@ const styles = StyleSheet.create({
     borderTopColor: '#ccc',
     paddingVertical: 20,
     paddingHorizontal: 20,
-    alignItems: 'flex-end'
+    display: 'flex',
+    flexDirection: 'row',
+
   },
   footerText: {
     fontSize: 14,
-    color: '#555',
-    alignItems: 'flex-end'
+    color: '#000',
+  },
+  touchText: {
+    color: '#FF735C',
+  },
+  TouchPress: {
+    color: '#3F7263',
   },
 });
 
 // Drawer Navigator
 const Drawer = createDrawerNavigator();
 
-export default function NavegacaoDrawer() {
+export default function NavegacaoDrawer({ navigation }) {
   return (
       <Drawer.Navigator
         screenOptions={{
@@ -95,12 +102,22 @@ export default function NavegacaoDrawer() {
               <DrawerItemList {...props} />
             </DrawerContentScrollView>
             <View style={styles.footerContainer}>
-              <Text style={styles.footerText}>Contato das desenvolvedoras</Text>
-             </View>
+              <Text style={styles.footerText}>Desenvolvido por </Text>
+                <Pressable 
+                  onPress={() => navigation.navigate('sobrenos')}
+                  style={
+                  ({pressed}) => pressed ?
+                  [styles.touchText, styles.TouchPress]
+                :
+                  styles.touchText
+                }
+              >
+                  <Text style={styles.touchText}>Danikawari</Text>
+                </Pressable>
+             </View> 
           </View>
         )}
       >
-
        
         {/* Definido as telas da drawer aqui */}
         <Drawer.Screen

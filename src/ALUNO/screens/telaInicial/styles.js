@@ -3,13 +3,13 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   retangGreen: {
     width: '100%', 
-    height: 200, 
+    height: 100, 
     backgroundColor: '#3F7263',
     justifyContent: 'space-between',
   },
   imgLogo: {
-    width: '20%',
-    height: '30%',
+    width: '12%',
+    height: '42%',
     alignSelf: 'center',
     position: 'absolute',
     bottom: 8
@@ -30,17 +30,14 @@ const styles = StyleSheet.create({
   },
   barraPesq: {
     backgroundColor: '#FFF',
-    width: '100%',
+    width: '85%',
     marginBottom: '2%',
     alignSelf: 'center',
-    border: '1',
+    borderWidth: 1,
     borderColor: '#CCC',
 
   },
   placeholderStyle: {
-    opacity: 0.5, 
-  },
-  iconStyle: {
     opacity: 0.5, 
   },
   funcionamento: {
@@ -78,7 +75,7 @@ const styles = StyleSheet.create({
   course: {
     marginTop: 10,
     fontSize: 12,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     textAlign: 'center',
   },
   image: {
