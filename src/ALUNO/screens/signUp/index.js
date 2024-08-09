@@ -58,7 +58,7 @@ export default function SignUp({ navigation }) {
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <StatusBar backgroundColor='#fff' transLucent={false} />
+        {/* <StatusBar backgroundColor='#fff' transLucent={false} /> */}
         <View style={styles.contentContainer}>
           <Image source={imgSignup} style={styles.logo} />
           <Text style={styles.paragraph}>Cadastro</Text>
@@ -119,15 +119,15 @@ export default function SignUp({ navigation }) {
             <Text style={styles.sexo}>Sexo:</Text>
             <View style={styles.radioOptions}>
               <View style={styles.radioOption}>
-                <RadioButton value="Feminino" color='#3F7263' uncheckedColor="#CCC"/>
+                <RadioButton value="Feminino" color='#FF735C' uncheckedColor="#CCC"/>
                 <Text style={styles.radioText}>Feminino</Text>
               </View>
               <View style={styles.radioOption}>
-                <RadioButton value="Masculino" color='#3F7263' uncheckedColor="#CCC"/>
+                <RadioButton value="Masculino" color='#FF735C' uncheckedColor="#CCC"/>
                 <Text style={styles.radioText}>Masculino</Text>
               </View>
               <View style={styles.radioOption}>
-                <RadioButton value="Neutro" color='#3F7263' uncheckedColor="#CCC"/>
+                <RadioButton value="Neutro" color='#FF735C' uncheckedColor="#CCC"/>
                 <Text style={styles.radioText}>Neutro</Text>
               </View>
             </View>

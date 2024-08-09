@@ -41,7 +41,7 @@ export default function EsqueceuSenha1({ navigation }) {
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <StatusBar backgroundColor='#fff' translucent={false} />
+      {/* <StatusBar backgroundColor='#fff' translucent={false} /> */}
         <View style={styles.contentContainer}>
           <Image source={imgesqsenha} style={styles.logo} />
           <Text style={styles.paragraph}>Redefinir senha</Text>
@@ -50,7 +50,7 @@ export default function EsqueceuSenha1({ navigation }) {
           </Text>
           
           <TextInput
-            placeholder='e-mail'
+            placeholder='E-mail'
             style={[styles.input, errorMessage ? styles.inputError : null]}
             value={email}
             onChangeText={(text) => {

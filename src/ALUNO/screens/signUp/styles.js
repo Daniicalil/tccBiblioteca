@@ -40,6 +40,10 @@ const styles = StyleSheet.create({
     borderColor: '#CCC',
     color: '#929292',
   },
+  inputError: {
+    borderColor: 'red',
+    borderWidth: 1,
+  },
   password: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -83,12 +87,17 @@ const styles = StyleSheet.create({
   signUpButton: {
     marginTop: 10,
     backgroundColor: '#FF735C',
-    width: '35%',
+    width: '38%',
     height: 42,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
     marginBottom: 20,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 8,
+    marginTop: -6,
   },
   btnPress: {
     opacity: 0.5,

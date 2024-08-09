@@ -23,7 +23,7 @@ import styles from './styles';
                 style={styles.barraPesq}
                 inputStyle={styles.placeholderStyle}
                 icon={({size, color}) => (
-                  <Icon name="search" size={20} color="#000" style={styles.iconStyle}/>
+                  <Icon name="search" size={20} color="#CCC" style={styles.iconStyle}/>
                 )}
               />
               <Funcionamento />

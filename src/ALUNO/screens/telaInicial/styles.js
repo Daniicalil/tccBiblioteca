@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   retangGreen: {
     width: '100%', 
-    height: 100, 
+    height: 200, 
     backgroundColor: '#3F7263',
     justifyContent: 'space-between',
   },
@@ -29,10 +29,13 @@ const styles = StyleSheet.create({
     marginBottom: '3%',
   },
   barraPesq: {
-    backgroundColor: '#DAD7D7',
-    width: '80%',
+    backgroundColor: '#FFF',
+    width: '100%',
     marginBottom: '2%',
     alignSelf: 'center',
+    border: '1',
+    borderColor: '#CCC',
+
   },
   placeholderStyle: {
     opacity: 0.5, 

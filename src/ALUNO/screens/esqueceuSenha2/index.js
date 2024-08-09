@@ -51,7 +51,7 @@ export default function EsqueceuSenha2({ navigation }) {
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <StatusBar backgroundColor='#fff' transLucent={false} />
+      {/* <StatusBar backgroundColor='#fff' transLucent={false} /> */}
       <View style={styles.contentContainer}>
       <Image
         source={imgesqsenha}
@@ -71,7 +71,7 @@ export default function EsqueceuSenha2({ navigation }) {
 
        <View style={styles.password}>
         <TextInput
-          placeholder='senha'
+          placeholder='Senha'
           style={[styles.input, styles.passwordInput, errors.password && styles.inputError]}
           secureTextEntry={!passwordVisible}
           value={password}

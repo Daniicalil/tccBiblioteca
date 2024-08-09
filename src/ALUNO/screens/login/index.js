@@ -33,7 +33,7 @@ export default function Login({ navigation }) {
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <StatusBar backgroundColor='#fff' translucent={false} />
+        {/* <StatusBar backgroundColor='#fff' translucent={false} /> */}
         <View style={styles.contentContainer}>
           <Image
             source={imgLogin}
