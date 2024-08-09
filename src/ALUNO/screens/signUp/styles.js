@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   signUpText: {
     color: '#fff',
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     fontSize: 16,
   },
 })

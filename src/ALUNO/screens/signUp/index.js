@@ -119,15 +119,15 @@ export default function SignUp({ navigation }) {
             <Text style={styles.sexo}>Sexo:</Text>
             <View style={styles.radioOptions}>
               <View style={styles.radioOption}>
-                <RadioButton value="Feminino" color='#3F7263' />
+                <RadioButton value="Feminino" color='#3F7263' uncheckedColor="#CCC"/>
                 <Text style={styles.radioText}>Feminino</Text>
               </View>
               <View style={styles.radioOption}>
-                <RadioButton value="Masculino" color='#3F7263' />
+                <RadioButton value="Masculino" color='#3F7263' uncheckedColor="#CCC"/>
                 <Text style={styles.radioText}>Masculino</Text>
               </View>
               <View style={styles.radioOption}>
-                <RadioButton value="Neutro" color='#3F7263' />
+                <RadioButton value="Neutro" color='#3F7263' uncheckedColor="#CCC"/>
                 <Text style={styles.radioText}>Neutro</Text>
               </View>
             </View>
