@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontWeight: '500',
+    color: '#FFF',
   },
 })
 

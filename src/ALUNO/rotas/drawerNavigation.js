@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   drawerImage: {
     marginTop: 40,
     marginBottom: 20,
-    height: 120,
+    height: 140,
     width: 120,
   },
   contentContainer: {
@@ -82,6 +82,7 @@ export default function NavegacaoDrawer({ navigation }) {
           drawerStyle: {
             width: '55%',
             backgroundColor: '#fff',
+
           },
           drawerIcon: {
             marginLeft: -50,
@@ -93,7 +94,7 @@ export default function NavegacaoDrawer({ navigation }) {
               {/* Drawer Header */}
               <View style={styles.drawerHeader}>
                 <Image
-                  source={require('../../../assets/imgs/drawer.png')} // Update this path
+                  source={require('../../../assets/imgs/logocomescrita.png')} // Update this path
                   style={styles.drawerImage}
                 />
               </View>

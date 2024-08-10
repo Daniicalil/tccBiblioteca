@@ -17,6 +17,7 @@ export default function Login({ navigation }) {
   };
 
   const handleLogin = () => {
+    // Verifica os campos obrigatórios para fazer o login
     const newErrors = {};
     if (!rm) newErrors.rm = '*Preeencha o campo';
     if (!password) newErrors.password = '*Preeencha o campo';
@@ -33,7 +34,7 @@ export default function Login({ navigation }) {
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {/* <StatusBar backgroundColor='#fff' translucent={false} /> */}
+      <StatusBar transLucent={true} backgroundColor="transparent" />
         <View style={styles.contentContainer}>
           <Image
             source={imgLogin}

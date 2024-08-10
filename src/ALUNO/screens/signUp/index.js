@@ -29,6 +29,7 @@ export default function SignUp({ navigation }) {
   };
 
   const handleSignUp = () => {
+    // Verificar se o campo esta vazio
     const newErrors = {};
     if (!rm) newErrors.rm = '*Campo obrigatório';
     if (!name) newErrors.name = '*Campo obrigatório';
@@ -58,7 +59,7 @@ export default function SignUp({ navigation }) {
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {/* <StatusBar backgroundColor='#fff' transLucent={false} /> */}
+      <StatusBar transLucent={true} backgroundColor="transparent" />
         <View style={styles.contentContainer}>
           <Image source={imgSignup} style={styles.logo} />
           <Text style={styles.paragraph}>Cadastro</Text>

@@ -24,8 +24,8 @@ export default function EsqueceuSenha2({ navigation }) {
   };
 
   const handleResetPassword = () => {
+    // Verifica se o campo esta vazio
     const newErrors = {};
-
     if (!code) newErrors.code = '*Preeencha o campo';
     if (!password) newErrors.password = '*Preeencha o campo';
     if (!passwordConf) newErrors.passwordConf = '*Preeencha o campo';
@@ -51,7 +51,7 @@ export default function EsqueceuSenha2({ navigation }) {
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      {/* <StatusBar backgroundColor='#fff' transLucent={false} /> */}
+      <StatusBar transLucent={true} backgroundColor="transparent" />
       <View style={styles.contentContainer}>
       <Image
         source={imgesqsenha}

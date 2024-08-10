@@ -41,7 +41,7 @@ export default function EsqueceuSenha1({ navigation }) {
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      {/* <StatusBar backgroundColor='#fff' translucent={false} /> */}
+      <StatusBar transLucent={true} backgroundColor="transparent" />
         <View style={styles.contentContainer}>
           <Image source={imgesqsenha} style={styles.logo} />
           <Text style={styles.paragraph}>Redefinir senha</Text>
