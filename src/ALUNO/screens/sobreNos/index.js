@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, Text, View, ImageBackground, StatusBar } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
-import imgDesign from '../../../../assets/imagens_telas/sobrenos.jpg';
+import imgDesign from '../../../../assets/imagens_telas/designPage.png';
 import styles from './styles';
 
 export default function SobreNos({ navigation }) {
@@ -10,7 +10,7 @@ export default function SobreNos({ navigation }) {
     <ScrollView contentContainerStyle={styles.scrollContainer}>
         <StatusBar translucent={true} backgroundColor="transparent" />
         <View style={styles.circle}>
-          <FontAwesome name="angle-left" size={30} color="white" style={styles.icon} onPress={() => navigation.goBack()}/>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
         </View>
         <View style={styles.container}>
           <View style={styles.card}>

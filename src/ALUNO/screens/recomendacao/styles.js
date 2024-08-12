@@ -28,6 +28,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
+  container: {
+    backgroundColor: 'white',
+    flex: 1,
+  },
   titleContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -48,10 +52,12 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   barraPesq: {
-    backgroundColor: '#DAD7D7',
-    width: '80%',
-    marginBottom: '4%',
+    backgroundColor: '#FFF',
+    width: '85%',
+    marginBottom: '2%',
     alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: '#CCC',
   },
   placeholderStyle: {
     opacity: 0.5, 

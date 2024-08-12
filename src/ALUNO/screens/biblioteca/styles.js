@@ -48,10 +48,12 @@ const styles = StyleSheet.create({
     marginLeft: 70,
   },
   barraPesq: {
-    backgroundColor: '#DAD7D7',
-    width: '80%',
-    marginBottom: '4%',
+    backgroundColor: '#FFF',
+    width: '85%',
+    marginBottom: '2%',
     alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: '#CCC',
   },
   placeholderStyle: {
     opacity: 0.5, 

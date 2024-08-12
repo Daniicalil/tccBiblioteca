@@ -15,6 +15,7 @@ export default function Principal({ voltar }) {
     const [searchQuery, setSearchQuery] = useState('');
 
     return (
+    <View style={styles.container}>
         <View style={styles.headerContainer}>
             {/* <StatusBar backgroundColor='#3F7263' translucent={false} /> */}
             <RetangGreen />
@@ -34,5 +35,6 @@ export default function Principal({ voltar }) {
                 )}
             />
         </View>
+    </View>
     );
 }

@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     width: 45,
     height: 45,
     borderRadius: 50,
-    backgroundColor:  'rgba(0, 0, 0, 0.863)',
+    backgroundColor:  '#ffffffd8',
     alignItems: 'center',
     justifyContent: 'center',
     left: 15,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 3,
     margin: 10,
-    backgroundColor:  'rgba(0, 0, 0, 0.863)',
+    backgroundColor:  '#ffffffd8',
     height: '80%',
     width: '90%',
   },
@@ -52,25 +52,25 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
-    color: '#FFF',
+    color: '#000',
     textAlign: 'center',
   },
   description: {
     fontSize: 14,
-    color: '#FFF',
+    color: '#000',
     textAlign: 'center',
   },
   aboutUs: {
     fontSize: 14,
-    color: '#FFF',
+    color: '#000',
   },
   membros: {
     fontSize: 14,
-    color: '#FFF',
+    color: '#000',
   },
   name: {
     fontWeight: '500',
-    color: '#FFF',
+    color: '#000',
   },
 })
 

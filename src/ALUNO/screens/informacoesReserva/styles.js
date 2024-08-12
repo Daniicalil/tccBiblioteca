@@ -48,6 +48,15 @@ const styles = StyleSheet.create({
     left: 28,
     top: 10
   },
+  barraPesq: {
+    backgroundColor: '#FFF',
+    width: '85%',
+    marginBottom: '2%',
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: '#CCC',
+    marginBottom: 20,
+  },
   paragraph: {
     marginTop: '3%',
     marginBottom: '6%',
