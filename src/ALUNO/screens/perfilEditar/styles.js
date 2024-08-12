@@ -55,9 +55,14 @@ const styles = StyleSheet.create({
     left: 70
   },
   fotoPadraoPerfil: {
-    backgroundColor: '#3F7263',
+    backgroundColor: '#FFF',
     alignSelf: 'center',
-    paddingBottom: '5'
+    paddingBottom: '5',
+    borderColor: '#CCC',
+    borderWidth: 1,
+    objectFit: 'cover',
+    width: 'auto',
+    height: 'auto',
   },
   fotoContainer: {
     alignItems: 'center',
@@ -82,20 +87,20 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   texto: {
-    marginLeft: 90, 
+    marginLeft: 70, 
   },
   input: {
-    width: '65%',
+    width: '75%',
     height: 42,
-    backgroundColor: '#DAD7D7',
+    backgroundColor: '#FFF',
     marginTop: 2,
     marginBottom: 10,
     paddingLeft: 15,
     padding: 8,
-    borderRadius: 15,
+    borderRadius: 30,
     borderWidth: 1,
-    borderColor: '#e0e0e0',
-    color: '#929292',
+    borderColor: '#CCC',
+    color: '#000',
     alignSelf: 'center',
   },
   // passwordContainer: {

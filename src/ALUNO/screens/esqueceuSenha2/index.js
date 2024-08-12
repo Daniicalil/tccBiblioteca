@@ -51,7 +51,9 @@ export default function EsqueceuSenha2({ navigation }) {
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <StatusBar transLucent={true} backgroundColor="transparent" />
+    <StatusBar barStyle="dark-content"  // ou "light-content" para texto claro
+               translucent={true}
+               backgroundColor="transparent"  />
       <View style={styles.contentContainer}>
       <Image
         source={imgesqsenha}

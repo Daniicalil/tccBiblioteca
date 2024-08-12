@@ -8,7 +8,7 @@ import { RetangGreen, RetangOrange } from './forms';
 
 import styles from './styles';
 
-import FotoPadraoPerfil from '../../../../assets/imagens_telas/perfil.png';
+import FotoPadraoPerfil from '../../../../assets/imagens_telas/perfil.jpg';
 import IconeEditar from '../../../../assets/imagens_telas/editar_perfil.png';
 
 export default function Perfil({ navigation }) {
@@ -37,7 +37,7 @@ export default function Perfil({ navigation }) {
         </View>
       </View>
 
-      <Avatar.Image size={120} color="#3F7263" source={FotoPadraoPerfil} style={styles.fotoPadraoPerfil} />
+        <Avatar.Image size={120} source={FotoPadraoPerfil} style={styles.fotoPadraoPerfil} />
       {/* <View style={{height: 100, width: 100, borderRadius: 90, backgroundColor: '#0f0', alignSelf: 'center'}}>
         <Image source={FotoPadraoPerfil} style={{height: 100, width: 100, borderRadius: 90,}}  />
       </View> */}
@@ -83,9 +83,10 @@ export default function Perfil({ navigation }) {
         <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value} >
           <Text style={styles.sexo}>Sexo:</Text>
           <View style={styles.seletores}>
-            <Text><RadioButton value="Feminino" color='#3F7263' disabled={true} />Feminino</Text>
-            <Text> <RadioButton value="Masculino" color='#3F7263' disabled={true} />Masculino</Text>
-            <Text><RadioButton value="Neutro" color='#3F7263' disabled={true} />Neutro</Text>
+            <Text><RadioButton value="Feminino" color='#FF735C' disabled={true} />Feminino</Text>
+            <Text><RadioButton value="Masculino" color='#FF735C' disabled={true} />Masculino</Text>
+            <Text><RadioButton value="Neutro" color='#FF735C' disabled={true} />Neutro</Text>
+            <Text><RadioButton value="Padrão" color='#FF735C' disabled={true} />Padrão</Text>
           </View>
         </RadioButton.Group>        
       </View>

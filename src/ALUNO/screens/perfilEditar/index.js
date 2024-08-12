@@ -9,7 +9,7 @@ import { Entypo } from '@expo/vector-icons';
 
 import styles from './styles';
 
-import FotoPadraoPerfil from '../../../../assets/imagens_telas/perfil.png';
+import FotoPadraoPerfil from '../../../../assets/imagens_telas/perfil.jpg';
 import IconeEditar from '../../../../assets/imagens_telas/editar_perfil.png';
 
 import { launchImageLibrary } from 'react-native-image-picker';
@@ -102,9 +102,10 @@ export default function PerfilEditar({ navigation }) {
         <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
           <Text style={styles.sexo}>Sexo:</Text>
           <View style={styles.seletores}>
-            <Text><RadioButton value="Feminino" color='#3F7263' />Feminino</Text>
-            <Text><RadioButton value="Masculino" color='#3F7263' />Masculino</Text>
-            <Text><RadioButton value="Neutro" color='#3F7263' />Neutro</Text>
+            <Text><RadioButton value="Feminino" color='#FF735C' />Feminino</Text>
+            <Text><RadioButton value="Masculino" color='#FF735C' />Masculino</Text>
+            <Text><RadioButton value="Neutro" color='#FF735C' />Neutro</Text>
+            <Text><RadioButton value="Padrão" color='#FF735C' />Padrão</Text>
           </View>
         </RadioButton.Group>
       </View>
