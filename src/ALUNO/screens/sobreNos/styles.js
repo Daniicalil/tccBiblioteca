@@ -29,24 +29,33 @@ const styles = StyleSheet.create({
     left: 15,
     top: 10,
   },
-  icon: {
-    
+  header: {
+    display: 'flex',
+    textAlign: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
+    fontSize: 18,
+    marginTop: 16,
   },
   card: {
-    borderRadius: 10,
+    borderRadius: 64,
     overflow: 'hidden',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
+    shadowOffset: { width: 0, height: 100 },
+    shadowOpacity: 0.5,
+    shadowRadius: 8,
+    elevation: 100, // Para Android, para que a sombra seja visível
     margin: 10,
-    backgroundColor:  '#ffffffd8',
-    height: '80%',
+    backgroundColor:  '#ffffffe3',
     width: '90%',
   },
   content: {
     padding: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.096)',
+    display: 'flex',
+    width: '100%',
+    
   },
   title: {
     fontSize: 18,
@@ -59,14 +68,36 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#000',
     textAlign: 'center',
+    width: '100%',
+    maxWidth: '98%',
+    margin: 0,
+    textAlign: 'center',
   },
-  aboutUs: {
+  membrosContainer: {
     fontSize: 14,
     color: '#000',
+    marginTop: 8,
+    marginRight: 8,
+    marginBottom: 20,
+    marginLeft: 8,
+    fontSize: 18,
   },
   membros: {
     fontSize: 14,
     color: '#000',
+    textAlign: 'justify',
+    flexDirection: 'row', // Alinha a imagem e o texto horizontalmente
+    alignItems: 'flex-start', // Alinha a imagem e o texto no topo
+  },
+  membroImage: {
+    width: 60, // Ajuste o tamanho conforme necessário
+    height: 60, // Ajuste o tamanho conforme necessário
+    borderRadius: 8,
+    marginRight: 10, // Espaço entre a imagem e o texto
+    marginTop: 4,
+  },
+  membroText: {
+    flex: 1, // Permite que o texto ocupe o espaço restante
   },
   name: {
     fontWeight: '500',
