@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', // Alinha a imagem e o texto horizontalmente
     alignItems: 'flex-start', // Alinha a imagem e o texto no topo
     flexWrap: 'wrap',
+    
   },
   membroTextContainer: {
     flex: 1, // Permite que o texto ocupe o espaço restante
