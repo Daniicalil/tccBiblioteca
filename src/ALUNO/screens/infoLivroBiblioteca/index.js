@@ -21,6 +21,7 @@ const Line = () => {
 export default function InfoLivroBiblioteca({ route }) {
   const navigation = useNavigation();
   const { book } = route.params;
+  
 return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>

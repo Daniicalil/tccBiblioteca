@@ -18,7 +18,7 @@ const SquareRadioButton = ({ label, checked, onPress }) => {
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <View style={{ marginRight: 8 }}>
           {checked ? (
-            <Icon name="square" size={22} color="#3F7263" />
+            <Icon name="square" size={22} color="#FF735C" />
           ) : (
             <Icon name="square-o" size={22} color="#B9B9B9" />
           )}

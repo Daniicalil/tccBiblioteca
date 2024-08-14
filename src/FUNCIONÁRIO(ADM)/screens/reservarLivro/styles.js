@@ -43,12 +43,11 @@ const styles = StyleSheet.create({
       icon: {
         position: 'absolute',
         left: 28,
-        top: 20
+        top: 10
       },
       paragraph: {
         marginTop: '3%',
-        marginBottom: '0%',
-        // fontWeight: 'bold',
+        marginBottom: '6%',
         fontSize: 18,
         flex: 1,
         left: 70

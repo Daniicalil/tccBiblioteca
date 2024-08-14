@@ -17,7 +17,7 @@ import ReservarLivro from '../screens/reservarLivro';
 import InformacoesReserva from '../../ALUNO/screens/informacoesReserva';
 import Notificacoes from '../../ALUNO/screens/notificacoes';
 import InformacoesContato from '../../ALUNO/screens/infoContato';
-
+import SobreNos from '../../ALUNO/screens/sobreNos';
 
 import NavegacaoDrawer from './drawerNavigation';
 
@@ -30,7 +30,7 @@ export default function NavegacaoProfessor() {
              screenOptions={{
                 headerShown: false // Aqui é onde você desativa o cabeçalho
               }}
-            initialRouteName="Login">
+                initialRouteName="Login">
                 <Stack.Screen name="login" component={Login} />
                 <Stack.Screen name="signUp" component={SignUp} />
                 <Stack.Screen name="esqueceuSenha1" component={EsqueceuSenha1} />
@@ -48,6 +48,7 @@ export default function NavegacaoProfessor() {
                 <Stack.Screen name="informacoesreserva" component={InformacoesReserva} />
                 <Stack.Screen name="notificacoes" component={Notificacoes} />
                 <Stack.Screen name="informacoescontato" component={InformacoesContato} />
+                <Stack.Screen name="sobrenos" component={SobreNos} />
             </Stack.Navigator>
         </NavigationContainer>
     );

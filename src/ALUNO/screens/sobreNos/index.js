@@ -42,11 +42,13 @@ export default function SobreNos({ navigation }) {
               <View style={styles.membrosContainer}>
                 <View style={styles.membros}>
                   <Image source={avatarDani} style={styles.membroImage}/>
-                  <Text style={styles.membroText}>
-                  <Text style={styles.name}>Danielle: </Text>é formada como técnica em farmácia, uma área na qual ela 
-                      atuava anteriormente. No entanto, sua paixão pelo aprendizado e pela tecnologia a levou a se aventurar no 
-                      mundo do desenvolvimento. Ela se desafiou no front-end e foi a responsável por toda a parte visual do projeto, 
-                      mas tem bastante interesse no back-end.</Text>
+                  <View style={styles.membroTextContainer}>
+                    <Text style={styles.membroText}>
+                    <Text style={styles.name}>Danielle: </Text>é formada como técnica em farmácia, uma área na qual ela 
+                        atuava anteriormente. No entanto, sua paixão pelo aprendizado e pela tecnologia a levou a se aventurar no 
+                        mundo do desenvolvimento. Ela se desafiou no front-end e foi a responsável por toda a parte visual do projeto, 
+                        mas tem bastante interesse no back-end.</Text>
+                </View>
                 </View>
 
                 <View style={styles.membros}>
@@ -60,7 +62,7 @@ export default function SobreNos({ navigation }) {
                 <View style={styles.membros}>
                 <Image source={avatarKian} style={styles.membroImage}/>
                 <Text style={styles.membroText}>
-                <Text style={styles.name}>Sayuri: </Text>formada em design gráfico pela Univem-Marília, mas decidiu se 
+                <Text style={styles.name}>Sayuri: </Text>formada em design gráfico pela Univem em Marília, mas decidiu se 
                     aprofundar na área do desenvolvimento para conciliar os seus conhecimentos. Como já tinha conhecimento no 
                     front-end, ela resolveu se desafiar no banco de dados e API, mas nunca abandonou o lado criativo.</Text>
                 </View>

@@ -21,15 +21,15 @@ const CustomDrawerLabel = () => (
 // Styles
 const styles = StyleSheet.create({
   drawerHeader: {
-    backgroundColor: '#fff',
-    height: 170,
+    backgroundColor: '#FFF',
+    height: 150,
     alignItems: 'center',
     justifyContent: 'center',
   },
   drawerImage: {
-    marginTop: 50,
-    marginBottom: 30,
-    height: 130,
+    marginTop: 40,
+    marginBottom: 20,
+    height: 140,
     width: 120,
   },
   contentContainer: {
@@ -38,22 +38,28 @@ const styles = StyleSheet.create({
   },
   footerContainer: {
     borderTopWidth: 1,
-    borderTopColor: '#ccc',
+    borderTopColor: '#CCC',
     paddingVertical: 20,
     paddingHorizontal: 20,
-    alignItems: 'flex-end'
+    display: 'flex',
+    flexDirection: 'row',
   },
   footerText: {
     fontSize: 14,
-    color: '#555',
-    alignItems: 'flex-end'
+    color: '#000',
+  },
+  touchText: {
+    color: '#FF735C',
+  },
+  TouchPress: {
+    color: '#3F7263',
   },
 });
 
 // Drawer Navigator
 const Drawer = createDrawerNavigator();
 
-export default function NavegacaoDrawer() {
+export default function NavegacaoDrawer({ navigation }) {
   return (
       <Drawer.Navigator
         screenOptions={{
@@ -76,7 +82,7 @@ export default function NavegacaoDrawer() {
           },
           drawerStyle: {
             width: '55%',
-            backgroundColor: '#fff',
+            backgroundColor: '#FFF',
           },
           drawerIcon: {
             marginLeft: -50,
@@ -97,8 +103,19 @@ export default function NavegacaoDrawer() {
               <DrawerItemList {...props} />
             </DrawerContentScrollView>
             <View style={styles.footerContainer}>
-              <Text style={styles.footerText}>Contato das desenvolvedoras</Text>
-             </View>
+              <Text style={styles.footerText}>Desenvolvido por </Text>
+                <Pressable 
+                  onPress={() => navigation.navigate('sobrenos')}
+                  style={
+                  ({pressed}) => pressed ?
+                  [styles.touchText, styles.TouchPress]
+                :
+                  styles.touchText
+                }
+              >
+                  <Text style={styles.touchText}>Danikawari</Text>
+                </Pressable>
+             </View> 
           </View>
         )}
       >

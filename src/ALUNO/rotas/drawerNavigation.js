@@ -19,7 +19,7 @@ const CustomDrawerLabel = () => (
 // Styles
 const styles = StyleSheet.create({
   drawerHeader: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF',
     height: 150,
     alignItems: 'center',
     justifyContent: 'center',
@@ -36,12 +36,11 @@ const styles = StyleSheet.create({
   },
   footerContainer: {
     borderTopWidth: 1,
-    borderTopColor: '#ccc',
+    borderTopColor: '#CCC',
     paddingVertical: 20,
     paddingHorizontal: 20,
     display: 'flex',
     flexDirection: 'row',
-
   },
   footerText: {
     fontSize: 14,
@@ -81,7 +80,7 @@ export default function NavegacaoDrawer({ navigation }) {
           },
           drawerStyle: {
             width: '55%',
-            backgroundColor: '#fff',
+            backgroundColor: '#FFF',
 
           },
           drawerIcon: {

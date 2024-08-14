@@ -46,10 +46,9 @@ const styles = StyleSheet.create({
   paragraph: {
     marginTop: '3%',
     marginBottom: '6%',
-    // fontWeight: 'bold',
     fontSize: 18,
     flex: 1,
-    textAlign: 'center'
+    left: 70
   },
   barraPesq: {
     backgroundColor: '#FFF',

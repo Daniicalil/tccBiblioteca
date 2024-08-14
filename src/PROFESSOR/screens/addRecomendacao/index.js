@@ -76,7 +76,7 @@ export default function AddRecomendacao({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor='#3F7263' translucent={false} />
+      {/* <StatusBar backgroundColor='#3F7263' translucent={false} /> */}
       <RetangGreen />
       <RetangOrange />
 

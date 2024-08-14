@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderWidth: 1,
     borderColor: '#CCC',
-
   },
   placeholderStyle: {
     opacity: 0.5, 

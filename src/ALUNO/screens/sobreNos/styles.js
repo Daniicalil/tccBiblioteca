@@ -85,9 +85,12 @@ const styles = StyleSheet.create({
   membros: {
     fontSize: 14,
     color: '#000',
-    textAlign: 'justify',
     flexDirection: 'row', // Alinha a imagem e o texto horizontalmente
     alignItems: 'flex-start', // Alinha a imagem e o texto no topo
+    flexWrap: 'wrap',
+  },
+  membroTextContainer: {
+    flex: 1, // Permite que o texto ocupe o espaço restante
   },
   membroImage: {
     width: 60, // Ajuste o tamanho conforme necessário
@@ -97,7 +100,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   membroText: {
-    flex: 1, // Permite que o texto ocupe o espaço restante
+    flex: 1,
   },
   name: {
     fontWeight: '500',

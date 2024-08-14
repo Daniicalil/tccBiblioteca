@@ -48,6 +48,13 @@ const styles = StyleSheet.create({
     left: 28,
     top: 10
   },
+  paragraph: {
+    marginTop: '3%',
+    marginBottom: '6%',
+    fontSize: 18,
+    flex: 1,
+    left: 70
+  },
   barraPesq: {
     backgroundColor: '#FFF',
     width: '85%',
@@ -56,14 +63,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#CCC',
     marginBottom: 20,
-  },
-  paragraph: {
-    marginTop: '3%',
-    marginBottom: '6%',
-    // fontWeight: 'bold',
-    fontSize: 18,
-    flex: 1,
-    left: 70
   },
   lineSquare: {
     width: '90%',

@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   imgLogo: {
-    width: '20%',
-    height: '30%',
+    width: '12%',
+    height: '42%',
     alignSelf: 'center',
     position: 'absolute',
     bottom: 8

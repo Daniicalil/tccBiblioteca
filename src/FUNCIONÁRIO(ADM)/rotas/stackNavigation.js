@@ -20,7 +20,7 @@ import InformacoesReserva from '../screens/informacoesReserva';
 import Notificacoes from '../../ALUNO/screens/notificacoes';
 import InformacoesContato from '../screens/infoContato';
 import InformacoesContatoEditar from '../screens/infoContatoEditar';
-
+import SobreNos from '../../ALUNO/screens/sobreNos';
 
 import NavegacaoDrawer from './drawerNavigation';
 
@@ -54,6 +54,7 @@ export default function NavegacaoADM() {
                 <Stack.Screen name="notificacoes" component={Notificacoes} />
                 <Stack.Screen name="informacoescontato" component={InformacoesContato} />
                 <Stack.Screen name="informacoescontatoEditar" component={InformacoesContatoEditar} />
+                <Stack.Screen name="sobrenos" component={SobreNos} />
             </Stack.Navigator>
         </NavigationContainer>
     );
