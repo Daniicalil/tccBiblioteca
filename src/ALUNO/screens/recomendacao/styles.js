@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
   course: {
     marginTop: 10,
     fontSize: 12,
-    fontWeight: 'bold',
     textAlign: 'center',
   },
   image: {

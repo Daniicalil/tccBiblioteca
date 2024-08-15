@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 28,
     borderRadius: 30,
     marginTop: 16,
+    marginBottom: 20,
     width: '35%',
     alignSelf: 'center',
   },
@@ -128,13 +129,11 @@ const styles = StyleSheet.create({
   },
   lineSquareImg: {
     backgroundColor: 'transparent',
-    borderColor: 'black',
+    borderColor: '#FFF',
     borderWidth: 1,
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    marginBottom: 20,
-    marginHorizontal: 20,
     flex: 1,
     width: width * 0.85, // 85% da largura da tela
     alignItems: 'center',

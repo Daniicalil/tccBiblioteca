@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
     width: '85%',
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: '#CCC',
-    borderRadius: 30,
+    borderColor: '#000',
+    borderRadius: 8,
     alignSelf: 'center',
     backgroundColor: '#FFF',
   },
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     height: 200, // Altura do TextInput
     width: '85%',
     borderRadius: 8,
-    borderColor: '#000',
+    borderColor: '#CCC',
     borderWidth: 1,
     padding: 10,
     textAlignVertical: 'top', // Alinha o texto no topo

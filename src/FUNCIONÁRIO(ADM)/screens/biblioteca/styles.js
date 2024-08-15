@@ -47,10 +47,12 @@ const styles = StyleSheet.create({
     left: 70
   },
   barraPesq: {
-    backgroundColor: '#DAD7D7',
-    width: '80%',
-    marginBottom: '4%',
+    backgroundColor: '#FFF',
+    width: '85%',
+    marginBottom: '2%',
     alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: '#CCC',
   },
   placeholderStyle: {
     opacity: 0.5, 
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
   },
   buttonAdd: {
     backgroundColor: '#3F7263',
-    paddingVertical: 6,
+    paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 30,
     width: '26%',

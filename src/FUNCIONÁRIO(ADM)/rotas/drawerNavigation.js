@@ -6,7 +6,7 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import TelaInicial from '../screens/telaInicial';
 import Perfil from '../../ALUNO/screens/perfil';
 import Selecao from '../screens/selecao';
-import Recomendacao from '../screens/recomendacao';
+import Recomendacao from '../../ALUNO/screens/recomendacao';
 import Biblioteca from '../screens/biblioteca';
 import InformacoesReserva from '../screens/informacoesReserva';
 import Notificacoes from '../../ALUNO/screens/notificacoes';
