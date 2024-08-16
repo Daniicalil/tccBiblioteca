@@ -56,6 +56,29 @@ export default function ReservarLivro({ navigation }) {
   // Obter a data de hoje
   const hoje = new Date().toISOString().split('T')[0];
 
+  const handleFinalizarReserva = () => {
+    if (startDate && endDate) {
+      Alert.alert(
+        'Confirmar Reserva',
+        `Você deseja reservar de ${formatarData(startDate)} até ${formatarData(endDate)}?`,
+        [
+          {
+            text: 'Cancelar',
+            style: 'cancel'
+          },
+          {
+            text: 'OK',
+            onPress: () => {
+              navigation.goBack();
+            }
+          }
+        ]
+      );
+    } else {
+      Alert.alert('Erro', 'Por favor, selecione uma data de início e término.');
+    }
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
@@ -94,20 +117,10 @@ export default function ReservarLivro({ navigation }) {
             {formatarData(endDate)}
           </Text>
         </View>
-        <Pressable 
-          style={
-            ({pressed}) => pressed ?
-              [styles.button, styles.btnPress]
-            :
-              styles.button
-            }   
-          onPress={() => {
-          if (startDate && endDate) {
-            Alert.alert('Livro reservado com sucesso!', `Reserva de: ${formatarData(startDate)} até ${formatarData(endDate)}`);
-          } else {
-            Alert.alert('Erro', 'Por favor, selecione uma data de início e término.');
-          }
-        }}>
+        <Pressable
+          style={({ pressed }) => pressed ? [styles.button, styles.btnPress] : styles.button}
+          onPress={handleFinalizarReserva}
+        >
           <Text style={styles.buttonText}>Finalizar reserva</Text>
         </Pressable>
       </View>

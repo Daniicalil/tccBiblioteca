@@ -32,7 +32,7 @@ export default function AddLivroNovo({ navigation }) {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [4, 3],
+      aspect: [2, 3],
       quality: 1,
     });
 
@@ -44,7 +44,7 @@ export default function AddLivroNovo({ navigation }) {
   const takePhoto = async () => {
     let result = await ImagePicker.launchCameraAsync({
       allowsEditing: true,
-      aspect: [4, 3],
+      aspect: [2, 3],
       quality: 1,
     });
 

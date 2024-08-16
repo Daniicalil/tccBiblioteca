@@ -52,7 +52,7 @@ export default function InfoLivroRecomendacao({ route }) {
         <RetangOrange />
 
         <View style={styles.title}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}  />
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}  onPress={() => navigation.goBack()}/>
           <Text style={styles.paragraph}>Informações do livro</Text>
         </View>
         <View style={styles.lineSquare}>

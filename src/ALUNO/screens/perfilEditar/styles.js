@@ -116,8 +116,18 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     alignItems: 'center',
   },
+  radioOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  radioLabel: {
+    marginLeft: 0,
+    fontSize: 14,
+  },
   seletores: {
     flexDirection: 'row',
+    alignItems: 'flex-start',
   },
   touchText: {
     color: '#FF735C',

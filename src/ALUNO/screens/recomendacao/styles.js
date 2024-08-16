@@ -112,6 +112,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   scrollViewContainer: {
+    backgroundColor: '#FFF',
+  },
+  containerAny: {
+    flex: 1,
     backgroundColor: '#fff',
   },
 });

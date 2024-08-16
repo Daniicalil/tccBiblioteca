@@ -151,10 +151,22 @@ export default function PerfilEditar({ navigation }) {
         <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
           <Text style={styles.sexo}>Sexo:</Text>
           <View style={styles.seletores}>
-            <Text><RadioButton value="Feminino" color='#FF735C' />Feminino</Text>
-            <Text><RadioButton value="Masculino" color='#FF735C' />Masculino</Text>
-            <Text><RadioButton value="Neutro" color='#FF735C' />Neutro</Text>
-            <Text><RadioButton value="Padrão" color='#FF735C' />Padrão</Text>
+            <View style={styles.radioOption}>
+              <RadioButton value="Feminino" color='#FF735C' />
+              <Text style={styles.radioLabel}>Feminino</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="Masculino" color='#FF735C' />
+              <Text style={styles.radioLabel}>Masculino</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="Neutro" color='#FF735C' />
+              <Text style={styles.radioLabel}>Neutro</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="Padrão" color='#FF735C' />
+              <Text style={styles.radioLabel}>Padrão</Text>
+            </View>
           </View>
         </RadioButton.Group>
       </View>

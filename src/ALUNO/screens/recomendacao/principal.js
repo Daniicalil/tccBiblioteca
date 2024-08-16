@@ -15,13 +15,12 @@ export default function Principal({ voltar }) {
     const [searchQuery, setSearchQuery] = useState('');
 
     return (
-    <View style={styles.container}>
         <View style={styles.headerContainer}>
             {/* <StatusBar backgroundColor='#3F7263' translucent={false} /> */}
             <RetangGreen />
             <RetangOrange />
             <View style={styles.titleContainer}>
-            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
+            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => voltar.goBack()}/>
                 <Text style={styles.paragraph}>Recomendações dos professores</Text>
             </View>
             <Searchbar
@@ -35,6 +34,5 @@ export default function Principal({ voltar }) {
                 )}
             />
         </View>
-    </View>
     );
 }

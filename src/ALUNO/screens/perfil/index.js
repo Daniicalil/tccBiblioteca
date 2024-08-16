@@ -83,10 +83,22 @@ export default function Perfil({ navigation }) {
         <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value} >
           <Text style={styles.sexo}>Sexo:</Text>
           <View style={styles.seletores}>
-            <Text><RadioButton value="Feminino" color='#FF735C' disabled={true} />Feminino</Text>
-            <Text><RadioButton value="Masculino" color='#FF735C' disabled={true} />Masculino</Text>
-            <Text><RadioButton value="Neutro" color='#FF735C' disabled={true} />Neutro</Text>
-            <Text><RadioButton value="Padrão" color='#FF735C' disabled={true} />Padrão</Text>
+            <View style={styles.radioOption}>
+              <RadioButton value="Feminino" color='#FF735C' disabled={true} />
+              <Text style={styles.radioLabel}>Feminino</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="Masculino" color='#FF735C' disabled={true} />
+              <Text style={styles.radioLabel}>Masculino</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="Neutro" color='#FF735C' disabled={true} />
+              <Text style={styles.radioLabel}>Neutro</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="Padrão" color='#FF735C' disabled={true} />
+              <Text style={styles.radioLabel}>Padrão</Text>
+            </View>
           </View>
         </RadioButton.Group>        
       </View>
