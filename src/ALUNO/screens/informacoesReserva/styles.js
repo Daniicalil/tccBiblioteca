@@ -64,6 +64,12 @@ const styles = StyleSheet.create({
     borderColor: '#CCC',
     marginBottom: 20,
   },
+  placeholderStyle: {
+    opacity: 0.5, 
+  },
+  iconStyle: {
+    opacity: 0.5, 
+  },
   lineSquare: {
     width: '90%',
     height: 410,

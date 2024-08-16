@@ -100,11 +100,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   seletores: {
-    display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
+    alignItems: 'flex-start',
+  },
+  radioOption: {
+    flexDirection: 'row',
     alignItems: 'center',
-    textAlign: 'center',
+    marginBottom: 10,
+  },
+  radioLabel: {
+    marginLeft: 0,
+    fontSize: 14,
   },
   RadioButton: {
     display: 'flex',

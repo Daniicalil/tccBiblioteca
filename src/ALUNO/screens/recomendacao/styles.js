@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
   course: {
     marginTop: 10,
     fontSize: 12,
-    fontWeight: 'bold',
     textAlign: 'center',
   },
   image: {
@@ -113,6 +112,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   scrollViewContainer: {
+    backgroundColor: '#FFF',
+  },
+  containerAny: {
+    flex: 1,
     backgroundColor: '#fff',
   },
 });

@@ -9,7 +9,7 @@ import { RetangGreen, RetangOrange } from './forms';
 import styles from './styles';
 import BookList from './booklist';
 
-export default function Principal({voltar}) {
+export default function Principal({ voltar }) {
     const [searchQuery, setSearchQuery] = useState('');
 
     const onChangeSearch = (query) => {
