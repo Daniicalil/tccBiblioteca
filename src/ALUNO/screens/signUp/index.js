@@ -133,6 +133,10 @@ export default function SignUp({ navigation }) {
                 <RadioButton value="Neutro" color='#FF735C' uncheckedColor="#CCC"/>
                 <Text style={styles.radioText}>Neutro</Text>
               </View>
+              <View style={styles.radioOption}>
+                <RadioButton value="Padrao" color='#FF735C' uncheckedColor="#CCC"/>
+                <Text style={styles.radioText}>Padrão</Text>
+              </View>
             </View>
           </RadioButton.Group>
           {errors.value && <Text style={styles.errorText}>{errors.value}</Text>}

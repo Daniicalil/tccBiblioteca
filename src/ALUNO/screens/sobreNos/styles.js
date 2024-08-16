@@ -42,10 +42,10 @@ const styles = StyleSheet.create({
     borderRadius: 64,
     overflow: 'hidden',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 100 },
-    shadowOpacity: 0.5,
-    shadowRadius: 8,
-    elevation: 100, // Para Android, para que a sombra seja visível
+    shadowOffset: { width: 20, height: 20 },
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+    elevation: 20, // Para Android, para que a sombra seja visível
     margin: 10,
     backgroundColor:  '#ffffffe3',
     width: '90%',
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     color: '#000',
     textAlign: 'center',
     width: '100%',
-    maxWidth: '98%',
+    maxWidth: '94%',
     margin: 0,
     textAlign: 'center',
   },
@@ -81,6 +81,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginLeft: 8,
     fontSize: 18,
+    width: '100%',
+    maxWidth: '94%',
   },
   membros: {
     fontSize: 14,
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', // Alinha a imagem e o texto horizontalmente
     alignItems: 'flex-start', // Alinha a imagem e o texto no topo
     flexWrap: 'wrap',
-    
+    marginBottom: 6,
   },
   membroTextContainer: {
     flex: 1, // Permite que o texto ocupe o espaço restante
@@ -99,13 +101,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginRight: 10, // Espaço entre a imagem e o texto
     marginTop: 4,
+    position: 'relative',
   },
   membroText: {
     flex: 1,
+    textAlign: 'justify',
   },
   name: {
     fontWeight: '500',
     color: '#000',
+
   },
 })
 
