@@ -3,7 +3,7 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
-import TelaInicial from '../screens/telaInicial';
+import TelaInicial from '../../ALUNO/screens/telaInicial';
 import Perfil from '../../ALUNO/screens/perfil';
 import Selecao from '../screens/selecao';
 import Recomendacao from '../../ALUNO/screens/recomendacao';
