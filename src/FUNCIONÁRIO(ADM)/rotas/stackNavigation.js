@@ -22,7 +22,7 @@ import InformacoesContato from '../screens/infoContato';
 import InformacoesContatoEditar from '../screens/infoContatoEditar';
 import SobreNos from '../../ALUNO/screens/sobreNos';
 
-import NavegacaoDrawer from './drawerNavigation';
+import NavegacaoDrawer from './drawerNavigation'; // Importando a navegação Drawer
 
 const Stack = createNativeStackNavigator();
 

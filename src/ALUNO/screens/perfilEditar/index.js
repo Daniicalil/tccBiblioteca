@@ -1,16 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Pressable, Image, StyleSheet, Alert } from 'react-native';
 import { RadioButton, Avatar } from 'react-native-paper';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from './forms';
 import { Entypo } from '@expo/vector-icons';
+import Constants from 'expo-constants';
+import * as ImagePicker from 'expo-image-picker';
 
 import styles from './styles';
 
 import FotoPadraoPerfil from '../../../../assets/imagens_telas/perfil.jpg';
 import IconeEditar from '../../../../assets/imagens_telas/editar_perfil.png';
+import defaultProfileImage from '../../../../assets/imagens_telas/perfil.jpg'; // Imagem padrão
 
 import { launchImageLibrary } from 'react-native-image-picker';
 
@@ -18,20 +20,63 @@ export default function PerfilEditar({ navigation }) {
   const [value, setValue] = useState('first');
   const [email, setEmail] = useState('');
   const [profilePhoto, setProfilePhoto] = useState(FotoPadraoPerfil);
+  const [image, setImage] = useState(defaultProfileImage);
 
-  const handleImagePicker = () => {
-    launchImageLibrary(
-      { mediaType: 'photo', quality: 1 },
-      (response) => {
-        if (response.didCancel) {
-          console.log('User cancelled image picker');
-        } else if (response.error) {
-          console.log('ImagePicker Error: ', response.error);
-        } else if (response.assets && response.assets.length > 0) {
-          const source = { uri: response.assets[0].uri };
-          setProfilePhoto(source);
+  useEffect(() => {
+    (async () => {
+      if (Constants.platform.ios) {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Desculpe, precisamos de permissões para acessar a galeria!');
         }
       }
+    })();
+  }, []);
+  
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+  
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+  
+  const takePhoto = async () => {
+    let result = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+  
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+  
+  const handleImagePick = () => {
+    Alert.alert(
+      "Selecionar Imagem",
+      "Escolha uma opção",
+      [
+        {
+          text: "Escolher da Galeria",
+          onPress: pickImage,
+        },
+        {
+          text: "Tirar Foto",
+          onPress: takePhoto,
+        },
+        {
+          text: "Cancelar",
+          style: "cancel"
+        }
+      ],
+      { cancelable: true }
     );
   };
 
@@ -62,18 +107,22 @@ export default function PerfilEditar({ navigation }) {
       </View>
 
       <View style={styles.fotoContainer}>
-        <Avatar.Image size={120} color="#3F7263" source={profilePhoto} style={styles.fotoPadraoPerfil} />
+      <Avatar.Image 
+        size={120} 
+        color="#3F7263" 
+        source={typeof image === 'string' ? { uri: image } : image} 
+        style={styles.fotoPadraoPerfil} 
+      />
         <Pressable 
-            onPress={handleImagePicker}
-            style={
-              ({pressed}) => pressed ?
-                [styles.iconeEditarContainer, styles.iconeFotoPress]
-              :
-                styles.iconeEditarContainer
-              }  
-          >
-            <Entypo name="camera" size={22} color="black" />
-          </Pressable>
+          onPress={handleImagePick}
+          style={
+            ({ pressed }) => pressed 
+              ? [styles.iconeEditarContainer, styles.iconeFotoPress]
+              : styles.iconeEditarContainer
+          }  
+        >
+          <Entypo name="camera" size={22} color="black" />
+        </Pressable>
       </View>
 
       <Text style={styles.texto}>RM:</Text>
