@@ -7,8 +7,6 @@ import avatarKian from '../../../../assets/imagens_telas/avatarKian.jpeg';
 import avatarKawany from '../../../../assets/imagens_telas/avatarKawany.jpeg';
 import styles from './styles';
 
-import { WebView } from 'react-native-webview';
-
 export default function SobreNos({ navigation }) {
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
