@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   radioText: {
-    marginRight: 8,
-    fontSize: 16,
+    marginRight: 0,
+    fontSize: 14,
   },
   touchText: {
     color: '#FF735C',
