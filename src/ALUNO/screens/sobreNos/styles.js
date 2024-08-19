@@ -85,17 +85,17 @@ const styles = StyleSheet.create({
     maxWidth: '94%',
   },
   membros: {
-    flexDirection: 'row', // Alinha a imagem e o texto horizontalmente
+    flexDirection: 'row',
     marginBottom: 10,
   },
   membroTextContainer: {
-    flex: 1, // Permite que o texto ocupe o espaço restante
+    flex: 1,
   },
   membroImage: {
-    width: 60, // Ajuste o tamanho conforme necessário
-    height: 60, // Ajuste o tamanho conforme necessário
+    width: 60,
+    height: 60,
     borderRadius: 8,
-    marginRight: 5, // Espaço entre a imagem e o texto
+    marginRight: 5,
   },
   membroText: {
     flex: 1,
