@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 
 import ImgLogo from '../../../../assets/imagens_telas/logo.png';
 import ImgEtec from '../../../../assets/imagens_telas/etec.png';
@@ -11,8 +11,8 @@ export const RetangGreen = () => {
   return (
     <View style={styles.retangGreen}>
       <HeaderDrawer />
-      <Image source={ImgLogo} style={styles.imgLogo}/>
-      <Image source={ImgEtec} style={styles.imgEtec}/>
+        <Image source={ImgLogo} style={styles.imgLogo}/>
+        <Image source={ImgEtec} style={styles.imgEtec}/>
     </View>
   );
 };

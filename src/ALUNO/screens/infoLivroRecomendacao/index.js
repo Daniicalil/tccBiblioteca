@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { RetangGreen, RetangOrange } from './forms';
 import { useNavigation } from '@react-navigation/native';
 
-import AnneFrank from '../../../../assets/Capa_dos_livros/o diário de anne frank.jpg';
 import Autor from '../../../../assets/imagens_telas/autora.png';
 import Editora from '../../../../assets/imagens_telas/editora.png';
 import Genero from '../../../../assets/imagens_telas/genero.png';
@@ -50,71 +49,70 @@ export default function InfoLivroRecomendacao({ route }) {
         <StatusBar backgroundColor='#3F7263' transLucent={false} />
         <RetangGreen />
         <RetangOrange />
-
-        <View style={styles.title}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}  onPress={() => navigation.goBack()}/>
-          <Text style={styles.paragraph}>Informações do livro</Text>
-        </View>
-        <View style={styles.lineSquare}>
-          <Image source={book.image} style={styles.capaLivros} />
-          <Line />
-          <View style={styles.sectionTitle}>
-            <Text style={styles.general}>Visão geral</Text>
-            <Text style={styles.titleLivro}>{book.title}</Text>
+          <View style={styles.title}>
+            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon}  onPress={() => navigation.goBack()}/>
+              <Text style={styles.paragraph}>Informações do livro</Text>
           </View>
-          <View style={styles.smallineSquare}>
-            <Text style={styles.available}>Disp.: </Text>
-            <Text style={styles.bold}>{book.disponivel}</Text>
-          </View>
-          <Text style={styles.description}>
-            {book.description}
-          </Text>
-          <View style={styles.infoContainer}>
-            <View style={styles.infoBox}>
-              <Text style={styles.infoTitle}>Autor(a)</Text>
-              <Image source={Autor} style={styles.imgAutor} />
-              <Text style={styles.infoText}>{book.author}</Text>
+          <View style={styles.lineSquare}>
+            <Image source={book.image} style={styles.capaLivros} />
+            <Line />
+            <View style={styles.sectionTitle}>
+              <Text style={styles.general}>Visão geral</Text>
+              <Text style={styles.titleLivro}>{book.title}</Text>
             </View>
-            <View style={styles.infoBox}>
-              <Text style={styles.infoTitle}>Editora</Text>
-              <Image source={Editora} style={styles.imgEditora} />
-              <Text style={styles.infoText}>{book.editora}</Text>
+            <View style={styles.smallineSquare}>
+              <Text style={styles.available}>Disp.: </Text>
+              <Text style={styles.bold}>{book.disponivel}</Text>
             </View>
-            <View style={styles.infoBox}>
-              <Text style={styles.infoTitle}>Gênero</Text>
-              <Image source={Genero} style={styles.imgGenero} />
-              <Text style={styles.infoText}>{book.genero}</Text>
+            <Text style={styles.description}>
+              {book.description}
+            </Text>
+            <View style={styles.infoContainer}>
+              <View style={styles.infoBox}>
+                <Text style={styles.infoTitle}>Autor(a)</Text>
+                <Image source={Autor} style={styles.imgAutor} />
+                <Text style={styles.infoText}>{book.author}</Text>
+              </View>
+              <View style={styles.infoBox}>
+                <Text style={styles.infoTitle}>Editora</Text>
+                <Image source={Editora} style={styles.imgEditora} />
+                <Text style={styles.infoText}>{book.editora}</Text>
+              </View>
+              <View style={styles.infoBox}>
+                <Text style={styles.infoTitle}>Gênero</Text>
+                <Image source={Genero} style={styles.imgGenero} />
+                <Text style={styles.infoText}>{book.genero}</Text>
+              </View>
             </View>
-          </View>
 
-          <Line />
+            <Line />
 
-          <Text style={styles.recommendationTitle}>Descrição do professor:</Text>
-          <Text style={styles.recommendation}>{book.course}</Text>
+            <Text style={styles.recommendationTitle}>Descrição do professor:</Text>
+            <Text style={styles.recommendation}>{book.course}</Text>
             <Text style={styles.recommendationMod}>Recomendado para:</Text>
-            <View style={styles.RadioButtonQuad}>
-              <SquareRadioButton
-                label="1º Mod. "
-                checked={selectedMode === "1stMod"}
-                onPress={() => handleModeChange("1stMod")}
-              />
-              <SquareRadioButton
-                label="2º Mod."
-                checked={selectedMode === "2ndMod"}
-                onPress={() => handleModeChange("2ndMod")}
-              />
-              <SquareRadioButton
-                label="3º Mod."
-                checked={selectedMode === "3rdMod"}
-                onPress={() => handleModeChange("3rdMod")}
-              />
-              <SquareRadioButton
-                label="4º Mod."
-                checked={selectedMode === "4thMod"}
-                onPress={() => handleModeChange("4thMod")}
-              />
-            </View>
-        </View>
+              <View style={styles.RadioButtonQuad}>
+                <SquareRadioButton
+                  label="1º Mod. "
+                  checked={selectedMode === "1stMod"}
+                  onPress={() => handleModeChange("1stMod")}
+                />
+                <SquareRadioButton
+                  label="2º Mod."
+                  checked={selectedMode === "2ndMod"}
+                  onPress={() => handleModeChange("2ndMod")}
+                />
+                <SquareRadioButton
+                  label="3º Mod."
+                  checked={selectedMode === "3rdMod"}
+                  onPress={() => handleModeChange("3rdMod")}
+                />
+                <SquareRadioButton
+                  label="4º Mod."
+                  checked={selectedMode === "4thMod"}
+                  onPress={() => handleModeChange("4thMod")}
+                />
+              </View>
+          </View>
 
         <Pressable 
           onPress={() => navigation.navigate('reservarlivro')}

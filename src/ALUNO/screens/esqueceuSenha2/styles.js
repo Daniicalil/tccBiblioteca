@@ -1,5 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
-// import Shape from 'react-clip-path';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {

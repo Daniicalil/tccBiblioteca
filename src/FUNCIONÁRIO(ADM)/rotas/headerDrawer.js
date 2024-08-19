@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Image, StyleSheet } from 'react-native';
+import { View, Pressable, StyleSheet } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { SimpleLineIcons } from '@expo/vector-icons';

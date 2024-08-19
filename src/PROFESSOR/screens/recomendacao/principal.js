@@ -17,30 +17,30 @@ export default function Principal({ voltar }) {
     return (
         <View style={styles.headerContainer}>
             {/* <StatusBar backgroundColor='#3F7263' translucent={false} /> */}
-            <RetangGreen />
-            <RetangOrange />
-            <View style={styles.titleContainer}>
-            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => voltar.goBack()}/>
-                <Text style={styles.paragraph}>Recomendações dos professores</Text>
-            </View>
-            <Searchbar
-                placeholder="Pesquisar"
-                onChangeText={setSearchQuery}
-                value={searchQuery}
-                style={styles.barraPesq}
-                inputStyle={styles.placeholderStyle}
-                icon={() => (
-                    <Icon name="search" size={20} color="#000" style={styles.iconStyle} />
-                )}
-            />
-            <Pressable 
-                onPress={() => navigation.navigate('addRecomendacao')}
-                style={({ pressed }) => pressed ?
-                    [styles.buttonAdd, styles.btnAddPress]
-                    : styles.buttonAdd}
-                >
-                <Text style={styles.buttonTextAdd}>+ Adicionar</Text>
-            </Pressable>
+                <RetangGreen />
+                <RetangOrange />
+                    <View style={styles.titleContainer}>
+                        <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => voltar.goBack()}/>
+                            <Text style={styles.paragraph}>Recomendações dos professores</Text>
+                    </View>
+                    <Searchbar
+                        placeholder="Pesquisar"
+                        onChangeText={setSearchQuery}
+                        value={searchQuery}
+                        style={styles.barraPesq}
+                        inputStyle={styles.placeholderStyle}
+                        icon={() => (
+                            <Icon name="search" size={20} color="#000" style={styles.iconStyle} />
+                        )}
+                    />
+                    <Pressable 
+                        onPress={() => navigation.navigate('addRecomendacao')}
+                        style={({ pressed }) => pressed ?
+                            [styles.buttonAdd, styles.btnAddPress]
+                            : styles.buttonAdd}
+                    >
+                        <Text style={styles.buttonTextAdd}>+ Adicionar</Text>
+                    </Pressable>
         </View>
     );
 }

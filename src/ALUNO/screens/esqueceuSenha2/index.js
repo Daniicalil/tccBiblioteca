@@ -49,74 +49,72 @@ export default function EsqueceuSenha2({ navigation }) {
   };
   
   return (
-    <ImageBackground source={imgDesign} style={styles.background}>
+  <ImageBackground source={imgDesign} style={styles.background}>
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-    <StatusBar barStyle="dark-content"  // ou "light-content" para texto claro
-               translucent={true}
-               backgroundColor="transparent"  />
-      <View style={styles.contentContainer}>
-      <Image
-        source={imgesqsenha}
-        style={styles.logo}
-      />
-      <Text style={styles.paragraph}>Redefinir senha</Text>
-      <Text style={styles.text}>Por favor, insira no campo abaixo o código de ativação que você recebeu por e-mail e redefina uma nova senha.</Text>
-      
-      <TextInput
-         placeholder='Código'
-         style={[styles.input, errors.code && styles.inputError]}
-         value={code}
-         onChangeText={setCode}
-         keyboardType="numeric"
-       />
-       {errors.code && <Text style={styles.errorText}>{errors.code}</Text>}
+      <StatusBar barStyle="dark-content"  // ou "light-content" para texto claro
+                translucent={true}
+                backgroundColor="transparent"  />
+        <View style={styles.contentContainer}>
+          <Image
+            source={imgesqsenha}
+            style={styles.logo}
+          />
+          <Text style={styles.paragraph}>Redefinir senha</Text>
+          <Text style={styles.text}>Por favor, insira no campo abaixo o código de ativação que você recebeu por e-mail e redefina uma nova senha.</Text>
+          
+          <TextInput
+            placeholder='Código'
+            style={[styles.input, errors.code && styles.inputError]}
+            value={code}
+            onChangeText={setCode}
+            keyboardType="numeric"
+          />
+          {errors.code && <Text style={styles.errorText}>{errors.code}</Text>}
 
-       <View style={styles.password}>
-        <TextInput
-          placeholder='Senha'
-          style={[styles.input, styles.passwordInput, errors.password && styles.inputError]}
-          secureTextEntry={!passwordVisible}
-          value={password}
-          onChangeText={setPassword}
-        />
+          <View style={styles.password}>
+            <TextInput
+              placeholder='Senha'
+              style={[styles.input, styles.passwordInput, errors.password && styles.inputError]}
+              secureTextEntry={!passwordVisible}
+              value={password}
+              onChangeText={setPassword}
+            />
 
-         <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
-          <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
-        </Pressable>
+            <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
+              <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
+            </Pressable>
+          </View>
+
+          <View style={styles.confirmPassword}>
+            <TextInput
+              placeholder='confirme a nova senha'
+              style={[styles.input, styles.passwordInput, errors.passwordConf && styles.inputError]}
+              secureTextEntry={!passwordVisibleConf}
+              value={passwordConf}
+              onChangeText={setPasswordConf}
+            />
+
+            <Pressable onPress={togglePasswordVisibilityConf} style={styles.passwordVisibilityIcon}>
+              <Ionicons name={passwordVisibleConf ? 'eye-off' : 'eye'} size={24} color="black" />
+            </Pressable>
+          </View>
+          {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
+
+
+          <Pressable 
+            onPress={handleResetPassword}
+            style={
+              ({pressed}) => pressed ?
+                [styles.redefinirButton, styles.btnPress]
+              :
+                styles.redefinirButton
+              }
+          >
+            <Text style={styles.redefinirText}>Redefinir senha</Text>
+          </Pressable>
       </View>
-
-      <View style={styles.confirmPassword}>
-        <TextInput
-          placeholder='confirme a nova senha'
-          style={[styles.input, styles.passwordInput, errors.passwordConf && styles.inputError]}
-          secureTextEntry={!passwordVisibleConf}
-          value={passwordConf}
-          onChangeText={setPasswordConf}
-        />
-
-        <Pressable onPress={togglePasswordVisibilityConf} style={styles.passwordVisibilityIcon}>
-          <Ionicons name={passwordVisibleConf ? 'eye-off' : 'eye'} size={24} color="black" />
-        </Pressable>
-      </View>
-      {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
-
-
-      <Pressable 
-        onPress={handleResetPassword}
-        style={
-          ({pressed}) => pressed ?
-            [styles.redefinirButton, styles.btnPress]
-          :
-            styles.redefinirButton
-          }
-      >
-        <Text style={styles.redefinirText}>Redefinir senha</Text>
-      </Pressable>
-
-        </View>
-        </ScrollView>
-      </ImageBackground>
-    
+    </ScrollView>
+  </ImageBackground>
   );
 }
 

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView ,View, Text, Pressable, Alert } from 'react-native';
+import { View, Text, Pressable, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import {RetangGreen, RetangOrange} from './forms';
 
 import styles from './styles';
-import imgContato from '../../../../assets/imagens_telas/contato.jpg';
 
 export default function AddLivroExistente({ navigation }) {
   const [selectedlivros, setSelectedlivros] = useState('');
@@ -51,44 +50,43 @@ export default function AddLivroExistente({ navigation }) {
 return (
     <View style={styles.container}>
       <View style={styles.inicio}>
-      <StatusBar backgroundColor='#3F7263' transLucent={false} />
-        <RetangGreen />
-        <RetangOrange />
-            
-        <View style={styles.titlePagina}>
-        <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
-          <Text style={styles.paragraph}>Adicionar livro existente</Text>
-        </View>
+        <StatusBar backgroundColor='#3F7263' transLucent={false} />
+          <RetangGreen />
+          <RetangOrange />
+          <View style={styles.titlePagina}>
+            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
+              <Text style={styles.paragraph}>Adicionar livro existente</Text>
+          </View>
 
         <Text style={styles.textPicker}>Livro existente:</Text>
-      <View style={styles.pickerContainer}>
-        <Picker
-          selectedValue={selectedlivros}
-          style={styles.picker}
-          onValueChange={(itemValue) => setSelectedlivros(itemValue)}
-        >
-          {livros.map((livros) => (
-            <Picker.Item
-              key={livros.value}
-              label={livros.label}
-              value={livros.value}
-            />
-          ))}
-        </Picker>
-      </View>
+        <View style={styles.pickerContainer}>
+          <Picker
+            selectedValue={selectedlivros}
+            style={styles.picker}
+            onValueChange={(itemValue) => setSelectedlivros(itemValue)}
+          >
+            {livros.map((livros) => (
+              <Picker.Item
+                key={livros.value}
+                label={livros.label}
+                value={livros.value}
+              />
+            ))}
+          </Picker>
+        </View>
       
-      <View style={styles.viewEditar}>
-        <Pressable
-          onPress={handleAddLivroExist}
-          style={
-            ({ pressed }) => pressed ? 
-              [styles.button, styles.btnPress] 
-            : 
-              styles.button}
-        >
-          <Text style={styles.buttonText}>Adicionar</Text>
-        </Pressable>
-      </View>
+        <View style={styles.viewEditar}>
+          <Pressable
+            onPress={handleAddLivroExist}
+            style={
+              ({ pressed }) => pressed ? 
+                [styles.button, styles.btnPress] 
+              : 
+                styles.button}
+          >
+            <Text style={styles.buttonText}>Adicionar</Text>
+          </Pressable>
+        </View>
 
       </View>
     </View>

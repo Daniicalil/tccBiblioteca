@@ -11,8 +11,8 @@ export const RetangGreen = () => {
   return (
     <View style={styles.retangGreen}>
       <HeaderDrawer />
-      <Image source={ImgLogo} style={styles.imgLogo}/>
-      <Image source={ImgEtec} style={styles.imgEtec}/>
+        <Image source={ImgLogo} style={styles.imgLogo}/>
+        <Image source={ImgEtec} style={styles.imgEtec}/>
     </View>
   );
 };

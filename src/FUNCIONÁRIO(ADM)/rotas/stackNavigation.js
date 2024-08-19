@@ -34,27 +34,27 @@ export default function NavegacaoADM() {
                 headerShown: false // Aqui é onde você desativa o cabeçalho
               }}
                 initialRouteName="Login">
-                <Stack.Screen name="login" component={Login} />
-                <Stack.Screen name="signUp" component={SignUp} />
-                <Stack.Screen name="esqueceuSenha1" component={EsqueceuSenha1} />
-                <Stack.Screen name="esqueceuSenha2" component={EsqueceuSenha2} />
-                <Stack.Screen name="Home" component={NavegacaoDrawer} />
-                <Stack.Screen name="telaInicial" component={TelaInicial} />
-                <Stack.Screen name="perfil" component={Perfil} />
-                <Stack.Screen name="perfilEditar" component={PerfilEditar} />
-                <Stack.Screen name="recomendacao" component={Recomendacao} />
-                <Stack.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />
-                <Stack.Screen name="biblioteca" component={Biblioteca} />
-                <Stack.Screen name="addBiblioteca" component={AddBiblioteca} />
-                <Stack.Screen name="addLivroExistente" component={AddLivroExistente} />
-                <Stack.Screen name="addLivroNovo" component={AddLivroNovo} />
-                <Stack.Screen name="infolivrobiblioteca" component={InfoLivroBiblioteca} />
-                <Stack.Screen name="reservarlivro" component={ReservarLivro} />
-                <Stack.Screen name="informacoesreserva" component={InformacoesReserva} />
-                <Stack.Screen name="notificacoes" component={Notificacoes} />
-                <Stack.Screen name="informacoescontato" component={InformacoesContato} />
-                <Stack.Screen name="informacoescontatoEditar" component={InformacoesContatoEditar} />
-                <Stack.Screen name="sobrenos" component={SobreNos} />
+                    <Stack.Screen name="login" component={Login} />
+                    <Stack.Screen name="signUp" component={SignUp} />
+                    <Stack.Screen name="esqueceuSenha1" component={EsqueceuSenha1} />
+                    <Stack.Screen name="esqueceuSenha2" component={EsqueceuSenha2} />
+                    <Stack.Screen name="Home" component={NavegacaoDrawer} />
+                    <Stack.Screen name="telaInicial" component={TelaInicial} />
+                    <Stack.Screen name="perfil" component={Perfil} />
+                    <Stack.Screen name="perfilEditar" component={PerfilEditar} />
+                    <Stack.Screen name="recomendacao" component={Recomendacao} />
+                    <Stack.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />
+                    <Stack.Screen name="biblioteca" component={Biblioteca} />
+                    <Stack.Screen name="addBiblioteca" component={AddBiblioteca} />
+                    <Stack.Screen name="addLivroExistente" component={AddLivroExistente} />
+                    <Stack.Screen name="addLivroNovo" component={AddLivroNovo} />
+                    <Stack.Screen name="infolivrobiblioteca" component={InfoLivroBiblioteca} />
+                    <Stack.Screen name="reservarlivro" component={ReservarLivro} />
+                    <Stack.Screen name="informacoesreserva" component={InformacoesReserva} />
+                    <Stack.Screen name="notificacoes" component={Notificacoes} />
+                    <Stack.Screen name="informacoescontato" component={InformacoesContato} />
+                    <Stack.Screen name="informacoescontatoEditar" component={InformacoesContatoEditar} />
+                    <Stack.Screen name="sobrenos" component={SobreNos} />
             </Stack.Navigator>
         </NavigationContainer>
     );

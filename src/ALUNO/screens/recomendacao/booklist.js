@@ -3,7 +3,6 @@ import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native
 import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
-import Principal from './principal';
 
 export default function BookList() {
   const [books] = useState([
@@ -79,11 +78,12 @@ export default function BookList() {
     const renderItem = ({ item }) => (
       <View style={styles.item}>
         <Pressable
-        onPress={() => navigation.navigate('infolivrorecomendacao', { book: item })}>
-        <Text style={styles.course}>{item.course}</Text>
-        <Image source={item.image} style={styles.image} />
-        <Text style={styles.titleBook}>{item.title}</Text>
-        <Text style={styles.author}>{item.author}</Text>
+          onPress={() => navigation.navigate('infolivrorecomendacao', { book: item })}
+        >
+            <Text style={styles.course}>{item.course}</Text>
+            <Image source={item.image} style={styles.image} />
+            <Text style={styles.titleBook}>{item.title}</Text>
+            <Text style={styles.author}>{item.author}</Text>
         </Pressable>
       </View>
     );

@@ -173,8 +173,8 @@ export default function BookList({ searchQuery }) {
     <View style={styles.item}>
       <Pressable onPress={() => navigation.navigate('infolivrobiblioteca', { book: item })}>
         <Image source={item.image} style={styles.image} />
-        <Text style={styles.titleBook}>{item.title}</Text>
-        <Text style={styles.author}>{item.author}</Text>
+          <Text style={styles.titleBook}>{item.title}</Text>
+          <Text style={styles.author}>{item.author}</Text>
       </Pressable>
     </View>
   );

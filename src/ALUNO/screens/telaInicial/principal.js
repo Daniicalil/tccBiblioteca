@@ -14,21 +14,21 @@ import styles from './styles';
         return (
           <View style={styles.headerContainer}>
             <StatusBar backgroundColor='#3F7263' transLucent={false} />
-            <RetangGreen/>
+              <RetangGreen/>
               <RetangOrange />
-              <Searchbar
-                placeholder="Pesquisar"
-                onChangeText={setSearchQuery}
-                value={searchQuery}
-                style={styles.barraPesq}
-                inputStyle={styles.placeholderStyle}
-                icon={({size, color}) => (
-                  <Icon name="search" size={20} color="#CCC" style={styles.iconStyle}/>
-                )}
-              />
+                <Searchbar
+                  placeholder="Pesquisar"
+                  onChangeText={setSearchQuery}
+                  value={searchQuery}
+                  style={styles.barraPesq}
+                  inputStyle={styles.placeholderStyle}
+                  icon={({size, color}) => (
+                    <Icon name="search" size={20} color="#CCC" style={styles.iconStyle}/>
+                  )}
+                />
               <Funcionamento />
               <Text style={styles.paragraph}>Recomendações dos professores</Text>
-            </View>
+          </View>
         );
       };
 

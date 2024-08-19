@@ -82,15 +82,14 @@ export default function ReservarLivro({ navigation }) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
-      <StatusBar backgroundColor='#3F7263' transLucent={false} />
         <StatusBar backgroundColor='#3F7263' transLucent={false} />
-        <RetangGreen />
-        <RetangOrange />
-
-        <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
-          <Text style={styles.paragraph}>Reservar livro</Text>
-        </View>
+          <StatusBar backgroundColor='#3F7263' transLucent={false} />
+          <RetangGreen />
+          <RetangOrange />
+            <View style={styles.titlePagina}>
+              <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
+                <Text style={styles.paragraph}>Reservar livro</Text>
+            </View>
       </View>
 
       <View style={styles.containerCalendar}>

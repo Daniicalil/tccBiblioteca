@@ -59,102 +59,102 @@ export default function SignUp({ navigation }) {
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <StatusBar barStyle="dark-content"  // ou "light-content" para texto claro
-                 translucent={true}
-                 backgroundColor="transparent"  />
-        <View style={styles.contentContainer}>
-          <Image source={imgSignup} style={styles.logo} />
-          <Text style={styles.paragraph}>Cadastro</Text>
+        <StatusBar barStyle="dark-content"  // ou "light-content" para texto claro
+                  translucent={true}
+                  backgroundColor="transparent"  />
+          <View style={styles.contentContainer}>
+            <Image source={imgSignup} style={styles.logo} />
+            <Text style={styles.paragraph}>Cadastro</Text>
 
-          <TextInput
-            placeholder='RM'
-            style={[styles.input, errors.rm && styles.inputError]}
-            value={rm}
-            onChangeText={setRm}
-            keyboardType='numeric'
-          />
-          {errors.rm && <Text style={styles.errorText}>{errors.rm}</Text>}
-
-          <TextInput
-            placeholder='Nome completo'
-            style={[styles.input, errors.name && styles.inputError]}
-            value={name}
-            onChangeText={setName}
-          />
-          {errors.name && <Text style={styles.errorText}>{errors.name}</Text>}
-
-          <TextInput
-            placeholder='E-mail'
-            style={[styles.input, errors.email && styles.inputError]}
-            value={email}
-            onChangeText={setEmail}
-          />
-          {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
-
-          <View style={styles.password}>
             <TextInput
-              placeholder='Senha'
-              style={[styles.input, styles.passwordInput, errors.password && styles.inputError]}
-              secureTextEntry={!passwordVisible}
-              value={password}
-              onChangeText={setPassword}
+              placeholder='RM'
+              style={[styles.input, errors.rm && styles.inputError]}
+              value={rm}
+              onChangeText={setRm}
+              keyboardType='numeric'
             />
-            <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
-              <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
-            </Pressable>
-          </View>
+            {errors.rm && <Text style={styles.errorText}>{errors.rm}</Text>}
 
-          <View style={styles.confirmPassword}>
             <TextInput
-              placeholder='Confirmar senha'
-              style={[styles.input, styles.passwordInput, errors.password && styles.inputError]}
-              secureTextEntry={!passwordVisibleConf}
-              value={passwordConf}
-              onChangeText={setPasswordConf}
+              placeholder='Nome completo'
+              style={[styles.input, errors.name && styles.inputError]}
+              value={name}
+              onChangeText={setName}
             />
-            <Pressable onPress={togglePasswordVisibilityConf} style={styles.passwordVisibilityIcon}>
-              <Ionicons name={passwordVisibleConf ? 'eye-off' : 'eye'} size={24} color="black" />
-            </Pressable>
-          </View>
-          {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
+            {errors.name && <Text style={styles.errorText}>{errors.name}</Text>}
 
-          <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
-            <Text style={styles.sexo}>Sexo:</Text>
-            <View style={styles.radioOptions}>
-              <View style={styles.radioOption}>
-                <RadioButton value="Feminino" color='#FF735C' uncheckedColor="#CCC"/>
-                <Text style={styles.radioText}>Feminino</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton value="Masculino" color='#FF735C' uncheckedColor="#CCC"/>
-                <Text style={styles.radioText}>Masculino</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton value="Neutro" color='#FF735C' uncheckedColor="#CCC"/>
-                <Text style={styles.radioText}>Neutro</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton value="Padrao" color='#FF735C' uncheckedColor="#CCC"/>
-                <Text style={styles.radioText}>Padrão</Text>
-              </View>
+            <TextInput
+              placeholder='E-mail'
+              style={[styles.input, errors.email && styles.inputError]}
+              value={email}
+              onChangeText={setEmail}
+            />
+            {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+
+            <View style={styles.password}>
+              <TextInput
+                placeholder='Senha'
+                style={[styles.input, styles.passwordInput, errors.password && styles.inputError]}
+                secureTextEntry={!passwordVisible}
+                value={password}
+                onChangeText={setPassword}
+              />
+              <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
+                <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
+              </Pressable>
             </View>
-          </RadioButton.Group>
-          {errors.value && <Text style={styles.errorText}>{errors.value}</Text>}
 
-          <Pressable
-            onPress={() => navigation.navigate('login')}
-            style={({ pressed }) => pressed ? [styles.touchText, styles.TouchPress] : styles.touchText}
-          >
-            <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
-          </Pressable>
+            <View style={styles.confirmPassword}>
+              <TextInput
+                placeholder='Confirmar senha'
+                style={[styles.input, styles.passwordInput, errors.password && styles.inputError]}
+                secureTextEntry={!passwordVisibleConf}
+                value={passwordConf}
+                onChangeText={setPasswordConf}
+              />
+              <Pressable onPress={togglePasswordVisibilityConf} style={styles.passwordVisibilityIcon}>
+                <Ionicons name={passwordVisibleConf ? 'eye-off' : 'eye'} size={24} color="black" />
+              </Pressable>
+            </View>
+            {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
 
-          <Pressable
-            onPress={handleSignUp}
-            style={({ pressed }) => pressed ? [styles.signUpButton, styles.btnPress] : styles.signUpButton}
-          >
-            <Text style={styles.signUpText}>Fazer cadastro</Text>
-          </Pressable>
-        </View>
+            <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
+              <Text style={styles.sexo}>Sexo:</Text>
+              <View style={styles.radioOptions}>
+                <View style={styles.radioOption}>
+                  <RadioButton value="Feminino" color='#FF735C' uncheckedColor="#CCC"/>
+                  <Text style={styles.radioText}>Feminino</Text>
+                </View>
+                <View style={styles.radioOption}>
+                  <RadioButton value="Masculino" color='#FF735C' uncheckedColor="#CCC"/>
+                  <Text style={styles.radioText}>Masculino</Text>
+                </View>
+                <View style={styles.radioOption}>
+                  <RadioButton value="Neutro" color='#FF735C' uncheckedColor="#CCC"/>
+                  <Text style={styles.radioText}>Neutro</Text>
+                </View>
+                <View style={styles.radioOption}>
+                  <RadioButton value="Padrao" color='#FF735C' uncheckedColor="#CCC"/>
+                  <Text style={styles.radioText}>Padrão</Text>
+                </View>
+              </View>
+            </RadioButton.Group>
+            {errors.value && <Text style={styles.errorText}>{errors.value}</Text>}
+
+            <Pressable
+              onPress={() => navigation.navigate('login')}
+              style={({ pressed }) => pressed ? [styles.touchText, styles.TouchPress] : styles.touchText}
+            >
+              <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
+            </Pressable>
+
+            <Pressable
+              onPress={handleSignUp}
+              style={({ pressed }) => pressed ? [styles.signUpButton, styles.btnPress] : styles.signUpButton}
+            >
+              <Text style={styles.signUpText}>Fazer cadastro</Text>
+            </Pressable>
+          </View>
       </ScrollView>
     </ImageBackground>
   );

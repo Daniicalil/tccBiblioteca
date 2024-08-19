@@ -33,76 +33,76 @@ export default function Login({ navigation }) {
 
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <StatusBar barStyle="dark-content"  // ou "light-content" para texto claro
-                 translucent={true}
-                 backgroundColor="transparent"  />
-        <View style={styles.contentContainer}>
-          <Image
-            source={imgLogin}
-            style={styles.logo}
-          />
-          <Text style={styles.paragraph}>Login</Text>
-          <TextInput
-            placeholder='RM'
-            style={[styles.input, errors.rm && styles.inputError]}
-            value={rm}
-            onChangeText={setRm}
-            keyboardType='numeric'
-          />
-          {errors.rm && <Text style={styles.errorText}>{errors.rm}</Text>}
-
-          <View style={styles.password}>
-            <TextInput
-               placeholder='Senha'
-               style={[styles.input, styles.passwordInput, errors.password && styles.inputError]}
-               secureTextEntry={!passwordVisible}
-               value={password}
-               onChangeText={setPassword}
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <StatusBar barStyle="dark-content"  // ou "light-content" para texto claro
+                   translucent={true}
+                   backgroundColor="transparent"  />
+          <View style={styles.contentContainer}>
+            <Image
+              source={imgLogin}
+              style={styles.logo}
             />
-            <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
-              <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
+            <Text style={styles.paragraph}>Login</Text>
+            <TextInput
+              placeholder='RM'
+              style={[styles.input, errors.rm && styles.inputError]}
+              value={rm}
+              onChangeText={setRm}
+              keyboardType='numeric'
+            />
+            {errors.rm && <Text style={styles.errorText}>{errors.rm}</Text>}
+
+            <View style={styles.password}>
+              <TextInput
+                placeholder='Senha'
+                style={[styles.input, styles.passwordInput, errors.password && styles.inputError]}
+                secureTextEntry={!passwordVisible}
+                value={password}
+                onChangeText={setPassword}
+              />
+              <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
+                <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
+              </Pressable>
+            </View>
+            {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
+
+            <Pressable 
+              onPress={() => navigation.navigate('signUp')}
+              style={
+                ({pressed}) => pressed ?
+                  [styles.touchText, styles.TouchPress]
+                :
+                  styles.touchText
+                }
+            >
+                <Text style={styles.touchText}>Não tem cadastro? Cadastre-se</Text>
+            </Pressable>
+
+            <Pressable 
+              onPress={() => navigation.navigate('esqueceuSenha1')}
+              style={
+                ({pressed}) => pressed ?
+                  [styles.touchText, styles.TouchPress]
+                :
+                  styles.touchText
+                }
+            >
+                <Text style={styles.touchText}>Esqueceu a senha?</Text>
+            </Pressable>
+
+            <Pressable 
+              onPress={handleLogin}
+              style={
+                ({pressed}) => pressed ?
+                  [styles.loginButton, styles.btnPress]
+                :
+                  styles.loginButton
+                }
+            >
+                <Text style={styles.loginText}>Fazer login</Text>
             </Pressable>
           </View>
-          {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
-
-          <Pressable 
-            onPress={() => navigation.navigate('signUp')}
-            style={
-              ({pressed}) => pressed ?
-                [styles.touchText, styles.TouchPress]
-              :
-                styles.touchText
-              }
-          >
-              <Text style={styles.touchText}>Não tem cadastro? Cadastre-se</Text>
-          </Pressable>
-
-          <Pressable 
-            onPress={() => navigation.navigate('esqueceuSenha1')}
-            style={
-              ({pressed}) => pressed ?
-                [styles.touchText, styles.TouchPress]
-              :
-                styles.touchText
-              }
-          >
-              <Text style={styles.touchText}>Esqueceu a senha?</Text>
-          </Pressable>
-
-          <Pressable 
-            onPress={handleLogin}
-            style={
-              ({pressed}) => pressed ?
-                [styles.loginButton, styles.btnPress]
-              :
-                styles.loginButton
-              }
-          >
-              <Text style={styles.loginText}>Fazer login</Text>
-          </Pressable>
-          </View>
-        </ScrollView>
-      </ImageBackground>
+      </ScrollView>
+    </ImageBackground>
   );
 }

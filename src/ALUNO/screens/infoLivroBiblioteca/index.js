@@ -5,7 +5,6 @@ import { FontAwesome } from '@expo/vector-icons';
 import {RetangGreen, RetangOrange} from './forms';
 import { useNavigation } from '@react-navigation/native';
 
-import AnneFrank from '../../../../assets/Capa_dos_livros/procure nas cinzas.jpg';
 import Autor from '../../../../assets/imagens_telas/autora.png';
 import Editora from '../../../../assets/imagens_telas/editora.png';
 import Genero from '../../../../assets/imagens_telas/genero.png';
@@ -23,18 +22,17 @@ export default function InfoLivroBiblioteca({ route }) {
   const { book } = route.params;
   
 return (
-    <ScrollView style={styles.container}>
-      <View style={styles.inicio}>
+  <ScrollView style={styles.container}>
+    <View style={styles.inicio}>
       <StatusBar backgroundColor='#3F7263' transLucent={false} />
         <RetangGreen />
         <RetangOrange />
-            
-        <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
-          <Text style={styles.paragraph}>Informações do livro</Text>
-        </View>
+          <View style={styles.titlePagina}>
+            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
+              <Text style={styles.paragraph}>Informações do livro</Text>
+          </View>
         <View style={styles.lineSquare}>
-        <Image source={book.image} style={styles.capaLivros}/>
+          <Image source={book.image} style={styles.capaLivros}/>
         <Line />
           <View style={styles.sectionTitle}>
             <Text style={styles.general}>Visão geral</Text>
@@ -78,8 +76,8 @@ return (
           >
           <Text style={styles.buttonText}>Reservar livro</Text>
         </Pressable>
-      </View>
-    </ScrollView>
+    </View>
+  </ScrollView>
     
   );
 }

@@ -19,10 +19,10 @@ export default function Principal({ voltar }) {
             {/* <StatusBar backgroundColor='#3F7263' translucent={false} /> */}
             <RetangGreen />
             <RetangOrange />
-            <View style={styles.titleContainer}>
-            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => voltar.goBack()}/>
-                <Text style={styles.paragraph}>Recomendações dos professores</Text>
-            </View>
+                <View style={styles.titleContainer}>
+                    <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => voltar.goBack()}/>
+                        <Text style={styles.paragraph}>Recomendações dos professores</Text>
+                </View>
             <Searchbar
                 placeholder="Pesquisar"
                 onChangeText={setSearchQuery}

@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Pressable, Image, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, Pressable, Alert } from 'react-native';
 import { RadioButton, Avatar } from 'react-native-paper';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from './forms';
 import { Entypo } from '@expo/vector-icons';
 import Constants from 'expo-constants';
@@ -10,16 +10,11 @@ import * as ImagePicker from 'expo-image-picker';
 
 import styles from './styles';
 
-import FotoPadraoPerfil from '../../../../assets/imagens_telas/perfil.jpg';
-import IconeEditar from '../../../../assets/imagens_telas/editar_perfil.png';
 import defaultProfileImage from '../../../../assets/imagens_telas/perfil.jpg'; // Imagem padrão
-
-import { launchImageLibrary } from 'react-native-image-picker';
 
 export default function PerfilEditar({ navigation }) {
   const [value, setValue] = useState('first');
   const [email, setEmail] = useState('');
-  const [profilePhoto, setProfilePhoto] = useState(FotoPadraoPerfil);
   const [image, setImage] = useState(defaultProfileImage);
 
   useEffect(() => {
@@ -100,19 +95,19 @@ export default function PerfilEditar({ navigation }) {
         {/* <StatusBar backgroundColor='#3F7263' transLucent={false} /> */}
         <RetangGreen />
         <RetangOrange />
-        <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
-          <Text style={styles.paragraph}>Editar Perfil</Text>
-        </View>
+          <View style={styles.titlePagina}>
+            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
+              <Text style={styles.paragraph}>Editar Perfil</Text>
+          </View>
       </View>
 
       <View style={styles.fotoContainer}>
-      <Avatar.Image 
-        size={120} 
-        color="#3F7263" 
-        source={typeof image === 'string' ? { uri: image } : image} 
-        style={styles.fotoPadraoPerfil} 
-      />
+        <Avatar.Image 
+          size={120} 
+          color="#3F7263" 
+          source={typeof image === 'string' ? { uri: image } : image} 
+          style={styles.fotoPadraoPerfil} 
+        />
         <Pressable 
           onPress={handleImagePick}
           style={
@@ -139,7 +134,6 @@ export default function PerfilEditar({ navigation }) {
         style={styles.input} 
         editable={false}
       />
-
       <Text style={styles.texto}>E-mail:</Text>
       <TextInput
         style={styles.input}

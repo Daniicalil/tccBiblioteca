@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   background: {
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     backgroundColor:  '#ffffffd8',
     alignItems: 'center',
     justifyContent: 'center',
-    left: 15,
-    top: 10,
+    left: 20,
+    top: 0,
   },
   header: {
     display: 'flex',
@@ -95,19 +95,17 @@ const styles = StyleSheet.create({
     width: 60, // Ajuste o tamanho conforme necessário
     height: 60, // Ajuste o tamanho conforme necessário
     borderRadius: 8,
-    marginRight: 10, // Espaço entre a imagem e o texto
-    paddingTop: 10,
+    marginRight: 5, // Espaço entre a imagem e o texto
   },
   membroText: {
     flex: 1,
     textAlign: 'justify',
     alignSelf: 'center',
-    marginTop: -4,
+    marginTop: -5,
   },
   name: {
     fontWeight: '500',
     color: '#000',
-
   },
 })
 

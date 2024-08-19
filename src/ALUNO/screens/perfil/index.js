@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { View, Text, TextInput, Pressable, Image } from 'react-native';
 import { RadioButton, Avatar } from 'react-native-paper';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from './forms';
 
 import styles from './styles';
@@ -31,17 +31,12 @@ export default function Perfil({ navigation }) {
         {/* <StatusBar backgroundColor='#3F7263' transLucent={false} /> */}
         <RetangGreen />
         <RetangOrange />
-        <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
-          <Text style={styles.paragraph}>Perfil</Text>
-        </View>
+          <View style={styles.titlePagina}>
+            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
+              <Text style={styles.paragraph}>Perfil</Text>
+          </View>
       </View>
-
         <Avatar.Image size={120} source={FotoPadraoPerfil} style={styles.fotoPadraoPerfil} />
-      {/* <View style={{height: 100, width: 100, borderRadius: 90, backgroundColor: '#0f0', alignSelf: 'center'}}>
-        <Image source={FotoPadraoPerfil} style={{height: 100, width: 100, borderRadius: 90,}}  />
-      </View> */}
-
       <Text style={styles.texto}>RM:</Text>
       <TextInput
         style={styles.input}
@@ -65,19 +60,6 @@ export default function Perfil({ navigation }) {
         onChangeText={setEmail}
         editable={false}
       />
-
-      {/* <Text style={styles.texto}>Senha:</Text>
-      <View style={styles.passwordContainer}>
-        <TextInput
-          style={styles.input}
-          secureTextEntry={!passwordVisible}
-          value={password}
-          onChangeText={setPassword}
-        />
-        <Pressable onPress={togglePasswordVisibility} style={styles.passwordVisibilityIcon}>
-          <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="black" />
-        </Pressable>
-      </View> */}
 
       <View style={styles.contentContainer}>
         <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value} >
@@ -111,7 +93,7 @@ export default function Perfil({ navigation }) {
             :
               styles.touchText
             }
-        >
+      >
           <Text style={styles.touchText}>Esqueceu a senha?</Text>
       </Pressable>
 
@@ -127,7 +109,7 @@ export default function Perfil({ navigation }) {
           >
             <Image source={IconeEditar} style={styles.iconeEditar} />
           </Pressable>
-        </View>
+      </View>
     </View >
   );
 }

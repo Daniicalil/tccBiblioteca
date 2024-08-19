@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, Alert, StatusBar, Pressable } from 'react-native';
+import { View, Text, ScrollView, Alert, Pressable } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from './forms';
@@ -97,10 +97,10 @@ export default function ReservarLivro({ navigation }) {
       <View style={styles.inicio}>
         <RetangGreen />
         <RetangOrange />
-        <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
-          <Text style={styles.paragraph}>Reservar livro</Text>
-        </View>
+          <View style={styles.titlePagina}>
+            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
+              <Text style={styles.paragraph}>Reservar livro</Text>
+          </View>
       </View>
 
       <View style={styles.containerCalendar}>

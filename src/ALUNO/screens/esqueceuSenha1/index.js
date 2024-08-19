@@ -40,50 +40,50 @@ export default function EsqueceuSenha1({ navigation }) {
 
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-    <StatusBar barStyle="dark-content"  // ou "light-content" para texto claro
-               translucent={true}
-               backgroundColor="transparent"  />
-        <View style={styles.contentContainer}>
-          <Image source={imgesqsenha} style={styles.logo} />
-          <Text style={styles.paragraph}>Redefinir senha</Text>
-          <Text style={styles.text}>
-            Digite o seu e-mail no campo abaixo e lhe enviaremos um código de ativação.
-          </Text>
-          
-          <TextInput
-            placeholder='E-mail'
-            style={[styles.input, errorMessage ? styles.inputError : null]}
-            value={email}
-            onChangeText={(text) => {
-              setEmail(text);
-              if (errorMessage) {
-                setErrorMessage('');
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <StatusBar barStyle="dark-content"  // ou "light-content" para texto claro
+                 translucent={true}
+                 backgroundColor="transparent"  />
+          <View style={styles.contentContainer}>
+            <Image source={imgesqsenha} style={styles.logo} />
+              <Text style={styles.paragraph}>Redefinir senha</Text>
+              <Text style={styles.text}>
+                Digite o seu e-mail no campo abaixo e lhe enviaremos um código de ativação.
+              </Text>
+            
+            <TextInput
+              placeholder='E-mail'
+              style={[styles.input, errorMessage ? styles.inputError : null]}
+              value={email}
+              onChangeText={(text) => {
+                setEmail(text);
+                if (errorMessage) {
+                  setErrorMessage('');
+                }
+              }}
+            />
+            {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
+
+            <Pressable 
+              onPress={() => navigation.navigate('login')}
+              style={({ pressed }) =>
+                pressed ? [styles.touchText, styles.TouchPress] : styles.touchText
               }
-            }}
-          />
-          {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
+            >
+              <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
+            </Pressable>
 
-          <Pressable 
-            onPress={() => navigation.navigate('login')}
-            style={({ pressed }) =>
-              pressed ? [styles.touchText, styles.TouchPress] : styles.touchText
-            }
-          >
-            <Text style={styles.touchText}>Já tem uma conta? Faça login</Text>
-          </Pressable>
+            <Pressable 
+              onPress={handleRedefinirPress}
+              style={({ pressed }) =>
+                pressed ? [styles.redefinirButton, styles.btnPress] : styles.redefinirButton
+              }
+            >
+              <Text style={styles.redefinirText}>Redefinir</Text>
+            </Pressable>
 
-          <Pressable 
-            onPress={handleRedefinirPress}
-            style={({ pressed }) =>
-              pressed ? [styles.redefinirButton, styles.btnPress] : styles.redefinirButton
-            }
-          >
-            <Text style={styles.redefinirText}>Redefinir</Text>
-          </Pressable>
-
-        </View>
-        </ScrollView>
-      </ImageBackground>
+          </View>
+    </ScrollView>
+  </ImageBackground>
   );
 }

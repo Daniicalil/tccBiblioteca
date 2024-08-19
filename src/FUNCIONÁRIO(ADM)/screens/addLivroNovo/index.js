@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View, Text, Pressable, Alert, TextInput, Button, Image } from 'react-native';
+import { ScrollView, View, Text, Pressable, Alert, TextInput, Image } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
@@ -97,82 +97,81 @@ export default function AddLivroNovo({ navigation }) {
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
         <StatusBar backgroundColor='#3F7263' transLucent={false} />
-        <RetangGreen />
-        <RetangOrange />
-            
-        <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
-          <Text style={styles.paragraph}>Adicionar livro novo</Text>
-        </View>
+          <RetangGreen />
+          <RetangOrange /> 
+            <View style={styles.titlePagina}>
+              <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
+              <Text style={styles.paragraph}>Adicionar livro novo</Text>
+            </View>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.textInput}>Nome:</Text>
-          <TextInput
-            style={styles.input}
-            value={name}
-            multiline
-            onChangeText={setName}
-          />
+          <View style={styles.inputContainer}>
+            <Text style={styles.textInput}>Nome:</Text>
+            <TextInput
+              style={styles.input}
+              value={name}
+              multiline
+              onChangeText={setName}
+            />
 
-          <Text style={styles.textInput}>Autor:</Text>
-          <TextInput
-            style={styles.input}
-            value={author}
-            multiline
-            onChangeText={setAuthor}
-          />
+            <Text style={styles.textInput}>Autor:</Text>
+            <TextInput
+              style={styles.input}
+              value={author}
+              multiline
+              onChangeText={setAuthor}
+            />
 
-          <Text style={styles.textInput}>Editora:</Text>
-          <TextInput
-            style={styles.input}
-            value={editora}
-            multiline
-            onChangeText={setEditora}
-          />
+            <Text style={styles.textInput}>Editora:</Text>
+            <TextInput
+              style={styles.input}
+              value={editora}
+              multiline
+              onChangeText={setEditora}
+            />
 
-          <Text style={styles.textInput}>Gênero:</Text>
-          <TextInput
-            style={styles.input}
-            value={genero}
-            multiline
-            onChangeText={setGenero}
-          />
+            <Text style={styles.textInput}>Gênero:</Text>
+            <TextInput
+              style={styles.input}
+              value={genero}
+              multiline
+              onChangeText={setGenero}
+            />
 
-          <Text style={styles.textInput}>Resumo:</Text>
-          <TextInput
-            style={styles.inputResumo}
-            value={resumo}
-            multiline
-            onChangeText={setResumo}
-          />
+            <Text style={styles.textInput}>Resumo:</Text>
+            <TextInput
+              style={styles.inputResumo}
+              value={resumo}
+              multiline
+              onChangeText={setResumo}
+            />
 
-          <Text style={styles.textInput}>Quantidade:</Text>
-          <TextInput
-            style={styles.inputQuant}
-            value={quant}
-            keyboardType='numeric'
-            onChangeText={setQuant}
-          />
-        </View>
-
-        <View style={styles.containerImagem}>
-        <Text style={styles.textInput}>Capa:</Text>
-          <View style={styles.lineSquareImg}>
-            {image && <Image source={{ uri: image }} style={styles.image} />}
+            <Text style={styles.textInput}>Quantidade:</Text>
+            <TextInput
+              style={styles.inputQuant}
+              value={quant}
+              keyboardType='numeric'
+              onChangeText={setQuant}
+            />
           </View>
-          <Pressable style={styles.btnImg} onPress={handleImagePick}>
-            <Text style={styles.btnText}>Selecionar Imagem</Text>
-          </Pressable>
-        </View>
 
-        <View style={styles.viewEditar}>
-          <Pressable
-            onPress={handleAddLivroNovo}
-            style={({ pressed }) => pressed ? [styles.button, styles.btnPress] : styles.button}
-          >
-            <Text style={styles.buttonText}>Adicionar</Text>
-          </Pressable>
-        </View>
+          <View style={styles.containerImagem}>
+            <Text style={styles.textInput}>Capa:</Text>
+              <View style={styles.lineSquareImg}>
+                {image && <Image source={{ uri: image }} style={styles.image} />}
+              </View>
+              <Pressable style={styles.btnImg} onPress={handleImagePick}>
+                <Text style={styles.btnText}>Selecionar Imagem</Text>
+              </Pressable>
+          </View>
+
+          <View style={styles.viewEditar}>
+            <Pressable
+              onPress={handleAddLivroNovo}
+              style={({ pressed }) => pressed ? [styles.button, styles.btnPress] : styles.button}
+            >
+              <Text style={styles.buttonText}>Adicionar</Text>
+            </Pressable>
+          </View>
       </View>
     </ScrollView>
   );
