@@ -5,7 +5,7 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF',
   },
   inicio: {
     alignItems: 'center',
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   buttonTextConfSel: {
-    color: '#fff',
+    color: '#FFF',
     textAlign: 'center',
   },
   confirmation: {
@@ -154,12 +154,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   pickerContainer: {
-    width: '40%',
+    width: '50%',
     marginTop: 10,
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: '#CCC',
+    backgroundColor: '#FFF',
     borderRadius: 8,
     alignSelf: 'center',
+  },
+  pickerContainer:hover,
+  pickerContainer:focus {
+    borderColor: '#FF735C',
+    outline: none,
   },
   errorMessage: {
     color: 'red',

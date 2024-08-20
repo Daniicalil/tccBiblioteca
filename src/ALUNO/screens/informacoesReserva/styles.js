@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
   },
   lineSquare: {
     width: '90%',
-    height: 410,
     backgroundColor: 'transparent', 
     borderColor: 'black', 
     borderWidth: 1, 
@@ -82,10 +81,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   capaLivros: {
-    top: 25,
-    width: 45,
-    height: 70,
+    top: 20,
+    width: 55,
+    height: 80,
     left: 35,
+    borderRadius: 4,
   },
   sectionTitle: {
     top: 40,
@@ -203,6 +203,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     textAlign: 'justify',
     fontSize: 12,
+    marginBottom: 10,
   },
 });
 

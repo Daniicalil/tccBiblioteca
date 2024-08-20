@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 160,
     alignSelf: 'center',
+    borderRadius: 4,
   },
   line: {
     borderBottomColor: 'black',

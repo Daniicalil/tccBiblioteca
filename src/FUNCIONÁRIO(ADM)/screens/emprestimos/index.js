@@ -4,6 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, Text, Image } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from './forms';
+import { Searchbar } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import AnneFrank from '../../../../assets/Capa_dos_livros/o diário de anne frank.jpg';
 import Verity from '../../../../assets/Capa_dos_livros/verity.jpg';
@@ -18,6 +20,8 @@ const Line = () => {
 };
 
 export default function Emprestimos({ navigation }) {
+  const [searchQuery, setSearchQuery] = useState('');
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
@@ -28,6 +32,16 @@ export default function Emprestimos({ navigation }) {
               <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
                 <Text style={styles.paragraph}>Empréstimos</Text>
             </View>
+            <Searchbar
+              placeholder="Pesquisar"
+              onChangeText={setSearchQuery}
+              value={searchQuery}
+              style={styles.barraPesq}
+              inputStyle={styles.placeholderStyle}
+              icon={({size, color}) => (
+                <Icon name="search" size={20} color="#CCC" style={styles.iconStyle}/>
+              )}
+            />
             <View style={styles.lineSquare}>
               <View style={styles.infoLivro}>
                 <Image source={AnneFrank} style={styles.capaLivros}/>

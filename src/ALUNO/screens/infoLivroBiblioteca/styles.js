@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 160,
     alignSelf: 'center',
+    borderRadius: 4,
   },
   line: {
     borderBottomColor: 'black',
@@ -78,7 +79,8 @@ const styles = StyleSheet.create({
     width: '100%',
     alignSelf: 'center',
     opacity: 0.2,
-    marginVertical: 10,
+    mariginVertical: 10,
+    marginTop: 10,
   },
   sectionTitle: {
     marginTop: 10,
