@@ -17,6 +17,7 @@ const Line = () => {
 export default function Selecao({ navigation }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [confirmedLevel, setConfirmedLevel] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleConfirm = () => {
     if (selectedOption === "") {
@@ -61,7 +62,9 @@ export default function Selecao({ navigation }) {
                   <View style={styles.pickerContainer}>
                     <Picker
                       selectedValue={selectedOption}
-                      style={styles.picker}
+                      onFocus={() => setIsFocused(true)}
+                      onBlur={() => setIsFocused(false)}
+                      style={[styles.picker, isFocused ? styles.pickerFocused : styles.pickerUnfocused]}
                       onValueChange={(itemValue) => setSelectedOption(itemValue)}
                     >
                       <Picker.Item label="Selecione uma opção" value="" />

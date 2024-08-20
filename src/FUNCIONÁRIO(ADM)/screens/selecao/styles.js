@@ -162,11 +162,19 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignSelf: 'center',
   },
-  pickerContainer:hover,
-  pickerContainer:focus {
-    borderColor: '#FF735C',
-    outline: none,
+  pickerFocused: {
+    borderWidth: 1,
+    borderColor: '#FF735C'
   },
+  pickerUnfocused: {
+    borderWidth: 1,
+    borderColor: '#CCC',
+  },
+  // pickerContainer:hover,
+  // pickerContainer:focus {
+  //   borderColor: '#FF735C',
+  //   outline: none,
+  // },
   errorMessage: {
     color: 'red',
     marginBottom: 8,
