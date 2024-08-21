@@ -1,11 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { View, Text, TextInput, Pressable, Alert } from 'react-native';
 import { RadioButton, Avatar } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from '../../componentes/forms';
 import { Entypo } from '@expo/vector-icons';
-import Constants from 'expo-constants';
 import * as ImagePicker from 'expo-image-picker';
 
 import styles from './styles';
@@ -17,13 +16,50 @@ export default function PerfilEditar({ navigation }) {
   const [email, setEmail] = useState('');
   const [image, setImage] = useState(defaultProfileImage);
 
+  // Função para salvar as alterações
+  const handleSave = () => {
+    Alert.alert(
+      'Perfil Atualizado',
+      'Suas informações foram salvas com sucesso.',
+      [
+        {
+          text: 'OK',
+          onPress: () => navigation.replace('perfil')
+        }
+      ],
+      { cancelable: false }
+    );
+  };
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'Editar Perfil',
+      headerLeft: () => (
+        <FontAwesome 
+          name="angle-left" 
+          size={30} 
+          color="black" 
+          style={styles.icon} 
+          onPress={() => navigation.goBack()} 
+        />
+      ),
+      headerRight: () => (
+        <Pressable 
+          onPress={handleSave} 
+          style={({ pressed }) => pressed ? [styles.botaoSalvar, styles.btnPress] : styles.botaoSalvar}
+        >
+          <Text style={styles.salvarText}>Salvar</Text>
+        </Pressable>
+      ),
+    });
+  }, [navigation, handleSave]);
+
   useEffect(() => {
     (async () => {
-      if (Constants.platform.ios) {
-        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== 'granted') {
-          alert('Desculpe, precisamos de permissões para acessar a galeria!');
-        }
+      // Solicitar permissões para acessar a galeria de imagens
+      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (status !== 'granted') {
+        alert('Desculpe, precisamos de permissões para acessar a galeria!');
       }
     })();
   }, []);
@@ -72,20 +108,6 @@ export default function PerfilEditar({ navigation }) {
         }
       ],
       { cancelable: true }
-    );
-  };
-
-  const handleSave = () => {
-    Alert.alert(
-      'Perfil Atualizado',
-      'Suas informações foram salvas com sucesso.',
-      [
-        {
-          text: 'OK',
-          onPress: () => navigation.navigate('perfil')
-        }
-      ],
-      { cancelable: false }
     );
   };
 
@@ -166,7 +188,7 @@ export default function PerfilEditar({ navigation }) {
       </View>
 
       <Pressable
-        onPress={() => navigation.navigate('esqueceuSenha1')}
+        onPress={() => navigation.replace('esqueceuSenha1')}
         style={({ pressed }) => pressed ? [styles.touchText, styles.TouchPress] : styles.touchText}
       >
         <Text style={styles.touchText}>Esqueceu a senha?</Text>

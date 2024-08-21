@@ -99,14 +99,14 @@ export default function Perfil({ navigation }) {
 
       <View style={styles.viewEditar}>
       <Pressable 
-  onPress={() => navigation.navigate('perfilEditar', { drawerNavigation: navigation })}
-  style={
-    ({ pressed }) => pressed ?
-      [styles.botaoEditar, styles.btnPress]
-    :
-      styles.botaoEditar
-  }  
->
+        onPress={() => navigation.navigate('perfilEditar')}
+        style={
+          ({ pressed }) => pressed ?
+            [styles.botaoEditar, styles.btnPress]
+          :
+            styles.botaoEditar
+        }  
+      >
   <Image source={IconeEditar} style={styles.iconeEditar} />
 </Pressable>
       </View>
