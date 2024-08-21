@@ -7,12 +7,14 @@ import { RetangGreen, RetangOrange } from './forms';
 import { Entypo } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import * as ImagePicker from 'expo-image-picker';
+import drawerNavigation from '../../rotas/drawerNavigation';
 
 import styles from './styles';
 
 import defaultProfileImage from '../../../../assets/imagens_telas/perfil.jpg'; // Imagem padrão
 
-export default function PerfilEditar({ navigation }) {
+export default function PerfilEditar({ navigation, route }) {
+  const { drawerNavigation } = route.params || {}; // Recebe o parâmetro passado na navegação
   const [value, setValue] = useState('first');
   const [email, setEmail] = useState('');
   const [image, setImage] = useState(defaultProfileImage);
