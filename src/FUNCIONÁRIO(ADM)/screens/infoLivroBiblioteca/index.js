@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView ,View, Text, Image, Pressable, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
-import {RetangGreen, RetangOrange} from './forms';
+import {RetangGreen, RetangOrange} from '../../../ALUNO/componentes/forms';
 import { useNavigation } from '@react-navigation/native';
 
 import Autor from '../../../../assets/imagens_telas/autora.png';

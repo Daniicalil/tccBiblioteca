@@ -39,7 +39,9 @@ export default function NavegacaoADM() {
                     <Stack.Screen name="esqueceuSenha1" component={EsqueceuSenha1} />
                     <Stack.Screen name="esqueceuSenha2" component={EsqueceuSenha2} />
                     <Stack.Screen name="Home" component={NavegacaoDrawer} />
-                    <Stack.Screen name="telaInicial" component={TelaInicial} />
+
+
+                    {/* <Stack.Screen name="telaInicial" component={TelaInicial} />
                     <Stack.Screen name="perfil" component={Perfil} />
                     <Stack.Screen name="perfilEditar" component={PerfilEditar} />
                     <Stack.Screen name="recomendacao" component={Recomendacao} />
@@ -54,7 +56,7 @@ export default function NavegacaoADM() {
                     <Stack.Screen name="notificacoes" component={Notificacoes} />
                     <Stack.Screen name="informacoescontato" component={InformacoesContato} />
                     <Stack.Screen name="informacoescontatoEditar" component={InformacoesContatoEditar} />
-                    <Stack.Screen name="sobrenos" component={SobreNos} />
+                    <Stack.Screen name="sobrenos" component={SobreNos} /> */}
             </Stack.Navigator>
         </NavigationContainer>
     );

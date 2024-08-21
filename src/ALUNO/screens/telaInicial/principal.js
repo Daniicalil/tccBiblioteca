@@ -4,7 +4,7 @@ import {useState} from 'react';
 import { View, Text } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { RetangGreen, RetangOrange, Funcionamento } from './forms';
+import { RetangGreen, RetangOrange, Funcionamento } from '../../componentes/forms';
 
 import styles from './styles';
 

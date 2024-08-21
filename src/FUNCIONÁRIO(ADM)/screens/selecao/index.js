@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, Text, Pressable, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
-import { RetangGreen, RetangOrange } from './forms';
+import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
 
 import styles from './styles';
 

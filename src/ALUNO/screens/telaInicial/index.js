@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FlatList, View } from 'react-native';
-import { Importancia } from './forms';
+import { Importancia } from '../../componentes/forms';
 
 import styles from './styles'
 import Principal from './principal';

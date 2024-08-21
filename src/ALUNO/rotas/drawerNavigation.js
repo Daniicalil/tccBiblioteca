@@ -3,6 +3,8 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
+import StylesButtonDrawer from './stylesDrawer';
+
 import TelaInicial from '../screens/telaInicial';
 import Perfil from '../screens/perfil';
 import Recomendacao from '../screens/recomendacao';
@@ -110,11 +112,79 @@ export default function NavegacaoDrawer({ navigation }) {
             {/* Itens listagem drawer */}
             <View>
 
-                <Pressable onPress={() => props.navigation.navigate('Início')}>
-                  <Text>Início</Text>
+                <Pressable 
+                  style={StylesButtonDrawer.buttonDrawer}
+                  onPress={() => props.navigation.navigate('Início')}>
+                    <View style={StylesButtonDrawer.icon}>
+                      <SimpleLineIcons name="home" size={20} color="black" />
+                      <Text style={StylesButtonDrawer.label}>Início</Text>
+                  </View>
                 </Pressable>
-                <Pressable onPress={() => props.navigation.navigate('Perfil')}>
-                  <Text>Perfil</Text>
+                <Pressable 
+                  style={StylesButtonDrawer.buttonDrawer}
+                  onPress={() => props.navigation.navigate('Perfil')}>
+                    <View style={StylesButtonDrawer.icon}>
+                      <SimpleLineIcons name="user" size={20} color="black" />
+                      <Text style={StylesButtonDrawer.label}>Perfil</Text>
+                    </View>
+                </Pressable>
+                <Pressable 
+                  style={StylesButtonDrawer.buttonDrawer}
+                  onPress={() => props.navigation.navigate('Recomendações')}>
+                    <View style={StylesButtonDrawer.icon}>
+                      <SimpleLineIcons name="star" size={20} color="black" />
+                      <Text style={StylesButtonDrawer.label}>Recomendações</Text>
+                    </View>
+                </Pressable>
+                <Pressable 
+                  style={StylesButtonDrawer.buttonDrawer}
+                  onPress={() => props.navigation.navigate('Biblioteca')}>
+                    <View style={StylesButtonDrawer.icon}>
+                      <SimpleLineIcons name="book-open" size={20} color="black" />
+                      <Text style={StylesButtonDrawer.label}>Biblioteca</Text>
+                    </View>
+                </Pressable>
+                <Pressable 
+                  style={StylesButtonDrawer.buttonDrawer}
+                  onPress={() => props.navigation.navigate('informacoesreserva')}>
+                    <View style={StylesButtonDrawer.icon}>
+                      <SimpleLineIcons name="calendar" size={20} color="black" />
+                      <Text style={StylesButtonDrawer.label}>Reservas</Text>
+                    </View>
+                </Pressable>
+                <Pressable 
+                  style={StylesButtonDrawer.buttonDrawer}
+                  onPress={() => props.navigation.navigate('Notificações')}>
+                    <View style={StylesButtonDrawer.icon}>
+                      <SimpleLineIcons name="bell" size={20} color="black" />
+                      <Text style={StylesButtonDrawer.label}>Notificações</Text>
+                    </View>
+                </Pressable>
+                <Pressable 
+                  style={
+                    ({ pressed }) => pressed ?
+                      [StylesButtonDrawer.buttonDrawer, StylesButtonDrawer.TouchPress]
+                      :
+                      StylesButtonDrawer.buttonDrawer
+                  }
+                  onPress={() => props.navigation.navigate('Informações')}>
+                    <View style={StylesButtonDrawer.icon}>
+                      <SimpleLineIcons name="info" size={20} color="black" />
+                      <Text style={StylesButtonDrawer.label}>Informações</Text>
+                    </View>
+                </Pressable>
+                <Pressable 
+                  style={
+                    ({ pressed }) => pressed ?
+                      [StylesButtonDrawer.buttonDrawer, StylesButtonDrawer.TouchPress]
+                      :
+                      StylesButtonDrawer.buttonDrawer
+                  }
+                  onPress={() => props.navigation.navigate('Login')}>
+                    <View style={StylesButtonDrawer.icon}>
+                      <SimpleLineIcons name="logout" size={18} color="red" />
+                      <Text style={StylesButtonDrawer.labelSair}>Sair</Text>
+                    </View>
                 </Pressable>
 
             </View>
@@ -143,149 +213,61 @@ export default function NavegacaoDrawer({ navigation }) {
       <Drawer.Screen
         name="Início"
         component={TelaInicial}
-        options={{
-          drawerLabel: "Início",
-          title: "Início",
-          drawerIcon: ({ size, color }) => (
-            <View style={{ marginLeft: 10 }}>
-              <SimpleLineIcons name="home" size={20} color="black" />
-            </View>
-          ),
-        }}
       />
       <Drawer.Screen
         name="Perfil"
         component={Perfil}
-        options={{
-          drawerLabel: "Perfil",
-          title: "Perfil",
-          drawerIcon: ({ size, color }) => (
-            <View style={{ marginLeft: 10 }}>
-              <SimpleLineIcons name="user" size={20} color="black" />
-            </View>
-          ),
-        }}
       />
       <Drawer.Screen
         name="Recomendações"
         component={Recomendacao}
-        options={{
-          drawerLabel: "Recomendações",
-          title: "Recomendações",
-          drawerIcon: ({ size, color }) => (
-            <View style={{ marginLeft: 10 }}>
-              <SimpleLineIcons name="star" size={20} color="black" />
-            </View>
-          ),
-        }}
       />
       <Drawer.Screen
         name="Biblioteca"
         component={Biblioteca}
-        options={{
-          drawerLabel: "Biblioteca",
-          title: "Biblioteca",
-          drawerIcon: ({ size, color }) => (
-            <View style={{ marginLeft: 10 }}>
-              <SimpleLineIcons name="book-open" size={20} color="black" />
-            </View>
-          ),
-        }}
       />
       <Drawer.Screen
-        name="Reservas"
+        name="informacoesreserva"
         component={InformacoesReserva}
-        options={{
-          drawerLabel: "Reservas",
-          title: "Reservas",
-          drawerIcon: ({ size, color }) => (
-            <View style={{ marginLeft: 10 }}>
-              <SimpleLineIcons name="calendar" size={20} color="black" />
-            </View>
-          ),
-        }}
       />
       <Drawer.Screen
         name="Notificações"
         component={Notificacoes}
-        options={{
-          drawerLabel: "Notificações",
-          title: "Notificações",
-          drawerIcon: ({ size, color }) => (
-            <View style={{ marginLeft: 10 }}>
-              <SimpleLineIcons name="bell" size={20} color="black" />
-            </View>
-          ),
-        }}
       />
       <Drawer.Screen
         name="Informações"
         component={InformacoesContato}
-        options={{
-          drawerLabel: "Informações",
-          title: "Informações",
-          drawerIcon: ({ size, color }) => (
-            <View style={{ marginLeft: 10 }}>
-              <SimpleLineIcons name="info" size={20} color="black" />
-            </View>
-          ),
-        }}
       />
       <Drawer.Screen
-        name="Sair"
+        name="Login"
         component={Login}
-        options={{
-          drawerLabel: () => <CustomDrawerLabel />,
-          title: "Sair",
-          drawerIcon: ({ size, color }) => (
-            <View style={{ marginLeft: 10 }}>
-              <SimpleLineIcons
-                name="logout" size={18} color="red" />
-            </View>
-          ),
-        }}
       />
 
-
-      {/* TESTE */}
-
-      <Drawer.Screen
-        name="perfil"
-        component={Perfil}
-        options={{
-          drawerLabel: () => <CustomDrawerLabel />,
-          title: "perfil",
-          drawerIcon: ({ size, color }) => (
-            <View style={{ marginLeft: 10 }}>
-              <SimpleLineIcons
-                name="logout" size={18} color="red" />
-            </View>
-          ),
-        }}
-      />
 
       <Drawer.Screen
         name="perfilEditar"
         component={PerfilEditar}
-        // options={{
-        //   drawerLabel: () => <CustomDrawerLabel />,
-        //   title: "perfilEditar",
-        //   drawerIcon: ({ size, color }) => (
-        //     <View style={{ marginLeft: 10 }}>
-        //       <SimpleLineIcons
-        //         name="logout" size={18} color="red" />
-        //     </View>
-        //   ),
-        // }}
+      />
+      <Drawer.Screen
+        name="infolivrorecomendacao"
+        component={InfoLivroRecomendacao}
+      />
+      <Drawer.Screen
+        name="infolivrobiblioteca"
+        component={InfoLivroBiblioteca}
+      />
+      <Drawer.Screen
+        name="reservarlivro"
+        component={ReservarLivro}
       />
 
       {/* <Stack.Screen name="perfil" component={Perfil} />
-      <Stack.Screen name="perfilEditar" component={PerfilEditar} />
+      <Stack.Screen name="perfilEditar" component={PerfilEditar} />#
       <Stack.Screen name="recomendacao" component={Recomendacao} />
-      <Stack.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />
+      <Stack.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />#
       <Stack.Screen name="biblioteca" component={Biblioteca} />
-      <Stack.Screen name="infolivrobiblioteca" component={InfoLivroBiblioteca} />
-      <Stack.Screen name="reservarlivro" component={ReservarLivro} />
+      <Stack.Screen name="infolivrobiblioteca" component={InfoLivroBiblioteca} />#
+      <Stack.Screen name="reservarlivro" component={ReservarLivro} />#
       <Stack.Screen name="informacoesreserva" component={InformacoesReserva} />
       <Stack.Screen name="notificacoes" component={Notificacoes} />
       <Stack.Screen name="informacoescontato" component={InformacoesContato} />

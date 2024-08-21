@@ -3,18 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Pressable, Alert } from 'react-native';
 import { RadioButton, Avatar } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
-import { RetangGreen, RetangOrange } from './forms';
+import { RetangGreen, RetangOrange } from '../../componentes/forms';
 import { Entypo } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import * as ImagePicker from 'expo-image-picker';
-import drawerNavigation from '../../rotas/drawerNavigation';
 
 import styles from './styles';
 
 import defaultProfileImage from '../../../../assets/imagens_telas/perfil.jpg'; // Imagem padrão
 
-export default function PerfilEditar({ navigation, route }) {
-  const { drawerNavigation } = route.params || {}; // Recebe o parâmetro passado na navegação
+export default function PerfilEditar({ navigation }) {
   const [value, setValue] = useState('first');
   const [email, setEmail] = useState('');
   const [image, setImage] = useState(defaultProfileImage);

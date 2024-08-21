@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 
-import ImgLogo from '../../../../assets/imagens_telas/logo.png';
-import ImgEtec from '../../../../assets/imagens_telas/etec.png';
-import ImgFunc from '../../../../assets/imagens_telas/horario.png';
-import ImgImportancia from '../../../../assets/imagens_telas/fraseimportancia.png';
+import ImgLogo from '../../../assets/imagens_telas/logo.png';
+import ImgEtec from '../../../assets/imagens_telas/etec.png';
+import ImgFunc from '../../../assets/imagens_telas/horario.png';
+import ImgImportancia from '../../../assets/imagens_telas/fraseimportancia.png';
 
 import styles from './styles';
-import HeaderDrawer from '../../rotas/headerDrawer';
+import HeaderDrawer from '../../ALUNO/rotas/headerDrawer';
 
 export const RetangGreen = () => {
   return (
@@ -42,3 +42,4 @@ export const Importancia = () => {
     </View>
   );
 };
+

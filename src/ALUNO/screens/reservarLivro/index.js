@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, Alert, StatusBar, Pressable } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
-import { RetangGreen, RetangOrange } from './forms';
+import { RetangGreen, RetangOrange } from '../../componentes/forms';
 import { FontAwesome } from '@expo/vector-icons';
 
 import styles from './styles';

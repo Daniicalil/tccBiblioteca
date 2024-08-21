@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, Text, Image, Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { RetangGreen, RetangOrange } from './forms';
+import { RetangGreen, RetangOrange } from '../../componentes/forms';
 import { useNavigation } from '@react-navigation/native';
 
 import Autor from '../../../../assets/imagens_telas/autora.png';

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { View, Text, TextInput, Pressable, Image } from 'react-native';
 import { RadioButton, Avatar } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
-import { RetangGreen, RetangOrange } from './forms';
+import { RetangGreen, RetangOrange } from '../../componentes/forms';
 
 import styles from './styles';
 

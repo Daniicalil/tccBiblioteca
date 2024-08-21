@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FontAwesome } from '@expo/vector-icons';
-import {RetangGreen, RetangOrange} from './forms';
+import {RetangGreen, RetangOrange} from '../../componentes/forms';
 import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';

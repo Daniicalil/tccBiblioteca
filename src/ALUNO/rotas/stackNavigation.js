@@ -35,9 +35,9 @@ export default function Navegacao() {
                     <Stack.Screen name="esqueceuSenha1" component={EsqueceuSenha1} />
                     <Stack.Screen name="esqueceuSenha2" component={EsqueceuSenha2} />
                     <Stack.Screen name="Home" component={NavegacaoDrawer} />
-
-                    {/* <Stack.Screen name="telaInicial" component={TelaInicial} /> */}
-                    {/* <Stack.Screen name="perfil" component={Perfil} />
+{/* 
+                    <Stack.Screen name="telaInicial" component={TelaInicial} /> 
+                    <Stack.Screen name="perfil" component={Perfil} />
                     <Stack.Screen name="perfilEditar" component={PerfilEditar} />
                     <Stack.Screen name="recomendacao" component={Recomendacao} />
                     <Stack.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />
