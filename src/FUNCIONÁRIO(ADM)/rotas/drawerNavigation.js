@@ -123,7 +123,7 @@ export default function NavegacaoDrawer() {
 
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Início')}>
+                  onPress={() => props.navigation.navigate('telaInicial')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="home" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Início</Text>
@@ -131,7 +131,7 @@ export default function NavegacaoDrawer() {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Perfil')}>
+                  onPress={() => props.navigation.navigate('perfil')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="user" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Perfil</Text>
@@ -139,7 +139,7 @@ export default function NavegacaoDrawer() {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Seleção')}>
+                  onPress={() => props.navigation.navigate('selecao')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="directions" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Seleção</Text>
@@ -147,7 +147,7 @@ export default function NavegacaoDrawer() {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Recomendações')}>
+                  onPress={() => props.navigation.navigate('recomendacao')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="star" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Recomendações</Text>
@@ -155,7 +155,7 @@ export default function NavegacaoDrawer() {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Biblioteca')}>
+                  onPress={() => props.navigation.navigate('biblioteca')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="book-open" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Biblioteca</Text>
@@ -171,7 +171,7 @@ export default function NavegacaoDrawer() {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Notificações')}>
+                  onPress={() => props.navigation.navigate('notificacoes')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="bell" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Notificações</Text>
@@ -179,7 +179,7 @@ export default function NavegacaoDrawer() {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Empréstimos')}>
+                  onPress={() => props.navigation.navigate('emprestimos')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="notebook" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Empréstimos</Text>
@@ -192,7 +192,7 @@ export default function NavegacaoDrawer() {
                       :
                       StylesButtonDrawer.buttonDrawer
                   }
-                  onPress={() => props.navigation.navigate('Informações')}>
+                  onPress={() => props.navigation.navigate('informacoescontato')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="info" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Informações</Text>
@@ -205,7 +205,7 @@ export default function NavegacaoDrawer() {
                       :
                       StylesButtonDrawer.buttonDrawer
                   }
-                  onPress={() => props.navigation.navigate('Login')}>
+                  onPress={() => props.navigation.navigate('login')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="logout" size={18} color="red" />
                       <Text style={StylesButtonDrawer.labelSair}>Sair</Text>
@@ -234,43 +234,43 @@ export default function NavegacaoDrawer() {
 
       {/* Definido as telas da drawer aqui */}
       <Drawer.Screen
-        name="Início"
+        name="telaInicial"
         component={TelaInicial}
       />
       <Drawer.Screen
-        name="Perfil"
+        name="perfil"
         component={Perfil}
       />
       <Drawer.Screen
-        name="Seleção"
+        name="selecao"
         component={Selecao}
       />
       <Drawer.Screen
-        name="Recomendações"
+        name="recomendacao"
         component={Recomendacao}
       />
       <Drawer.Screen
-        name="Biblioteca"
+        name="biblioteca"
         component={Biblioteca}
       />
       <Drawer.Screen
-        name="Reservas"
+        name="informacoesreserva"
         component={InformacoesReserva}
       />
       <Drawer.Screen
-        name="Notificações"
+        name="notificacoes"
         component={Notificacoes}
       />
       <Drawer.Screen
-        name="Empréstimos"
+        name="emprestimos"
         component={Emprestimos}
       />
       <Drawer.Screen
-        name="Informações"
+        name="informacoescontato"
         component={InformacoesContato}
       />
       <Drawer.Screen
-        name="Sair"
+        name="login"
         component={Login}
       />
 
@@ -306,6 +306,10 @@ export default function NavegacaoDrawer() {
       <Drawer.Screen
         name="informacoescontatoEditar"
         component={InformacoesContatoEditar}
+      />
+      <Drawer.Screen
+        name="sobrenos"
+        component={SobreNos}
       />
     </Drawer.Navigator>
   );

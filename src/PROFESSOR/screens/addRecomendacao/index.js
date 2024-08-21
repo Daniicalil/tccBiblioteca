@@ -3,7 +3,7 @@ import { View, Text, TextInput, Pressable, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { RetangGreen, RetangOrange } from './forms';
+import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
 import styles from './styles';
 
 export default function AddRecomendacao({ navigation }) {

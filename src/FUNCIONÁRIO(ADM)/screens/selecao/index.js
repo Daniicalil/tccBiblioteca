@@ -5,6 +5,8 @@ import { ScrollView, View, Text, Pressable, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
+import { Searchbar } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import styles from './styles';
 
@@ -27,6 +29,8 @@ export default function Selecao({ navigation }) {
     }
   };
 
+  const [searchQuery, setSearchQuery] = useState('');
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
@@ -37,6 +41,16 @@ export default function Selecao({ navigation }) {
               <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
                 <Text style={styles.paragraph}>Seleção de usuários</Text>
             </View>
+            <Searchbar
+              placeholder="Pesquisar"
+              onChangeText={setSearchQuery}
+              value={searchQuery}
+              style={styles.barraPesq}
+              inputStyle={styles.placeholderStyle}
+              icon={({size, color}) => (
+                <Icon name="search" size={20} color="#CCC" style={styles.iconStyle}/>
+              )}
+            />
             <View style={styles.lineSquare}>
               <View style={styles.dados}>
                 <Text style={styles.dataCadastro}>

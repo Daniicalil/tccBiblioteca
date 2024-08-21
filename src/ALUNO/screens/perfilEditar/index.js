@@ -82,7 +82,7 @@ export default function PerfilEditar({ navigation }) {
       [
         {
           text: 'OK',
-          onPress: () => navigation.navigate('perfil') // Substitua 'NovaTela' pelo nome da tela que você deseja navegar
+          onPress: () => navigation.navigate('perfil')
         }
       ],
       { cancelable: false }

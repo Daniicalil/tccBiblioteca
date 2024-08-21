@@ -114,7 +114,7 @@ export default function NavegacaoDrawer({ navigation }) {
 
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Início')}>
+                  onPress={() => props.navigation.navigate('telaInicial')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="home" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Início</Text>
@@ -122,7 +122,7 @@ export default function NavegacaoDrawer({ navigation }) {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Perfil')}>
+                  onPress={() => props.navigation.navigate('perfil')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="user" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Perfil</Text>
@@ -130,7 +130,7 @@ export default function NavegacaoDrawer({ navigation }) {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Recomendações')}>
+                  onPress={() => props.navigation.navigate('recomendacao')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="star" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Recomendações</Text>
@@ -138,7 +138,7 @@ export default function NavegacaoDrawer({ navigation }) {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Biblioteca')}>
+                  onPress={() => props.navigation.navigate('biblioteca')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="book-open" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Biblioteca</Text>
@@ -154,7 +154,7 @@ export default function NavegacaoDrawer({ navigation }) {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('Notificações')}>
+                  onPress={() => props.navigation.navigate('notificacoes')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="bell" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Notificações</Text>
@@ -167,7 +167,7 @@ export default function NavegacaoDrawer({ navigation }) {
                       :
                       StylesButtonDrawer.buttonDrawer
                   }
-                  onPress={() => props.navigation.navigate('Informações')}>
+                  onPress={() => props.navigation.navigate('informacoescontato')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="info" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Informações</Text>
@@ -180,7 +180,7 @@ export default function NavegacaoDrawer({ navigation }) {
                       :
                       StylesButtonDrawer.buttonDrawer
                   }
-                  onPress={() => props.navigation.navigate('Login')}>
+                  onPress={() => props.navigation.navigate('login')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="logout" size={18} color="red" />
                       <Text style={StylesButtonDrawer.labelSair}>Sair</Text>
@@ -211,19 +211,19 @@ export default function NavegacaoDrawer({ navigation }) {
 
       {/* Definido as telas da drawer aqui */}
       <Drawer.Screen
-        name="Início"
+        name="telaInicial"
         component={TelaInicial}
       />
       <Drawer.Screen
-        name="Perfil"
+        name="perfil"
         component={Perfil}
       />
       <Drawer.Screen
-        name="Recomendações"
+        name="recomendacao"
         component={Recomendacao}
       />
       <Drawer.Screen
-        name="Biblioteca"
+        name="biblioteca"
         component={Biblioteca}
       />
       <Drawer.Screen
@@ -231,15 +231,15 @@ export default function NavegacaoDrawer({ navigation }) {
         component={InformacoesReserva}
       />
       <Drawer.Screen
-        name="Notificações"
+        name="notificacoes"
         component={Notificacoes}
       />
       <Drawer.Screen
-        name="Informações"
+        name="informacoescontato"
         component={InformacoesContato}
       />
       <Drawer.Screen
-        name="Login"
+        name="login"
         component={Login}
       />
 
@@ -260,14 +260,18 @@ export default function NavegacaoDrawer({ navigation }) {
         name="reservarlivro"
         component={ReservarLivro}
       />
+      <Drawer.Screen
+        name="sobrenos"
+        component={SobreNos}
+      />
 
       {/* <Stack.Screen name="perfil" component={Perfil} />
-      <Stack.Screen name="perfilEditar" component={PerfilEditar} />#
+      <Stack.Screen name="perfilEditar" component={PerfilEditar} />
       <Stack.Screen name="recomendacao" component={Recomendacao} />
-      <Stack.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />#
+      <Stack.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />
       <Stack.Screen name="biblioteca" component={Biblioteca} />
-      <Stack.Screen name="infolivrobiblioteca" component={InfoLivroBiblioteca} />#
-      <Stack.Screen name="reservarlivro" component={ReservarLivro} />#
+      <Stack.Screen name="infolivrobiblioteca" component={InfoLivroBiblioteca} />
+      <Stack.Screen name="reservarlivro" component={ReservarLivro} />
       <Stack.Screen name="informacoesreserva" component={InformacoesReserva} />
       <Stack.Screen name="notificacoes" component={Notificacoes} />
       <Stack.Screen name="informacoescontato" component={InformacoesContato} />

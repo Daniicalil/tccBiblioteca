@@ -8,6 +8,7 @@ import EsqueceuSenha2 from '../../ALUNO/screens/esqueceuSenha2';
 import TelaInicial from '../../ALUNO/screens/telaInicial';
 import Perfil from '../../ALUNO/screens/perfil';
 import PerfilEditar from '../../ALUNO/screens/perfilEditar';
+import Selecao from '../screens/selecao';
 import Recomendacao from '../../ALUNO/screens/recomendacao';
 import InfoLivroRecomendacao from '../../ALUNO/screens/infoLivroRecomendacao';
 import Biblioteca from '../screens/biblioteca';
@@ -18,6 +19,7 @@ import InfoLivroBiblioteca from '../screens/infoLivroBiblioteca';
 import ReservarLivro from '../../ALUNO/screens/reservarLivro';
 import InformacoesReserva from '../../ALUNO/screens/informacoesReserva';
 import Notificacoes from '../../ALUNO/screens/notificacoes';
+import Emprestimos from '../screens/emprestimos';
 import InformacoesContato from '../screens/infoContato';
 import InformacoesContatoEditar from '../screens/infoContatoEditar';
 import SobreNos from '../../ALUNO/screens/sobreNos';
@@ -33,7 +35,7 @@ export default function NavegacaoADM() {
              screenOptions={{
                 headerShown: false // Aqui é onde você desativa o cabeçalho
               }}
-                initialRouteName="Login">
+                initialRouteName="login">
                     <Stack.Screen name="login" component={Login} />
                     <Stack.Screen name="signUp" component={SignUp} />
                     <Stack.Screen name="esqueceuSenha1" component={EsqueceuSenha1} />
@@ -44,6 +46,7 @@ export default function NavegacaoADM() {
                     {/* <Stack.Screen name="telaInicial" component={TelaInicial} />
                     <Stack.Screen name="perfil" component={Perfil} />
                     <Stack.Screen name="perfilEditar" component={PerfilEditar} />
+                    <Stack.Screen name="selecao" component={Selecao} />
                     <Stack.Screen name="recomendacao" component={Recomendacao} />
                     <Stack.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />
                     <Stack.Screen name="biblioteca" component={Biblioteca} />
@@ -54,6 +57,7 @@ export default function NavegacaoADM() {
                     <Stack.Screen name="reservarlivro" component={ReservarLivro} />
                     <Stack.Screen name="informacoesreserva" component={InformacoesReserva} />
                     <Stack.Screen name="notificacoes" component={Notificacoes} />
+                    <Stack.Screen name="emprestimos" component={Emprestimos} />
                     <Stack.Screen name="informacoescontato" component={InformacoesContato} />
                     <Stack.Screen name="informacoescontatoEditar" component={InformacoesContatoEditar} />
                     <Stack.Screen name="sobrenos" component={SobreNos} /> */}

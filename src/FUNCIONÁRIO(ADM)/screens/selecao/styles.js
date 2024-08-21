@@ -37,6 +37,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
+  barraPesq: {
+    backgroundColor: '#FFF',
+    width: '85%',
+    marginBottom: '4%',
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: '#CCC',
+  },
+  placeholderStyle: {
+    opacity: 0.5, 
+  },
   titlePagina: {
     flexDirection: 'row',
     justifyContent: 'center',

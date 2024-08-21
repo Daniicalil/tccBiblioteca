@@ -45,6 +45,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#CCC',
   },
+  placeholderStyle: {
+    opacity: 0.5, 
+  },
   titlePagina: {
     flexDirection: 'row',
     justifyContent: 'center',
