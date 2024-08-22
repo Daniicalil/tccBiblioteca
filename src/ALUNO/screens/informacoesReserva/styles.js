@@ -131,6 +131,10 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 18,
   },
+  avisoDevolucao: {
+    color: '#FF735C',
+    marginBottom: 15,
+  },
   conf: {
     paddingTop: 55,
     textAlign: 'center',

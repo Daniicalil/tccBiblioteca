@@ -73,26 +73,9 @@ export default function NavegacaoDrawer({ navigation }) {
           headerShown: false,
           drawerActiveBackgroundColor: '#FF735C',
           drawerInactiveBackgroundColor: '#C6C6C6',
-          drawerLabelStyle: {
-            marginLeft: -20,
-            width: '100%',
-            color: '#000',
-            flexShrink: 1,
-            flex: 1,
-            fontSize: 12,
-          },
-          drawerItemStyle: {
-            borderRadius: 30,
-            marginVertical: 4,
-            width: '90%',
-            alignSelf: 'center',
-          },
           drawerStyle: {
             width: '55%',
             backgroundColor: '#FFF',
-          },
-          drawerIcon: {
-            marginLeft: -50,
           },
         }}
         drawerContent={props => (
@@ -114,7 +97,7 @@ export default function NavegacaoDrawer({ navigation }) {
 
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('telaInicial')}>
+                  onPress={() => navigation.navigate('telaInicial')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="home" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Início</Text>
@@ -122,7 +105,7 @@ export default function NavegacaoDrawer({ navigation }) {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('perfil')}>
+                  onPress={() => navigation.navigate('perfil')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="user" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Perfil</Text>
@@ -130,7 +113,7 @@ export default function NavegacaoDrawer({ navigation }) {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('recomendacao')}>
+                  onPress={() => navigation.navigate('recomendacao')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="star" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Recomendações</Text>
@@ -138,7 +121,7 @@ export default function NavegacaoDrawer({ navigation }) {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('biblioteca')}>
+                  onPress={() => navigation.navigate('biblioteca')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="book-open" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Biblioteca</Text>
@@ -146,7 +129,7 @@ export default function NavegacaoDrawer({ navigation }) {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('informacoesreserva')}>
+                  onPress={() => navigation.navigate('informacoesreserva')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="calendar" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Reservas</Text>
@@ -154,7 +137,7 @@ export default function NavegacaoDrawer({ navigation }) {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => props.navigation.navigate('notificacoes')}>
+                  onPress={() => navigation.navigate('notificacoes')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="bell" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Notificações</Text>
@@ -167,7 +150,7 @@ export default function NavegacaoDrawer({ navigation }) {
                       :
                       StylesButtonDrawer.buttonDrawer
                   }
-                  onPress={() => props.navigation.navigate('informacoescontato')}>
+                  onPress={() => navigation.navigate('informacoescontato')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="info" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Informações</Text>
@@ -180,7 +163,7 @@ export default function NavegacaoDrawer({ navigation }) {
                       :
                       StylesButtonDrawer.buttonDrawer
                   }
-                  onPress={() => props.navigation.navigate('login')}>
+                  onPress={() => navigation.goBack()}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="logout" size={18} color="red" />
                       <Text style={StylesButtonDrawer.labelSair}>Sair</Text>

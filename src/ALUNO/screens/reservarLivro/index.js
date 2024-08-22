@@ -103,6 +103,11 @@ export default function ReservarLivro({ navigation }) {
             [startDate ? startDate : '']: { selected: true, marked: true, selectedColor: '#FF735C' },
             [endDate ? endDate : '']: { selected: true, marked: true, selectedColor: '#FF735C' }
           }}
+          theme={{
+            todayTextColor: '#FF735C', // Cor do texto do dia de hoje
+            arrowColor: '#FF735C', // Cor das setas de navegação
+            monthTextColor: '#FF735C', // Cor do texto do mês
+          }}
         />
         <View style={styles.datePickerContainer}>
           <Text>Reservar de:</Text>

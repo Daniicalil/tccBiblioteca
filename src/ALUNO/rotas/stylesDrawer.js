@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const StylesButtonDrawer = StyleSheet.create({
     buttonDrawer: {
         width: '90%', 
-        height: 45, 
+        height: 40, 
         backgroundColor: '#C6C6C6',
         justifyContent: 'center',
         display: 'flex',

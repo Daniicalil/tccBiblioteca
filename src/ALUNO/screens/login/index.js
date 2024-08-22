@@ -25,8 +25,6 @@ export default function Login({ navigation }) {
   };
 
   const handleLogin = () => {
-    console.log('RM:', rm);
-    console.log('Password:', password);
     const newErrors = {};
     if (!rm) newErrors.rm = '*Preeencha o campo';
     if (!password) newErrors.password = '*Preeencha o campo';
@@ -34,12 +32,12 @@ export default function Login({ navigation }) {
     setErrors(newErrors);
   
     if (Object.keys(newErrors).length === 0) {
-      console.log('Login bem-sucedido');
+      // Navega para a tela 'Home' e limpa os campos de login
+      setRm('');
+      setPassword('');
       navigation.navigate('Home');
-    } else {
-      console.log('Erro no login:', newErrors);
     }
-  };
+};
 
   return (
     <ImageBackground source={imgDesign} style={styles.background}>

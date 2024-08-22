@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, Text, Image, Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
@@ -21,15 +21,46 @@ export default function InformacoesReserva({ navigation }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [isCanceled, setIsCanceled] = useState(false);
+  const [showAviso, setShowAviso] = useState(false);
+  const [devolucaoDate, setDevolucaoDate] = useState(null); // Novo estado para a data de devolução
+  const [daysRemaining, setDaysRemaining] = useState(null); // Estado para dias restantes
+
+  useEffect(() => {
+    let interval;
+    if (isConfirmed) {
+      // Calcular a data de devolução (3 dias após a confirmação)
+      const today = new Date();
+      const devolucaoDate = new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000); // 3 dias depois
+      setDevolucaoDate(devolucaoDate);
+
+      // Atualizar a contagem de dias restantes a cada segundo
+      interval = setInterval(() => {
+        const now = new Date();
+        const remainingTime = devolucaoDate - now;
+        const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+        if (remainingTime <= 0) {
+          clearInterval(interval);
+          setDaysRemaining(0);
+        } else {
+          setDaysRemaining(days);
+        }
+      }, 1000);
+    }
+
+    // Limpar o intervalo quando o componente for desmontado
+    return () => clearInterval(interval);
+  }, [isConfirmed]);
 
   const handleConfirm = () => {
     setIsConfirmed(true);
-    setIsCanceled(false); // Garantir que o estado de cancelamento seja falso
+    setIsCanceled(false);
+    setShowAviso(true);
   };
 
   const handleCancel = () => {
     setIsCanceled(true);
-    setIsConfirmed(false); // Garantir que o estado de confirmação seja falso
+    setIsConfirmed(false);
+    setShowAviso(false);
   };
 
   return (
@@ -66,11 +97,16 @@ export default function InformacoesReserva({ navigation }) {
                 Reservado por: Clara Oliveira da Silva
               </Text>
               <Text style={styles.dataReserva}>
-                Reserva realizada no dia: 12/03/2024
+                Reserva realizada no dia: 12/08/2024
               </Text>
               <Text style={styles.periodoReserva}>
-                Período da reserva: 12/03/2024 até 27/03/2024
+                Período da reserva: 12/08/2024 até 27/08/2024
               </Text>
+              {showAviso && devolucaoDate && (
+                <Text style={styles.avisoDevolucao}>
+                  Você terá que fazer a devolução do livro em {daysRemaining} {daysRemaining === 1 ? 'dia' : 'dias'}
+                </Text>
+              )}
             </View>
             <Line />
             <Text style={styles.conf}>
