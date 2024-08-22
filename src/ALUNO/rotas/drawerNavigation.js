@@ -10,7 +10,7 @@ import Perfil from '../screens/perfil';
 import Recomendacao from '../screens/recomendacao';
 import Biblioteca from '../screens/biblioteca';
 import InformacoesReserva from '../screens/informacoesReserva';
-import Notificacoes from '../screens/notificacoes';
+// import Notificacoes from '../descarte/notificacoes';
 import InformacoesContato from '../screens/infoContato';
 import Login from '../screens/login';
 
@@ -134,14 +134,14 @@ export default function NavegacaoDrawer({ navigation }) {
                       <Text style={StylesButtonDrawer.label}>Reservas</Text>
                     </View>
                 </Pressable>
-                <Pressable 
+                {/* <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
                   onPress={() => navigation.navigate('notificacoes')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="bell" size={20} color="black" />
                       <Text style={StylesButtonDrawer.label}>Notificações</Text>
                     </View>
-                </Pressable>
+                </Pressable> */}
                 <Pressable 
                   style={
                     ({ pressed }) => pressed ?
@@ -212,10 +212,10 @@ export default function NavegacaoDrawer({ navigation }) {
         name="informacoesreserva"
         component={InformacoesReserva}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="notificacoes"
         component={Notificacoes}
-      />
+      /> */}
       <Drawer.Screen
         name="informacoescontato"
         component={InformacoesContato}

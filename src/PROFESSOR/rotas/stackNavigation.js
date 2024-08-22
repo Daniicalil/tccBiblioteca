@@ -15,7 +15,7 @@ import Biblioteca from '../../ALUNO/screens/biblioteca';
 import InfoLivroBiblioteca from '../../ALUNO/screens/infoLivroBiblioteca';
 import ReservarLivro from '../../ALUNO/screens/reservarLivro';
 import InformacoesReserva from '../../ALUNO/screens/informacoesReserva';
-import Notificacoes from '../../ALUNO/screens/notificacoes';
+import Notificacoes from '../../ALUNO/descarte/notificacoes';
 import InformacoesContato from '../../ALUNO/screens/infoContato';
 import SobreNos from '../../ALUNO/screens/sobreNos';
 

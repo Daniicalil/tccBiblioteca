@@ -14,7 +14,7 @@ import Biblioteca from '../screens/biblioteca';
 import InfoLivroBiblioteca from '../screens/infoLivroBiblioteca';
 import ReservarLivro from '../screens/reservarLivro';
 import InformacoesReserva from '../screens/informacoesReserva';
-import Notificacoes from '../screens/notificacoes';
+import Notificacoes from '../descarte/notificacoes';
 import InformacoesContato from '../screens/infoContato';
 import SobreNos from '../screens/sobreNos';
 

@@ -6,7 +6,7 @@ import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FontAwesome } from '@expo/vector-icons';
 
-import { RetangGreen, RetangOrange } from '../../componentes/forms';
+import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
 import styles from './styles';
 
 export default function BookList({ voltar }) {

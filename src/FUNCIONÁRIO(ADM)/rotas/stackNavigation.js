@@ -18,7 +18,7 @@ import AddLivroNovo from '../screens/addLivroNovo';
 import InfoLivroBiblioteca from '../screens/infoLivroBiblioteca';
 import ReservarLivro from '../../ALUNO/screens/reservarLivro';
 import InformacoesReserva from '../../ALUNO/screens/informacoesReserva';
-import Notificacoes from '../../ALUNO/screens/notificacoes';
+import Notificacoes from '../../ALUNO/descarte/notificacoes';
 import Emprestimos from '../screens/emprestimos';
 import InformacoesContato from '../screens/infoContato';
 import InformacoesContatoEditar from '../screens/infoContatoEditar';
