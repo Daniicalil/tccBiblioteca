@@ -1,9 +1,17 @@
 import React, { useState, useEffect  } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import { Searchbar } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { FontAwesome } from '@expo/vector-icons';
+
+import { RetangGreen, RetangOrange } from '../../componentes/forms';
 import styles from './styles';
 
-export default function BookList({ searchQuery }) {
+export default function BookList({ voltar }) {
+  const navigation = useNavigation();
+
   const [books] = useState([
     { 
       id: '1', 
@@ -148,30 +156,25 @@ export default function BookList({ searchQuery }) {
   ]);
 
   const [filteredBooks, setFilteredBooks] = useState(books);
-  const navigation = useNavigation();
+  const [search, setSearch] = useState('');
 
-  const normalizeString = (str) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const filterList = (searchTerm) => {
+    const newList = books.filter((book) =>
+      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.author.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredBooks(newList);
   };
 
   useEffect(() => {
-    if (typeof searchQuery === 'string' && searchQuery.trim() !== "") {
-      const lowerCaseQuery = normalizeString(searchQuery);
-      const filtered = books.filter(book =>
-        normalizeString(book.title).includes(lowerCaseQuery) ||
-        normalizeString(book.author).includes(lowerCaseQuery) ||
-        normalizeString(book.description).includes(lowerCaseQuery)
-      );
-      setFilteredBooks(filtered);
-    } else {
-      setFilteredBooks([]); // Define um array vazio quando a pesquisa está vazia
-    }
-  }, [searchQuery, books]);
-  
-  
+    filterList(search);
+  }, [search]);
+
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Pressable onPress={() => navigation.navigate('infolivrobiblioteca', { book: item })}>
+      <Pressable 
+        onPress={() => navigation.navigate('infolivrobiblioteca', { book: item })}
+      >
         <Image source={item.image} style={styles.image} />
         <Text style={styles.titleBook}>{item.title}</Text>
         <Text style={styles.author}>{item.author}</Text>
@@ -180,14 +183,32 @@ export default function BookList({ searchQuery }) {
   );
 
   return (
-    <FlatList
-      style={Flatstyles.FlatList}
-      data={filteredBooks}
-      renderItem={renderItem}
-      keyExtractor={(item) => item.id.toString()}
-      numColumns={3}
-      contentContainerStyle={styles.flatListContainer}
-    />
+    <View style={styles.headerContainer}>
+      {/* <StatusBar backgroundColor='#3F7263' transLucent={false} /> */}
+      <RetangGreen />
+      <RetangOrange />
+      <View style={styles.titleContainer}>
+        <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => voltar.goBack()}/>
+        <Text style={styles.paragraph}>Biblioteca</Text>
+      </View>
+      <Searchbar
+        placeholder="Pesquisar"
+        onChangeText={(val) => setSearch(val)}
+        style={styles.barraPesq}
+        inputStyle={styles.placeholderStyle}
+        icon={({ size, color }) => (
+          <Icon name="search" size={20} color="#000" style={styles.iconStyle}/>
+        )}
+      />
+      <FlatList
+        style={Flatstyles.FlatList}
+        data={filteredBooks}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={3}
+        contentContainerStyle={styles.flatListContainer}
+      />
+    </View>
   );
 }
 

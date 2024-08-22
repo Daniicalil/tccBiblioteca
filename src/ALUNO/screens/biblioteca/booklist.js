@@ -1,15 +1,17 @@
 import React, { useState, useEffect  } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import styles from './styles';
-
 import { StatusBar } from 'expo-status-bar';
 import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FontAwesome } from '@expo/vector-icons';
-import { RetangGreen, RetangOrange } from '../../componentes/forms';
 
-export default function BookList({ navigation, voltar }) {
+import { RetangGreen, RetangOrange } from '../../componentes/forms';
+import styles from './styles';
+
+export default function BookList({ voltar }) {
+  const navigation = useNavigation();
+
   const [books] = useState([
     { 
       id: 1, 
@@ -158,7 +160,8 @@ export default function BookList({ navigation, voltar }) {
 
   const filterList = (searchTerm) => {
     const newList = books.filter((book) =>
-      book.title.toLowerCase().includes(searchTerm.toLowerCase())
+      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.author.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredBooks(newList);
   };
@@ -169,7 +172,9 @@ export default function BookList({ navigation, voltar }) {
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Pressable onPress={() => navigation.navigate('infolivrobiblioteca', { book: item })}>
+      <Pressable 
+        onPress={() => navigation.navigate('infolivrobiblioteca', { book: item })}
+      >
         <Image source={item.image} style={styles.image} />
         <Text style={styles.titleBook}>{item.title}</Text>
         <Text style={styles.author}>{item.author}</Text>
