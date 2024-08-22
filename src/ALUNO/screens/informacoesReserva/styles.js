@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     top: 50,
     textAlign: 'justify',
     width: '89%',
-    left: 35,
+    left: 25,
   },
   reservado: {
     paddingTop: 5,
@@ -134,6 +134,11 @@ const styles = StyleSheet.create({
   avisoDevolucao: {
     color: '#FF735C',
     marginBottom: 15,
+    display: 'flex',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    width: '100%',
+    margin: 0,
   },
   conf: {
     paddingTop: 55,

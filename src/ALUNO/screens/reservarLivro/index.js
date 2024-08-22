@@ -53,7 +53,6 @@ export default function ReservarLivro({ navigation }) {
     setMarkedDates(markedDates);
   };
 
-  // Obter a data de hoje
   const hoje = new Date().toISOString().split('T')[0];
 
   const handleFinalizarReserva = () => {
@@ -69,7 +68,7 @@ export default function ReservarLivro({ navigation }) {
           {
             text: 'OK',
             onPress: () => {
-              navigation.goBack();
+              navigation.navigate('informacoesreserva', { startDate, endDate });
             }
           }
         ]
@@ -83,13 +82,12 @@ export default function ReservarLivro({ navigation }) {
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
         <StatusBar backgroundColor='#3F7263' transLucent={false} />
-          <StatusBar backgroundColor='#3F7263' transLucent={false} />
-          <RetangGreen />
-          <RetangOrange />
-            <View style={styles.titlePagina}>
-              <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
-                <Text style={styles.paragraph}>Reservar livro</Text>
-            </View>
+        <RetangGreen />
+        <RetangOrange />
+        <View style={styles.titlePagina}>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
+          <Text style={styles.paragraph}>Reservar livro</Text>
+        </View>
       </View>
 
       <View style={styles.containerCalendar}>
@@ -104,9 +102,9 @@ export default function ReservarLivro({ navigation }) {
             [endDate ? endDate : '']: { selected: true, marked: true, selectedColor: '#FF735C' }
           }}
           theme={{
-            todayTextColor: '#FF735C', // Cor do texto do dia de hoje
-            arrowColor: '#FF735C', // Cor das setas de navegação
-            monthTextColor: '#FF735C', // Cor do texto do mês
+            todayTextColor: '#FF735C',
+            arrowColor: '#FF735C',
+            monthTextColor: '#FF735C',
           }}
         />
         <View style={styles.datePickerContainer}>
@@ -130,5 +128,4 @@ export default function ReservarLivro({ navigation }) {
       </View>
     </ScrollView>
   );
-};
-
+}

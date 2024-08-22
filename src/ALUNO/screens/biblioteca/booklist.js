@@ -3,10 +3,16 @@ import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
-export default function BookList({ searchQuery }) {
+import { StatusBar } from 'expo-status-bar';
+import { Searchbar } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { FontAwesome } from '@expo/vector-icons';
+import { RetangGreen, RetangOrange } from '../../componentes/forms';
+
+export default function BookList({ navigation, voltar }) {
   const [books] = useState([
     { 
-      id: '1', 
+      id: 1, 
       image: require('../../../../assets/Capa_dos_livros/o diário de anne frank.jpg'),
       disponivel: 4,
       title: 'O diário de Anne Frank', 
@@ -16,7 +22,7 @@ export default function BookList({ searchQuery }) {
       genero: 'Autobiográfico',
     },
     { 
-      id: '2', 
+      id: 2, 
       image: require('../../../../assets/Capa_dos_livros/dom casmurro.jpg'),
       disponivel: 6,
       title: 'Dom Casmurro', 
@@ -26,7 +32,7 @@ export default function BookList({ searchQuery }) {
       genero: 'Romance',
   },
   { 
-      id: '3', 
+      id: 3, 
       image: require('../../../../assets/Capa_dos_livros/romeu e julieta.jpg'),
       disponivel: 5,
       title: 'Romeu e Julieta', 
@@ -36,7 +42,7 @@ export default function BookList({ searchQuery }) {
       genero: 'Romance',
   },
   { 
-      id: '4', 
+      id: 4, 
       image: require('../../../../assets/Capa_dos_livros/1984.jpg'),
       disponivel: 3,
       title: '1984', 
@@ -46,7 +52,7 @@ export default function BookList({ searchQuery }) {
       genero: 'Ficção científica',
   },
   { 
-      id: '5', 
+      id: 5, 
       image: require('../../../../assets/Capa_dos_livros/os miseráveis.jpg'), 
       disponivel: 2,
       title: 'Os Miseráveis', 
@@ -56,7 +62,7 @@ export default function BookList({ searchQuery }) {
       genero: 'Romance',
   },
   { 
-      id: '6', 
+      id: 6, 
       image: require('../../../../assets/Capa_dos_livros/orgulho e preconceito.png'), 
       disponivel: 2,
       title: 'Orgulho e Preconceito', 
@@ -66,7 +72,7 @@ export default function BookList({ searchQuery }) {
       genero: 'Romance',
   },
     { 
-        id: '7', 
+        id: 7, 
         image: require('../../../../assets/Capa_dos_livros/heartstopper.jpg'),
         disponivel: 1,
         title: 'Heartstopper', 
@@ -76,7 +82,7 @@ export default function BookList({ searchQuery }) {
         genero: 'Romance',
     },
     { 
-        id: '8', 
+        id: 8, 
         image: require('../../../../assets/Capa_dos_livros/procure nas cinzas.jpg'),
         disponivel: 1,
         title: 'Procure nas cinzas', 
@@ -86,7 +92,7 @@ export default function BookList({ searchQuery }) {
         genero: 'Suspense',
     },
     { 
-        id: '9', 
+        id: 9, 
         image: require('../../../../assets/Capa_dos_livros/os sete maridos de evelyn hugo.jpg'),
         disponivel: 5,
         title: 'Os Sete Maridos de Evelyn Hugo', 
@@ -96,7 +102,7 @@ export default function BookList({ searchQuery }) {
         genero: 'Romance',
     },
     { 
-        id: '10', 
+        id: 10, 
         image: require('../../../../assets/Capa_dos_livros/a garota do lago.jpg'),
         disponivel: 3,
         title: 'A garota do lago', 
@@ -106,7 +112,7 @@ export default function BookList({ searchQuery }) {
         genero: 'Suspense',
     },
     { 
-        id: '11', 
+        id: 11, 
         image: require('../../../../assets/Capa_dos_livros/verity.jpg'),
         disponivel: 4,
         title: 'Verity',
@@ -116,7 +122,7 @@ export default function BookList({ searchQuery }) {
         genero: 'Suspense',
     },
     { 
-        id: '12', 
+        id: 12, 
         image: require('../../../../assets/Capa_dos_livros/harry potter e a pedra filosofal.jpg'),
         disponivel: 2,
         title: 'Harry Potter e a Pedra Filosofal', 
@@ -126,7 +132,7 @@ export default function BookList({ searchQuery }) {
         genero: 'Fantasia',
     },
     { 
-        id: '13', 
+        id: 13, 
         image: require('../../../../assets/Capa_dos_livros/a revolução dos bichos.jpg'),
         disponivel: 4,
         title: 'A revolução dos bichos', 
@@ -136,7 +142,7 @@ export default function BookList({ searchQuery }) {
         genero: 'Ficção',
     },
     { 
-        id: '14', 
+        id: 14, 
         image: require('../../../../assets/Capa_dos_livros/deixada para trás.jpg'),
         disponivel: 2,
         title: 'Deixada para Trás', 
@@ -148,46 +154,56 @@ export default function BookList({ searchQuery }) {
   ]);
 
   const [filteredBooks, setFilteredBooks] = useState(books);
-  const navigation = useNavigation();
+  const [search, setSearch] = useState('');
 
-  const normalizeString = (str) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const filterList = (searchTerm) => {
+    const newList = books.filter((book) =>
+      book.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredBooks(newList);
   };
 
   useEffect(() => {
-    if (typeof searchQuery === 'string' && searchQuery.trim() !== "") {
-      const lowerCaseQuery = normalizeString(searchQuery);
-      const filtered = books.filter(book =>
-        normalizeString(book.title).includes(lowerCaseQuery) ||
-        normalizeString(book.author).includes(lowerCaseQuery) ||
-        normalizeString(book.description).includes(lowerCaseQuery)
-      );
-      setFilteredBooks(filtered);
-    } else {
-      setFilteredBooks([]); // Define um array vazio quando a pesquisa está vazia
-    }
-  }, [searchQuery, books]);
-  
-  
+    filterList(search);
+  }, [search]);
+
   const renderItem = ({ item }) => (
     <View style={styles.item}>
       <Pressable onPress={() => navigation.navigate('infolivrobiblioteca', { book: item })}>
         <Image source={item.image} style={styles.image} />
-          <Text style={styles.titleBook}>{item.title}</Text>
-          <Text style={styles.author}>{item.author}</Text>
+        <Text style={styles.titleBook}>{item.title}</Text>
+        <Text style={styles.author}>{item.author}</Text>
       </Pressable>
     </View>
   );
 
   return (
-    <FlatList
-      style={Flatstyles.FlatList}
-      data={filteredBooks}
-      renderItem={renderItem}
-      keyExtractor={(item) => item.id.toString()}
-      numColumns={3}
-      contentContainerStyle={styles.flatListContainer}
-    />
+    <View style={styles.headerContainer}>
+      {/* <StatusBar backgroundColor='#3F7263' transLucent={false} /> */}
+      <RetangGreen />
+      <RetangOrange />
+      <View style={styles.titleContainer}>
+        <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => voltar.goBack()}/>
+        <Text style={styles.paragraph}>Biblioteca</Text>
+      </View>
+      <Searchbar
+        placeholder="Pesquisar"
+        onChangeText={(val) => setSearch(val)}
+        style={styles.barraPesq}
+        inputStyle={styles.placeholderStyle}
+        icon={({ size, color }) => (
+          <Icon name="search" size={20} color="#000" style={styles.iconStyle}/>
+        )}
+      />
+      <FlatList
+        style={Flatstyles.FlatList}
+        data={filteredBooks}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={3}
+        contentContainerStyle={styles.flatListContainer}
+      />
+    </View>
   );
 }
 
