@@ -161,7 +161,10 @@ export default function BookList({ voltar }) {
   const filterList = (searchTerm) => {
     const newList = books.filter((book) =>
       book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchTerm.toLowerCase())
+      book.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.editora.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.genero.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredBooks(newList);
   };

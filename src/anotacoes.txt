@@ -1,0 +1,16 @@
+TELA ALUNOS
+- colocar a search bar da tela 'informacoesReserva'
+para funcionar quero que pesquise pelo nome e autor 
+do livro e dia que a reserva foi realizada
+
+TELA PROFESSORES
+
+TELA FUNCIONÁRIOS
+- colocar a search bar da tela 'selecao' para 
+funcionarquero que pesquise pelo RM e nome da pessoa 
+cadastrada e data que o cadastro foi realizado
+
+- colocar a search bar da tela 'emprestimos' 
+para funcionar quero que pesquise pelo nome e autor 
+do livro, nome da pessoa que reservou e data que 
+a reserva foi realizada 

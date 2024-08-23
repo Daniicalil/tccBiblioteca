@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import { Searchbar } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { FontAwesome } from '@expo/vector-icons';
 
+import { RetangGreen, RetangOrange, Funcionamento } from '../../componentes/forms';
 import styles from './styles';
  
  export default function BookList() {
+  const navigation = useNavigation();
+
   const [books] = useState([
     { 
         id: '1', 
@@ -74,7 +81,25 @@ import styles from './styles';
     }
   ]);
 
-  const navigation = useNavigation();
+  const [filteredBooks, setFilteredBooks] = useState(books);
+  const [search, setSearch] = useState('');
+
+  const filterList = (searchTerm) => {
+    const newList = books.filter((book) =>
+      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.author.toLowerCase().includes(searchTerm.toLowerCase())||
+      book.course.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.editora.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.genero.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredBooks(newList);
+  };
+
+  useEffect(() => {
+    filterList(search);
+  }, [search]);
+
     const renderItem = ({ item }) => (
       <View style={styles.item}>
         <Pressable
@@ -89,18 +114,35 @@ import styles from './styles';
     );
   
     return (
-      <FlatList style={Flatstyles.FlatList}
-        data={books}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
-        numColumns={3}
-        contentContainerStyle={styles.flatListContainer}
-      />
+      <View style={styles.headerContainer}>
+        <StatusBar backgroundColor='#3F7263' transLucent={false} />
+          <RetangGreen/>
+          <RetangOrange />
+            <Searchbar
+              placeholder="Pesquisar"
+              onChangeText={(val) => setSearch(val)}
+              style={styles.barraPesq}
+              inputStyle={styles.placeholderStyle}
+              icon={({size, color}) => (
+                <Icon name="search" size={20} color="#CCC" style={styles.iconStyle}/>
+              )}
+            />
+            <Funcionamento />
+            <Text style={styles.paragraph}>Recomendações dos professores</Text>
+            <FlatList style={Flatstyles.FlatList}
+              data={filteredBooks}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id.toString()}
+              numColumns={3}
+              contentContainerStyle={styles.flatListContainer}
+            />
+      </View>
     );
   };
 
   const Flatstyles = StyleSheet.create({
     FlatList: {
       padding: 6,
+      backgroundColor: '#FFF',
     }
   })

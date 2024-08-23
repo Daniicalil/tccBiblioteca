@@ -79,10 +79,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   capaLivros: {
-    top: 25,
-    width: 45,
-    height: 70,
+    top: 20,
+    width: 55,
+    height: 80,
     left: 35,
+    borderRadius: 4,
   },
   sectionTitle: {
     top: 40,

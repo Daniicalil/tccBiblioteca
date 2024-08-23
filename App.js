@@ -9,7 +9,7 @@ import NavegacaoADM from './src/FUNCIONÁRIO(ADM)/rotas/stackNavigation';
 export default function App() {
   return (
     <View style={styles.container}>
-      <NavegacaoAluno /> 
+      <NavegacaoADM /> 
     </View>
   );
 }

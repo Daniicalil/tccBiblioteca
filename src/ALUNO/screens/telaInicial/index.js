@@ -3,14 +3,11 @@ import { FlatList, View } from 'react-native';
 import { Importancia } from '../../componentes/forms';
 
 import styles from './styles'
-import Principal from './principal';
 import BookList from './booklist';
 
 const TelaInicial = () => {
   const renderItem = ({ item }) => {
     switch (item.type) {
-      case 'principal':
-        return <Principal />;
       case 'booklist':
         return <BookList />;
       case 'importancia':
@@ -21,9 +18,8 @@ const TelaInicial = () => {
   };
 
   const data = [
-    { id: '1', type: 'principal' },
-    { id: '2', type: 'booklist' },
-    { id: '3', type: 'importancia' },
+    { id: '1', type: 'booklist' },
+    { id: '2', type: 'importancia' },
   ];
 
   return (
