@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 30,
-    width: '26%',
+    width: '24%',
     alignSelf: 'flex-end',
     marginRight: 25,
     marginBottom: 10,
@@ -72,6 +72,9 @@ const styles = StyleSheet.create({
   buttonTextRem: {
     color: '#fff',
     textAlign: 'center',
+  },
+  iconButton: {
+    marginRight: 5,
   },
   lineSquare: {
     backgroundColor: 'transparent',
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 160,
     alignSelf: 'center',
-    borderRadius: 4,
+    borderRadius: 6,
   },
   line: {
     borderBottomColor: 'black',

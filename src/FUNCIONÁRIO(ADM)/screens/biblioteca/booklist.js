@@ -21,7 +21,6 @@ export default function BookList({ voltar }) {
 
   const [books] = useState([
     {
-      id: "1",
       image: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
       disponivel: 4,
       title: "O diário de Anne Frank",
@@ -32,7 +31,6 @@ export default function BookList({ voltar }) {
       genero: "Autobiográfico",
     },
     {
-      id: "2",
       image: require("../../../../assets/Capa_dos_livros/dom casmurro.jpg"),
       disponivel: 6,
       title: "Dom Casmurro",
@@ -43,7 +41,6 @@ export default function BookList({ voltar }) {
       genero: "Romance",
     },
     {
-      id: "3",
       image: require("../../../../assets/Capa_dos_livros/romeu e julieta.jpg"),
       disponivel: 5,
       title: "Romeu e Julieta",
@@ -54,7 +51,6 @@ export default function BookList({ voltar }) {
       genero: "Romance",
     },
     {
-      id: "4",
       image: require("../../../../assets/Capa_dos_livros/1984.jpg"),
       disponivel: 3,
       title: "1984",
@@ -65,7 +61,6 @@ export default function BookList({ voltar }) {
       genero: "Ficção científica",
     },
     {
-      id: "5",
       image: require("../../../../assets/Capa_dos_livros/os miseráveis.jpg"),
       disponivel: 2,
       title: "Os Miseráveis",
@@ -76,7 +71,6 @@ export default function BookList({ voltar }) {
       genero: "Romance",
     },
     {
-      id: "6",
       image: require("../../../../assets/Capa_dos_livros/orgulho e preconceito.png"),
       disponivel: 2,
       title: "Orgulho e Preconceito",
@@ -87,7 +81,6 @@ export default function BookList({ voltar }) {
       genero: "Romance",
     },
     {
-      id: "7",
       image: require("../../../../assets/Capa_dos_livros/heartstopper.jpg"),
       disponivel: 1,
       title: "Heartstopper",
@@ -98,7 +91,6 @@ export default function BookList({ voltar }) {
       genero: "Romance",
     },
     {
-      id: "8",
       image: require("../../../../assets/Capa_dos_livros/procure nas cinzas.jpg"),
       disponivel: 1,
       title: "Procure nas cinzas",
@@ -109,7 +101,6 @@ export default function BookList({ voltar }) {
       genero: "Suspense",
     },
     {
-      id: "9",
       image: require("../../../../assets/Capa_dos_livros/os sete maridos de evelyn hugo.jpg"),
       disponivel: 5,
       title: "Os Sete Maridos de Evelyn Hugo",
@@ -120,7 +111,6 @@ export default function BookList({ voltar }) {
       genero: "Romance",
     },
     {
-      id: "10",
       image: require("../../../../assets/Capa_dos_livros/a garota do lago.jpg"),
       disponivel: 3,
       title: "A garota do lago",
@@ -131,7 +121,6 @@ export default function BookList({ voltar }) {
       genero: "Suspense",
     },
     {
-      id: "11",
       image: require("../../../../assets/Capa_dos_livros/verity.jpg"),
       disponivel: 4,
       title: "Verity",
@@ -142,7 +131,6 @@ export default function BookList({ voltar }) {
       genero: "Suspense",
     },
     {
-      id: "12",
       image: require("../../../../assets/Capa_dos_livros/harry potter e a pedra filosofal.jpg"),
       disponivel: 2,
       title: "Harry Potter e a Pedra Filosofal",
@@ -153,7 +141,6 @@ export default function BookList({ voltar }) {
       genero: "Fantasia",
     },
     {
-      id: "13",
       image: require("../../../../assets/Capa_dos_livros/a revolução dos bichos.jpg"),
       disponivel: 4,
       title: "A revolução dos bichos",
@@ -164,7 +151,6 @@ export default function BookList({ voltar }) {
       genero: "Ficção",
     },
     {
-      id: "14",
       image: require("../../../../assets/Capa_dos_livros/deixada para trás.jpg"),
       disponivel: 2,
       title: "Deixada para Trás",
@@ -176,8 +162,13 @@ export default function BookList({ voltar }) {
     },
   ]);
 
-  const [filteredBooks, setFilteredBooks] = useState(books);
+  const [filteredBooks, setFilteredBooks] = useState([]);
+
   const [search, setSearch] = useState("");
+
+  const sortBooksAlphabetically = (booksList) => {
+    return booksList.sort((a, b) => a.title.localeCompare(b.title));
+  };
 
   const filterList = (searchTerm) => {
     const newList = books.filter(
@@ -188,12 +179,13 @@ export default function BookList({ voltar }) {
         book.editora.toLowerCase().includes(searchTerm.toLowerCase()) ||
         book.genero.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setFilteredBooks(newList);
+    const sortedList = sortBooksAlphabetically(newList);
+    setFilteredBooks(sortedList);
   };
 
   useEffect(() => {
     filterList(search);
-  }, [search]);
+  }, [search, books]);
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
@@ -209,9 +201,29 @@ export default function BookList({ voltar }) {
     </View>
   );
 
+  const handleNavigate = () => {
+    Alert.alert(
+      [
+        {
+          text: 'Gerenciar livro existente',
+          onPress: () => {
+            navigation.navigate('gerenciarLivroExistente');
+          }
+
+        },
+        {
+          text: 'Adicionar livro novo',
+          onPress: () => {
+            navigation.navigate('addLivroNovo');
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
+
   return (
     <View style={styles.headerContainer}>
-      {/* <StatusBar backgroundColor='#3F7263' transLucent={false} /> */}
       <RetangGreen />
       <RetangOrange />
       <View style={styles.titleContainer}>
@@ -234,7 +246,7 @@ export default function BookList({ voltar }) {
         )}
       />
       <Pressable
-        onPress={() => navigation.navigate("")}
+        onPress={handleNavigate}
         style={({ pressed }) =>
           pressed ? [styles.buttonAdd, styles.btnAddPress] : styles.buttonAdd
         }
@@ -253,7 +265,7 @@ export default function BookList({ voltar }) {
         style={Flatstyles.FlatList}
         data={filteredBooks}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) => index.toString()} // Use index as keyExtractor
         numColumns={3}
         contentContainerStyle={styles.flatListContainer}
       />

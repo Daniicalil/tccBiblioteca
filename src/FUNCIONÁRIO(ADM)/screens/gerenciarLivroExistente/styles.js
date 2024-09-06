@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     marginTop: 6,
     width: 60, 
     height: 95, 
-    borderRadius: 4,
+    borderRadius: 6,
     marginBottom: 6,
     resizeMode: 'cover', 
   },
@@ -89,13 +89,49 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
   },
-  // viewEditar: {
-  //   width: '100%', 
-  //   alignItems: 'flex-end', 
-  //   paddingRight: 20, 
-  //   paddingBottom: 10,
-  //   flex: 1,
-  // },
+  bookListContainer: {
+    marginBottom: 16,
+  },
+  bookItem: {
+    padding: 12,
+    borderRadius: 8,
+    backgroundColor: '#ffffff',
+    marginBottom: 8,
+  },
+  bookText: {
+    fontSize: 16,
+  },
+  toggleButton: {
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  toggleOn: {
+    backgroundColor: '#3F7263',
+  },
+  toggleOff: {
+    backgroundColor: '#e0e0e0',
+  },
+  toggleButtonText: {
+    color: '#ffffff',
+    fontSize: 16,
+  },
+  viewEditar: {
+    alignItems: 'center',
+  },
+  button: {
+    padding: 12,
+    borderRadius: 8,
+    backgroundColor: '#3F7263',
+  },
+  buttonText: {
+    color: '#ffffff',
+    fontSize: 16,
+  },
+  btnPress: {
+    opacity: 0.7,
+  },
 });
 
 export default styles;

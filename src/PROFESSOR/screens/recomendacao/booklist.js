@@ -14,7 +14,6 @@ import styles from './styles';
 
   const [books, setBooks] = useState([
     { 
-        id: '1', 
         image: require('../../../../assets/Capa_dos_livros/o diário de anne frank.jpg'),
         disponivel: 4,
         title: 'O diário de Anne Frank', 
@@ -25,7 +24,6 @@ import styles from './styles';
         course: 'Téc. Recursos Humanos',   
     },
     { 
-        id: '2', 
         image: require('../../../../assets/Capa_dos_livros/dom casmurro.jpg'),
         disponivel: 6,
         title: 'Dom Casmurro', 
@@ -36,7 +34,6 @@ import styles from './styles';
         course: 'Téc. Contabilidade' 
     },
     { 
-        id: '3', 
         image: require('../../../../assets/Capa_dos_livros/romeu e julieta.jpg'),
         disponivel: 5,
         title: 'Romeu e Julieta', 
@@ -47,7 +44,6 @@ import styles from './styles';
         course: 'Téc. Design de Interiores' 
     },
     { 
-        id: '4', 
         image: require('../../../../assets/Capa_dos_livros/1984.jpg'),
         disponivel: 3,
         title: '1984', 
@@ -58,7 +54,6 @@ import styles from './styles';
         course: 'Téc. Informática' 
     },
     { 
-        id: '5', 
         image: require('../../../../assets/Capa_dos_livros/os miseráveis.jpg'), 
         disponivel: 2,
         title: 'Os Miseráveis', 
@@ -69,7 +64,6 @@ import styles from './styles';
         course: 'Téc. Administração' 
     },
     { 
-        id: '6', 
         image: require('../../../../assets/Capa_dos_livros/orgulho e preconceito.png'), 
         disponivel: 2,
         title: 'Orgulho e Preconceito', 
@@ -80,9 +74,14 @@ import styles from './styles';
         course: 'Téc. Farmácia' 
     }
   ]);
-  const route = useRoute();
-  const [filteredBooks, setFilteredBooks] = useState(books);
-  const [search, setSearch] = useState('');
+
+  const [filteredBooks, setFilteredBooks] = useState([]);
+
+  const [search, setSearch] = useState("");
+
+  const sortBooksAlphabetically = (booksList) => {
+    return booksList.sort((a, b) => a.title.localeCompare(b.title));
+  };
 
   const filterList = (searchTerm) => {
     const newList = books.filter((book) =>
@@ -93,7 +92,8 @@ import styles from './styles';
       book.editora.toLowerCase().includes(searchTerm.toLowerCase()) ||
       book.genero.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setFilteredBooks(newList);
+    const sortedList = sortBooksAlphabetically(newList);
+    setFilteredBooks(sortedList);
   };
 
   useEffect(() => {
@@ -142,7 +142,7 @@ import styles from './styles';
               <FlatList style={Flatstyles.FlatList}
                 data={filteredBooks}
                 renderItem={renderItem}
-                keyExtractor={(item) => item.id.toString()}
+                keyExtractor={(item, index) => index.toString()} // Use index as keyExtractor
                 numColumns={3}
                 contentContainerStyle={styles.flatListContainer}
               />

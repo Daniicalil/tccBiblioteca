@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 160,
     alignSelf: 'center',
-    borderRadius: 4,
+    borderRadius: 6,
   },
   line: {
     borderBottomColor: 'black',

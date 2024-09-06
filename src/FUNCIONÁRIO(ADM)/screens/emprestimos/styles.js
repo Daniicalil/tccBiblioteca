@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     width: 55,
     height: 80,
     left: 35,
-    borderRadius: 4,
+    borderRadius: 6,
   },
   sectionTitle: {
     top: 20,
