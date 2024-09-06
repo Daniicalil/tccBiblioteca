@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   input: {
-    width: '65%',
+    width: '60%',
     height: 42,
     backgroundColor: '#FFF',
     marginBottom: 10,
@@ -72,11 +72,11 @@ const styles = StyleSheet.create({
   loginButton: {
     marginTop: 10,
     backgroundColor: '#FF735C',
-    width: '32%',
+    width: '28%',
     height: 42,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 20,
+    borderRadius: 30,
     marginBottom: 20,
   },
   loginText: {

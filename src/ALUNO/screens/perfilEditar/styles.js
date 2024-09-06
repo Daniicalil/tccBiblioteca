@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   botaoSalvar: {
     marginTop: '3%',
     backgroundColor: '#FF735C',
-    width: '35%',
+    width: '26%',
     height: 42,
     alignSelf: 'center',
     justifyContent:'center',
@@ -154,7 +154,6 @@ const styles = StyleSheet.create({
   },
   salvarText: {
     color: '#fff',
-    fontWeight: 'bold',
     fontSize: 16,
     alignSelf: 'center',
   },

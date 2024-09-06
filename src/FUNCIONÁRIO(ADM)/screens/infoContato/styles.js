@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#3F7263',
+    backgroundColor: '#FF735C',
     // overflow: 'hidden',
     position: 'absolute',
     right: 20,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   btnPress: {
-    backgroundColor: '#FF735C',
+    backgroundColor: '#3F7263',
   },
 });
 

@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingLeft: 15,
     padding: 8,
-    borderRadius: 15,
+    borderRadius: 30,
     borderWidth: 1,
     borderColor: '#CCC',
     color: '#929292',
@@ -58,11 +58,11 @@ const styles = StyleSheet.create({
   redefinirButton: {
     marginTop: '5%',
     backgroundColor: '#FF735C',
-    width: '30%',
+    width: '28%',
     height: 42,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 20,
+    borderRadius: 30,
     marginBottom: 20,
   },
   btnPress: {

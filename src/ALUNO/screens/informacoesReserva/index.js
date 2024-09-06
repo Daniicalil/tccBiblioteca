@@ -65,7 +65,7 @@ export default function InformacoesReserva({ navigation, route }) {
         <RetangOrange />
         <View style={styles.titlePagina}>
           <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
-          <Text style={styles.paragraph}>Informações do livro</Text>
+          <Text style={styles.paragraph}>Informações do livro reservado</Text>
         </View>
         <Searchbar
           placeholder="Pesquisar"

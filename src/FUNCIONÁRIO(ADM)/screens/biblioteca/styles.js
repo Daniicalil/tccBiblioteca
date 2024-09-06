@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 30,
-    width: '26%',
+    width: '28%',
     alignSelf: 'flex-end',
     marginRight: 20,
   },
@@ -118,7 +118,9 @@ const styles = StyleSheet.create({
   buttonTextAdd: {
     color: '#fff',
     textAlign: 'center',
-    fontWeight: 'bold',
+  },
+  iconButton: {
+    marginRight: 5,
   },
   containerAny: {
     flex: 1,

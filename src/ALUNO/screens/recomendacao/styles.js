@@ -65,7 +65,8 @@ const styles = StyleSheet.create({
     opacity: 0.5, 
   },
   item: {
-    width: '31.2%', 
+    width: '31.2%',
+    height: 'auto', 
     alignContent: 'center',
     alignItems: 'center',
     margin: '1%', 

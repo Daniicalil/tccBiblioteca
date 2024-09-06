@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   sectionTitle: {
-    top: 40,
+    top: 20,
     left: 22,
   },
   titleLivro: {

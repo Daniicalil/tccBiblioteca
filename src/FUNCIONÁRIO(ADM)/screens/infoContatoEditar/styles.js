@@ -77,15 +77,14 @@ const styles = StyleSheet.create({
   botaoSalvar: {
     marginTop: '3%',
     backgroundColor: '#FF735C',
-    width: '35%',
+    width: '26%',
     height: 42,
     alignSelf: 'center',
     justifyContent:'center',
-    borderRadius: 20,
+    borderRadius: 30,
   },
   salvarText: {
     color: '#fff',
-    fontWeight: 'bold',
     fontSize: 16,
     alignSelf: 'center',
   },
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
   },
   informacoesInput: {
     width: '85%',
-    borderRadius: 8,
+    borderRadius: 30,
     borderColor: '#000',
     borderWidth: 1,
     padding: 10,
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
   },
   escolaInput: {
     width: '85%',
-    borderRadius: 8,
+    borderRadius: 30,
     borderColor: '#000',
     borderWidth: 1,
     padding: 10,

@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
   buttonTextRem: {
     color: '#fff',
     textAlign: 'center',
-    fontWeight: 'bold',
   },
   lineSquare: {
     backgroundColor: 'transparent',
