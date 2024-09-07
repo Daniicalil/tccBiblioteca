@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, Pressable, Alert } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
@@ -96,7 +96,7 @@ export default function GerenciarLivroExistente({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.inicio}>
-        <StatusBar backgroundColor='#3F7263' transLucent={false} />
+        <StatusBar backgroundColor='#3F7263' translucent={false} />
         <RetangGreen />
         <RetangOrange />
         <View style={styles.titlePagina}>
@@ -107,12 +107,8 @@ export default function GerenciarLivroExistente({ navigation }) {
         <View style={styles.bookListContainer}>
           <FlatList
             data={livros}
-            keyExtractor={(item) => item.value}
-            renderItem={( renderItem )) => (
-              <View style={[styles.bookItem, { opacity: isToggleOn ? 1 : 0.5 }]}>
-                <Text style={styles.bookText}>{item.label}</Text>
-              </View>
-            )}
+            keyExtractor={(item) => item.title} // Corrigido para item.title
+            renderItem={renderItem} // Atualizado renderItem
           />
         </View>
 

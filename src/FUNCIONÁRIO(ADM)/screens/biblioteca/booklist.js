@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   Pressable,
+  Alert
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";

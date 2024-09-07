@@ -19,7 +19,7 @@ import Login from '../../ALUNO/screens/login';
 import PerfilEditar from '../../ALUNO/screens/perfilEditar';
 import InfoLivroRecomendacao from '../../ALUNO/screens/infoLivroRecomendacao';
 import AddBiblioteca from '../screens/addBiblioteca';
-import AddLivroExistente from '../screens/addLivroExistente';
+import GerenciarLivroExistente from '../screens/gerenciarLivroExistente';
 import AddLivroNovo from '../screens/addLivroNovo';
 import InfoLivroBiblioteca from '../screens/infoLivroBiblioteca';
 import ReservarLivro from '../../ALUNO/screens/reservarLivro';
@@ -271,8 +271,8 @@ export default function NavegacaoDrawer() {
         component={AddBiblioteca}
       />
       <Drawer.Screen
-        name="addLivroExistente"
-        component={AddLivroExistente}
+        name="gerenciarLivroExistente"
+        component={GerenciarLivroExistente}
       />
       <Drawer.Screen
         name="addLivroNovo"
