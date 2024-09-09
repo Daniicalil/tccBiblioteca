@@ -202,27 +202,6 @@ export default function BookList({ voltar }) {
     </View>
   );
 
-  const handleNavigate = () => {
-    Alert.alert(
-      [
-        {
-          text: 'Gerenciar livro existente',
-          onPress: () => {
-            navigation.navigate('gerenciarLivroExistente');
-          }
-
-        },
-        {
-          text: 'Adicionar livro novo',
-          onPress: () => {
-            navigation.navigate('addLivroNovo');
-          },
-        },
-      ],
-      { cancelable: false }
-    );
-  };
-
   return (
     <View style={styles.headerContainer}>
       <RetangGreen />
@@ -247,7 +226,7 @@ export default function BookList({ voltar }) {
         )}
       />
       <Pressable
-        onPress={handleNavigate}
+        onPress={() => navigation.navigate('addBiblioteca')}
         style={({ pressed }) =>
           pressed ? [styles.buttonAdd, styles.btnAddPress] : styles.buttonAdd
         }

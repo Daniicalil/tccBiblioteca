@@ -18,7 +18,7 @@ return (
               <Text style={styles.paragraph}>Adicionar</Text>
           </View>
             <Pressable 
-              onPress={() => navigation.navigate('addLivroExistente')}
+              onPress={() => navigation.navigate('gerenciarLivroExistente')}
                 style={
                   ({pressed}) => pressed ?
                     [styles.button, styles.btnPress]
@@ -26,7 +26,7 @@ return (
                     styles.button
                   }  
             >
-              <Text style={styles.buttonText}>Adicionar livro existente</Text>
+              <Text style={styles.buttonText}>Gerenciar livro existente</Text>
             </Pressable>
             <Pressable 
               onPress={() => navigation.navigate('addLivroNovo')}
