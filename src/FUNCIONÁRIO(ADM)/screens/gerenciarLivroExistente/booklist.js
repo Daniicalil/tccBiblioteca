@@ -1,10 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { View, Text, Pressable, FlatList, Image, Switch } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { StatusBar } from "expo-status-bar";
+import {
+  ScrollView,
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  FlatList,
+  Image,
+  Switch,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { FontAwesome } from '@expo/vector-icons';
-import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
-import styles from './styles';
+import { FontAwesome } from "@expo/vector-icons";
+import { Searchbar } from "react-native-paper";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import { RetangGreen, RetangOrange } from "../../../ALUNO/componentes/forms";
+import styles from "./styles";
 
 export default function BookList() {
   const navigation = useNavigation();
@@ -12,7 +23,7 @@ export default function BookList() {
   const [bookStatus, setBookStatus] = useState({});
 
   // Lista de livros
-  const livros = [
+  const books = [
     {
       image: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
       title: "O diário de Anne Frank",
@@ -88,8 +99,8 @@ export default function BookList() {
   // Função para inicializar o estado dos livros como desativados
   useEffect(() => {
     const initialStatus = {};
-    livros.forEach((livro) => {
-      initialStatus[livro.title] = true; // Define todos como inativos
+    books.forEach((books) => {
+      initialStatus[books.title] = true; // Define todos como ativados
     });
     setBookStatus(initialStatus);
   }, []);
@@ -101,6 +112,15 @@ export default function BookList() {
       [title]: !prevStatus[title], // Alterna entre ativado e desativado
     }));
   };
+
+  const sortBooksAlphabetically = (booksList) => {
+    return booksList.sort((a, b) => a.title.localeCompare(b.title));
+  };
+
+  useEffect(() => {
+    // Se você quiser exibir a lista ordenada sem filtragem, você pode ordenar os livros aqui
+    // setFilteredBooks(sortBooksAlphabetically(books));
+  }, [books]);
 
   const renderItem = ({ item }) => (
     <View
@@ -114,44 +134,65 @@ export default function BookList() {
       <Text style={styles.author}>{item.author}</Text>
 
       {/* Componente Switch para ativar/desativar cada livro */}
-      <Switch
-        value={!!bookStatus[item.title]} // Converte undefined para false
-        onValueChange={() => toggleBookStatus(item.title)}
-        thumbColor={bookStatus[item.title] ? "#ff4081"/*rosa*/ : "#f4f3f4"/*branco*/} // Cor do botão
-        trackColor={{ false: "#767577" /*cinza*/, true: "#3F7263"/*verde*/ }} // Cor da trilha
-      />
+      <View style={styles.switchContainer}>
+        <Switch
+          style={styles.toggle}
+          value={!!bookStatus[item.title]} // !!recebe um valor booleano para definir se ele está ativado ou desativado. Converte undefined para false
+          onValueChange={() => toggleBookStatus(item.title)}
+          thumbColor={bookStatus[item.title] ? "#3F7263" : "#f4f3f4"} // Cor do botão
+          trackColor={{ false: "#767577", true: "#ccc" }} // Cor da trilha
+        />
+      </View>
     </View>
   );
 
   return (
-    <View style={styles.containerAny}>
-      <View style={styles.inicio}>
-        <StatusBar backgroundColor='#3F7263' translucent={false} />
-        <RetangGreen />
-        <RetangOrange />
-        <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
-          <Text style={styles.paragraph}>Gerenciar livro existente</Text>
-        </View>
-
-        <View style={styles.bookListContainer}>
-          <FlatList
-            data={livros}
-            keyExtractor={(item) => item.title}
-            renderItem={renderItem}
-            numColumns={3}
-          />
-        </View>
-
-        <View style={styles.viewEditar}>
-          <Pressable
-            onPress={() => navigation.goBack()}
-            style={({ pressed }) => pressed ? [styles.button, styles.btnPress] : styles.button}
-          >
-            <Text style={styles.buttonText}>Salvar alterações</Text>
-          </Pressable>
-        </View>
+    <View style={styles.headerContainer}>
+      {/* <StatusBar backgroundColor="#3F7263" translucent={false} /> */}
+      <RetangGreen />
+      <RetangOrange />
+      <View style={styles.titleContainer}>
+        <FontAwesome
+          name="angle-left"
+          size={30}
+          color="black"
+          style={styles.icon}
+          onPress={() => navigation.goBack()}
+        />
+        <Text style={styles.paragraph}>Gerenciar livro existente</Text>
       </View>
+      <Searchbar
+        placeholder="Pesquisar"
+        onChangeText={(val) => setSearch(val)}
+        style={styles.barraPesq}
+        inputStyle={styles.placeholderStyle}
+        icon={({ size, color }) => (
+          <Icon name="search" size={20} color="#000" style={styles.iconStyle} />
+        )}
+      />
+      <FlatList
+        style={Flatstyles.FlatList}
+        data={sortBooksAlphabetically(books)} // Usar a lista de livros ordenada
+        keyExtractor={(item) => item.title}
+        renderItem={renderItem}
+        numColumns={3}
+        contentContainerStyle={styles.bookListContainer}
+      />
+
+      <Pressable
+        onPress={() => navigation.goBack()}
+        style={({ pressed }) =>
+          pressed ? [styles.button, styles.btnPress] : styles.button
+        }
+      >
+        <Text style={styles.buttonText}>Salvar alterações</Text>
+      </Pressable>
     </View>
   );
 }
+
+const Flatstyles = StyleSheet.create({
+  FlatList: {
+    padding: 6,
+  },
+});

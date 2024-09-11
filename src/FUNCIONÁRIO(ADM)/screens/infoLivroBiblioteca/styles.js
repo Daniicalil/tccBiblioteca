@@ -10,33 +10,6 @@ const styles = StyleSheet.create({
   inicio: {
     alignItems: 'center',
   },
-  retangGreen: {
-    width: '100%', 
-    height: 100, 
-    backgroundColor: '#3F7263',
-    justifyContent: 'space-between',
-  },
-  imgLogo: {
-    width: '12%',
-    height: '42%',
-    alignSelf: 'center',
-    position: 'absolute',
-    bottom: 8
-  },
-  imgEtec: {
-    width: '15%',
-    height: '25%',
-    bottom: 8,
-    alignSelf: 'flex-end',
-    position: 'absolute',
-    right: 27,
-  },
-  retangOrange: {
-    width: '100%', 
-    height: 19, 
-    backgroundColor: '#FF735C',
-    marginBottom: '3%',
-  },
   titlePagina: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -182,7 +155,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3F7263',
   },
   buttonText: {
-    color: '#fff',
+    color: '#FFF',
     fontSize: 16,
   },
 });

@@ -75,74 +75,60 @@ import styles from './styles';
     }
   ]);
 
-  const [filteredBooks, setFilteredBooks] = useState([]);
-
-  const [search, setSearch] = useState("");
-
   const sortBooksAlphabetically = (booksList) => {
     return booksList.sort((a, b) => a.title.localeCompare(b.title));
   };
 
-  const filterList = (searchTerm) => {
-    const newList = books.filter((book) =>
-      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchTerm.toLowerCase())||
-      book.course.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.editora.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.genero.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    const sortedList = sortBooksAlphabetically(newList);
-    setFilteredBooks(sortedList);
-  };
+  // Ordena a lista de livros
+  const sortedBooks = sortBooksAlphabetically(books);
 
-  useEffect(() => {
-    filterList(search);
-  }, [search]);
+  // Mantém a lista de livros filtrados como a lista completa
+  const [filteredBooks] = useState(sortedBooks);
 
-    const renderItem = ({ item }) => (
-      <View style={styles.item}>
-        <Pressable
-          onPress={() => navigation.navigate('infolivrorecomendacao', { book: item })}
-        >
-          <Text style={styles.course}>{item.course}</Text>
-          <Image source={item.image} style={styles.image} />
-          <Text style={styles.titleBook}>{item.title}</Text>
-          <Text style={styles.author}>{item.author}</Text>
-        </Pressable>
-      </View>
-    );
-  
-    return (
-      <View style={styles.headerContainer}>
-        <StatusBar backgroundColor='#3F7263' transLucent={false} />
-          <RetangGreen/>
-          <RetangOrange />
-            <Searchbar
-              placeholder="Pesquisar"
-              onChangeText={(val) => setSearch(val)}
-              style={styles.barraPesq}
-              inputStyle={styles.placeholderStyle}
-              icon={({size, color}) => (
-                <Icon name="search" size={20} color="#CCC" style={styles.iconStyle}/>
-              )}
-            />
-            <Funcionamento />
-            <Text style={styles.paragraph}>Recomendações dos professores</Text>
-            <FlatList style={Flatstyles.FlatList}
-              data={filteredBooks}
-              renderItem={renderItem}
-              keyExtractor={(item, index) => index.toString()} // Use index as keyExtractor
-              numColumns={3}
-              contentContainerStyle={styles.flatListContainer}
-            />
-      </View>
-    );
-  };
+  const renderItem = ({ item }) => (
+    <View style={styles.item}>
+      <Pressable
+        onPress={() => navigation.navigate('infolivrorecomendacao', { book: item })}
+      >
+        <Text style={styles.course}>{item.course}</Text>
+        <Image source={item.image} style={styles.image} />
+        <Text style={styles.titleBook}>{item.title}</Text>
+        <Text style={styles.author}>{item.author}</Text>
+      </Pressable>
+    </View>
+  );
 
-  const Flatstyles = StyleSheet.create({
-    FlatList: {
-      padding: 6,
-      backgroundColor: '#FFF',
-    }
-  })
+  return (
+    <View style={styles.headerContainer}>
+      <StatusBar backgroundColor='#3F7263' transLucent={false} />
+      <RetangGreen/>
+      <RetangOrange />
+      <Searchbar
+        placeholder="Pesquisar"
+        onChangeText={(val) => {}}
+        style={styles.barraPesq}
+        inputStyle={styles.placeholderStyle}
+        icon={({ size, color }) => (
+          <Icon name="search" size={20} color="#CCC" style={styles.iconStyle} />
+        )}
+      />
+      <Funcionamento />
+      <Text style={styles.paragraph}>Recomendações dos professores</Text>
+      <FlatList
+        style={Flatstyles.FlatList}
+        data={filteredBooks}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()} // Use index as keyExtractor
+        numColumns={3}
+        contentContainerStyle={styles.flatListContainer}
+      />
+    </View>
+  );
+}
+
+const Flatstyles = StyleSheet.create({
+  FlatList: {
+    padding: 6,
+    backgroundColor: '#FFF',
+  }
+});

@@ -96,6 +96,5 @@ export default function InfoLivroBiblioteca({ route }) {
         </Pressable>
       </View>
     </ScrollView>
-
   );
 }

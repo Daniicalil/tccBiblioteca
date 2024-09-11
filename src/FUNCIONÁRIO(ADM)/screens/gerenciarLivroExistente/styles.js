@@ -3,11 +3,36 @@ import { StyleSheet, Dimensions } from 'react-native';
 const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
-  titlePagina: {
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  titleContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,
+  },
+  inicio: {
+    alignItems: 'center',
+  },
+  icon: {
+    marginRight: 10,
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  bookListContainer: {
+    flex: 1,
+  },
+  paragraph: {
+    marginTop: '3%',
+    marginBottom: '6%',
+    fontSize: 18,
+    flex: 1,
+    left: 70
   },
   icon: {
     position: 'absolute',
@@ -20,6 +45,20 @@ const styles = StyleSheet.create({
     fontSize: 18,
     flex: 1,
     left: 70
+  },
+  barraPesq: {
+    backgroundColor: '#FFF',
+    width: '85%',
+    marginBottom: '2%',
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: '#CCC',
+  },
+  placeholderStyle: {
+    opacity: 0.5, 
+  },
+  iconStyle: {
+    opacity: 0.5, 
   },
   item: {
     width: '31.2%', 
@@ -42,7 +81,10 @@ const styles = StyleSheet.create({
     fontSize: 11.5,
     color: '#555',
     textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 5,
+  },
+  switchContainer: {
+    padding: 10,
   },
   flatList: {
     flex: 1, 
@@ -65,9 +107,6 @@ const styles = StyleSheet.create({
     width: '35%',
     alignSelf: 'center',
   },
-  btnPress: {
-    backgroundColor: '#3F7263',
-  },
   buttonText: {
     textAlign: 'center',
     color: '#fff',
@@ -79,40 +118,20 @@ const styles = StyleSheet.create({
   bookText: {
     fontSize: 16,
   },
-  toggleButton: {
-    padding: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  toggleOn: {
-    backgroundColor: '#3F7263',
-  },
-  toggleOff: {
-    backgroundColor: '#e0e0e0',
-  },
-  toggleButtonText: {
-    color: '#ffffff',
-    fontSize: 16,
-  },
   viewEditar: {
     alignItems: 'center',
   },
-  button: {
-    padding: 12,
-    borderRadius: 8,
-    backgroundColor: '#3F7263',
-  },
-  buttonText: {
-    color: '#ffffff',
-    fontSize: 16,
-  },
   btnPress: {
-    opacity: 0.7,
+    opacity: 0.5,
+    backgroundColor: '#3F7263',
   },
   containerAny: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  flatListContainer: {
+    justifyContent: 'center',
+    paddingHorizontal: 8,
   },
 });
 

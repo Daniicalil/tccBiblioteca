@@ -6,7 +6,7 @@ import {
   Image,
   StyleSheet,
   Pressable,
-  Alert
+  Alert,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
@@ -163,30 +163,14 @@ export default function BookList({ voltar }) {
     },
   ]);
 
-  const [filteredBooks, setFilteredBooks] = useState([]);
-
-  const [search, setSearch] = useState("");
-
   const sortBooksAlphabetically = (booksList) => {
     return booksList.sort((a, b) => a.title.localeCompare(b.title));
   };
 
-  const filterList = (searchTerm) => {
-    const newList = books.filter(
-      (book) =>
-        book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.editora.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.genero.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    const sortedList = sortBooksAlphabetically(newList);
-    setFilteredBooks(sortedList);
-  };
-
   useEffect(() => {
-    filterList(search);
-  }, [search, books]);
+    // Se você quiser exibir a lista ordenada sem filtragem, você pode ordenar os livros aqui
+    // setFilteredBooks(sortBooksAlphabetically(books));
+  }, [books]);
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
@@ -226,7 +210,7 @@ export default function BookList({ voltar }) {
         )}
       />
       <Pressable
-        onPress={() => navigation.navigate('addBiblioteca')}
+        onPress={() => navigation.navigate("addBiblioteca")}
         style={({ pressed }) =>
           pressed ? [styles.buttonAdd, styles.btnAddPress] : styles.buttonAdd
         }
@@ -243,7 +227,7 @@ export default function BookList({ voltar }) {
       </Pressable>
       <FlatList
         style={Flatstyles.FlatList}
-        data={filteredBooks}
+        data={sortBooksAlphabetically(books)} // Usar a lista de livros ordenada
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()} // Use index as keyExtractor
         numColumns={3}
