@@ -117,8 +117,8 @@ export default function BookList() {
       <Switch
         value={!!bookStatus[item.title]} // Converte undefined para false
         onValueChange={() => toggleBookStatus(item.title)}
-        thumbColor={bookStatus[item.title] ? "#ff4081" : "#f4f3f4"} // Cor do botão
-        trackColor={{ false: "#767577", true: "#3F7263" }} // Cor da trilha
+        thumbColor={bookStatus[item.title] ? "#ff4081"/*rosa*/ : "#f4f3f4"/*branco*/} // Cor do botão
+        trackColor={{ false: "#767577" /*cinza*/, true: "#3F7263"/*verde*/ }} // Cor da trilha
       />
     </View>
   );
