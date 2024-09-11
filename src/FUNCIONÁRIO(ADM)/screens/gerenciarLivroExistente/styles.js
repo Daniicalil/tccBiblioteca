@@ -3,37 +3,6 @@ import { StyleSheet, Dimensions } from 'react-native';
 const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  retangGreen: {
-    width: '100%', 
-    height: 100, 
-    backgroundColor: '#3F7263',
-    justifyContent: 'space-between',
-  },
-  imgLogo: {
-    width: '12%',
-    height: '42%',
-    alignSelf: 'center',
-    position: 'absolute',
-    bottom: 8
-  },
-  imgEtec: {
-    width: '15%',
-    height: '25%',
-    bottom: 8,
-    alignSelf: 'flex-end',
-    position: 'absolute',
-    right: 27,
-  },
-  retangOrange: {
-    width: '100%', 
-    height: 19, 
-    backgroundColor: '#FF735C',
-    marginBottom: '3%',
-  },
   titlePagina: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -51,18 +20,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     flex: 1,
     left: 70
-  },
-  pickerContainer: {
-    width: '85%',
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: '#000',
-    borderRadius: 8,
-    alignSelf: 'center'
-  },
-  textPicker: {
-    fontSize: 16,
-    left: 36,
   },
   item: {
     width: '31.2%', 
@@ -89,13 +46,6 @@ const styles = StyleSheet.create({
   },
   flatList: {
     flex: 1, 
-  },
-  flatListContainer: {
-    justifyContent: 'center',
-    paddingHorizontal: 8,
-  },
-  scrollViewContainer: {
-    backgroundColor: '#fff',
   },
   image: {
     marginTop: 6,

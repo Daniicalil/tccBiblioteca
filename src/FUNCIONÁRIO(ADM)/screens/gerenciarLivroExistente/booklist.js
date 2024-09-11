@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, Pressable, FlatList, Image } from 'react-native';
+import { View, Text, Pressable, FlatList, Image, Switch } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from '@expo/vector-icons';
-import { Picker } from '@react-native-picker/picker';
 import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
-
 import styles from './styles';
 
-export default function BookList({ navigation }) {
-  const [isToggleOn, setIsToggleOn] = useState(true); // Estado para controlar o botão toggle
+export default function BookList() {
+  const navigation = useNavigation();
+  // Estado para armazenar o status de ativação de cada livro
+  const [bookStatus, setBookStatus] = useState({});
 
+  // Lista de livros
   const livros = [
     {
       image: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
@@ -83,18 +85,46 @@ export default function BookList({ navigation }) {
     },
   ];
 
+  // Função para inicializar o estado dos livros como desativados
+  useEffect(() => {
+    const initialStatus = {};
+    livros.forEach((livro) => {
+      initialStatus[livro.title] = true; // Define todos como inativos
+    });
+    setBookStatus(initialStatus);
+  }, []);
+
+  // Função para alternar o estado de ativação/desativação de um livro
+  const toggleBookStatus = (title) => {
+    setBookStatus((prevStatus) => ({
+      ...prevStatus,
+      [title]: !prevStatus[title], // Alterna entre ativado e desativado
+    }));
+  };
+
   const renderItem = ({ item }) => (
-    <View style={styles.item}>
-      <Pressable>
-        <Image source={item.image} style={styles.image} />
-        <Text style={styles.titleBook}>{item.title}</Text>
-        <Text style={styles.author}>{item.author}</Text>
-      </Pressable>
+    <View
+      style={[
+        styles.item,
+        { opacity: bookStatus[item.title] ? 1 : 0.5 }, // Aplica opacidade condicionalmente
+      ]}
+    >
+      <Image source={item.image} style={styles.image} />
+      <Text style={styles.titleBook}>{item.title}</Text>
+      <Text style={styles.author}>{item.author}</Text>
+
+      {/* Componente Switch para ativar/desativar cada livro */}
+      <Switch
+        value={!!bookStatus[item.title]} // Converte undefined para false
+        onValueChange={() => toggleBookStatus(item.title)}
+        thumbColor={bookStatus[item.title] ? "#ff4081" : "#f4f3f4"} // Cor do botão
+        trackColor={{ false: "#767577", true: "#3F7263" }} // Cor da trilha
+      />
     </View>
   );
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containerAny}>
       <View style={styles.inicio}>
         <StatusBar backgroundColor='#3F7263' translucent={false} />
         <RetangGreen />
@@ -107,17 +137,11 @@ export default function BookList({ navigation }) {
         <View style={styles.bookListContainer}>
           <FlatList
             data={livros}
-            keyExtractor={(item) => item.title} // Corrigido para item.title
-            renderItem={renderItem} // Atualizado renderItem
+            keyExtractor={(item) => item.title}
+            renderItem={renderItem}
+            numColumns={3}
           />
         </View>
-
-        <Pressable
-          onPress={() => setIsToggleOn(!isToggleOn)}
-          style={[styles.toggleButton, isToggleOn ? styles.toggleOn : styles.toggleOff]}
-        >
-          <Text style={styles.toggleButtonText}>{isToggleOn ? 'Ativado' : 'Desativado'}</Text>
-        </Pressable>
 
         <View style={styles.viewEditar}>
           <Pressable
