@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 28,
     borderRadius: 30,
     marginTop: 16,
-    marginBottom: 10,
+    marginBottom: 20,
   },
   btnPress: {
     backgroundColor: '#3F7263',

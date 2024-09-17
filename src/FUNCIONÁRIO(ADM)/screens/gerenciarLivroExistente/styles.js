@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   switchContainer: {
-    padding: 10,
+    // padding: 10,
   },
   flatList: {
     flex: 1, 
@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 28,
     borderRadius: 30,
     marginTop: 16,
-    width: '35%',
     alignSelf: 'center',
+    marginBottom: 20,
   },
   buttonText: {
     textAlign: 'center',

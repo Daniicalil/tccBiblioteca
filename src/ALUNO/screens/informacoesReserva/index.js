@@ -1,48 +1,62 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { ScrollView, View, Text, Image, Pressable } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import { RetangGreen, RetangOrange } from '../../componentes/forms';
-import { Searchbar } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import * as React from "react";
+import { useState, useEffect } from "react";
+import { ScrollView, View, Text, Image, Pressable } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import { RetangGreen, RetangOrange } from "../../componentes/forms";
+import { Searchbar } from "react-native-paper";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
-import AnneFrank from '../../../../assets/Capa_dos_livros/o diário de anne frank.jpg';
+import AnneFrank from "../../../../assets/Capa_dos_livros/o diário de anne frank.jpg";
 
-import styles from './styles';
+import styles from "./styles";
 
 const Line = () => {
-  return (
-    <View style={styles.line} />
-  );
+  return <View style={styles.line} />;
 };
 
 export default function InformacoesReserva({ navigation, route }) {
+  const [infoReserva] = useState([
+    {
+      livro: {
+        liv_foto_capa: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
+        liv_nome: "O diário de Anne Frank",
+        aut_nome: "Anne Frank",
+      },
+      usu_nome: "Clara Oliveira da Silva",
+      dataReserva: "12/03/2024",
+      periodo: {
+        inicio: "12/03/2024",
+        fim: "27/03/2024",
+      },
+    },
+  ]);
+
   // Desestruturar startDate e endDate, com valores default se params não estiver definido
   const { startDate = null, endDate = null } = route.params || {};
-  
+
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [isCanceled, setIsCanceled] = useState(false);
   const [showAviso, setShowAviso] = useState(false);
   const [daysRemaining, setDaysRemaining] = useState(null);
 
-  useEffect(() => {
-    if (isConfirmed && endDate) {
-      const calculateDaysRemaining = () => {
-        const now = new Date();
-        const finalDate = new Date(endDate);
-        const timeDiff = finalDate - now;
-        const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+  // useEffect(() => {
+  //   if (isConfirmed && endDate) {
+  //     const calculateDaysRemaining = () => {
+  //       const now = new Date();
+  //       const finalDate = new Date(endDate);
+  //       const timeDiff = finalDate - now;
+  //       const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
-        setDaysRemaining(days >= 0 ? days : 0);
-      };
+  //       setDaysRemaining(days >= 0 ? days : 0);
+  //     };
 
-      calculateDaysRemaining();
+  //     calculateDaysRemaining();
 
-      const interval = setInterval(calculateDaysRemaining, 60 * 1000);
+  //     const interval = setInterval(calculateDaysRemaining, 60 * 1000);
 
-      return () => clearInterval(interval);
-    }
-  }, [isConfirmed, endDate]);
+  //     return () => clearInterval(interval);
+  //   }
+  // }, [isConfirmed, endDate]);
 
   const handleConfirm = () => {
     setIsConfirmed(true);
@@ -56,7 +70,7 @@ export default function InformacoesReserva({ navigation, route }) {
     setShowAviso(false);
   };
 
-  const isDateAvailable = startDate && endDate;
+  // const isDateAvailable = startDate && endDate;
 
   return (
     <ScrollView style={styles.container}>
@@ -64,7 +78,13 @@ export default function InformacoesReserva({ navigation, route }) {
         <RetangGreen />
         <RetangOrange />
         <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
+          <FontAwesome
+            name="angle-left"
+            size={30}
+            color="black"
+            style={styles.icon}
+            onPress={() => navigation.goBack()}
+          />
           <Text style={styles.paragraph}>Informações do livro reservado</Text>
         </View>
         <Searchbar
@@ -72,38 +92,63 @@ export default function InformacoesReserva({ navigation, route }) {
           style={styles.barraPesq}
           inputStyle={styles.placeholderStyle}
           icon={() => (
-            <Icon name="search" size={20} color="#000" style={styles.iconStyle} />
+            <Icon
+              name="search"
+              size={20}
+              color="#000"
+              style={styles.iconStyle}
+            />
           )}
         />
         <View style={styles.lineSquare}>
           <View style={styles.infoLivro}>
-            <Image source={AnneFrank} style={styles.capaLivros} />
+            <Image
+              source={infoReserva.livro.liv_foto_capa}
+              style={styles.capaLivros}
+            />
             <View style={styles.sectionTitle}>
-              <Text style={styles.titleLivro}>O diário de Anne Frank</Text>
-              <Text style={styles.autor}>Por: Anne Frank</Text>
+              <Text style={styles.titleLivro}>
+                {infoReserva.livro.liv_nome}
+              </Text>
+              <Text style={styles.autor}>
+                Por: {infoReserva.livro.aut_nome}
+              </Text>
             </View>
           </View>
           <Line />
           <View style={styles.dadosReservado}>
             <Text style={styles.reservado}>
-              Reservado por: Clara Oliveira da Silva
+              Reservado por: {infoReserva.usu_nome}
             </Text>
             <Text style={styles.dataReserva}>
-              Reserva realizada no dia: {startDate ? new Date(startDate).toLocaleDateString() : 'Data não disponível'}
+              Reserva realizada no dia: {infoReserva.dataReserva}
+            </Text>
+            <Text style={styles.periodoReserva}>Período da reserva: {infoReserva.periodo?.inicio} até {infoReserva.periodo?.fim || 'Data não disponível'}</Text>
+            {/* <Text style={styles.dataReserva}>
+              Reserva realizada no dia:{" "}
+              {startDate
+                ? new Date(startDate).toLocaleDateString()
+                : "Data não disponível"}
             </Text>
             <Text style={styles.periodoReserva}>
-              Período da reserva: {startDate ? new Date(startDate).toLocaleDateString() : 'Data não disponível'} até {endDate ? new Date(endDate).toLocaleDateString() : 'Data não disponível'}
-            </Text>
-            {showAviso && (
+              Período da reserva:{" "}
+              {startDate
+                ? new Date(startDate).toLocaleDateString()
+                : "Data não disponível"}{" "}
+              até{" "}
+              {endDate
+                ? new Date(endDate).toLocaleDateString()
+                : "Data não disponível"}
+            </Text> */}
+            {/* {showAviso && (
               <Text style={styles.avisoDevolucao}>
-                Você terá que fazer a devolução do livro em {daysRemaining} {daysRemaining === 1 ? 'dia' : 'dias'}
+                Você terá que fazer a devolução do livro em {daysRemaining}{" "}
+                {daysRemaining === 1 ? "dia" : "dias"}
               </Text>
-            )}
+            )} */}
           </View>
           <Line />
-          <Text style={styles.conf}>
-            Confirmar retirada do livro
-          </Text>
+          <Text style={styles.conf}>Confirmar retirada do livro</Text>
           <View style={styles.buttonsReserva}>
             {isConfirmed ? (
               <View style={styles.confirmation}>
@@ -118,29 +163,45 @@ export default function InformacoesReserva({ navigation, route }) {
             ) : (
               <>
                 <Pressable
-                  style={({ pressed }) => pressed ?
-                    [styles.buttonConf, styles.btnConfPress]
-                    : [styles.buttonConf, { opacity: !isDateAvailable ? 0.5 : 1 }]} // Desativa o botão se a data não estiver disponível
+                  style={({ pressed }) =>
+                    pressed
+                      ? [styles.buttonConf, styles.btnConfPress]
+                      : [
+                          styles.buttonConf,
+                          { opacity: !isDateAvailable ? 0.5 : 1 },
+                        ]
+                  } // Desativa o botão se a data não estiver disponível
                   onPress={isDateAvailable ? handleConfirm : null}
                   disabled={!isDateAvailable} // Desativa o botão se a data não estiver disponível
                 >
-                  <Text style={styles.buttonTextConfReserv}>Retirada confirmada</Text>
+                  <Text style={styles.buttonTextConfReserv}>
+                    Retirada confirmada
+                  </Text>
                 </Pressable>
 
                 <Pressable
-                  style={({ pressed }) => pressed ?
-                    [styles.buttonCanc, styles.btnCancPress]
-                    : [styles.buttonCanc, { opacity: !isDateAvailable ? 0.5 : 1 }]} // Desativa o botão se a data não estiver disponível
+                  style={({ pressed }) =>
+                    pressed
+                      ? [styles.buttonCanc, styles.btnCancPress]
+                      : [
+                          styles.buttonCanc,
+                          { opacity: !isDateAvailable ? 0.5 : 1 },
+                        ]
+                  } // Desativa o botão se a data não estiver disponível
                   onPress={isDateAvailable ? handleCancel : null}
                   disabled={!isDateAvailable} // Desativa o botão se a data não estiver disponível
                 >
-                  <Text style={styles.buttonTextCancReserv}>Cancelar retirada</Text>
+                  <Text style={styles.buttonTextCancReserv}>
+                    Cancelar retirada
+                  </Text>
                 </Pressable>
               </>
             )}
           </View>
           <Text style={styles.observacao}>
-            OBS: se após 3 dias da data inicial da reserva não for declarada nenhuma informação a respeito da retirada, a reserva será automaticamente cancelada.
+            OBS: se após 3 dias da data inicial da reserva não for declarada
+            nenhuma informação a respeito da retirada, a reserva será
+            automaticamente cancelada.
           </Text>
         </View>
       </View>
