@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, Text, Image, Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { RetangGreen, RetangOrange } from '../../componentes/forms';
+import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
 import { useNavigation } from '@react-navigation/native';
 
 import Autor from '../../../../assets/imagens_telas/autora.png';
@@ -54,34 +54,34 @@ export default function InfoLivroRecomendacao({ route }) {
               <Text style={styles.paragraph}>Informações do livro</Text>
           </View>
           <View style={styles.lineSquare}>
-            <Image source={book.image} style={styles.capaLivros} />
+            <Image source={book.liv_foto_capa} style={styles.capaLivros} />
             <Line />
             <View style={styles.sectionTitle}>
               <Text style={styles.general}>Visão geral</Text>
-              <Text style={styles.titleLivro}>{book.title}</Text>
+              <Text style={styles.titleLivro}>{book.liv_nome}</Text>
             </View>
             <View style={styles.smallineSquare}>
               <Text style={styles.available}>Disp.: </Text>
               <Text style={styles.bold}>{book.disponivel}</Text>
             </View>
             <Text style={styles.description}>
-              {book.description}
+              {book.liv_desc}
             </Text>
             <View style={styles.infoContainer}>
               <View style={styles.infoBox}>
                 <Text style={styles.infoTitle}>Autor(a)</Text>
                 <Image source={Autor} style={styles.imgAutor} />
-                <Text style={styles.infoText}>{book.author}</Text>
+                <Text style={styles.infoText}>{book.aut_nome}</Text>
               </View>
               <View style={styles.infoBox}>
                 <Text style={styles.infoTitle}>Editora</Text>
                 <Image source={Editora} style={styles.imgEditora} />
-                <Text style={styles.infoText}>{book.editora}</Text>
+                <Text style={styles.infoText}>{book.edt_nome}</Text>
               </View>
               <View style={styles.infoBox}>
                 <Text style={styles.infoTitle}>Gênero</Text>
                 <Image source={Genero} style={styles.imgGenero} />
-                <Text style={styles.infoText}>{book.genero}</Text>
+                <Text style={styles.infoText}>{book.generos}</Text>
               </View>
             </View>
 

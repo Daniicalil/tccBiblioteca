@@ -2,12 +2,10 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { ScrollView, View, Text, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import { RetangGreen, RetangOrange } from "../../componentes/forms";
-import { Searchbar } from "react-native-paper";
+import { RetangGreen, RetangOrange } from "../../../componentes/cabecalho/forms";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-import AnneFrank from "../../../../assets/Capa_dos_livros/o diário de anne frank.jpg";
-
+import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 import styles from "./styles";
 
 const Line = () => {
@@ -70,7 +68,7 @@ export default function InformacoesReserva({ navigation, route }) {
     setShowAviso(false);
   };
 
-  // const isDateAvailable = startDate && endDate;
+  const isDateAvailable = startDate && endDate;
 
   return (
     <ScrollView style={styles.container}>
@@ -87,32 +85,26 @@ export default function InformacoesReserva({ navigation, route }) {
           />
           <Text style={styles.paragraph}>Informações do livro reservado</Text>
         </View>
-        <Searchbar
-          placeholder="Pesquisar"
-          style={styles.barraPesq}
-          inputStyle={styles.placeholderStyle}
-          icon={() => (
-            <Icon
-              name="search"
-              size={20}
-              color="#000"
-              style={styles.iconStyle}
-            />
-          )}
-        />
+        <BarraPesquisa />
         <View style={styles.lineSquare}>
           <View style={styles.infoLivro}>
-            <Image
-              source={infoReserva.livro.liv_foto_capa}
-              style={styles.capaLivros}
-            />
+            {infoReserva && infoReserva.livro && (
+              <Image
+                source={infoReserva.livro.liv_foto_capa}
+                style={styles.capaLivros}
+              />
+            )}
             <View style={styles.sectionTitle}>
-              <Text style={styles.titleLivro}>
-                {infoReserva.livro.liv_nome}
-              </Text>
-              <Text style={styles.autor}>
-                Por: {infoReserva.livro.aut_nome}
-              </Text>
+              {infoReserva && infoReserva.livro && (
+                <Text style={styles.titleLivro}>
+                  {infoReserva.livro.liv_nome}
+                </Text>
+              )}
+              {infoReserva && infoReserva.livro && (
+                <Text style={styles.autor}>
+                  Por: {infoReserva.livro.aut_nome}
+                </Text>
+              )}
             </View>
           </View>
           <Line />
@@ -123,7 +115,11 @@ export default function InformacoesReserva({ navigation, route }) {
             <Text style={styles.dataReserva}>
               Reserva realizada no dia: {infoReserva.dataReserva}
             </Text>
-            <Text style={styles.periodoReserva}>Período da reserva: {infoReserva.periodo?.inicio} até {infoReserva.periodo?.fim || 'Data não disponível'}</Text>
+            <Text style={styles.periodoReserva}>
+              Período da reserva:{" "}
+              {infoReserva.periodo?.inicio || "Data não disponível"} até{" "}
+              {infoReserva.periodo?.fim || "Data não disponível"}
+            </Text>
             {/* <Text style={styles.dataReserva}>
               Reserva realizada no dia:{" "}
               {startDate

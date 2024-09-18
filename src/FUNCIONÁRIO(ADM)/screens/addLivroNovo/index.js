@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 
 import styles from './styles';
-import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
+import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
 
 export default function AddLivroNovo({ navigation }) {
   const [name, setName] = useState('');

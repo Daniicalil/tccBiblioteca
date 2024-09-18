@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, Text, Image, Pressable, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
+import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 

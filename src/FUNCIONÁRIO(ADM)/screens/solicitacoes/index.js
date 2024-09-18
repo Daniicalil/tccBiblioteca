@@ -4,10 +4,10 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, View, Text, Pressable, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
-import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
-import { Searchbar } from 'react-native-paper';
+import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import { BarraPesquisa } from '../../../componentes/barraPesquisa';
 import styles from './styles';
 
 const Line = () => {
@@ -16,7 +16,7 @@ const Line = () => {
   );
 };
 
-export default function Selecao({ navigation }) {
+export default function Solicitacoes({ navigation }) {
   const [selectedOption, setSelectedOption] = useState("");
   const [confirmedLevel, setConfirmedLevel] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -39,18 +39,9 @@ export default function Selecao({ navigation }) {
           <RetangOrange />
             <View style={styles.titlePagina}>
               <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
-                <Text style={styles.paragraph}>Seleção de usuários</Text>
+                <Text style={styles.paragraph}>Solicitações dos usuários</Text>
             </View>
-            <Searchbar
-              placeholder="Pesquisar"
-              onChangeText={setSearchQuery}
-              value={searchQuery}
-              style={styles.barraPesq}
-              inputStyle={styles.placeholderStyle}
-              icon={({size, color}) => (
-                <Icon name="search" size={20} color="#CCC" style={styles.iconStyle}/>
-              )}
-            />
+            <BarraPesquisa />
             <View style={styles.lineSquare}>
               <View style={styles.dados}>
                 <Text style={styles.dataCadastro}>

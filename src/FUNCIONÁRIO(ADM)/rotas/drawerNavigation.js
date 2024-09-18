@@ -6,7 +6,7 @@ import { useNavigation, DrawerActions } from '@react-navigation/native'; // Impo
 
 import TelaInicial from '../../ALUNO/screens/telaInicial';
 import Perfil from '../../ALUNO/screens/perfil';
-import Selecao from '../screens/selecao';
+import Solicitacoes from '../screens/Solicitacoes';
 import Recomendacao from '../../ALUNO/screens/recomendacao';
 import Biblioteca from '../screens/biblioteca';
 import InformacoesReserva from '../../ALUNO/screens/informacoesReserva';
@@ -122,10 +122,10 @@ export default function NavegacaoDrawer() {
                 </Pressable>
                 <Pressable 
                   style={StylesButtonDrawer.buttonDrawer}
-                  onPress={() => navigation.navigate('selecao')}>
+                  onPress={() => navigation.navigate('solicitacoes')}>
                     <View style={StylesButtonDrawer.icon}>
                       <SimpleLineIcons name="directions" size={20} color="black" />
-                      <Text style={StylesButtonDrawer.label}>Seleção</Text>
+                      <Text style={StylesButtonDrawer.label}>Solicitações</Text>
                     </View>
                 </Pressable>
                 <Pressable 
@@ -225,8 +225,8 @@ export default function NavegacaoDrawer() {
         component={Perfil}
       />
       <Drawer.Screen
-        name="selecao"
-        component={Selecao}
+        name="solicitacoes"
+        component={Solicitacoes}
       />
       <Drawer.Screen
         name="recomendacao"

@@ -12,9 +12,10 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
-import { Searchbar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { RetangGreen, RetangOrange } from "../../../ALUNO/componentes/forms";
+
+import { RetangGreen, RetangOrange } from "../../../componentes/cabecalho/forms";
+import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 import styles from "./styles";
 
 export default function BookList() {
@@ -161,15 +162,7 @@ export default function BookList() {
         />
         <Text style={styles.paragraph}>Gerenciar livro existente</Text>
       </View>
-      <Searchbar
-        placeholder="Pesquisar"
-        onChangeText={(val) => setSearch(val)}
-        style={styles.barraPesq}
-        inputStyle={styles.placeholderStyle}
-        icon={({ size, color }) => (
-          <Icon name="search" size={20} color="#000" style={styles.iconStyle} />
-        )}
-      />
+      <BarraPesquisa />
       <FlatList
         style={Flatstyles.FlatList}
         data={sortBooksAlphabetically(books)} // Usar a lista de livros ordenada

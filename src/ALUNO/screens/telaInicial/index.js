@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FlatList, View } from 'react-native';
-import { Importancia } from '../../componentes/forms';
+import { Importancia } from '../../../componentes/cabecalho/forms';
 
 import styles from './styles'
 import BookList from './booklist';

@@ -3,7 +3,7 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { View, Text, TextInput, Pressable, Alert } from 'react-native';
 import { RadioButton, Avatar } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
-import { RetangGreen, RetangOrange } from '../../componentes/forms';
+import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
 import { Entypo } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 

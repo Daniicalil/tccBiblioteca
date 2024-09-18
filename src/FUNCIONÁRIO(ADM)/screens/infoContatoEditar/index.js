@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, Image, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
-import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
+import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
 
 import styles from './styles';
 

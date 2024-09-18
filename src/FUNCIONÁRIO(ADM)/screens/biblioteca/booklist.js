@@ -10,11 +10,11 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { Searchbar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { FontAwesome } from "@expo/vector-icons";
 
-import { RetangGreen, RetangOrange } from "../../../ALUNO/componentes/forms";
+import { RetangGreen, RetangOrange } from "../../../componentes/cabecalho/forms";
+import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 import styles from "./styles";
 
 export default function BookList({ voltar }) {
@@ -200,15 +200,7 @@ export default function BookList({ voltar }) {
         />
         <Text style={styles.paragraph}>Biblioteca</Text>
       </View>
-      <Searchbar
-        placeholder="Pesquisar"
-        onChangeText={(val) => setSearch(val)}
-        style={styles.barraPesq}
-        inputStyle={styles.placeholderStyle}
-        icon={({ size, color }) => (
-          <Icon name="search" size={20} color="#000" style={styles.iconStyle} />
-        )}
-      />
+      <BarraPesquisa />
       <Pressable
         onPress={() => navigation.navigate("addBiblioteca")}
         style={({ pressed }) =>

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Pressable } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { Searchbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FontAwesome } from '@expo/vector-icons';
 
-import { RetangGreen, RetangOrange } from '../../../ALUNO/componentes/forms';
+import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
+import { BarraPesquisa } from '../../../componentes/barraPesquisa';
 import styles from './styles';
  
  export default function BookList({ voltar }) {
@@ -106,15 +106,7 @@ import styles from './styles';
         <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => voltar.goBack()} />
         <Text style={styles.paragraph}>Recomendações dos professores</Text>
       </View>
-      <Searchbar
-        placeholder="Pesquisar"
-        onChangeText={() => {}}
-        style={styles.barraPesq}
-        inputStyle={styles.placeholderStyle}
-        icon={() => (
-          <Icon name="search" size={20} color="#000" style={styles.iconStyle} />
-        )}
-      />
+      <BarraPesquisa />
       <Pressable 
         onPress={() => navigation.navigate('addRecomendacao')}
         style={({ pressed }) => pressed ? [styles.buttonAdd, styles.btnAddPress] : styles.buttonAdd}

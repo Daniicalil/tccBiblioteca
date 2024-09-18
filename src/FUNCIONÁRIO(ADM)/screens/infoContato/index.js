@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, Image, Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
-import {RetangGreen, RetangOrange} from '../../../ALUNO/componentes/forms';
+import {RetangGreen, RetangOrange} from '../../../componentes/cabecalho/forms';
 
 import styles from './styles';
 import imgContato from '../../../../assets/imagens_telas/contato.jpg';
