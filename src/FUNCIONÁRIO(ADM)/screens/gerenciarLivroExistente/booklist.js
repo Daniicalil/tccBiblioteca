@@ -26,74 +26,74 @@ export default function BookList() {
   // Lista de livros
   const books = [
     {
-      image: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
-      title: "O diário de Anne Frank",
-      author: "Anne Frank",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
+      liv_nome: "O diário de Anne Frank",
+      aut_nome: "Anne Frank",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/dom casmurro.jpg"),
-      title: "Dom Casmurro",
-      author: "Machado de Assis",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/dom casmurro.jpg"),
+      liv_nome: "Dom Casmurro",
+      aut_nome: "Machado de Assis",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/romeu e julieta.jpg"),
-      title: "Romeu e Julieta",
-      author: "William Shakespeare",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/romeu e julieta.jpg"),
+      liv_nome: "Romeu e Julieta",
+      aut_nome: "William Shakespeare",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/1984.jpg"),
-      title: "1984",
-      author: "George Orwell",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/1984.jpg"),
+      liv_nome: "1984",
+      aut_nome: "George Orwell",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/os miseráveis.jpg"),
-      title: "Os Miseráveis",
-      author: "Victor Hugo",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/os miseráveis.jpg"),
+      liv_nome: "Os Miseráveis",
+      aut_nome: "Victor Hugo",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/orgulho e preconceito.png"),
-      title: "Orgulho e Preconceito",
-      author: "Jane Austen",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/orgulho e preconceito.png"),
+      liv_nome: "Orgulho e Preconceito",
+      aut_nome: "Jane Austen",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/heartstopper.jpg"),
-      title: "Heartstopper",
-      author: "Alice Oseman",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/heartstopper.jpg"),
+      liv_nome: "Heartstopper",
+      aut_nome: "Alice Oseman",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/procure nas cinzas.jpg"),
-      title: "Procure nas cinzas",
-      author: "Charlie Donlea",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/procure nas cinzas.jpg"),
+      liv_nome: "Procure nas cinzas",
+      aut_nome: "Charlie Donlea",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/os sete maridos de evelyn hugo.jpg"),
-      title: "Os Sete Maridos de Evelyn Hugo",
-      author: "Taylor Jenkins Reid",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/os sete maridos de evelyn hugo.jpg"),
+      liv_nome: "Os Sete Maridos de Evelyn Hugo",
+      aut_nome: "Taylor Jenkins Reid",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/a garota do lago.jpg"),
-      title: "A garota do lago",
-      author: "Charlie Donlea",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/a garota do lago.jpg"),
+      liv_nome: "A garota do lago",
+      aut_nome: "Charlie Donlea",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/verity.jpg"),
-      title: "Verity",
-      author: "Colleen Hoover",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/verity.jpg"),
+      liv_nome: "Verity",
+      aut_nome: "Colleen Hoover",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/harry potter e a pedra filosofal.jpg"),
-      title: "Harry Potter e a Pedra Filosofal",
-      author: "J.K. Rowling",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/harry potter e a pedra filosofal.jpg"),
+      liv_nome: "Harry Potter e a Pedra Filosofal",
+      aut_nome: "J.K. Rowling",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/a revolução dos bichos.jpg"),
-      title: "A revolução dos bichos",
-      author: "George Orwell",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/a revolução dos bichos.jpg"),
+      liv_nome: "A revolução dos bichos",
+      aut_nome: "George Orwell",
     },
     {
-      image: require("../../../../assets/Capa_dos_livros/deixada para trás.jpg"),
-      title: "Deixada para Trás",
-      author: "Charlie Donlea",
+      liv_foto_capa: require("../../../../assets/Capa_dos_livros/deixada para trás.jpg"),
+      liv_nome: "Deixada para Trás",
+      aut_nome: "Charlie Donlea",
     },
   ];
 
@@ -101,21 +101,21 @@ export default function BookList() {
   useEffect(() => {
     const initialStatus = {};
     books.forEach((books) => {
-      initialStatus[books.title] = true; // Define todos como ativados
+      initialStatus[books.liv_nome] = true; // Define todos como ativados
     });
     setBookStatus(initialStatus);
   }, []);
 
   // Função para alternar o estado de ativação/desativação de um livro
-  const toggleBookStatus = (title) => {
+  const toggleBookStatus = (liv_nome) => {
     setBookStatus((prevStatus) => ({
       ...prevStatus,
-      [title]: !prevStatus[title], // Alterna entre ativado e desativado
+      [liv_nome]: !prevStatus[liv_nome], // Alterna entre ativado e desativado
     }));
   };
 
   const sortBooksAlphabetically = (booksList) => {
-    return booksList.sort((a, b) => a.title.localeCompare(b.title));
+    return booksList.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
   };
 
   useEffect(() => {
@@ -127,20 +127,20 @@ export default function BookList() {
     <View
       style={[
         styles.item,
-        { opacity: bookStatus[item.title] ? 1 : 0.5 }, // Aplica opacidade condicionalmente
+        { opacity: bookStatus[item.liv_nome] ? 1 : 0.5 }, // Aplica opacidade condicionalmente
       ]}
     >
-      <Image source={item.image} style={styles.image} />
-      <Text style={styles.titleBook}>{item.title}</Text>
-      <Text style={styles.author}>{item.author}</Text>
+      <Image source={item.liv_foto_capa} style={styles.image} />
+      <Text style={styles.titleBook}>{item.liv_nome}</Text>
+      <Text style={styles.author}>{item.aut_nome}</Text>
 
       {/* Componente Switch para ativar/desativar cada livro */}
       <View style={styles.switchContainer}>
         <Switch
           style={styles.toggle}
-          value={!!bookStatus[item.title]} // !!recebe um valor booleano para definir se ele está ativado ou desativado. Converte undefined para false
-          onValueChange={() => toggleBookStatus(item.title)}
-          thumbColor={bookStatus[item.title] ? "#3F7263" : "#f4f3f4"} // Cor do botão
+          value={!!bookStatus[item.liv_nome]} // !!recebe um valor booleano para definir se ele está ativado ou desativado. Converte undefined para false
+          onValueChange={() => toggleBookStatus(item.liv_nome)}
+          thumbColor={bookStatus[item.liv_nome] ? "#3F7263" : "#f4f3f4"} // Cor do botão
           trackColor={{ false: "#767577", true: "#ccc" }} // Cor da trilha
         />
       </View>
@@ -166,7 +166,7 @@ export default function BookList() {
       <FlatList
         style={Flatstyles.FlatList}
         data={sortBooksAlphabetically(books)} // Usar a lista de livros ordenada
-        keyExtractor={(item) => item.title}
+        keyExtractor={(item) => item.liv_nome}
         renderItem={renderItem}
         numColumns={3}
         contentContainerStyle={styles.bookListContainer}

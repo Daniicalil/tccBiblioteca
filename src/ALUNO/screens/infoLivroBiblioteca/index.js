@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView ,View, Text, Image, Pressable } from 'react-native';
+import { ScrollView, View, Text, Image, Pressable, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
 import { useNavigation } from '@react-navigation/native';
@@ -20,20 +20,20 @@ const Line = () => {
 export default function InfoLivroBiblioteca({ route }) {
   const navigation = useNavigation();
   const { book } = route.params;
-  
-return (
-  <ScrollView style={styles.container}>
-    <View style={styles.inicio}>
-      <StatusBar backgroundColor='#3F7263' transLucent={false} />
+
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.inicio}>
+        <StatusBar backgroundColor='#3F7263' transLucent={false} />
         <RetangGreen />
         <RetangOrange />
-          <View style={styles.titlePagina}>
-            <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
-              <Text style={styles.paragraph}>Informações do livro</Text>
-          </View>
+        <View style={styles.titlePagina}>
+          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
+          <Text style={styles.paragraph}>Informações do livro</Text>
+        </View>
         <View style={styles.lineSquare}>
-          <Image source={book.liv_foto_capa} style={styles.capaLivros}/>
-        <Line />
+          <Image source={book.liv_foto_capa} style={styles.capaLivros} />
+          <Line />
           <View style={styles.sectionTitle}>
             <Text style={styles.general}>Visão geral</Text>
             <Text style={styles.titleLivro}>{book.liv_nome}</Text>
@@ -42,42 +42,41 @@ return (
             <Text style={styles.available}>Disp.: </Text>
             <Text style={styles.bold}>{book.disponivel}</Text>
           </View>
-            <Text style={styles.description}>
-              {book.liv_desc}
-            </Text>
+          <Text style={styles.description}>
+            {book.liv_desc}
+          </Text>
 
           <View style={styles.infoContainer}>
             <View style={styles.infoBox}>
               <Text style={styles.infoTitle}>Autor(a)</Text>
-              <Image source={Autor} style={styles.imgAutor}/>
+              <Image source={Autor} style={styles.imgAutor} />
               <Text style={styles.infoText}>{book.aut_nome}</Text>
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.infoTitle}>Editora</Text>
-              <Image source={Editora} style={styles.imgEditora}/>
+              <Image source={Editora} style={styles.imgEditora} />
               <Text style={styles.infoText}>{book.edt_nome}</Text>
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.infoTitle}>Gênero</Text>
-              <Image source={Genero} style={styles.imgGenero}/>
+              <Image source={Genero} style={styles.imgGenero} />
               <Text style={styles.infoText}>{book.generos}</Text>
             </View>
           </View>
         </View>
-        
-        <Pressable 
-            onPress={() => navigation.navigate('reservarlivro')}
-            style={
-              ({pressed}) => pressed ?
-                [styles.button, styles.btnPress]
+
+        <Pressable
+          onPress={() => navigation.navigate('reservarlivro')}
+          style={
+            ({ pressed }) => pressed ?
+              [styles.button, styles.btnPress]
               :
-                styles.button
-              }  
-          >
+              styles.button
+          }
+        >
           <Text style={styles.buttonText}>Reservar livro</Text>
         </Pressable>
-    </View>
-  </ScrollView>
-    
+      </View>
+    </ScrollView>
   );
 }

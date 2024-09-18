@@ -76,9 +76,16 @@ const styles = StyleSheet.create({
     borderColor: 'black', 
     borderWidth: 1, 
     borderRadius: 10,
+    marginBottom: 20,
   },
   infoLivro: {
+    display: 'flex',
     flexDirection: 'row',
+  },
+  livro: {
+    flexDirection: 'column',
+    marginTop: 18,
+    marginLeft: 14,
   },
   capaLivros: {
     top: 20,

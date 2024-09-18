@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     borderColor: 'black', 
     borderWidth: 1, 
     borderRadius: 10,
+    marginBottom: 20,
   },
   infoLivro: {
     flexDirection: 'row',

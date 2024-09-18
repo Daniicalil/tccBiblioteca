@@ -8,7 +8,7 @@ export default function GerenciarLivroExistente({ navigation }) {
   const renderItem = ({ item }) => {
     switch (item.type) {
       case 'booklist':
-        return <BookList voltar={navigation}/>;
+        return <BookList voltar={ navigation }/>;
       default:
         return null;
     }

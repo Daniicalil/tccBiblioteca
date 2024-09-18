@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   Pressable,
+  Alert,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
@@ -80,7 +81,7 @@ export default function BookList({ voltar }) {
       liv_desc:
         "Orgulho e Preconceito é um dos mais aclamados romances da escritora inglesa Jane Austen. Publicado em 1813, revela como era a sociedade da época, quando os relacionamentos se desenrolavam de maneira mais lenta e romântica, no ritmo das cartas levadas por mensageiros a cavalo. Nesse mundo, o sonho da Sra. Bennet era casar bem suas cinco filhas: Jane, Elizabeth, Mary, Kitty e Lydia. Entre as irmãs, destaca-se Elizabeth, a Lizzy, que se depara com um turbilhão de sentimentos diante do orgulho e preconceito que mascaram a realidade. Trata-se de um clássico que, mesmo após duzentos anos desde a sua primeira publicação, continua a encantar milhões de leitores ao redor do mundo.",
       aut_nome: "Jane Austen",
-      edt_nome: "Paulus Editora",
+      edt_nome: "Paulus editora",
       generos: "Romance",
     },
     {
@@ -148,7 +149,7 @@ export default function BookList({ voltar }) {
       disponivel: 4,
       liv_nome: "A revolução dos bichos",
       liv_desc:
-        "Escrita em plena Segunda Guerra Mundial e publicada em 1945 depois de ter sido rejeitada por várias editoras, essa pequena narrativa causou desconforto ao satirizar ferozmente a ditadura stalinista numa época em que os soviéticos ainda eram aliados do Ocidente na luta contra o eixo nazifascista. De fato, são claras as referências: o despótico Napoleão seria Stálin, o banido Bola-de-Neve seria Trotsky, e os eventos políticos - expurgos, instituição de um estado policial, deturpação tendenciosa da História - mimetizam os que estavam em curso na União Soviética. Com o acirramento da Guerra Fria, as mesmas razões que causaram constrangimento na época de sua publicação levaram A revolução dos bichos a ser amplamente usada pelo Ocidente nas décadas seguintes como arma ideológica contra o comunismo. O próprio Orwell, adepto do socialismo e inimigo de qualquer forma de manipulação política, sentiu-se incomodado com a utilização de sua fábula como panfleto. Depois das profundas transformações políticas que mudaram a fisionomia do planeta nas últimas décadas, a pequena obra-prima de Orwell pode ser vista sem o viés ideológico reducionista. Mais de sessenta anos depois de escrita, ela mantém o viço e o brilho de uma alegoria perene sobre as fraquezas humanas que levam à corrosão dos grandes projetos de revolução política. É irônico que o escritor, para fazer esse retrato cruel da humanidade, tenha recorrido aos animais como personagens. De certo modo, a inteligência política que humaniza seus bichos é a mesma que animaliza os homens. Escrito com perfeito domínio da narrativa, atenção às minúcias e extraordinária capacidade de criação de personagens e situações, A revolução dos bichos combina de maneira feliz duas ricas tradições literárias: a das fábulas morais, que remontam a Esopo, e a da sátira política, que teve talvez em Jonathan Swift seu representante máximo.",
+        "Escrita em plena Segunda Guerra Mundial e publicada em 1945 depois de ter sido rejeitada por várias edt_nomes, essa pequena narrativa causou desconforto ao satirizar ferozmente a ditadura stalinista numa época em que os soviéticos ainda eram aliados do Ocidente na luta contra o eixo nazifascista. De fato, são claras as referências: o despótico Napoleão seria Stálin, o banido Bola-de-Neve seria Trotsky, e os eventos políticos - expurgos, instituição de um estado policial, deturpação tendenciosa da História - mimetizam os que estavam em curso na União Soviética. Com o acirramento da Guerra Fria, as mesmas razões que causaram constrangimento na época de sua publicação levaram A revolução dos bichos a ser amplamente usada pelo Ocidente nas décadas seguintes como arma ideológica contra o comunismo. O próprio Orwell, adepto do socialismo e inimigo de qualquer forma de manipulação política, sentiu-se incomodado com a utilização de sua fábula como panfleto. Depois das profundas transformações políticas que mudaram a fisionomia do planeta nas últimas décadas, a pequena obra-prima de Orwell pode ser vista sem o viés ideológico reducionista. Mais de sessenta anos depois de escrita, ela mantém o viço e o brilho de uma alegoria perene sobre as fraquezas humanas que levam à corrosão dos grandes projetos de revolução política. É irônico que o escritor, para fazer esse retrato cruel da humanidade, tenha recorrido aos animais como personagens. De certo modo, a inteligência política que humaniza seus bichos é a mesma que animaliza os homens. Escrito com perfeito domínio da narrativa, atenção às minúcias e extraordinária capacidade de criação de personagens e situações, A revolução dos bichos combina de maneira feliz duas ricas tradições literárias: a das fábulas morais, que remontam a Esopo, e a da sátira política, que teve talvez em Jonathan Swift seu representante máximo.",
       aut_nome: "George Orwell",
       edt_nome: "Grupo Companhia das Letras",
       generos: "Ficção",
@@ -165,30 +166,14 @@ export default function BookList({ voltar }) {
     },
   ]);
 
-  const [filteredBooks, setFilteredBooks] = useState([]);
-
-  const [search, setSearch] = useState("");
-
   const sortBooksAlphabetically = (booksList) => {
     return booksList.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
   };
 
-  const filterList = (searchTerm) => {
-    const newList = books.filter(
-      (book) =>
-        book.liv_nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.liv_desc.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.aut_nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.edt_nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.generos.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    const sortedList = sortBooksAlphabetically(newList);
-    setFilteredBooks(sortedList);
-  };
-
   useEffect(() => {
-    filterList(search);
-  }, [search]);
+    // Se você quiser exibir a lista ordenada sem filtragem, você pode ordenar os livros aqui
+    // setFilteredBooks(sortBooksAlphabetically(books));
+  }, [books]);
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
@@ -206,7 +191,6 @@ export default function BookList({ voltar }) {
 
   return (
     <View style={styles.headerContainer}>
-      {/* <StatusBar backgroundColor='#3F7263' transLucent={false} /> */}
       <RetangGreen />
       <RetangOrange />
       <View style={styles.titleContainer}>
@@ -222,7 +206,7 @@ export default function BookList({ voltar }) {
       <BarraPesquisa />
       <FlatList
         style={Flatstyles.FlatList}
-        data={filteredBooks}
+        data={sortBooksAlphabetically(books)} // Usar a lista de livros ordenada
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()} // Use index as keyExtractor
         numColumns={3}
@@ -237,3 +221,4 @@ const Flatstyles = StyleSheet.create({
     padding: 6,
   },
 });
+
