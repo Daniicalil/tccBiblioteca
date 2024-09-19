@@ -5,6 +5,8 @@ import {
   RetangGreen,
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
+import { RadioButton } from "react-native-paper";
+
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 import styles from "./styles";
 
@@ -26,6 +28,8 @@ export default function InformacoesReserva({ navigation, route }) {
       },
     },
   ]);
+
+  const [selectedOption, setSelectedOption] = useState("liv_nome"); // Estado para controle de seleção
 
   const { startDate = null, endDate = null } = route.params || {};
 
@@ -73,6 +77,29 @@ export default function InformacoesReserva({ navigation, route }) {
           </Text>
         </View>
         <BarraPesquisa />
+
+        <View style={styles.radioContainer}>
+        <RadioButton.Group
+          onValueChange={(value) => setSelectedOption(value)}
+          value={selectedOption}
+        >
+          <View style={styles.seletores}>
+            <View style={styles.radioOption}>
+              <RadioButton value="liv_nome" color="#FF735C" />
+              <Text style={styles.radioLabel}>Livro</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="aut_nome" color="#FF735C" />
+              <Text style={styles.radioLabel}>Autor</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="dataReserva" color="#FF735C" />
+              <Text style={styles.radioLabel}>Data da reserva</Text>
+            </View>
+          </View>
+        </RadioButton.Group>
+      </View>
+
         {infoReserva.length === 0 ? (
           <Text style={styles.paragraph}>Nenhuma reserva ativa.</Text>
         ) : (

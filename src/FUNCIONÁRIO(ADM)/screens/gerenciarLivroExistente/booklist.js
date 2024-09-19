@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
+import { RadioButton } from "react-native-paper";
+
 import {
   ScrollView,
   View,
@@ -14,7 +16,10 @@ import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-import { RetangGreen, RetangOrange } from "../../../componentes/cabecalho/forms";
+import {
+  RetangGreen,
+  RetangOrange,
+} from "../../../componentes/cabecalho/forms";
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 import styles from "./styles";
 
@@ -97,6 +102,8 @@ export default function BookList() {
     },
   ];
 
+  const [selectedOption, setSelectedOption] = useState("liv_nome"); // Estado para controle de seleção
+
   // Função para inicializar o estado dos livros como desativados
   useEffect(() => {
     const initialStatus = {};
@@ -163,6 +170,33 @@ export default function BookList() {
         <Text style={styles.paragraph}>Gerenciar livro existente</Text>
       </View>
       <BarraPesquisa />
+
+      <View style={styles.radioContainer}>
+        <RadioButton.Group
+          onValueChange={(value) => setSelectedOption(value)}
+          value={selectedOption}
+        >
+          <View style={styles.seletores}>
+            <View style={styles.radioOption}>
+              <RadioButton value="liv_nome" color="#FF735C" />
+              <Text style={styles.radioLabel}>Livro</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="aut_nome" color="#FF735C" />
+              <Text style={styles.radioLabel}>Autor</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="edt_nome" color="#FF735C" />
+              <Text style={styles.radioLabel}>Editora</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="liv_cod" color="#FF735C" />
+              <Text style={styles.radioLabel}>Código</Text>
+            </View>
+          </View>
+        </RadioButton.Group>
+      </View>
+
       <FlatList
         style={Flatstyles.FlatList}
         data={sortBooksAlphabetically(books)} // Usar a lista de livros ordenada

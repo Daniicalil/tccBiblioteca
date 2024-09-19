@@ -4,6 +4,8 @@ import { StatusBar } from "expo-status-bar";
 import { ScrollView, View, Text, Pressable, Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
+import { RadioButton } from "react-native-paper";
+
 import {
   RetangGreen,
   RetangOrange,
@@ -22,7 +24,7 @@ export default function Solicitacao({ navigation }) {
       usu_email: "clara.oliveira.silva@example.com",
       usu_rm: "550726",
       usu_cad: "13/03/2024",
-      selectedOption: "",
+      optionLevel: "",
       confirmedLevel: "",
     },
     {
@@ -30,7 +32,7 @@ export default function Solicitacao({ navigation }) {
       usu_email: "ana.silva@example.com",
       usu_rm: "782134",
       usu_cad: "15/03/2024",
-      selectedOption: "",
+      optionLevel: "",
       confirmedLevel: "",
     },
     {
@@ -38,22 +40,24 @@ export default function Solicitacao({ navigation }) {
       usu_email: "ana.carolina@exemplo.com",
       usu_rm: "483726",
       usu_cad: "18/03/2024",
-      selectedOption: "",
+      optionLevel: "",
       confirmedLevel: "",
     },
   ]);
 
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("usu_nome"); // Estado para controle de seleção
+
+  const [optionLevel, setOptionLevel] = useState("");
   const [confirmedLevel, setConfirmedLevel] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
   const handleConfirm = (index) => {
     const updatedInfoUsuario = [...infoUsuario];
-    if (updatedInfoUsuario[index].selectedOption === "") {
+    if (updatedInfoUsuario[index].optionLevel === "") {
       Alert.alert("Erro", "Por favor, selecione um nível.");
     } else {
       updatedInfoUsuario[index].confirmedLevel =
-        updatedInfoUsuario[index].selectedOption;
+        updatedInfoUsuario[index].optionLevel;
       setInfoUsuario(updatedInfoUsuario);
     }
   };
@@ -77,6 +81,29 @@ export default function Solicitacao({ navigation }) {
           <Text style={styles.paragraph}>Solicitações dos usuários</Text>
         </View>
         <BarraPesquisa />
+
+        <View style={styles.radioContainer}>
+          <RadioButton.Group
+            onValueChange={(value) => setSelectedOption(value)}
+            value={selectedOption}
+          >
+            <View style={styles.seletores}>
+              <View style={styles.radioOption}>
+                <RadioButton value="usu_cad" color="#FF735C" />
+                <Text style={styles.radioLabel}>Dia do cadastro</Text>
+              </View>
+              <View style={styles.radioOption}>
+                <RadioButton value="usu_nome" color="#FF735C" />
+                <Text style={styles.radioLabel}>Usuário</Text>
+              </View>
+              <View style={styles.radioOption}>
+                <RadioButton value="usu_rm" color="#FF735C" />
+                <Text style={styles.radioLabel}>RM</Text>
+              </View>
+            </View>
+          </RadioButton.Group>
+        </View>
+
         {infoUsuario.length === 0 ? (
           <Text style={styles.paragraph}>Nenhum cadastro disponível.</Text>
         ) : (
@@ -97,7 +124,7 @@ export default function Solicitacao({ navigation }) {
                   <>
                     <View style={styles.pickerContainer}>
                       <Picker
-                        selectedValue={infosUsu.selectedOption}
+                        selectedValue={infosUsu.optionLevel}
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
                         style={[
@@ -108,7 +135,7 @@ export default function Solicitacao({ navigation }) {
                         ]}
                         onValueChange={(itemValue) => {
                           const updatedInfoUsuario = [...infoUsuario];
-                          updatedInfoUsuario[index].selectedOption = itemValue;
+                          updatedInfoUsuario[index].optionLevel = itemValue;
                           setInfoUsuario(updatedInfoUsuario);
                         }}
                       >

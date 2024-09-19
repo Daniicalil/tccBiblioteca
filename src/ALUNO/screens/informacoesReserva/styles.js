@@ -55,20 +55,24 @@ const styles = StyleSheet.create({
     flex: 1,
     left: 70
   },
-  barraPesq: {
-    backgroundColor: '#FFF',
-    width: '85%',
-    marginBottom: '2%',
-    alignSelf: 'center',
-    borderWidth: 1,
-    borderColor: '#CCC',
-    marginBottom: 20,
+  radioContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
   },
-  placeholderStyle: {
-    opacity: 0.5, 
+  seletores: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
   },
-  iconStyle: {
-    opacity: 0.5, 
+  radioOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  radioLabel: {
+    marginLeft: 0,
+    fontSize: 14,
   },
   lineSquare: {
     width: '90%',

@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
 barraPesq: {
     backgroundColor: '#FFF',
     width: '85%',
-    marginBottom: '2%',
+    marginBottom: '0.5%',
     alignSelf: 'center',
     borderWidth: 1,
     borderColor: '#CCC',

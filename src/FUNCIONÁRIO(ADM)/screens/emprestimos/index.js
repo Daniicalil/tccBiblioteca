@@ -3,6 +3,8 @@ import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { ScrollView, View, Text, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { RadioButton } from "react-native-paper";
+
 import {
   RetangGreen,
   RetangOrange,
@@ -63,6 +65,8 @@ export default function Emprestimos({ navigation }) {
     },
   ]);
 
+  const [selectedOption, setSelectedOption] = useState("liv_nome"); // Estado para controle de seleção
+
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -82,6 +86,33 @@ export default function Emprestimos({ navigation }) {
           <Text style={styles.paragraph}>Empréstimos</Text>
         </View>
         <BarraPesquisa />
+
+        <View style={styles.radioContainer}>
+          <RadioButton.Group
+            onValueChange={(value) => setSelectedOption(value)}
+            value={selectedOption}
+          >
+            <View style={styles.seletores}>
+              <View style={styles.radioOption}>
+                <RadioButton value="liv_nome" color="#FF735C" />
+                <Text style={styles.radioLabel}>Livro</Text>
+              </View>
+              <View style={styles.radioOption}>
+                <RadioButton value="aut_nome" color="#FF735C" />
+                <Text style={styles.radioLabel}>Autor</Text>
+              </View>
+              <View style={styles.radioOption}>
+                <RadioButton value="usu_nome" color="#FF735C" />
+                <Text style={styles.radioLabel}>Usuário</Text>
+              </View>
+              <View style={styles.radioOption}>
+                <RadioButton value="dataReserva" color="#FF735C" />
+                <Text style={styles.radioLabel}>Data da reserva</Text>
+              </View>
+            </View>
+          </RadioButton.Group>
+        </View>
+
         {emprestimos.length === 0 ? (
           <Text style={styles.paragraph}>Nenhum empréstimo disponível.</Text>
         ) : (
@@ -106,7 +137,8 @@ export default function Emprestimos({ navigation }) {
                   Reserva realizada no dia: {infos.dataReserva}
                 </Text>
                 <Text style={styles.periodoReserva}>
-                  Período da reserva: {infos.periodo.inicio} até {infos.periodo.fim}
+                  Período da reserva: {infos.periodo.inicio} até{" "}
+                  {infos.periodo.fim}
                 </Text>
               </View>
             </View>

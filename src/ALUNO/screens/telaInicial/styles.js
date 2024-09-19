@@ -28,16 +28,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
-  barraPesq: {
-    backgroundColor: '#FFF',
-    width: '85%',
-    marginBottom: '2%',
-    alignSelf: 'center',
-    borderWidth: 1,
-    borderColor: '#CCC',
+  radioContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
   },
-  placeholderStyle: {
-    opacity: 0.5, 
+  seletores: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  radioOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  radioLabel: {
+    marginLeft: 0,
+    fontSize: 14,
   },
   funcionamento: {
     width: '90%', 

@@ -12,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { FontAwesome } from "@expo/vector-icons";
+import { RadioButton } from "react-native-paper";
 
 import {
   RetangGreen,
@@ -166,6 +167,8 @@ export default function BookList({ voltar }) {
     },
   ]);
 
+  const [selectedOption, setSelectedOption] = useState("liv_nome"); // Estado para controle de seleção
+
   const sortBooksAlphabetically = (booksList) => {
     return booksList.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
   };
@@ -204,6 +207,33 @@ export default function BookList({ voltar }) {
         <Text style={styles.paragraph}>Biblioteca</Text>
       </View>
       <BarraPesquisa />
+
+      <View style={styles.radioContainer}>
+        <RadioButton.Group
+          onValueChange={(value) => setSelectedOption(value)}
+          value={selectedOption}
+        >
+          <View style={styles.seletores}>
+            <View style={styles.radioOption}>
+              <RadioButton value="liv_nome" color="#FF735C" />
+              <Text style={styles.radioLabel}>Livro</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="aut_nome" color="#FF735C" />
+              <Text style={styles.radioLabel}>Autor</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="edt_nome" color="#FF735C" />
+              <Text style={styles.radioLabel}>Editora</Text>
+            </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="liv_cod" color="#FF735C" />
+              <Text style={styles.radioLabel}>Código</Text>
+            </View>
+          </View>
+        </RadioButton.Group>
+      </View>
+
       <FlatList
         style={Flatstyles.FlatList}
         data={sortBooksAlphabetically(books)} // Usar a lista de livros ordenada
@@ -221,4 +251,3 @@ const Flatstyles = StyleSheet.create({
     padding: 6,
   },
 });
-

@@ -36,6 +36,25 @@ const styles = StyleSheet.create({
   iconStyle: {
     opacity: 0.5, 
   },
+  radioContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
+  },
+  seletores: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  radioOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  radioLabel: {
+    marginLeft: 0,
+    fontSize: 14,
+  },
   item: {
     width: '31.2%', 
     alignItems: 'center',
