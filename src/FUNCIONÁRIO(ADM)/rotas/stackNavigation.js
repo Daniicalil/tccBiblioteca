@@ -16,6 +16,7 @@ import EsqueceuSenha2 from "../../ALUNO/screens/esqueceuSenha2";
 // import GerenciarLivroExistente from "../screens/gerenciarLivroExistente";
 // import AddLivroNovo from "../screens/addLivroNovo";
 // import InfoLivroBiblioteca from "../screens/infoLivroBiblioteca";
+// import EditarInfoLivro from "../screens/editarInfoLivro";
 // import ReservarLivro from "../../ALUNO/screens/reservarLivro";
 // import InformacoesReserva from "../../ALUNO/screens/informacoesReserva";
 // import Notificacoes from "../../ALUNO/descarte/notificacoes";
@@ -54,6 +55,7 @@ export default function NavegacaoADM() {
                     <Stack.Screen name="addLivroExistente" component={AddLivroExistente} />
                     <Stack.Screen name="addLivroNovo" component={AddLivroNovo} />
                     <Stack.Screen name="infolivrobiblioteca" component={InfoLivroBiblioteca} />
+                    <Stack.Screen name="editarinfolivro" component={EditarInfoLivro} />
                     <Stack.Screen name="reservarlivro" component={ReservarLivro} />
                     <Stack.Screen name="informacoesreserva" component={InformacoesReserva} />
                     <Stack.Screen name="notificacoes" component={Notificacoes} />

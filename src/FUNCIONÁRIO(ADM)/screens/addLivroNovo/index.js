@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
+import { Picker } from "@react-native-picker/picker";
 import Constants from "expo-constants";
 
 import styles from "./styles";
@@ -19,15 +20,38 @@ import {
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
 import ModalAddAutor from "../../../componentes/modalAddAutor";
+import ModalAddEditora from "../../../componentes/modalAddEditora";
+import ModalAddGenero from "../../../componentes/modalAddGenero";
 
 export default function AddLivroNovo({ navigation }) {
   const [name, setName] = useState("");
-  const [author, setAuthor] = useState("");
-  const [editora, setEditora] = useState("");
-  const [genero, setGenero] = useState("");
+  const [selectedAutor, setSelectedAutor] = useState("");
+  const [selectedEditora, setSelectedEditora] = useState("");
+  const [selectedGenero, setSelectedGenero] = useState("");
   const [resumo, setResumo] = useState("");
   const [quant, setQuant] = useState("");
   const [image, setImage] = useState(null);
+
+  const autores = [
+    { label: "(Selecione)", value: "" },
+    { label: "opção 1", value: "opcao1" },
+    { label: "opção 2", value: "opcao2" },
+    { label: "opção 3", value: "opcao3" },
+  ];
+
+  const editoras = [
+    { label: "(Selecione)", value: "" },
+    { label: "opção 1", value: "opcao1" },
+    { label: "opção 2", value: "opcao2" },
+    { label: "opção 3", value: "opcao3" },
+  ];
+
+  const generos = [
+    { label: "(Selecione)", value: "" },
+    { label: "opção 1", value: "opcao1" },
+    { label: "opção 2", value: "opcao2" },
+    { label: "opção 3", value: "opcao3" },
+  ];
 
   useEffect(() => {
     (async () => {
@@ -67,15 +91,19 @@ export default function AddLivroNovo({ navigation }) {
   };
 
   const handleAddLivroNovo = () => {
-    if (name && author && editora && genero && resumo && quant && image) {
+    if (
+      name &&
+      setSelectedAutor &&
+      setSelectedEditora &&
+      setSelectedGenero &&
+      resumo &&
+      quant &&
+      image
+    ) {
       Alert.alert(
         "Confirmação",
         "Você realmente deseja adicionar este livro?",
         [
-          {
-            text: "Cancelar",
-            style: "cancel",
-          },
           {
             text: "Confirmar",
             onPress: () => {
@@ -91,6 +119,10 @@ export default function AddLivroNovo({ navigation }) {
                 { cancelable: false }
               );
             },
+          },
+          {
+            text: "Cancelar",
+            style: "cancel",
           },
         ]
       );
@@ -126,8 +158,26 @@ export default function AddLivroNovo({ navigation }) {
   const closeModalAutor = () => setShowModalAutor(false);
 
   const handleAutor = (autor) => {
-    setAuthor(autor); // Armazene o autor adicionado
+    setAutor(autor);
     closeModalAutor();
+  };
+
+  const [showModalEditora, setShowModalEditora] = useState(false);
+  const openModalEditora = () => setShowModalEditora(true);
+  const closeModalEditora = () => setShowModalEditora(false);
+
+  const handleEditora = (autor) => {
+    setEditora(editora);
+    closeModalEditora();
+  };
+
+  const [showModalGenero, setShowModalGenero] = useState(false);
+  const openModalGenero = () => setShowModalGenero(true);
+  const closeModalGenero = () => setShowModalGenero(false);
+
+  const handleGenero = (autor) => {
+    setGenero(genero);
+    closeModalGenero();
   };
 
   return (
@@ -157,28 +207,55 @@ export default function AddLivroNovo({ navigation }) {
           />
 
           <Text style={styles.textInput}>Autor:</Text>
-          <TextInput
-            style={styles.input}
-            value={author}
-            multiline
-            onChangeText={setAuthor}
-          />
+          <View style={styles.pickerContainer}>
+            <Picker
+              selectedValue={selectedAutor}
+              style={styles.picker}
+              onValueChange={(itemValue) => setSelectedAutor(itemValue)}
+            >
+              {autores.map((autor) => (
+                <Picker.Item
+                  key={autor.value}
+                  label={autor.label}
+                  value={autor.value}
+                />
+              ))}
+            </Picker>
+          </View>
 
           <Text style={styles.textInput}>Editora:</Text>
-          <TextInput
-            style={styles.input}
-            value={editora}
-            multiline
-            onChangeText={setEditora}
-          />
+          <View style={styles.pickerContainer}>
+            <Picker
+              selectedValue={selectedEditora}
+              style={styles.picker}
+              onValueChange={(itemValue) => setSelectedEditora(itemValue)}
+            >
+              {editoras.map((editora) => (
+                <Picker.Item
+                  key={editora.value}
+                  label={editora.label}
+                  value={editora.value}
+                />
+              ))}
+            </Picker>
+          </View>
 
           <Text style={styles.textInput}>Gênero:</Text>
-          <TextInput
-            style={styles.input}
-            value={genero}
-            multiline
-            onChangeText={setGenero}
-          />
+          <View style={styles.pickerContainer}>
+            <Picker
+              selectedValue={selectedGenero}
+              style={styles.picker}
+              onValueChange={(itemValue) => setSelectedGenero(itemValue)}
+            >
+              {generos.map((genero) => (
+                <Picker.Item
+                  key={genero.value}
+                  label={genero.label}
+                  value={genero.value}
+                />
+              ))}
+            </Picker>
+          </View>
 
           <Text style={styles.textInput}>Resumo:</Text>
           <TextInput
@@ -209,11 +286,7 @@ export default function AddLivroNovo({ navigation }) {
 
         <View style={styles.tresModais}>
           {/* Modal para adicionar autor */}
-          <Pressable
-            type="submit"
-            onClick={openModalAutor}
-            style={styles.buttonAdd}
-          >
+          <Pressable onPress={openModalAutor} style={styles.buttonAdd}>
             <Text style={styles.buttonAddText}>Adicionar Autor(a)</Text>
           </Pressable>
           <ModalAddAutor
@@ -223,32 +296,24 @@ export default function AddLivroNovo({ navigation }) {
           />
 
           {/* Modal para adicionar editora */}
-          <Pressable
-            type="submit"
-            // onClick={openModalEditora}
-            style={styles.buttonAdd}
-          >
+          <Pressable onPress={openModalEditora} style={styles.buttonAdd}>
             <Text style={styles.buttonAddText}>Adicionar Editora</Text>
           </Pressable>
-          {/* <ModalAddEditora
-            // show={showModalEditora}
-            // onClose={closeModalEditora}
+          <ModalAddEditora
+            show={showModalEditora}
+            onClose={closeModalEditora}
             onConfirm={handleEditora}
-          /> */}
+          />
 
           {/* Modal para adicionar gênero */}
-          <Pressable
-            type="submit"
-            // onClick={openModalGenero}
-            style={styles.buttonAdd}
-          >
+          <Pressable onPress={openModalGenero} style={styles.buttonAdd}>
             <Text style={styles.buttonAddText}>Adicionar Gênero</Text>
           </Pressable>
-          {/* <ModalAddGenero
-            // show={showModalGenero}
-            // onClose={closeModalGenero}
+          <ModalAddGenero
+            show={showModalGenero}
+            onClose={closeModalGenero}
             onConfirm={handleGenero}
-          /> */}
+          />
         </View>
 
         <View style={styles.viewEditar}>

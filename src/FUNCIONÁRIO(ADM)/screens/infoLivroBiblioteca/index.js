@@ -1,19 +1,18 @@
 import * as React from "react";
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, View, Text, Image, Pressable, Alert } from "react-native";
+import { ScrollView, View, Text, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { IoPencilSharp } from "react-icons/io5";
 import {
   RetangGreen,
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
 import { useNavigation } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/Ionicons";
 
 import Autor from "../../../../assets/imagens_telas/autora.png";
 import Editora from "../../../../assets/imagens_telas/editora.png";
 import Genero from "../../../../assets/imagens_telas/genero.png";
-import Solicitacoes from "../solicitacao";
-import Biblioteca from "../biblioteca";
-
 import styles from "./styles";
 
 const Line = () => {
@@ -24,10 +23,14 @@ export default function InfoLivroBiblioteca({ route }) {
   const navigation = useNavigation();
   const { book } = route.params;
 
+  const handleEdit = () => {
+    navigation.navigate("editarinfolivro");
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
-        <StatusBar backgroundColor="#3F7263" transLucent={false} />
+        <StatusBar backgroundColor="#3F7263" />
         <RetangGreen />
         <RetangOrange />
         <View style={styles.titlePagina}>
@@ -41,22 +44,28 @@ export default function InfoLivroBiblioteca({ route }) {
           <Text style={styles.paragraph}>Informações do livro</Text>
         </View>
 
-        <Pressable
-          onPress={() => navigation.navigate("")}
-          style={({ pressed }) =>
-            pressed ? [styles.buttonRem, styles.btnRemPress] : styles.buttonRem
-          }
-        >
-          <Text style={styles.buttonTextRem}>
-            <FontAwesome
-              name="pencil"
-              size={12}
-              color="white"
-              style={styles.iconButton}
-            />
-            Editar
-          </Text>
-        </Pressable>
+          <Pressable
+            onPress={handleEdit}
+            style={({ pressed }) =>
+              pressed
+                ? [styles.buttonEditar, styles.btnEdtPress]
+                : styles.buttonEditar
+            }
+          >
+            <Text style={styles.buttonTextEdt}>
+              <Icon
+                name="pencil"
+                size={16}
+                color="white"
+                style={styles.tpiconEditar}
+              />
+              <Text style={styles.iconSpacing}>
+                {" "}
+                {" "}
+                Editar
+              </Text>
+            </Text>
+          </Pressable>
 
         <View style={styles.lineSquare}>
           <Image source={book.liv_foto_capa} style={styles.capaLivros} />

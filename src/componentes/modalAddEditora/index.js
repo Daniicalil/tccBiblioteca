@@ -3,16 +3,16 @@ import { View, Modal, TextInput, Pressable, StyleSheet, Text } from 'react-nativ
 import styles from './styles';
 import useBotaoConfirmarAcao from '../alertConfirmacao';
 
-const ModalAddAutor = ({ show, onClose }) => {
-  const [autor, setAutor] = useState('');
+const ModalAddEditora = ({ show, onClose }) => {
+  const [editora, setEditora] = useState('');
 
   // Usando o hook de confirmação, passando a mensagem, ação e tela para navegar
   const showConfirmAlert = useBotaoConfirmarAcao(
-    "Você realmente deseja adicionar este autor?", // Mensagem de confirmação
+    "Você realmente deseja adicionar esta editora?", // Mensagem de confirmação
     () => {
-      // Ação ao confirmar, neste caso, salvar o autor
-      console.log(`Autor ${autor} salvo!`);
-      setAutor(''); // Limpar o campo após salvar
+      // Ação ao confirmar, neste caso, salvar a editora
+      console.log(`Editora ${editora} salva!`);
+      setEditora(''); // Limpar o campo após salvar
     },
     'addLivroNovo'
   );
@@ -26,11 +26,11 @@ const ModalAddAutor = ({ show, onClose }) => {
     >
       <View style={styles.modalOverlay}>
         <View style={styles.modalContent}>
-          <Text style={styles.textInput}>Autor(a):</Text>
+          <Text style={styles.textInput}>Editora:</Text>
           <TextInput
             style={styles.inputField}
-            value={autor}
-            onChangeText={setAutor}
+            value={editora}
+            onChangeText={setEditora}
           />
           <View style={styles.buttonsContainer}>
             <Pressable onPress={showConfirmAlert} style={styles.modalButtonAdd}>
@@ -46,4 +46,4 @@ const ModalAddAutor = ({ show, onClose }) => {
   );
 };
 
-export default ModalAddAutor;
+export default ModalAddEditora;

@@ -25,6 +25,7 @@ import AddBiblioteca from "../screens/addBiblioteca";
 import GerenciarLivroExistente from "../screens/gerenciarLivroExistente";
 import AddLivroNovo from "../screens/addLivroNovo";
 import InfoLivroBiblioteca from "../screens/infoLivroBiblioteca";
+import EditarInfoLivro from "../screens/editarInfoLivro";
 import ReservarLivro from "../../ALUNO/screens/reservarLivro";
 import InformacoesContatoEditar from "../screens/infoContatoEditar";
 import SobreNos from "../../ALUNO/screens/sobreNos";
@@ -234,34 +235,20 @@ export default function NavegacaoDrawer() {
       <Drawer.Screen name="recomendacao" component={Recomendacao} />
       <Drawer.Screen name="biblioteca" component={Biblioteca} />
       <Drawer.Screen name="informacoesreserva" component={InformacoesReserva} />
-      {/* <Drawer.Screen
-        name="notificacoes"
-        component={Notificacoes}
-      /> */}
+      {/* <Drawer.Screen name="notificacoes" component={Notificacoes}/> */}
       <Drawer.Screen name="emprestimos" component={Emprestimos} />
       <Drawer.Screen name="informacoescontato" component={InformacoesContato} />
       <Drawer.Screen name="login" component={Login} />
 
       <Drawer.Screen name="perfilEditar" component={PerfilEditar} />
-      <Drawer.Screen
-        name="infolivrorecomendacao"
-        component={InfoLivroRecomendacao}
-      />
+      <Drawer.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />
       <Drawer.Screen name="addBiblioteca" component={AddBiblioteca} />
-      <Drawer.Screen
-        name="gerenciarLivroExistente"
-        component={GerenciarLivroExistente}
-      />
+      <Drawer.Screen name="gerenciarLivroExistente" component={GerenciarLivroExistente} />
       <Drawer.Screen name="addLivroNovo" component={AddLivroNovo} />
-      <Drawer.Screen
-        name="infolivrobiblioteca"
-        component={InfoLivroBiblioteca}
-      />
+      <Drawer.Screen name="infolivrobiblioteca" component={InfoLivroBiblioteca} />
+      <Drawer.Screen name="editarinfolivro" component={EditarInfoLivro} />
       <Drawer.Screen name="reservarlivro" component={ReservarLivro} />
-      <Drawer.Screen
-        name="informacoescontatoEditar"
-        component={InformacoesContatoEditar}
-      />
+      <Drawer.Screen name="informacoescontatoEditar" component={InformacoesContatoEditar} />
       <Drawer.Screen name="sobrenos" component={SobreNos} />
     </Drawer.Navigator>
   );

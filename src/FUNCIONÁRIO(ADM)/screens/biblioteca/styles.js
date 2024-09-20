@@ -22,20 +22,6 @@ const styles = StyleSheet.create({
     flex: 1,
     left: 70
   },
-  barraPesq: {
-    backgroundColor: '#FFF',
-    width: '85%',
-    marginBottom: '2%',
-    alignSelf: 'center',
-    borderWidth: 1,
-    borderColor: '#CCC',
-  },
-  placeholderStyle: {
-    opacity: 0.5, 
-  },
-  iconStyle: {
-    opacity: 0.5, 
-  },
   radioContainer: {
     flexDirection: 'row',
     alignItems: 'center',
