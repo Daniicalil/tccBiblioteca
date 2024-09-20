@@ -59,20 +59,36 @@ export default function AddRecomendacao({ navigation }) {
   const handleAddRecommendation = () => {
     if (selectedCurso && selectedLivro && description && selectedMode) {
       Alert.alert(
-        'Recomendação adicionada com sucesso!',
-        '',
+        'Confirmação',
+        'Você realmente deseja adicionar esta recomendação?',
         [
           {
-            text: 'OK',
-            onPress: () => navigation.navigate('recomendacao'),
+            text: 'Cancelar',
+            style: 'cancel',
           },
-        ],
-        { cancelable: false }
+          {
+            text: 'Confirmar',
+            onPress: () => {
+              Alert.alert(
+                'Recomendação realizada',
+                'Recomendação adicionada com sucesso!',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => navigation.navigate('recomendacao'),
+                  },
+                ],
+                { cancelable: false }
+              );
+            },
+          },
+        ]
       );
     } else {
-      Alert.alert('Por favor, preencha todos os campos.');
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
     }
   };
+  
 
   return (
     <View style={styles.container}>

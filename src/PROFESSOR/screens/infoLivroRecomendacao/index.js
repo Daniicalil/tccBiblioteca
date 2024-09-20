@@ -3,12 +3,14 @@ import { StatusBar } from "expo-status-bar";
 import { ScrollView, View, Text, Image, Pressable, Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
+
 import {
   RetangGreen,
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
-import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
+import useBotaoConfirmarAcao from "../../../componentes/alertConfirmacao";
 
 import Autor from "../../../../assets/imagens_telas/autora.png";
 import Editora from "../../../../assets/imagens_telas/editora.png";
@@ -44,31 +46,17 @@ export default function InfoLivroRecomendacao({ route }) {
   const [selectedMode, setSelectedMode] = useState(null);
   const { book } = route.params;
 
+  const showConfirmAlert = useBotaoConfirmarAcao(
+    "Tem certeza que deseja remover este livro?",
+    () => {
+      // Lógica a ser executada após a confirmação
+      console.log("Livro removido");
+    },
+    "recomendacao"
+  );
+
   const handleModeChange = (mode) => {
     setSelectedMode(mode);
-  };
-
-  const handleRemove = () => {
-    Alert.alert(
-      "Confirmação",
-      "Tem certeza que deseja excluir esta recomendação?",
-      [
-        {
-          text: "Não",
-          onPress: () => console.log("Ação cancelada"),
-          style: "cancel",
-        },
-        {
-          text: "Sim",
-          onPress: () => {
-            // Realiza a ação de exclusão aqui
-            // Após exclusão, navega de volta para a tela anterior
-            navigation.goBack();
-          },
-        },
-      ],
-      { cancelable: false }
-    );
   };
 
   return (
@@ -89,7 +77,7 @@ export default function InfoLivroRecomendacao({ route }) {
         </View>
 
         <Pressable
-          onPress={handleRemove}
+          onPress={showConfirmAlert}
           style={({ pressed }) =>
             pressed ? [styles.buttonRem, styles.btnRemPress] : styles.buttonRem
           }

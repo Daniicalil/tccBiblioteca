@@ -15,7 +15,7 @@ return (
           <RetangOrange />
           <View style={styles.titlePagina}>
             <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()}/>
-              <Text style={styles.paragraph}>Adicionar</Text>
+              <Text style={styles.paragraph}>Administrar</Text>
           </View>
             <Pressable 
               onPress={() => navigation.navigate('gerenciarLivroExistente')}

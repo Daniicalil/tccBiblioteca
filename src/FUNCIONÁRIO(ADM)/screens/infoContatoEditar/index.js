@@ -5,7 +5,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
 
 import styles from './styles';
-
+import useBotaoConfirmarAcao from "../../../componentes/alertConfirmacao";
 import imgContato from '../../../../assets/imagens_telas/contato.jpg';
 
 export default function InformacoesContatoEditar({ navigation }) {
@@ -17,20 +17,14 @@ export default function InformacoesContatoEditar({ navigation }) {
     'E136DIR@CPS.SP.GOV.BR'
   );
 
-  const handleSave = () => {
-    // Aqui você pode salvar os dados editados, se necessário
-    Alert.alert(
-      'Informações de Contato Atualizada',
-      'As informações foram salvas com sucesso.',
-      [
-        {
-          text: 'OK',
-          onPress: () => navigation.navigate('informacoescontato')
-        }
-      ],
-      { cancelable: false }
-    );
-  };
+  const showConfirmAlert = useBotaoConfirmarAcao(
+    "Tem certeza que deseja salvar essas informações?",
+    () => {
+      // Lógica a ser executada após a confirmação
+      console.log("Informações atualizada");
+    },
+    "informacoescontato"
+  );
 
   return (
     <View style={styles.container}>
@@ -62,7 +56,7 @@ export default function InformacoesContatoEditar({ navigation }) {
 
       <View style={styles.viewSalvar}>
         <Pressable
-          onPress={handleSave}
+          onPress={showConfirmAlert}
           style={({ pressed }) => pressed ? [styles.botaoSalvar, styles.btnPress] : styles.botaoSalvar}
         >
           <Text style={styles.salvarText}>Salvar</Text>

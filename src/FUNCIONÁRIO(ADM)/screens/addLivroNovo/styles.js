@@ -102,6 +102,13 @@ const styles = StyleSheet.create({
     marginLeft: 35,
     marginBottom: 15,
   },
+  tresModais: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 5,
+  },
   button: {
     backgroundColor: '#FF735C',
     paddingVertical: 12,
@@ -148,6 +155,24 @@ const styles = StyleSheet.create({
   },
   btnText: {
     color: '#fff'
+  },
+  buttonAdd: {
+    backgroundColor: '#FF735C',
+    paddingVertical: 12,
+    paddingHorizontal: 26,
+    borderRadius: 30,
+    marginTop: 16,
+    marginBottom: 20,
+    width: '30%',
+    alignSelf: 'center',
+  },
+  btnPress: {
+    backgroundColor: '#3F7263',
+  },
+  buttonAddText: {
+    textAlign: 'center',
+    color: '#fff',
+    fontSize: 14,
   },
 });
 

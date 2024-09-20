@@ -157,6 +157,10 @@ export default function BookList({ voltar }) {
               <RadioButton value="liv_cod" color="#FF735C" />
               <Text style={styles.radioLabel}>Código</Text>
             </View>
+            <View style={styles.radioOption}>
+              <RadioButton value="liv_cod" color="#FF735C" />
+              <Text style={styles.radioLabel}>Curso</Text>
+            </View>
           </View>
         </RadioButton.Group>
       </View>

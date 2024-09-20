@@ -69,14 +69,15 @@ export default function ReservarLivro({ navigation }) {
             text: 'OK',
             onPress: () => {
               navigation.navigate('informacoesreserva', { startDate, endDate });
+              Alert.alert('Reserva Confirmada', 'Sua reserva foi realizada com sucesso.');
             }
           }
         ]
       );
     } else {
-      Alert.alert('Erro', 'Por favor, selecione uma data de início e término.');
+      Alert.alert('Erro', 'Por favor, selecione uma data.');
     }
-  };
+  };  
 
   return (
     <ScrollView style={styles.container}>

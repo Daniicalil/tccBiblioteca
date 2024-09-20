@@ -21,10 +21,6 @@ export default function Perfil({ navigation }) {
   //   setPasswordVisible(!passwordVisible);
   // };
 
-  const handleOpenDrawer = () => {
-    navigation.toggleDrawer();
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.inicio}>

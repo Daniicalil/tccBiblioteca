@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 30,
-    width: '30%',
+    width: '32%',
     alignSelf: 'flex-end',
     marginRight: 20,
   },

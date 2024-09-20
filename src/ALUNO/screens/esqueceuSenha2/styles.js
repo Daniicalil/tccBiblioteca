@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   redefinirButton: {
     marginTop: '5%',
     backgroundColor: '#FF735C',
-    width: '38%',
+    width: '40%',
     height: 42,
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,28 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View, Text, Pressable, Alert, TextInput, Image } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import * as ImagePicker from 'expo-image-picker';
-import Constants from 'expo-constants';
+import React, { useState, useEffect } from "react";
+import { StatusBar } from "expo-status-bar";
+import {
+  ScrollView,
+  View,
+  Text,
+  Pressable,
+  Alert,
+  TextInput,
+  Image,
+} from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
+import Constants from "expo-constants";
 
-import styles from './styles';
-import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
+import styles from "./styles";
+import {
+  RetangGreen,
+  RetangOrange,
+} from "../../../componentes/cabecalho/forms";
+import ModalAddAutor from "../../../componentes/modalAddAutor";
 
 export default function AddLivroNovo({ navigation }) {
-  const [name, setName] = useState('');
-  const [author, setAuthor] = useState('');
-  const [editora, setEditora] = useState('');
-  const [genero, setGenero] = useState('');
-  const [resumo, setResumo] = useState('');
-  const [quant, setQuant] = useState('');
+  const [name, setName] = useState("");
+  const [author, setAuthor] = useState("");
+  const [editora, setEditora] = useState("");
+  const [genero, setGenero] = useState("");
+  const [resumo, setResumo] = useState("");
+  const [quant, setQuant] = useState("");
   const [image, setImage] = useState(null);
 
   useEffect(() => {
     (async () => {
       if (Constants.platform.ios) {
-        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== 'granted') {
-          alert('Desculpe, precisamos de permissões para acessar a galeria!');
+        const { status } =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== "granted") {
+          alert("Desculpe, precisamos de permissões para acessar a galeria!");
         }
       }
     })();
@@ -56,18 +69,33 @@ export default function AddLivroNovo({ navigation }) {
   const handleAddLivroNovo = () => {
     if (name && author && editora && genero && resumo && quant && image) {
       Alert.alert(
-        'Livro novo adicionado com sucesso!',
-        '',
+        "Confirmação",
+        "Você realmente deseja adicionar este livro?",
         [
           {
-            text: 'OK',
-            onPress: () => navigation.navigate('biblioteca'),
+            text: "Cancelar",
+            style: "cancel",
           },
-        ],
-        { cancelable: false }
+          {
+            text: "Confirmar",
+            onPress: () => {
+              Alert.alert(
+                "Livro adicionado",
+                "Livro novo adicionado com sucesso!",
+                [
+                  {
+                    text: "OK",
+                    onPress: () => navigation.navigate("biblioteca"),
+                  },
+                ],
+                { cancelable: false }
+              );
+            },
+          },
+        ]
       );
     } else {
-      Alert.alert('Por favor, preencha todos os campos.');
+      Alert.alert("Erro", "Por favor, preencha todos os campos.");
     }
   };
 
@@ -86,92 +114,153 @@ export default function AddLivroNovo({ navigation }) {
         },
         {
           text: "Cancelar",
-          style: "cancel"
-        }
+          style: "cancel",
+        },
       ],
       { cancelable: true }
     );
   };
 
+  const [showModalAutor, setShowModalAutor] = useState(false);
+  const openModalAutor = () => setShowModalAutor(true);
+  const closeModalAutor = () => setShowModalAutor(false);
+
+  const handleAutor = (autor) => {
+    setAuthor(autor); // Armazene o autor adicionado
+    closeModalAutor();
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
-        <StatusBar backgroundColor='#3F7263' transLucent={false} />
-          <RetangGreen />
-          <RetangOrange /> 
-            <View style={styles.titlePagina}>
-              <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
-              <Text style={styles.paragraph}>Adicionar livro novo</Text>
-            </View>
+        <StatusBar backgroundColor="#3F7263" transLucent={false} />
+        <RetangGreen />
+        <RetangOrange />
+        <View style={styles.titlePagina}>
+          <FontAwesome
+            name="angle-left"
+            size={30}
+            color="black"
+            style={styles.icon}
+            onPress={() => navigation.goBack()}
+          />
+          <Text style={styles.paragraph}>Adicionar livro novo</Text>
+        </View>
 
-          <View style={styles.inputContainer}>
-            <Text style={styles.textInput}>Nome:</Text>
-            <TextInput
-              style={styles.input}
-              value={name}
-              multiline
-              onChangeText={setName}
-            />
+        <View style={styles.inputContainer}>
+          <Text style={styles.textInput}>Nome:</Text>
+          <TextInput
+            style={styles.input}
+            value={name}
+            multiline
+            onChangeText={setName}
+          />
 
-            <Text style={styles.textInput}>Autor:</Text>
-            <TextInput
-              style={styles.input}
-              value={author}
-              multiline
-              onChangeText={setAuthor}
-            />
+          <Text style={styles.textInput}>Autor:</Text>
+          <TextInput
+            style={styles.input}
+            value={author}
+            multiline
+            onChangeText={setAuthor}
+          />
 
-            <Text style={styles.textInput}>Editora:</Text>
-            <TextInput
-              style={styles.input}
-              value={editora}
-              multiline
-              onChangeText={setEditora}
-            />
+          <Text style={styles.textInput}>Editora:</Text>
+          <TextInput
+            style={styles.input}
+            value={editora}
+            multiline
+            onChangeText={setEditora}
+          />
 
-            <Text style={styles.textInput}>Gênero:</Text>
-            <TextInput
-              style={styles.input}
-              value={genero}
-              multiline
-              onChangeText={setGenero}
-            />
+          <Text style={styles.textInput}>Gênero:</Text>
+          <TextInput
+            style={styles.input}
+            value={genero}
+            multiline
+            onChangeText={setGenero}
+          />
 
-            <Text style={styles.textInput}>Resumo:</Text>
-            <TextInput
-              style={styles.inputResumo}
-              value={resumo}
-              multiline
-              onChangeText={setResumo}
-            />
+          <Text style={styles.textInput}>Resumo:</Text>
+          <TextInput
+            style={styles.inputResumo}
+            value={resumo}
+            multiline
+            onChangeText={setResumo}
+          />
 
-            <Text style={styles.textInput}>Quantidade:</Text>
-            <TextInput
-              style={styles.inputQuant}
-              value={quant}
-              keyboardType='numeric'
-              onChangeText={setQuant}
-            />
+          <Text style={styles.textInput}>Quantidade:</Text>
+          <TextInput
+            style={styles.inputQuant}
+            value={quant}
+            keyboardType="numeric"
+            onChangeText={setQuant}
+          />
+        </View>
+
+        <View style={styles.containerImagem}>
+          <Text style={styles.textInput}>Capa:</Text>
+          <View style={styles.lineSquareImg}>
+            {image && <Image source={{ uri: image }} style={styles.image} />}
           </View>
+          <Pressable style={styles.btnImg} onPress={handleImagePick}>
+            <Text style={styles.btnText}>Selecionar Imagem</Text>
+          </Pressable>
+        </View>
 
-          <View style={styles.containerImagem}>
-            <Text style={styles.textInput}>Capa:</Text>
-              <View style={styles.lineSquareImg}>
-                {image && <Image source={{ uri: image }} style={styles.image} />}
-              </View>
-              <Pressable style={styles.btnImg} onPress={handleImagePick}>
-                <Text style={styles.btnText}>Selecionar Imagem</Text>
-              </Pressable>
-          </View>
+        <View style={styles.tresModais}>
+          {/* Modal para adicionar autor */}
+          <Pressable
+            type="submit"
+            onClick={openModalAutor}
+            style={styles.buttonAdd}
+          >
+            <Text style={styles.buttonAddText}>Adicionar Autor(a)</Text>
+          </Pressable>
+          <ModalAddAutor
+            show={showModalAutor}
+            onClose={closeModalAutor}
+            onConfirm={handleAutor}
+          />
 
-          <View style={styles.viewEditar}>
-            <Pressable
-              onPress={handleAddLivroNovo}
-              style={({ pressed }) => pressed ? [styles.button, styles.btnPress] : styles.button}
-            >
-              <Text style={styles.buttonText}>Adicionar</Text>
-            </Pressable>
-          </View>
+          {/* Modal para adicionar editora */}
+          <Pressable
+            type="submit"
+            // onClick={openModalEditora}
+            style={styles.buttonAdd}
+          >
+            <Text style={styles.buttonAddText}>Adicionar Editora</Text>
+          </Pressable>
+          {/* <ModalAddEditora
+            // show={showModalEditora}
+            // onClose={closeModalEditora}
+            onConfirm={handleEditora}
+          /> */}
+
+          {/* Modal para adicionar gênero */}
+          <Pressable
+            type="submit"
+            // onClick={openModalGenero}
+            style={styles.buttonAdd}
+          >
+            <Text style={styles.buttonAddText}>Adicionar Gênero</Text>
+          </Pressable>
+          {/* <ModalAddGenero
+            // show={showModalGenero}
+            // onClose={closeModalGenero}
+            onConfirm={handleGenero}
+          /> */}
+        </View>
+
+        <View style={styles.viewEditar}>
+          <Pressable
+            onPress={handleAddLivroNovo}
+            style={({ pressed }) =>
+              pressed ? [styles.button, styles.btnPress] : styles.button
+            }
+          >
+            <Text style={styles.buttonText}>Adicionar</Text>
+          </Pressable>
+        </View>
       </View>
     </ScrollView>
   );

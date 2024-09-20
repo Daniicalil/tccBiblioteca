@@ -73,7 +73,7 @@ export default function InformacoesReserva({ navigation, route }) {
             onPress={() => navigation.goBack()}
           />
           <Text style={styles.paragraph}>
-            Informações dos livros reservados
+            Informações do livro reservado
           </Text>
         </View>
         <BarraPesquisa />
@@ -167,7 +167,7 @@ export default function InformacoesReserva({ navigation, route }) {
                         disabled={!isDateAvailable}
                       >
                         <Text style={styles.buttonTextConfReserv}>
-                          Confirmar retirada
+                          Retirada confirmada
                         </Text>
                       </Pressable>
 

@@ -164,11 +164,11 @@ const styles = StyleSheet.create({
   },
   buttonConf: {
     backgroundColor: '#FF6F61',
-    paddingVertical: 6,
-    paddingHorizontal: 16,
+    paddingVertical: 10,
+    paddingHorizontal: 18,
     borderRadius: 30,
     marginTop: 16,
-    width: '30%',
+    width: '34%',
   },
   btnConfPress: {
     opacity: 0.5,
@@ -190,13 +190,13 @@ const styles = StyleSheet.create({
   },
   buttonCanc: {
     backgroundColor: '#FFF',
-    paddingVertical: 6,
-    paddingHorizontal: 16,
+    paddingVertical: 10,
+    paddingHorizontal: 18,
     borderRadius: 30,
     marginTop: 16,
     borderWidth: 1,
     borderColor: '#000',
-    width: '30%',
+    width: '34%',
   },
   cancellation: {
     flexDirection: 'row',

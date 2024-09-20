@@ -12,6 +12,7 @@ import {
 } from "../../../componentes/cabecalho/forms";
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 import styles from "./styles";
+import useBotaoConfirmarAcao from "../../../componentes/alertConfirmacao";
 
 const Line = () => {
   return <View style={styles.line} />;
@@ -53,12 +54,27 @@ export default function Solicitacao({ navigation }) {
 
   const handleConfirm = (index) => {
     const updatedInfoUsuario = [...infoUsuario];
+  
     if (updatedInfoUsuario[index].optionLevel === "") {
-      Alert.alert("Erro", "Por favor, selecione um nível.");
+      Alert.alert("Erro", "Por favor, selecione um nível de acesso.");
     } else {
-      updatedInfoUsuario[index].confirmedLevel =
-        updatedInfoUsuario[index].optionLevel;
-      setInfoUsuario(updatedInfoUsuario);
+      Alert.alert(
+        "Confirmação",
+        "Você realmente deseja confirmar este nível para este usuário?",
+        [
+          {
+            text: "Cancelar",
+            style: "cancel",
+          },
+          {
+            text: "Confirmar",
+            onPress: () => {
+              updatedInfoUsuario[index].confirmedLevel = updatedInfoUsuario[index].optionLevel;
+              setInfoUsuario(updatedInfoUsuario);
+            },
+          },
+        ]
+      );
     }
   };
 
@@ -78,7 +94,7 @@ export default function Solicitacao({ navigation }) {
             style={styles.icon}
             onPress={() => navigation.goBack()}
           />
-          <Text style={styles.paragraph}>Solicitações dos usuários</Text>
+          <Text style={styles.paragraph}>Solicitações de usuários</Text>
         </View>
         <BarraPesquisa />
 
@@ -90,7 +106,7 @@ export default function Solicitacao({ navigation }) {
             <View style={styles.seletores}>
               <View style={styles.radioOption}>
                 <RadioButton value="usu_cad" color="#FF735C" />
-                <Text style={styles.radioLabel}>Dia do cadastro</Text>
+                <Text style={styles.radioLabel}>Data de cadastro</Text>
               </View>
               <View style={styles.radioOption}>
                 <RadioButton value="usu_nome" color="#FF735C" />

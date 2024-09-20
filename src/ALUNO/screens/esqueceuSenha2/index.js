@@ -87,7 +87,7 @@ export default function EsqueceuSenha2({ navigation }) {
 
           <View style={styles.confirmPassword}>
             <TextInput
-              placeholder='confirme a nova senha'
+              placeholder='Confirme a nova senha'
               style={[styles.input, styles.passwordInput, errors.passwordConf && styles.inputError]}
               secureTextEntry={!passwordVisibleConf}
               value={passwordConf}
