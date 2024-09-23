@@ -134,13 +134,13 @@ export default function AddRecomendacao({ navigation }) {
             </Picker>
           </View>
 
-          <Text style={styles.textPicker}>Descrição do professor:</Text>
+          {/* <Text style={styles.textPicker}>Descrição do professor:</Text>
           <TextInput
             style={styles.input}
             value={description}
             multiline
             onChangeText={setDescription}
-          />
+          /> */}
 
           <Text style={styles.recommendationMod}>Recomendado para:</Text>
           <View style={styles.RadioButtonQuad}>

@@ -91,11 +91,9 @@ export default function InfoLivroRecomendacao({ route }) {
 
           <Line />
 
-          <Text style={styles.recommendationTitle}>
-            Descrição do professor:
-          </Text>
-          <Text style={styles.recommendation}>{book.course}</Text>
           <Text style={styles.recommendationMod}>Recomendado para:</Text>
+          <Text style={styles.recommendation}>{book.course}</Text>
+
           <View style={styles.RadioButtonQuad}>
             <SquareRadioButton
               label="1º Mod. "
