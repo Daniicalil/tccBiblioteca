@@ -47,11 +47,10 @@ export default function Login({ navigation }) {
           <Image source={imgLogin} style={styles.logo} />
           <Text style={styles.paragraph}>Login</Text>
           <TextInput
-            placeholder='RM'
+            placeholder='RM ou e-mail'
             style={[styles.input, errors.rm && styles.inputError]}
             value={rm}
             onChangeText={setRm}
-            keyboardType='numeric'
           />
           {errors.rm && <Text style={styles.errorText}>{errors.rm}</Text>}
           <View style={styles.password}>

@@ -134,23 +134,23 @@ export default function BookList() {
         >
           <View style={styles.seletores}>
             <View style={styles.radioOption}>
-              <RadioButton value="liv_nome" color="#FF735C" />
+              <RadioButton value="liv_nome" color="#FF735C" uncheckedColor="#CCC"/>
               <Text style={styles.radioLabel}>Livro</Text>
             </View>
             <View style={styles.radioOption}>
-              <RadioButton value="aut_nome" color="#FF735C" />
+              <RadioButton value="aut_nome" color="#FF735C" uncheckedColor="#CCC"/>
               <Text style={styles.radioLabel}>Autor</Text>
             </View>
             <View style={styles.radioOption}>
-              <RadioButton value="edt_nome" color="#FF735C" />
+              <RadioButton value="edt_nome" color="#FF735C" uncheckedColor="#CCC"/>
               <Text style={styles.radioLabel}>Editora</Text>
             </View>
             <View style={styles.radioOption}>
-              <RadioButton value="liv_cod" color="#FF735C" />
+              <RadioButton value="liv_cod" color="#FF735C" uncheckedColor="#CCC"/>
               <Text style={styles.radioLabel}>Código</Text>
             </View>
             <View style={styles.radioOption}>
-              <RadioButton value="course" color="#FF735C" />
+              <RadioButton value="course" color="#FF735C" uncheckedColor="#CCC"/>
               <Text style={styles.radioLabel}>Curso</Text>
             </View>
           </View>

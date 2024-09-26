@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     marginTop: 50,
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
   },
   paragraph: {
     textAlign: 'center',
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   input: {
-    width: '65%',
-    height: 42,
+    width: '70%',
+    height: 44,
     backgroundColor: '#FFF',
     marginBottom: 10,
     paddingLeft: 15,
@@ -38,11 +38,33 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderWidth: 1,
     borderColor: '#CCC',
-    color: '#929292',
+    color: '#000',
   },
   inputError: {
     borderColor: 'red',
     borderWidth: 1,
+  },
+  pickerContainer: {
+    width: '70%',
+    height: 44,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: '#CCC',
+    borderRadius: 30,
+    alignSelf: 'center',
+    backgroundColor: '#FFF',
+    justifyContent: 'center'
+  },
+  textPicker: {
+    fontSize: 10,
+    left: 36
+  },
+  firstItem: {
+    color: '#999', // Cor para o primeiro item
+    fontSize: 14,
+  },
+  defaultItem: {
+    color: 'black', // Cor padrão para os demais
   },
   password: {
     flexDirection: 'row',

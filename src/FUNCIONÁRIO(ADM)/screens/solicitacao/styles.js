@@ -10,38 +10,11 @@ const styles = StyleSheet.create({
   inicio: {
     alignItems: 'center',
   },
-  retangGreen: {
-    width: '100%', 
-    height: 100, 
-    backgroundColor: '#3F7263',
-    justifyContent: 'space-between',
-  },
-  imgLogo: {
-    width: '12%',
-    height: '42%',
-    alignSelf: 'center',
-    position: 'absolute',
-    bottom: 8
-  },
-  imgEtec: {
-    width: '15%',
-    height: '25%',
-    bottom: 8,
-    alignSelf: 'flex-end',
-    position: 'absolute',
-    right: 27,
-  },
-  retangOrange: {
-    width: '100%', 
-    height: 19, 
-    backgroundColor: '#FF735C',
-    marginBottom: '3%',
-  },
   radioContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   seletores: {
     flexDirection: 'row',
@@ -50,7 +23,7 @@ const styles = StyleSheet.create({
   radioOption: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 0,
   },
   radioLabel: {
     marginLeft: 0,
@@ -76,7 +49,6 @@ const styles = StyleSheet.create({
   },
   lineSquare: {
     width: '90%',
-    height: 300,
     backgroundColor: 'transparent', 
     borderColor: 'black', 
     borderWidth: 1, 
@@ -122,7 +94,7 @@ const styles = StyleSheet.create({
     top: 20,
     textAlign: 'justify',
     width: '89%',
-    left: 35,
+    left: 20,
   },
   nome: {
     paddingTop: 5,
@@ -134,7 +106,7 @@ const styles = StyleSheet.create({
   },
   email: {
     paddingTop: 5,
-    paddingBottom: 18,
+    paddingBottom: 15,
   },
   conf: {
     paddingTop: 40,
@@ -144,8 +116,9 @@ const styles = StyleSheet.create({
   buttonsSelecao: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
-    paddingTop: 5,
+    gap: 5,
+    paddingTop: 0,
+    paddingBottom: 20,
   },
   buttonConf: {
     backgroundColor: '#FF6F61',
@@ -153,7 +126,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: 30,
     marginTop: 16,
-    width: '30%',
+    width: '26%',
   },
   btnConfPress: {
     opacity: 0.5,
@@ -174,7 +147,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   pickerContainer: {
-    width: '50%',
+    width: '60%',
     marginTop: 10,
     borderWidth: 1,
     borderColor: '#CCC',
@@ -189,6 +162,14 @@ const styles = StyleSheet.create({
   pickerUnfocused: {
     borderWidth: 1,
     borderColor: '#CCC',
+  },
+  checkboxContainer: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    marginBottom: 5,
+    marginRight: 5,
+
   },
   // pickerContainer:hover,
   // pickerContainer:focus {
