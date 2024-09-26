@@ -198,7 +198,6 @@ export default function Solicitacao({ navigation }) {
               onPress={() => handleCheckboxChange(index)}
               color="#FF735C"
             />
-            <Text style={styles.checkboxLabel}>Selecionar usuário</Text>
           </View>
         </View>
       </View>

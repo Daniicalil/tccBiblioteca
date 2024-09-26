@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     top: 20,
     textAlign: 'justify',
-    width: '89%',
+    width: '95%',
     left: 20,
   },
   nome: {
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   },
   email: {
     paddingTop: 5,
-    paddingBottom: 15,
+    paddingBottom: 5,
   },
   conf: {
     paddingTop: 40,
@@ -134,6 +134,38 @@ const styles = StyleSheet.create({
   buttonTextConfSel: {
     color: '#FFF',
     textAlign: 'center',
+  },
+  infoLivro: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  livro: {
+    flexDirection: 'column',
+    marginTop: 18,
+    marginLeft: 14,
+  },
+  capaLivros: {
+    top: 20,
+    width: 55,
+    height: 80,
+    left: 35,
+    borderRadius: 4,
+    bottom: 50,
+  },
+  sectionTitle: {
+    top: 20,
+    left: 22,
+  },
+  titleLivro: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    left: 30,
+  },
+  autor: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    left: 30,
+    top: 5,
   },
   confirmation: {
     flexDirection: 'row',
@@ -167,8 +199,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    marginBottom: 5,
-    marginRight: 5,
+    marginBottom: 12,
+    marginRight: 6,
 
   },
   // pickerContainer:hover,

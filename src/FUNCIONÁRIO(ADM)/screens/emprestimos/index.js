@@ -94,19 +94,19 @@ export default function Emprestimos({ navigation }) {
           >
             <View style={styles.seletores}>
               <View style={styles.radioOption}>
-                <RadioButton value="liv_nome" color="#FF735C" />
+                <RadioButton value="liv_nome" color="#FF735C" uncheckedColor="#CCC"/>
                 <Text style={styles.radioLabel}>Livro</Text>
               </View>
               <View style={styles.radioOption}>
-                <RadioButton value="aut_nome" color="#FF735C" />
+                <RadioButton value="aut_nome" color="#FF735C" uncheckedColor="#CCC"/>
                 <Text style={styles.radioLabel}>Autor</Text>
               </View>
               <View style={styles.radioOption}>
-                <RadioButton value="usu_nome" color="#FF735C" />
+                <RadioButton value="usu_nome" color="#FF735C" uncheckedColor="#CCC"/>
                 <Text style={styles.radioLabel}>Usuário</Text>
               </View>
               <View style={styles.radioOption}>
-                <RadioButton value="dataReserva" color="#FF735C" />
+                <RadioButton value="dataReserva" color="#FF735C" uncheckedColor="#CCC"/>
                 <Text style={styles.radioLabel}>Data da reserva</Text>
               </View>
             </View>
