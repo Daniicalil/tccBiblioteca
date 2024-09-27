@@ -1,59 +1,59 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions } from "react-native";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   inicio: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   retangGreen: {
-    width: '100%', 
-    height: 100, 
-    backgroundColor: '#3F7263',
-    justifyContent: 'space-between',
+    width: "100%",
+    height: 100,
+    backgroundColor: "#3F7263",
+    justifyContent: "space-between",
   },
   imgLogo: {
-    width: '12%',
-    height: '42%',
-    alignSelf: 'center',
-    position: 'absolute',
-    bottom: 8
+    width: "12%",
+    height: "42%",
+    alignSelf: "center",
+    position: "absolute",
+    bottom: 8,
   },
   imgEtec: {
-    width: '15%',
-    height: '25%',
+    width: "15%",
+    height: "25%",
     bottom: 8,
-    alignSelf: 'flex-end',
-    position: 'absolute',
+    alignSelf: "flex-end",
+    position: "absolute",
     right: 27,
   },
   retangOrange: {
-    width: '100%', 
-    height: 19, 
-    backgroundColor: '#FF735C',
-    marginBottom: '3%',
+    width: "100%",
+    height: 19,
+    backgroundColor: "#FF735C",
+    marginBottom: "3%",
   },
   titlePagina: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     height: 60,
   },
   icon: {
-    position: 'absolute',
+    position: "absolute",
     left: 28,
-    top: 10
+    top: 10,
   },
   paragraph: {
-    marginTop: '3%',
-    marginBottom: '6%',
+    marginTop: "3%",
+    marginBottom: "6%",
     fontSize: 18,
     flex: 1,
-    left: 70
+    left: 70,
   },
   imgcontato: {
     width: 220,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   escola: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 16,
     paddingTop: 20,
   },
@@ -71,47 +71,47 @@ const styles = StyleSheet.create({
     lineHeight: 25,
   },
   viewSalvar: {
-    width: '100%', 
+    width: "100%",
     flex: 1,
   },
   botaoSalvar: {
-    marginTop: '3%',
-    backgroundColor: '#FF735C',
-    width: '26%',
+    marginTop: "3%",
+    backgroundColor: "#FF735C",
+    width: "26%",
     height: 42,
-    alignSelf: 'center',
-    justifyContent:'center',
+    alignSelf: "center",
+    justifyContent: "center",
     borderRadius: 30,
   },
   salvarText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   btnPress: {
-    backgroundColor: '#3F7263',
+    backgroundColor: "#3F7263",
   },
   informacoesInput: {
-    width: '85%',
+    width: "85%",
     borderRadius: 30,
-    borderColor: '#000',
+    borderColor: "#000",
     borderWidth: 1,
     padding: 10,
-    textAlignVertical: 'top', // Alinha o texto no topo
-    alignSelf: 'center',
-    marginBottom: 15
+    textAlignVertical: "top", // Alinha o texto no topo
+    alignSelf: "center",
+    marginBottom: 15,
   },
   escolaInput: {
-    width: '85%',
+    width: "85%",
     borderRadius: 30,
-    borderColor: '#000',
+    borderColor: "#000",
     borderWidth: 1,
     padding: 10,
-    textAlignVertical: 'top', // Alinha o texto no topo
-    alignSelf: 'center',
+    textAlignVertical: "top", // Alinha o texto no topo
+    alignSelf: "center",
     marginBottom: 15,
     marginTop: 15,
-  }
+  },
 });
 
 export default styles;

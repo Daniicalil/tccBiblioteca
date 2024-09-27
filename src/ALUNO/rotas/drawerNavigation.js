@@ -151,14 +151,7 @@ export default function NavegacaoDrawer({ navigation }) {
                     </View>
                 </Pressable> */}
               <Pressable
-                style={({ pressed }) =>
-                  pressed
-                    ? [
-                        StylesButtonDrawer.buttonDrawer,
-                        StylesButtonDrawer.TouchPress,
-                      ]
-                    : StylesButtonDrawer.buttonDrawer
-                }
+                style={StylesButtonDrawer.buttonDrawer}
                 onPress={() => navigation.navigate("informacoescontato")}
               >
                 <View style={StylesButtonDrawer.icon}>
@@ -167,14 +160,7 @@ export default function NavegacaoDrawer({ navigation }) {
                 </View>
               </Pressable>
               <Pressable
-                style={({ pressed }) =>
-                  pressed
-                    ? [
-                        StylesButtonDrawer.buttonDrawer,
-                        StylesButtonDrawer.TouchPress,
-                      ]
-                    : StylesButtonDrawer.buttonDrawer
-                }
+                style={StylesButtonDrawer.buttonDrawer}
                 onPress={() => navigation.goBack()}
               >
                 <View style={StylesButtonDrawer.icon}>

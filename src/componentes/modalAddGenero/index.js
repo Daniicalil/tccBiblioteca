@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import { View, Modal, TextInput, Pressable, StyleSheet, Text } from 'react-native';
-import styles from './styles';
-import useBotaoConfirmarAcao from '../alertConfirmacao';
+import React, { useState } from "react";
+import {
+  View,
+  Modal,
+  TextInput,
+  Pressable,
+  StyleSheet,
+  Text,
+} from "react-native";
+import styles from "./styles";
+import useBotaoConfirmarAcao from "../alertConfirmacao";
 
 const ModalAddGenero = ({ show, onClose }) => {
-  const [genero, setGenero] = useState('');
+  const [genero, setGenero] = useState("");
 
   // Usando o hook de confirmação, passando a mensagem, ação e tela para navegar
   const showConfirmAlert = useBotaoConfirmarAcao(
@@ -12,9 +19,9 @@ const ModalAddGenero = ({ show, onClose }) => {
     () => {
       // Ação ao confirmar, neste caso, salvar o gênero
       console.log(`Gênero ${genero} salvo!`);
-      setGenero(''); // Limpar o campo após salvar
+      setGenero(""); // Limpar o campo após salvar
     },
-    'addLivroNovo'
+    "addLivroNovo"
   );
 
   return (

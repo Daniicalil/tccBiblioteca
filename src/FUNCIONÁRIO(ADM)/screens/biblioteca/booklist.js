@@ -19,13 +19,10 @@ import {
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
-import { ModalAddBiblioteca } from "../../../componentes/modalAddBiblioteca";
 import styles from "./styles";
 
 export default function BookList({ voltar }) {
   const navigation = useNavigation();
-
-  const [selectedAdmin, setSelectedAdmin] = useState("");
 
   const [books] = useState([
     {
@@ -181,17 +178,6 @@ export default function BookList({ voltar }) {
     // setFilteredBooks(sortBooksAlphabetically(books));
   }, [books]);
 
-  const [showModalAdmin, setShowModalAdmin] = useState(false);
-  const openModalAdmin = () => setShowModalAdmin(true);
-  const closeModalAdmin = () => setShowModalAdmin(false);
-
-  const handleAdmin = (admin) => {
-    console.log(`Ação selecionada: ${admin}`);
-    closeModalAdmin();
-    // Aqui você pode implementar qualquer lógica adicional com base na ação selecionada
-    // Exemplo: Navegar para diferentes telas ou executar diferentes ações
-  };
-
   const renderItem = ({ item }) => (
     <View style={styles.item}>
       <Pressable
@@ -264,29 +250,22 @@ export default function BookList({ voltar }) {
         </RadioButton.Group>
       </View>
 
-      <View>
-        <Pressable
-          onPress={openModalAdmin}
-          style={({ pressed }) =>
-            pressed ? [styles.buttonAdd, styles.btnAddPress] : styles.buttonAdd
-          }
-        >
-          <Text style={styles.buttonTextAdd}>
-            <FontAwesome
-              name="sliders"
-              size={16}
-              color="white"
-              style={styles.iconButton}
-            />
-            <Text style={styles.iconSpacing}> Administrar</Text>
-          </Text>
-        </Pressable>
-        <ModalAddBiblioteca
-          show={showModalAdmin}
-          onClose={closeModalAdmin}
-          onConfirm={handleAdmin}
-        />
-      </View>
+      <Pressable
+        onPress={() => navigation.navigate("addBiblioteca")}
+        style={({ pressed }) =>
+          pressed ? [styles.buttonAdd, styles.btnAddPress] : styles.buttonAdd
+        }
+      >
+        <Text style={styles.buttonTextAdd}>
+          <FontAwesome
+            name="sliders"
+            size={16}
+            color="white"
+            style={styles.iconButton}
+          />
+          <Text style={styles.iconSpacing}> Administrar</Text>
+        </Text>
+      </Pressable>
 
       <FlatList
         style={Flatstyles.FlatList}

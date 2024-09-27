@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -6,15 +6,15 @@ const styles = StyleSheet.create({
   },
   background: {
     flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
+    resizeMode: "cover",
+    justifyContent: "center",
   },
   contentContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   scrollContainer: {
     flexGrow: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   logo: {
     marginTop: 50,
@@ -22,61 +22,61 @@ const styles = StyleSheet.create({
     height: 240,
   },
   paragraph: {
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: 15,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 20,
   },
   text: {
-    width: '80%',
+    width: "80%",
     marginBottom: 20,
-    textAlign: 'center',
+    textAlign: "center",
   },
   input: {
-    width: '60%',
+    width: "60%",
     height: 42,
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
     marginBottom: 10,
     paddingLeft: 15,
     padding: 8,
     borderRadius: 30,
     borderWidth: 1,
-    borderColor: '#CCC',
-    color: '#929292',
+    borderColor: "#CCC",
+    color: "#929292",
   },
   inputError: {
-    borderColor: 'red',
+    borderColor: "red",
     borderWidth: 1,
   },
   errorText: {
-    color: 'red',
+    color: "red",
     marginBottom: 8,
     marginTop: -6,
   },
   password: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   passwordInput: {
     paddingRight: 40,
   },
   passwordVisibilityIcon: {
     padding: 10,
-    position: 'absolute',
+    position: "absolute",
     right: 8,
     bottom: 8,
   },
   confirmPassword: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   redefinirButton: {
-    marginTop: '5%',
-    backgroundColor: '#FF735C',
-    width: '40%',
+    marginTop: "5%",
+    backgroundColor: "#FF735C",
+    width: "40%",
     height: 42,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 30,
     marginBottom: 20,
   },
@@ -84,10 +84,10 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   redefinirText: {
-    color: '#fff',
+    color: "#fff",
     // fontWeight: 'bold',
     fontSize: 16,
   },
-})
+});
 
 export default styles;

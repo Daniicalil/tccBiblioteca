@@ -1,28 +1,28 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions } from "react-native";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
   },
   inicio: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   radioContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     marginBottom: 5,
   },
   seletores: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
+    flexDirection: "row",
+    alignItems: "flex-start",
   },
   radioOption: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 0,
   },
   radioLabel: {
@@ -30,33 +30,33 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   titlePagina: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     height: 60,
   },
   icon: {
-    position: 'absolute',
+    position: "absolute",
     left: 28,
-    top: 10
+    top: 10,
   },
   paragraph: {
-    marginTop: '3%',
-    marginBottom: '6%',
+    marginTop: "3%",
+    marginBottom: "6%",
     fontSize: 18,
     flex: 1,
-    left: 70
+    left: 70,
   },
   lineSquare: {
-    width: '90%',
-    backgroundColor: 'transparent', 
-    borderColor: 'black', 
-    borderWidth: 1, 
+    width: "90%",
+    backgroundColor: "transparent",
+    borderColor: "black",
+    borderWidth: 1,
     borderRadius: 10,
     marginBottom: 20,
   },
   infoLivro: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   capaLivros: {
     top: 25,
@@ -69,21 +69,21 @@ const styles = StyleSheet.create({
     left: 22,
   },
   titleLivro: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     left: 30,
   },
   autor: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     left: 30,
     top: 5,
   },
   line: {
-    borderBottomColor: 'black',
+    borderBottomColor: "black",
     borderBottomWidth: 1,
-    width: '92%',
-    alignSelf: 'center',
+    width: "92%",
+    alignSelf: "center",
     opacity: 0.2,
     top: 20,
     mariginVertical: 10,
@@ -92,8 +92,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginBottom: 8,
     top: 20,
-    textAlign: 'justify',
-    width: '95%',
+    textAlign: "justify",
+    width: "95%",
     left: 20,
   },
   nome: {
@@ -110,37 +110,37 @@ const styles = StyleSheet.create({
   },
   conf: {
     paddingTop: 40,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 16,
   },
   buttonsSelecao: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 5,
     paddingTop: 0,
     paddingBottom: 20,
   },
   buttonConf: {
-    backgroundColor: '#FF6F61',
+    backgroundColor: "#FF6F61",
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 30,
     marginTop: 16,
-    width: '26%',
+    width: "26%",
   },
   btnConfPress: {
     opacity: 0.5,
   },
   buttonTextConfSel: {
-    color: '#FFF',
-    textAlign: 'center',
+    color: "#FFF",
+    textAlign: "center",
   },
   infoLivro: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
   },
   livro: {
-    flexDirection: 'column',
+    flexDirection: "column",
     marginTop: 18,
     marginLeft: 14,
   },
@@ -157,51 +157,50 @@ const styles = StyleSheet.create({
     left: 22,
   },
   titleLivro: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     left: 30,
   },
   autor: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     left: 30,
     top: 5,
   },
   confirmation: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     margin: 20,
   },
   confirmationText: {
-    color: 'black',
+    color: "black",
     marginRight: 8,
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   pickerContainer: {
-    width: '60%',
+    width: "60%",
     marginTop: 10,
     borderWidth: 1,
-    borderColor: '#CCC',
-    backgroundColor: '#FFF',
+    borderColor: "#CCC",
+    backgroundColor: "#FFF",
     borderRadius: 8,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   pickerFocused: {
     borderWidth: 1,
-    borderColor: '#FF735C'
+    borderColor: "#FF735C",
   },
   pickerUnfocused: {
     borderWidth: 1,
-    borderColor: '#CCC',
+    borderColor: "#CCC",
   },
   checkboxContainer: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
     marginBottom: 12,
     marginRight: 6,
-
   },
   // pickerContainer:hover,
   // pickerContainer:focus {
@@ -209,12 +208,12 @@ const styles = StyleSheet.create({
   //   outline: none,
   // },
   errorMessage: {
-    color: 'red',
+    color: "red",
     marginBottom: 8,
     marginTop: -6,
   },
   inputError: {
-    borderColor: 'red',
+    borderColor: "red",
     borderWidth: 1,
   },
 });

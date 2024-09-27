@@ -165,7 +165,7 @@ export default function BookList() {
           size={30}
           color="black"
           style={styles.icon}
-          onPress={() => navigation.goBack()}
+          onPress={() => navigation.navigate("addBiblioteca")}
         />
         <Text style={styles.paragraph}>Gerenciar livro existente</Text>
       </View>
@@ -178,19 +178,35 @@ export default function BookList() {
         >
           <View style={styles.seletores}>
             <View style={styles.radioOption}>
-              <RadioButton value="liv_nome" color="#FF735C" uncheckedColor="#CCC"/>
+              <RadioButton
+                value="liv_nome"
+                color="#FF735C"
+                uncheckedColor="#CCC"
+              />
               <Text style={styles.radioLabel}>Livro</Text>
             </View>
             <View style={styles.radioOption}>
-              <RadioButton value="aut_nome" color="#FF735C" uncheckedColor="#CCC"/>
+              <RadioButton
+                value="aut_nome"
+                color="#FF735C"
+                uncheckedColor="#CCC"
+              />
               <Text style={styles.radioLabel}>Autor</Text>
             </View>
             <View style={styles.radioOption}>
-              <RadioButton value="edt_nome" color="#FF735C" uncheckedColor="#CCC"/>
+              <RadioButton
+                value="edt_nome"
+                color="#FF735C"
+                uncheckedColor="#CCC"
+              />
               <Text style={styles.radioLabel}>Editora</Text>
             </View>
             <View style={styles.radioOption}>
-              <RadioButton value="liv_cod" color="#FF735C" uncheckedColor="#CCC"/>
+              <RadioButton
+                value="liv_cod"
+                color="#FF735C"
+                uncheckedColor="#CCC"
+              />
               <Text style={styles.radioLabel}>Código</Text>
             </View>
           </View>

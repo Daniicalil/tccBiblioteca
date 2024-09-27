@@ -192,7 +192,7 @@ export default function AddLivroNovo({ navigation }) {
             size={30}
             color="black"
             style={styles.icon}
-            onPress={() => navigation.goBack()}
+            onPress={() => navigation.navigate("addBiblioteca")}
           />
           <Text style={styles.paragraph}>Adicionar livro novo</Text>
         </View>

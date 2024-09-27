@@ -39,33 +39,29 @@ export default function InfoLivroBiblioteca({ route }) {
             size={30}
             color="black"
             style={styles.icon}
-            onPress={() => navigation.goBack()}
+            onPress={() => navigation.navigate("biblioteca")}
           />
           <Text style={styles.paragraph}>Informações do livro</Text>
         </View>
 
-          <Pressable
-            onPress={handleEdit}
-            style={({ pressed }) =>
-              pressed
-                ? [styles.buttonEditar, styles.btnEdtPress]
-                : styles.buttonEditar
-            }
-          >
-            <Text style={styles.buttonTextEdt}>
-              <Icon
-                name="pencil"
-                size={16}
-                color="white"
-                style={styles.tpiconEditar}
-              />
-              <Text style={styles.iconSpacing}>
-                {" "}
-                {" "}
-                Editar
-              </Text>
-            </Text>
-          </Pressable>
+        <Pressable
+          onPress={handleEdit}
+          style={({ pressed }) =>
+            pressed
+              ? [styles.buttonEditar, styles.btnEdtPress]
+              : styles.buttonEditar
+          }
+        >
+          <Text style={styles.buttonTextEdt}>
+            <Icon
+              name="pencil"
+              size={16}
+              color="white"
+              style={styles.tpiconEditar}
+            />
+            <Text style={styles.iconSpacing}> Editar</Text>
+          </Text>
+        </Pressable>
 
         <View style={styles.lineSquare}>
           <Image source={book.liv_foto_capa} style={styles.capaLivros} />

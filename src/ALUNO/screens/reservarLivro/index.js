@@ -1,20 +1,64 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, Alert, StatusBar, Pressable } from 'react-native';
-import { Calendar, LocaleConfig } from 'react-native-calendars';
-import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
-import { FontAwesome } from '@expo/vector-icons';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  Alert,
+  StatusBar,
+  Pressable,
+} from "react-native";
+import { Calendar, LocaleConfig } from "react-native-calendars";
+import {
+  RetangGreen,
+  RetangOrange,
+} from "../../../componentes/cabecalho/forms";
+import { FontAwesome } from "@expo/vector-icons";
 
-import styles from './styles';
+import styles from "./styles";
 
 // Configurar o idioma para o calendário
-LocaleConfig.locales['pt'] = {
-  monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-  monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-  dayNames: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
-  dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
-  today: 'Hoje'
+LocaleConfig.locales["pt"] = {
+  monthNames: [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
+  ],
+  monthNamesShort: [
+    "Jan",
+    "Fev",
+    "Mar",
+    "Abr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Set",
+    "Out",
+    "Nov",
+    "Dez",
+  ],
+  dayNames: [
+    "Domingo",
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+    "Sábado",
+  ],
+  dayNamesShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
+  today: "Hoje",
 };
-LocaleConfig.defaultLocale = 'pt';
+LocaleConfig.defaultLocale = "pt";
 
 export default function ReservarLivro({ navigation }) {
   const [startDate, setStartDate] = useState(null);
@@ -22,17 +66,23 @@ export default function ReservarLivro({ navigation }) {
   const [markedDates, setMarkedDates] = useState({});
 
   const formatarData = (data) => {
-    if (!data) return 'Selecionar data';
-    const [ano, mes, dia] = data.split('-');
-    return `${dia} de ${LocaleConfig.locales['pt'].monthNames[parseInt(mes) - 1]} de ${ano}`;
+    if (!data) return "Selecionar data";
+    const [ano, mes, dia] = data.split("-");
+    return `${dia} de ${
+      LocaleConfig.locales["pt"].monthNames[parseInt(mes) - 1]
+    } de ${ano}`;
   };
 
   const marcarDatasSelecionadas = (dataInicio, dataFim) => {
     const dates = {};
     let currentDate = new Date(dataInicio);
     while (currentDate <= new Date(dataFim)) {
-      const formattedDate = currentDate.toISOString().split('T')[0];
-      dates[formattedDate] = { selected: true, marked: true, selectedColor: '#FFAD9F' };
+      const formattedDate = currentDate.toISOString().split("T")[0];
+      dates[formattedDate] = {
+        selected: true,
+        marked: true,
+        selectedColor: "#FFAD9F",
+      };
       currentDate.setDate(currentDate.getDate() + 1);
     }
     return dates;
@@ -40,53 +90,64 @@ export default function ReservarLivro({ navigation }) {
 
   const onDayPress = (dia) => {
     const dataSelecionada = dia.dateString;
-    const hoje = new Date().toISOString().split('T')[0];
+    const hoje = new Date().toISOString().split("T")[0];
     if (dataSelecionada < hoje) {
-      Alert.alert('Erro', 'Não é possível selecionar uma data que já passou.');
+      Alert.alert("Erro", "Não é possível selecionar uma data que já passou.");
       return;
     }
     const novaDataFim = new Date(dataSelecionada);
     novaDataFim.setDate(novaDataFim.getDate() + 14);
     setStartDate(dataSelecionada);
-    setEndDate(novaDataFim.toISOString().split('T')[0]);
+    setEndDate(novaDataFim.toISOString().split("T")[0]);
     const markedDates = marcarDatasSelecionadas(dataSelecionada, novaDataFim);
     setMarkedDates(markedDates);
   };
 
-  const hoje = new Date().toISOString().split('T')[0];
+  const hoje = new Date().toISOString().split("T")[0];
 
   const handleFinalizarReserva = () => {
     if (startDate && endDate) {
       Alert.alert(
-        'Confirmar Reserva',
-        `Você deseja reservar de ${formatarData(startDate)} até ${formatarData(endDate)}?`,
+        "Confirmar Reserva",
+        `Você deseja reservar de ${formatarData(startDate)} até ${formatarData(
+          endDate
+        )}?`,
         [
           {
-            text: 'Cancelar',
-            style: 'cancel'
+            text: "Cancelar",
+            style: "cancel",
           },
           {
-            text: 'OK',
+            text: "OK",
             onPress: () => {
-              navigation.navigate('informacoesreserva', { startDate, endDate });
-              Alert.alert('Reserva Confirmada', 'Sua reserva foi realizada com sucesso.');
-            }
-          }
+              navigation.navigate("informacoesreserva", { startDate, endDate });
+              Alert.alert(
+                "Reserva Confirmada",
+                "Sua reserva foi realizada com sucesso."
+              );
+            },
+          },
         ]
       );
     } else {
-      Alert.alert('Erro', 'Por favor, selecione uma data.');
+      Alert.alert("Erro", "Por favor, selecione uma data.");
     }
-  };  
+  };
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
-        <StatusBar backgroundColor='#3F7263' transLucent={false} />
+        <StatusBar backgroundColor="#3F7263" transLucent={false} />
         <RetangGreen />
         <RetangOrange />
         <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
+          <FontAwesome
+            name="angle-left"
+            size={30}
+            color="black"
+            style={styles.icon}
+            onPress={() => navigation.goBack()}
+          />
           <Text style={styles.paragraph}>Reservar livro</Text>
         </View>
       </View>
@@ -99,29 +160,35 @@ export default function ReservarLivro({ navigation }) {
           minDate={hoje}
           markedDates={{
             ...markedDates,
-            [startDate ? startDate : '']: { selected: true, marked: true, selectedColor: '#FF735C' },
-            [endDate ? endDate : '']: { selected: true, marked: true, selectedColor: '#FF735C' }
+            [startDate ? startDate : ""]: {
+              selected: true,
+              marked: true,
+              selectedColor: "#FF735C",
+            },
+            [endDate ? endDate : ""]: {
+              selected: true,
+              marked: true,
+              selectedColor: "#FF735C",
+            },
           }}
           theme={{
-            todayTextColor: '#FF735C',
-            arrowColor: '#FF735C',
-            monthTextColor: '#FF735C',
+            todayTextColor: "#FF735C",
+            arrowColor: "#FF735C",
+            monthTextColor: "#FF735C",
           }}
         />
         <View style={styles.datePickerContainer}>
           <Text>Reservar de:</Text>
-          <Text style={styles.dateText}>
-            {formatarData(startDate)}
-          </Text>
+          <Text style={styles.dateText}>{formatarData(startDate)}</Text>
         </View>
         <View style={styles.datePickerContainer}>
           <Text>Até:</Text>
-          <Text style={styles.dateText}>
-            {formatarData(endDate)}
-          </Text>
+          <Text style={styles.dateText}>{formatarData(endDate)}</Text>
         </View>
         <Pressable
-          style={({ pressed }) => pressed ? [styles.button, styles.btnPress] : styles.button}
+          style={({ pressed }) =>
+            pressed ? [styles.button, styles.btnPress] : styles.button
+          }
           onPress={handleFinalizarReserva}
         >
           <Text style={styles.buttonText}>Finalizar reserva</Text>

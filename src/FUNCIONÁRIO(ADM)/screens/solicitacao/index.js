@@ -50,7 +50,8 @@ export default function Solicitacao({ navigation }) {
   ]);
   const handleCheckboxChange = (index) => {
     const updatedInfoUsuario = [...infoUsuario];
-    updatedInfoUsuario[index].isSelected = !updatedInfoUsuario[index].isSelected;
+    updatedInfoUsuario[index].isSelected =
+      !updatedInfoUsuario[index].isSelected;
     setInfoUsuario(updatedInfoUsuario);
   };
 
@@ -91,119 +92,118 @@ export default function Solicitacao({ navigation }) {
 
   return (
     <ScrollView style={styles.container}>
-  <View style={styles.inicio}>
-  <RetangGreen />
-  <RetangOrange />
-    <View style={styles.titlePagina}>
-      <FontAwesome
-        name="angle-left"
-        size={30}
-        color="black"
-        style={styles.icon}
-        onPress={() => navigation.goBack()}
-      />
-      <Text style={styles.paragraph}>Solicitações de usuários</Text>
-    </View>
-    <BarraPesquisa />
-
-    <View style={styles.radioContainer}>
-      <RadioButton.Group
-        onValueChange={(value) => setSelectedOption(value)}
-        value={selectedOption}
-      >
-        <View style={styles.seletores}>
-          <View style={styles.radioOption}>
-            <RadioButton
-              value="usu_cad"
-              color="#FF735C"
-              uncheckedColor="#CCC"
-            />
-            <Text style={styles.radioLabel}>Data de cadastro</Text>
-          </View>
-          <View style={styles.radioOption}>
-            <RadioButton
-              value="usu_nome"
-              color="#FF735C"
-              uncheckedColor="#CCC"
-            />
-            <Text style={styles.radioLabel}>Usuário</Text>
-          </View>
-          <View style={styles.radioOption}>
-            <RadioButton
-              value="usu_rm"
-              color="#FF735C"
-              uncheckedColor="#CCC"
-            />
-            <Text style={styles.radioLabel}>RM</Text>
-          </View>
-        </View>
-      </RadioButton.Group>
-    </View>
-
-    {/* Mover o Picker para cá, logo abaixo dos RadioButtons */}
-    <View style={styles.buttonsSelecao}>
-      <View style={styles.pickerContainer}>
-        <Picker
-          selectedValue={optionLevel}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          style={[
-            styles.picker,
-            isFocused ? styles.pickerFocused : styles.pickerUnfocused,
-          ]}
-          onValueChange={(itemValue) => {
-            setOptionLevel(itemValue); // Atualiza o optionLevel
-          }}
-        >
-          <Picker.Item label="Selecione uma opção" value="" />
-          <Picker.Item
-            label="Funcionário(a) - ADM"
-            value="Funcionário(a) - ADM"
+      <View style={styles.inicio}>
+        <RetangGreen />
+        <RetangOrange />
+        <View style={styles.titlePagina}>
+          <FontAwesome
+            name="angle-left"
+            size={30}
+            color="black"
+            style={styles.icon}
+            onPress={() => navigation.goBack()}
           />
-          <Picker.Item label="Professor(a)" value="Professor(a)" />
-          <Picker.Item label="Aluno(a)" value="Aluno(a)" />
-        </Picker>
-      </View>
-
-      <Pressable
-        style={({ pressed }) =>
-          pressed
-            ? [styles.buttonConf, styles.btnConfPress]
-            : styles.buttonConf
-        }
-        onPress={() => {
-          infoUsuario.forEach((_, index) => {
-            handleConfirm(index); // Chama a confirmação para cada usuário
-          });
-        }}
-      >
-        <Text style={styles.buttonTextConfSel}>Confirmar</Text>
-      </Pressable>
-    </View>
-
-    {infoUsuario.map((infosUsu, index) => (
-      <View key={infosUsu.usu_rm} style={styles.lineSquare}>
-        <View style={styles.dados}>
-          <Text style={styles.dataCadastro}>
-            Cadastro realizado no dia: {infosUsu.usu_cad}
-          </Text>
-          <Text style={styles.nome}>Nome: {infosUsu.usu_nome}</Text>
-          <Text style={styles.nome}>RM: {infosUsu.usu_rm}</Text>
-          <Text style={styles.email}>E-mail: {infosUsu.usu_email}</Text>
-
-          {/* Checkbox */}
-          <View style={styles.checkboxContainer}>
-            <Checkbox
-              status={infosUsu.isSelected ? "checked" : "unchecked"}
-              onPress={() => handleCheckboxChange(index)}
-              color="#FF735C"
-            />
-          </View>
+          <Text style={styles.paragraph}>Solicitações de usuários</Text>
         </View>
-      </View>
-    ))}
-  </View>
-</ScrollView>
+        <BarraPesquisa />
 
+        <View style={styles.radioContainer}>
+          <RadioButton.Group
+            onValueChange={(value) => setSelectedOption(value)}
+            value={selectedOption}
+          >
+            <View style={styles.seletores}>
+              <View style={styles.radioOption}>
+                <RadioButton
+                  value="usu_cad"
+                  color="#FF735C"
+                  uncheckedColor="#CCC"
+                />
+                <Text style={styles.radioLabel}>Data de cadastro</Text>
+              </View>
+              <View style={styles.radioOption}>
+                <RadioButton
+                  value="usu_nome"
+                  color="#FF735C"
+                  uncheckedColor="#CCC"
+                />
+                <Text style={styles.radioLabel}>Usuário</Text>
+              </View>
+              <View style={styles.radioOption}>
+                <RadioButton
+                  value="usu_rm"
+                  color="#FF735C"
+                  uncheckedColor="#CCC"
+                />
+                <Text style={styles.radioLabel}>RM</Text>
+              </View>
+            </View>
+          </RadioButton.Group>
+        </View>
+
+        {/* Mover o Picker para cá, logo abaixo dos RadioButtons */}
+        <View style={styles.buttonsSelecao}>
+          <View style={styles.pickerContainer}>
+            <Picker
+              selectedValue={optionLevel}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              style={[
+                styles.picker,
+                isFocused ? styles.pickerFocused : styles.pickerUnfocused,
+              ]}
+              onValueChange={(itemValue) => {
+                setOptionLevel(itemValue); // Atualiza o optionLevel
+              }}
+            >
+              <Picker.Item label="Selecione uma opção" value="" />
+              <Picker.Item
+                label="Funcionário(a) - ADM"
+                value="Funcionário(a) - ADM"
+              />
+              <Picker.Item label="Professor(a)" value="Professor(a)" />
+              <Picker.Item label="Aluno(a)" value="Aluno(a)" />
+            </Picker>
+          </View>
+
+          <Pressable
+            style={({ pressed }) =>
+              pressed
+                ? [styles.buttonConf, styles.btnConfPress]
+                : styles.buttonConf
+            }
+            onPress={() => {
+              infoUsuario.forEach((_, index) => {
+                handleConfirm(index); // Chama a confirmação para cada usuário
+              });
+            }}
+          >
+            <Text style={styles.buttonTextConfSel}>Confirmar</Text>
+          </Pressable>
+        </View>
+
+        {infoUsuario.map((infosUsu, index) => (
+          <View key={infosUsu.usu_rm} style={styles.lineSquare}>
+            <View style={styles.dados}>
+              <Text style={styles.dataCadastro}>
+                Cadastro realizado no dia: {infosUsu.usu_cad}
+              </Text>
+              <Text style={styles.nome}>Nome: {infosUsu.usu_nome}</Text>
+              <Text style={styles.nome}>RM: {infosUsu.usu_rm}</Text>
+              <Text style={styles.email}>E-mail: {infosUsu.usu_email}</Text>
+
+              {/* Checkbox */}
+              <View style={styles.checkboxContainer}>
+                <Checkbox
+                  status={infosUsu.isSelected ? "checked" : "unchecked"}
+                  onPress={() => handleCheckboxChange(index)}
+                  color="#FF735C"
+                />
+              </View>
+            </View>
+          </View>
+        ))}
+      </View>
+    </ScrollView>
   );
 }

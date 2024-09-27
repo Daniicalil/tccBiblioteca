@@ -1,6 +1,6 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions } from "react-native";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -8,56 +8,56 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   inicio: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   retangGreen: {
-    width: '100%', 
-    height: 100, 
-    backgroundColor: '#3F7263',
-    justifyContent: 'space-between',
+    width: "100%",
+    height: 100,
+    backgroundColor: "#3F7263",
+    justifyContent: "space-between",
   },
   imgLogo: {
-    width: '12%',
-    height: '42%',
-    alignSelf: 'center',
-    position: 'absolute',
-    bottom: 8
+    width: "12%",
+    height: "42%",
+    alignSelf: "center",
+    position: "absolute",
+    bottom: 8,
   },
   imgEtec: {
-    width: '15%',
-    height: '25%',
+    width: "15%",
+    height: "25%",
     bottom: 8,
-    alignSelf: 'flex-end',
-    position: 'absolute',
+    alignSelf: "flex-end",
+    position: "absolute",
     right: 27,
   },
   retangOrange: {
-    width: '100%', 
-    height: 19, 
-    backgroundColor: '#FF735C',
-    marginBottom: '3%',
+    width: "100%",
+    height: 19,
+    backgroundColor: "#FF735C",
+    marginBottom: "3%",
   },
   titlePagina: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     height: 60,
   },
   icon: {
-    position: 'absolute',
+    position: "absolute",
     left: 28,
-    top: 10
+    top: 10,
   },
   paragraph: {
-    marginTop: '3%',
-    marginBottom: '6%',
+    marginTop: "3%",
+    marginBottom: "6%",
     fontSize: 18,
     flex: 1,
-    left: 70
+    left: 70,
   },
   lineSquare: {
-    backgroundColor: 'transparent',
-    borderColor: 'black',
+    backgroundColor: "transparent",
+    borderColor: "black",
     borderWidth: 1,
     borderRadius: 10,
     paddingVertical: 10,
@@ -70,14 +70,14 @@ const styles = StyleSheet.create({
   capaLivros: {
     width: 100,
     height: 160,
-    alignSelf: 'center',
+    alignSelf: "center",
     borderRadius: 6,
   },
   line: {
-    borderBottomColor: 'black',
+    borderBottomColor: "black",
     borderBottomWidth: 1,
-    width: '100%',
-    alignSelf: 'center',
+    width: "100%",
+    alignSelf: "center",
     opacity: 0.2,
     mariginVertical: 10,
     marginTop: 10,
@@ -87,49 +87,49 @@ const styles = StyleSheet.create({
   },
   general: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 8,
-    width: '100%'
+    width: "100%",
   },
   titleLivro: {
-    flexDirection: 'row',
+    flexDirection: "row",
     height: 30,
   },
   smallineSquare: {
-    width: '18%',
+    width: "18%",
     height: 45,
-    backgroundColor: 'transparent', 
-    borderColor: 'black', 
-    borderWidth: 1, 
+    backgroundColor: "transparent",
+    borderColor: "black",
+    borderWidth: 1,
     borderRadius: 10,
-    justifyContent: 'center',
-    position: 'absolute',
+    justifyContent: "center",
+    position: "absolute",
     right: 30,
     top: 205,
   },
   available: {
     fontSize: 14,
-    textAlign: 'center',
+    textAlign: "center",
   },
   bold: {
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
   },
   description: {
     fontSize: 14,
-    textAlign: 'justify',
+    textAlign: "justify",
     marginBottom: 5,
-    width: '100%',
-    alignSelf: 'center',
+    width: "100%",
+    alignSelf: "center",
   },
   infoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
     marginTop: 5,
   },
   infoBox: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   infoTitle: {
     fontSize: 12,
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     height: 35,
   },
   button: {
-    backgroundColor: '#FF735C',
+    backgroundColor: "#FF735C",
     paddingVertical: 12,
     paddingHorizontal: 28,
     borderRadius: 30,
@@ -158,10 +158,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   btnPress: {
-    backgroundColor: '#3F7263',
+    backgroundColor: "#3F7263",
   },
   buttonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
   },
 });

@@ -1,20 +1,21 @@
-import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { ScrollView, View, Text, Image, Pressable, Alert } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import { RetangGreen, RetangOrange } from '../../../componentes/cabecalho/forms';
-import { useNavigation } from '@react-navigation/native';
+import * as React from "react";
+import { StatusBar } from "expo-status-bar";
+import { ScrollView, View, Text, Image, Pressable, Alert } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import {
+  RetangGreen,
+  RetangOrange,
+} from "../../../componentes/cabecalho/forms";
+import { useNavigation } from "@react-navigation/native";
 
-import Autor from '../../../../assets/imagens_telas/autora.png';
-import Editora from '../../../../assets/imagens_telas/editora.png';
-import Genero from '../../../../assets/imagens_telas/genero.png';
+import Autor from "../../../../assets/imagens_telas/autora.png";
+import Editora from "../../../../assets/imagens_telas/editora.png";
+import Genero from "../../../../assets/imagens_telas/genero.png";
 
-import styles from './styles';
+import styles from "./styles";
 
 const Line = () => {
-  return (
-    <View style={styles.line} />
-  );
+  return <View style={styles.line} />;
 };
 
 export default function InfoLivroBiblioteca({ route }) {
@@ -24,11 +25,17 @@ export default function InfoLivroBiblioteca({ route }) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
-        <StatusBar backgroundColor='#3F7263' transLucent={false} />
+        <StatusBar backgroundColor="#3F7263" transLucent={false} />
         <RetangGreen />
         <RetangOrange />
         <View style={styles.titlePagina}>
-          <FontAwesome name="angle-left" size={30} color="black" style={styles.icon} onPress={() => navigation.goBack()} />
+          <FontAwesome
+            name="angle-left"
+            size={30}
+            color="black"
+            style={styles.icon}
+            onPress={() => navigation.goBack()}
+          />
           <Text style={styles.paragraph}>Informações do livro</Text>
         </View>
         <View style={styles.lineSquare}>
@@ -42,9 +49,7 @@ export default function InfoLivroBiblioteca({ route }) {
             <Text style={styles.available}>Disp.: </Text>
             <Text style={styles.bold}>{book.disponivel}</Text>
           </View>
-          <Text style={styles.description}>
-            {book.liv_desc}
-          </Text>
+          <Text style={styles.description}>{book.liv_desc}</Text>
 
           <View style={styles.infoContainer}>
             <View style={styles.infoBox}>
@@ -66,12 +71,9 @@ export default function InfoLivroBiblioteca({ route }) {
         </View>
 
         <Pressable
-          onPress={() => navigation.navigate('reservarlivro')}
-          style={
-            ({ pressed }) => pressed ?
-              [styles.button, styles.btnPress]
-              :
-              styles.button
+          onPress={() => navigation.navigate("reservarlivro")}
+          style={({ pressed }) =>
+            pressed ? [styles.button, styles.btnPress] : styles.button
           }
         >
           <Text style={styles.buttonText}>Reservar livro</Text>

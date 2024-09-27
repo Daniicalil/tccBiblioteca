@@ -179,14 +179,7 @@ export default function NavegacaoDrawer() {
                 </View>
               </Pressable>
               <Pressable
-                style={({ pressed }) =>
-                  pressed
-                    ? [
-                        StylesButtonDrawer.buttonDrawer,
-                        StylesButtonDrawer.TouchPress,
-                      ]
-                    : StylesButtonDrawer.buttonDrawer
-                }
+                style={StylesButtonDrawer.buttonDrawer}
                 onPress={() => navigation.navigate("informacoescontato")}
               >
                 <View style={StylesButtonDrawer.icon}>
@@ -195,14 +188,7 @@ export default function NavegacaoDrawer() {
                 </View>
               </Pressable>
               <Pressable
-                style={({ pressed }) =>
-                  pressed
-                    ? [
-                        StylesButtonDrawer.buttonDrawer,
-                        StylesButtonDrawer.TouchPress,
-                      ]
-                    : StylesButtonDrawer.buttonDrawer
-                }
+                style={StylesButtonDrawer.buttonDrawer}
                 onPress={() => navigation.goBack()}
               >
                 <View style={StylesButtonDrawer.icon}>
@@ -241,14 +227,26 @@ export default function NavegacaoDrawer() {
       <Drawer.Screen name="login" component={Login} />
 
       <Drawer.Screen name="perfilEditar" component={PerfilEditar} />
-      <Drawer.Screen name="infolivrorecomendacao" component={InfoLivroRecomendacao} />
+      <Drawer.Screen
+        name="infolivrorecomendacao"
+        component={InfoLivroRecomendacao}
+      />
       <Drawer.Screen name="addBiblioteca" component={AddBiblioteca} />
-      <Drawer.Screen name="gerenciarLivroExistente" component={GerenciarLivroExistente} />
+      <Drawer.Screen
+        name="gerenciarLivroExistente"
+        component={GerenciarLivroExistente}
+      />
       <Drawer.Screen name="addLivroNovo" component={AddLivroNovo} />
-      <Drawer.Screen name="infolivrobiblioteca" component={InfoLivroBiblioteca} />
+      <Drawer.Screen
+        name="infolivrobiblioteca"
+        component={InfoLivroBiblioteca}
+      />
       <Drawer.Screen name="editarinfolivro" component={EditarInfoLivro} />
       <Drawer.Screen name="reservarlivro" component={ReservarLivro} />
-      <Drawer.Screen name="informacoescontatoEditar" component={InformacoesContatoEditar} />
+      <Drawer.Screen
+        name="informacoescontatoEditar"
+        component={InformacoesContatoEditar}
+      />
       <Drawer.Screen name="sobrenos" component={SobreNos} />
     </Drawer.Navigator>
   );

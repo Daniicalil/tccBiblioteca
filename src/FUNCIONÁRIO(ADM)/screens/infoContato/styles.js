@@ -1,59 +1,59 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions } from "react-native";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   inicio: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   retangGreen: {
-    width: '100%', 
-    height: 100, 
-    backgroundColor: '#3F7263',
-    justifyContent: 'space-between',
+    width: "100%",
+    height: 100,
+    backgroundColor: "#3F7263",
+    justifyContent: "space-between",
   },
   imgLogo: {
-    width: '12%',
-    height: '42%',
-    alignSelf: 'center',
-    position: 'absolute',
-    bottom: 8
+    width: "12%",
+    height: "42%",
+    alignSelf: "center",
+    position: "absolute",
+    bottom: 8,
   },
   imgEtec: {
-    width: '15%',
-    height: '25%',
+    width: "15%",
+    height: "25%",
     bottom: 8,
-    alignSelf: 'flex-end',
-    position: 'absolute',
+    alignSelf: "flex-end",
+    position: "absolute",
     right: 27,
   },
   retangOrange: {
-    width: '100%', 
-    height: 19, 
-    backgroundColor: '#FF735C',
-    marginBottom: '3%',
+    width: "100%",
+    height: 19,
+    backgroundColor: "#FF735C",
+    marginBottom: "3%",
   },
   titlePagina: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     height: 60,
   },
   icon: {
-    position: 'absolute',
+    position: "absolute",
     left: 28,
-    top: 10
+    top: 10,
   },
   paragraph: {
-    marginTop: '3%',
-    marginBottom: '6%',
+    marginTop: "3%",
+    marginBottom: "6%",
     fontSize: 18,
     flex: 1,
-    left: 70
+    left: 70,
   },
   imgcontato: {
     width: 220,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   escola: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 16,
     paddingTop: 20,
   },
@@ -71,9 +71,9 @@ const styles = StyleSheet.create({
     lineHeight: 25,
   },
   viewEditar: {
-    width: '100%', 
-    alignItems: 'flex-end', 
-    paddingRight: 20, 
+    width: "100%",
+    alignItems: "flex-end",
+    paddingRight: 20,
     paddingBottom: 10,
     flex: 1,
   },
@@ -81,21 +81,21 @@ const styles = StyleSheet.create({
     width: 45,
     height: 45,
     borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FF735C',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FF735C",
     // overflow: 'hidden',
-    position: 'absolute',
+    position: "absolute",
     right: 20,
     bottom: 30,
   },
   iconeEditar: {
-    width: '65%',
-    height: '65%',
-    resizeMode: 'cover',
+    width: "65%",
+    height: "65%",
+    resizeMode: "cover",
   },
   btnPress: {
-    backgroundColor: '#3F7263',
+    backgroundColor: "#3F7263",
   },
 });
 

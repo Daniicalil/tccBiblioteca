@@ -1,20 +1,20 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  container: {   
+  container: {
     flex: 1,
   },
   background: {
     flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
+    resizeMode: "cover",
+    justifyContent: "center",
   },
   contentContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   scrollContainer: {
     flexGrow: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   logo: {
     marginTop: 50,
@@ -22,74 +22,74 @@ const styles = StyleSheet.create({
     height: 250,
   },
   paragraph: {
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: 15,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 20,
     marginTop: 5,
   },
   input: {
-    width: '70%',
+    width: "70%",
     height: 44,
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
     marginBottom: 10,
     paddingLeft: 15,
     padding: 8,
     borderRadius: 30,
     borderWidth: 1,
-    borderColor: '#CCC',
-    color: '#000',
+    borderColor: "#CCC",
+    color: "#000",
   },
   inputError: {
-    borderColor: 'red',
+    borderColor: "red",
     borderWidth: 1,
   },
   pickerContainer: {
-    width: '70%',
+    width: "70%",
     height: 44,
     marginBottom: 10,
     borderWidth: 1,
-    borderColor: '#CCC',
+    borderColor: "#CCC",
     borderRadius: 30,
-    alignSelf: 'center',
-    backgroundColor: '#FFF',
-    justifyContent: 'center'
+    alignSelf: "center",
+    backgroundColor: "#FFF",
+    justifyContent: "center",
   },
   textPicker: {
     fontSize: 10,
-    left: 36
+    left: 36,
   },
   firstItem: {
-    color: '#999', // Cor para o primeiro item
+    color: "#999", // Cor para o primeiro item
     fontSize: 14,
   },
   defaultItem: {
-    color: 'black', // Cor padrão para os demais
+    color: "black", // Cor padrão para os demais
   },
   password: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   passwordInput: {
     paddingRight: 40,
   },
   passwordVisibilityIcon: {
     padding: 10,
-    position: 'absolute',
+    position: "absolute",
     right: 8,
     bottom: 8,
   },
   confirmPassword: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   radioOptions: {
     marginTop: 4,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   radioOption: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 4,
   },
   radioText: {
@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   touchText: {
-    color: '#FF735C',
-    textAlign: 'center',
+    color: "#FF735C",
+    textAlign: "center",
     fontSize: 12,
     marginBottom: 5,
     marginTop: 10,
@@ -108,16 +108,16 @@ const styles = StyleSheet.create({
   },
   signUpButton: {
     marginTop: 10,
-    backgroundColor: '#FF735C',
-    width: '40%',
+    backgroundColor: "#FF735C",
+    width: "40%",
     height: 42,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 30,
     marginBottom: 20,
   },
   errorText: {
-    color: 'red',
+    color: "red",
     marginBottom: 8,
     marginTop: -6,
   },
@@ -125,10 +125,10 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   signUpText: {
-    color: '#fff',
+    color: "#fff",
     // fontWeight: 'bold',
     fontSize: 16,
   },
-})
+});
 
 export default styles;

@@ -1,8 +1,19 @@
 import * as React from "react";
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, View, Text, Image, Pressable, TextInput, Button } from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  Image,
+  Pressable,
+  TextInput,
+  Button,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import { RetangGreen, RetangOrange } from "../../../componentes/cabecalho/forms";
+import {
+  RetangGreen,
+  RetangOrange,
+} from "../../../componentes/cabecalho/forms";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import Autor from "../../../../assets/imagens_telas/autora.png";
@@ -51,7 +62,12 @@ export default function EditarInfoLivro({ route }) {
         <View style={styles.formContainer}>
           <View style={styles.imageContainer}>
             <Image source={book.liv_foto_capa} style={styles.capaLivros} />
-            <Button title="Escolher Imagem" onPress={() => {/* lógica de upload */}} />
+            <Button
+              title="Escolher Imagem"
+              onPress={() => {
+                /* lógica de upload */
+              }}
+            />
           </View>
 
           <View style={styles.inputContainer}>
@@ -69,7 +85,9 @@ export default function EditarInfoLivro({ route }) {
             <TextInput
               style={styles.textInputSmall}
               value={livro.disponivel}
-              onChangeText={(text) => setLivro({ ...livro, disponivel: number })}
+              onChangeText={(text) =>
+                setLivro({ ...livro, disponivel: number })
+              }
             />
           </View>
 

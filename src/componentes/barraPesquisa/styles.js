@@ -1,20 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-
-barraPesq: {
-    backgroundColor: '#FFF',
-    width: '85%',
-    marginBottom: '0.5%',
-    alignSelf: 'center',
+  barraPesq: {
+    backgroundColor: "#FFF",
+    width: "85%",
+    marginBottom: "0.5%",
+    alignSelf: "center",
     borderWidth: 1,
-    borderColor: '#CCC',
+    borderColor: "#CCC",
   },
   placeholderStyle: {
-    opacity: 0.5, 
+    opacity: 0.5,
   },
   iconStyle: {
-    opacity: 0.5, 
+    opacity: 0.5,
   },
 });
 

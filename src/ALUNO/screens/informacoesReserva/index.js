@@ -72,33 +72,31 @@ export default function InformacoesReserva({ navigation, route }) {
             style={styles.icon}
             onPress={() => navigation.goBack()}
           />
-          <Text style={styles.paragraph}>
-            Informações do livro reservado
-          </Text>
+          <Text style={styles.paragraph}>Informações do livro reservado</Text>
         </View>
         <BarraPesquisa />
 
         <View style={styles.radioContainer}>
-        <RadioButton.Group
-          onValueChange={(value) => setSelectedOption(value)}
-          value={selectedOption}
-        >
-          <View style={styles.seletores}>
-            <View style={styles.radioOption}>
-              <RadioButton value="liv_nome" color="#FF735C" />
-              <Text style={styles.radioLabel}>Livro</Text>
+          <RadioButton.Group
+            onValueChange={(value) => setSelectedOption(value)}
+            value={selectedOption}
+          >
+            <View style={styles.seletores}>
+              <View style={styles.radioOption}>
+                <RadioButton value="liv_nome" color="#FF735C" />
+                <Text style={styles.radioLabel}>Livro</Text>
+              </View>
+              <View style={styles.radioOption}>
+                <RadioButton value="aut_nome" color="#FF735C" />
+                <Text style={styles.radioLabel}>Autor</Text>
+              </View>
+              <View style={styles.radioOption}>
+                <RadioButton value="dataReserva" color="#FF735C" />
+                <Text style={styles.radioLabel}>Data da reserva</Text>
+              </View>
             </View>
-            <View style={styles.radioOption}>
-              <RadioButton value="aut_nome" color="#FF735C" />
-              <Text style={styles.radioLabel}>Autor</Text>
-            </View>
-            <View style={styles.radioOption}>
-              <RadioButton value="dataReserva" color="#FF735C" />
-              <Text style={styles.radioLabel}>Data da reserva</Text>
-            </View>
-          </View>
-        </RadioButton.Group>
-      </View>
+          </RadioButton.Group>
+        </View>
 
         {infoReserva.length === 0 ? (
           <Text style={styles.paragraph}>Nenhuma reserva ativa.</Text>
@@ -122,13 +120,16 @@ export default function InformacoesReserva({ navigation, route }) {
 
                 <Line />
                 <View style={styles.dadosReservado}>
-                  <Text style={styles.reservado}>Reservado por: {usu_nome}</Text>
+                  <Text style={styles.reservado}>
+                    Reservado por: {usu_nome}
+                  </Text>
                   <Text style={styles.dataReserva}>
                     Reserva realizada no dia: {dataReserva}
                   </Text>
                   <Text style={styles.periodoReserva}>
-                    Período da reserva: {periodo?.inicio || "Data não disponível"}{" "}
-                    até {periodo?.fim || "Data não disponível"}
+                    Período da reserva:{" "}
+                    {periodo?.inicio || "Data não disponível"} até{" "}
+                    {periodo?.fim || "Data não disponível"}
                   </Text>
                 </View>
                 <Line />
@@ -136,7 +137,9 @@ export default function InformacoesReserva({ navigation, route }) {
                 <View style={styles.buttonsReserva}>
                   {isConfirmed ? (
                     <View style={styles.confirmation}>
-                      <Text style={styles.confirmationText}>Livro retirado</Text>
+                      <Text style={styles.confirmationText}>
+                        Livro retirado
+                      </Text>
                       <FontAwesome
                         name="check-circle"
                         size={24}

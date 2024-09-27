@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import { View, Modal, TextInput, Pressable, StyleSheet, Text } from 'react-native';
-import styles from './styles';
-import useBotaoConfirmarAcao from '../alertConfirmacao';
+import React, { useState } from "react";
+import {
+  View,
+  Modal,
+  TextInput,
+  Pressable,
+  StyleSheet,
+  Text,
+} from "react-native";
+import styles from "./styles";
+import useBotaoConfirmarAcao from "../alertConfirmacao";
 
 const ModalAddAutor = ({ show, onClose }) => {
-  const [autor, setAutor] = useState('');
+  const [autor, setAutor] = useState("");
 
   // Usando o hook de confirmação, passando a mensagem, ação e tela para navegar
   const showConfirmAlert = useBotaoConfirmarAcao(
@@ -12,9 +19,9 @@ const ModalAddAutor = ({ show, onClose }) => {
     () => {
       // Ação ao confirmar, neste caso, salvar o autor
       console.log(`Autor ${autor} salvo!`);
-      setAutor(''); // Limpar o campo após salvar
+      setAutor(""); // Limpar o campo após salvar
     },
-    'addLivroNovo'
+    "addLivroNovo"
   );
 
   return (

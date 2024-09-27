@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { FlatList, View } from 'react-native';
-import { Importancia } from '../../../componentes/cabecalho/forms';
+import * as React from "react";
+import { FlatList, View } from "react-native";
+import { Importancia } from "../../../componentes/cabecalho/forms";
 
-import styles from './styles'
-import BookList from './booklist';
+import styles from "./styles";
+import BookList from "./booklist";
 
 const TelaInicial = () => {
   const renderItem = ({ item }) => {
     switch (item.type) {
-      case 'booklist':
+      case "booklist":
         return <BookList />;
-      case 'importancia':
+      case "importancia":
         return <Importancia />;
       default:
         return null;
@@ -18,21 +18,19 @@ const TelaInicial = () => {
   };
 
   const data = [
-    { id: '1', type: 'booklist' },
-    { id: '2', type: 'importancia' },
+    { id: "1", type: "booklist" },
+    { id: "2", type: "importancia" },
   ];
 
   return (
     <View style={styles.containerAny}>
-    <FlatList
-      data={data}
-      renderItem={renderItem}
-      keyExtractor={item => item.id}
-    />
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 };
-
-
 
 export default TelaInicial;
