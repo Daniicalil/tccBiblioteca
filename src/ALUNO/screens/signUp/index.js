@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   Text,
@@ -19,32 +19,24 @@ import imgDesign from "../../../../assets/imagens_telas/designPage.png";
 import styles from "./styles";
 
 export default function SignUp({ navigation }) {
-  const [value, setValue] = useState("");
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [passwordVisibleConf, setPasswordVisibleConf] = useState(false);
-  const [email, setEmail] = useState("");
-  const [selectedTecnico, setSelectedTecnico] = useState("");
-  const [selectedMedio, setSelectedMedio] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConf, setPasswordConf] = useState("");
-  const [name, setName] = useState("");
-  const [rm, setRm] = useState("");
+  const [usuario, setUsuario] = useState({
+    usu_rm: "",
+    usu_nome: "",
+    usu_email: "",
+    usu_senha: "",
+    confSenha: "",
+    usu_sexo: 0,
+    cur_cod: 0,
+    usu_foto: "",
+  });
 
-  const tecnico = [
-    { label: "Curso Técnico", value: "" },
-    { label: "opção 1", value: "opcao1" },
-    { label: "opção 2", value: "opcao2" },
-    { label: "opção 3", value: "opcao3" },
-  ];
-
-  const medio = [
-    { label: "Ensino Médio", value: "" },
-    { label: "opção 1", value: "opcao1" },
-    { label: "opção 2", value: "opcao2" },
-    { label: "opção 3", value: "opcao3" },
-  ];
+  const [cursos, setCursos] = useState([]);
 
   const [errors, setErrors] = useState({});
+
+  const valDefault = styles.formControl;
+  const valSucesso = styles.formControl + " " + styles.success;
+  const valErro = styles.formControl + " " + styles.error;
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -54,33 +46,267 @@ export default function SignUp({ navigation }) {
     setPasswordVisibleConf(!passwordVisibleConf);
   };
 
-  const handleSignUp = () => {
-    // Verificar se o campo esta vazio
-    const newErrors = {};
-    if (!rm) newErrors.rm = "*Campo obrigatório";
-    if (!name) newErrors.name = "*Campo obrigatório";
-    if (!email) newErrors.email = "*Campo obrigatório";
-    if (!password) newErrors.password = "*Campo obrigatório";
-    if (!passwordConf) newErrors.passwordConf = "*Campo obrigatório";
-    if (!value) newErrors.value = "*Campo obrigatório";
+  useEffect(() => {
+    listaCursos();
+  }, []);
 
-    // Verificar se as senhas são iguais
-    if (password !== passwordConf) {
-      newErrors.password = "*As senhas não correspondem";
-      newErrors.passwordConf = "*As senhas não correspondem";
+  async function listaCursos() {
+    try {
+      const response = await api.post("/cursos");
+      setCursos(response.data.dados);
+      console.log(response.data);
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+      } else {
+        alert("Erro no front-end" + "\n" + error);
+      }
+    }
+  }
+
+  // validação
+  const [valida, setValida] = useState({
+    foto: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    nome: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    rm: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    email: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    sexo: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    senha: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    confSenha: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    cur_cod: {
+      validado: valDefault,
+      mensagem: [],
+    },
+  });
+
+  const handleChange = (e) => {
+    setUsuario((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  // const [selectCursos, setSelectCursos] = useState('');
+  // const handleSelectCursosChange = (e) => {
+  //     setSelectCursos(e.target.value);
+  //     setError(''); // Limpa o erro se necessário
+  // };
+
+  function validaSelectCursos() {
+    let objTemp = {
+      validado: valSucesso, // css referente ao estado de validação
+      mensagem: [], // array de mensagens de validação
+    };
+
+    if (!usuario.cur_cod) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Por favor, selecione uma opção no campo.");
     }
 
-    setErrors(newErrors);
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      cur_cod: objTemp, // atualiza apenas o campo 'nome'
+    }));
 
-    if (Object.keys(newErrors).length === 0) {
-      // Aqui você pode exibir o alerta
-      Alert.alert(
-        "Cadastro realizado",
-        "Aguarde o administrador verificar qual o seu nível de acesso.",
-        [{ text: "OK", onPress: () => navigation.navigate("login") }]
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  function validaNome() {
+    let objTemp = {
+      validado: valSucesso, // css referente ao estado de validação
+      mensagem: [], // array de mensagens de validação
+    };
+
+    if (usuario.usu_nome === "") {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("O nome do usuário é obrigatório");
+    } else if (usuario.usu_nome.length < 5) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Insira o nome completo do usuário");
+    }
+
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      nome: objTemp, // atualiza apenas o campo 'nome'
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  function validaRM() {
+    let objTemp = {
+      validado: valSucesso, // css referente ao estado de validação
+      mensagem: [], // array de mensagens de validação
+    };
+
+    if (usuario.usu_rm === "") {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("O RM do usuário é obrigatório");
+    } else if (usuario.usu_rm.length < 6) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("O RM deve ter pelo menos 6 digitos");
+    }
+
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      rm: objTemp, // atualiza apenas o campo 'nome'
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  function checkEmail(email) {
+    return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      email
+    );
+  }
+
+  function validaEmail() {
+    let objTemp = {
+      validado: valSucesso,
+      mensagem: [],
+    };
+
+    if (usuario.usu_email === "") {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("O e-mail do usuário é obrigatório");
+    } else if (!checkEmail(usuario.usu_email)) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Insira um e-mail válido");
+    }
+
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      email: objTemp, // atualiza apenas o campo 'nome'
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  function validaSenha() {
+    let objTemp = {
+      validado: valSucesso,
+      mensagem: [],
+    };
+
+    // Expressão regular para validar a senha
+    const senhaForteRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (usuario.usu_senha === "") {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("O preenchimento da senha é obrigatório");
+    } else if (!senhaForteRegex.test(usuario.usu_senha)) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push(
+        "Use uma senha forte com pelo menos 8 caracteres, combinando letras, números e símbolos."
       );
     }
-  };
+
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      senha: objTemp, // atualiza apenas o campo 'senha'
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  function validaConfSenha() {
+    let objTemp = {
+      validado: valSucesso,
+      mensagem: [],
+    };
+
+    if (usuario.confSenha === "") {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("A confirmação da senha é obrigatória");
+    } else if (usuario.confSenha !== usuario.usu_senha) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("A senha e a confirmação devem ser iguais");
+    }
+
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      confSenha: objTemp, // atualiza apenas o campo 'nome'
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  function validaSexo() {
+    let objTemp = {
+      validado: valSucesso,
+      mensagem: [],
+    };
+
+    if (usuario.usu_sexo == 0) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Selecione o sexo do usuário");
+    }
+
+    setValida((prevState) => ({
+      ...prevState,
+      sexo: objTemp,
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    let itensValidados = 0;
+
+    itensValidados += validaNome();
+    itensValidados += validaRM();
+    itensValidados += validaEmail();
+    itensValidados += validaSelectCursos();
+    itensValidados += validaSexo();
+    itensValidados += validaSenha();
+    itensValidados += validaConfSenha();
+
+    if (itensValidados === 7) {
+      try {
+        const response = await api.post("/usuarios", usuario);
+        if (response.data.sucesso) {
+          openModalAvisoCad();
+        }
+      } catch (error) {
+        if (error.response) {
+          alert(
+            error.response.data.mensagem + "\n" + error.response.data.dados
+          );
+        } else {
+          alert("Erro no front-end" + "\n" + error);
+        }
+      }
+    }
+  }
+  console.log(usuario);
 
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
@@ -94,30 +320,53 @@ export default function SignUp({ navigation }) {
           <Image source={imgSignup} style={styles.logo} />
           <Text style={styles.paragraph}>Cadastro</Text>
 
-          <TextInput
-            placeholder="RM"
-            style={[styles.input, errors.rm && styles.inputError]}
-            value={rm}
-            onChangeText={setRm}
-            keyboardType="numeric"
-          />
-          {errors.rm && <Text style={styles.errorText}>{errors.rm}</Text>}
+          <div style={valida.rm.validado + " " + styles.valRM} id="valRM">
+            <div style={styles.divInput}>
+              <TextInput
+                keyboardType="numeric"
+                name="usu_rm"
+                placeholder="RM"
+                style={styles.input}
+                onChange={handleChange}
+              />
+            </div>
+            {valida.rm.mensagem.map((mens) => (
+              <small key={mens} id="rm" style={styles.small}>
+                {mens}
+              </small>
+            ))}
+          </div>
 
-          <TextInput
-            placeholder="Nome completo"
-            style={[styles.input, errors.name && styles.inputError]}
-            value={name}
-            onChangeText={setName}
-          />
-          {errors.name && <Text style={styles.errorText}>{errors.name}</Text>}
+          <div style={valida.nome.validado + " " + styles.valNome} id="valNome">
+            <div style={styles.divInput}>
+              <TextInput
+                name="usu_nome"
+                placeholder="Nome completo"
+                style={styles.input}
+                onChange={handleChange}
+              />
 
-          <TextInput
-            placeholder="E-mail"
-            style={[styles.input, errors.email && styles.inputError]}
-            value={email}
-            onChangeText={setEmail}
-          />
-          {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+            </div>
+            {
+               valida.nome.mensagem.map(mens => <small key={mens} id="nome" style={styles.small}>{mens}</small>)
+            }
+          </div>
+
+          <div style={valida.email.validado + ' ' + styles.valNome} id="valEmail">
+            <div style={styles.divInput}>
+            <TextInput
+              keyboardType="email-address"
+              name="usu_email"
+              placeholder="E-mail"
+              style={styles.input}
+              onChange={handleChange}
+            />
+
+            </div>
+            {
+               valida.email.mensagem.map(mens => <small key={mens} id="email" style={styles.small}>{mens}</small>)
+            }
+          </div>
 
           <View style={styles.pickerContainer}>
             <Picker
@@ -130,24 +379,6 @@ export default function SignUp({ navigation }) {
                   key={tec.value}
                   label={tec.label}
                   value={tec.value}
-                  enabled={index !== 0} // Desabilita a primeira opção
-                  style={index === 0 ? styles.firstItem : styles.defaultItem} // Estilo condicional
-                />
-              ))}
-            </Picker>
-          </View>
-
-          <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={selectedMedio}
-              style={styles.picker}
-              onValueChange={(itemValue) => setSelectedMedio(itemValue)}
-            >
-              {medio.map((med, index) => (
-                <Picker.Item
-                  key={med.value}
-                  label={med.label}
-                  value={med.value}
                   enabled={index !== 0} // Desabilita a primeira opção
                   style={index === 0 ? styles.firstItem : styles.defaultItem} // Estilo condicional
                 />

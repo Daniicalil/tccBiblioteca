@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     width: "60%",
     height: 42,
     backgroundColor: "#FFF",
-    marginBottom: 10,
+    marginTop: 10,
     paddingLeft: 15,
     padding: 8,
     borderRadius: 30,
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     color: "#929292",
   },
   inputError: {
-    borderColor: "red",
+    borderColor: '#e74c3c',
     borderWidth: 1,
   },
   password: {
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     padding: 10,
     position: "absolute",
     right: 8,
-    bottom: 8,
+    bottom: 0,
   },
   touchText: {
     color: "#FF735C",
@@ -92,6 +92,22 @@ const styles = StyleSheet.create({
   btnPress: {
     opacity: 0.5,
   },
+  errorMessage: {
+    color: '#e74c3c',
+    fontSize: 14,
+    marginTop: 2,
+    // fontWeight: '500',
+    borderColor: '#e74c3c'
+  },
+  // login:focus: {
+  //   box-shadow: 0 0 0 0;
+  //   outline: 0; 
+  //   border-color: #B71C1C;
+  // },
+  error:  {
+    borderColor: '#e74c3c',
+    color: '#e74c3c',
+  }
 });
 
 export default styles;

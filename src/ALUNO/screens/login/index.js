@@ -8,45 +8,140 @@ import {
   TextInput,
   Pressable,
   ImageBackground,
+  Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import imgLogin from "../../../../assets/imagens_telas/6737457.png";
 import imgDesign from "../../../../assets/imagens_telas/designPage.png";
 import styles from "./styles";
+import api from "../../../services/api";
 
 export default function Login({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [password, setPassword] = useState("");
-  const [rm, setRm] = useState("");
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    // Limpar estado quando o componente for desmontado
-    return () => {
-      setRm("");
-      setPassword("");
-      setErrors({});
-    };
-  }, []);
+  const [senha, setSenha] = useState("");
+  const [login, setLogin] = useState("");
+
+  const valDefault = styles.formControl;
+  const valSucesso = styles.formControl + " " + styles.success;
+  const valErro = styles.formControl + " " + styles.error;
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const handleLogin = () => {
-    const newErrors = {};
-    if (!rm) newErrors.rm = "*Preeencha o campo";
-    if (!password) newErrors.password = "*Preeencha o campo";
+  function handleSubmit(event) {
+    event.preventDefault();
+    const validLogin = validaLogin();
+    const validSenha = validaSenha();
 
-    setErrors(newErrors);
-
-    if (Object.keys(newErrors).length === 0) {
-      // Navega para a tela 'Home' e limpa os campos de login
-      setRm("");
-      setPassword("");
-      navigation.navigate("Home");
+    if (validLogin && validSenha) {
+      logar();
     }
-  };
+  }
+
+  async function logar() {
+    try {
+      const dados = {
+        usu_email_rm: login,
+        usu_senha: senha,
+      };
+
+      const response = await api.post("/usu_login", dados);
+
+      if (response.data.sucesso == true) {
+        const usuario = response.data.dados;
+        const objLogado = {
+          cod: usuario.usu_cod,
+          nome: usuario.usu_nome,
+          acesso: usuario.usu_tipo,
+          curso: usuario.cur_cod,
+        };
+        // signin(JSON.stringify(objLogado));
+        localStorage.clear();
+        localStorage.setItem("user", JSON.stringify(objLogado));
+        navigation.navigate("Home");
+      } else {
+        Alert("Erro: " + response.data.mensagem + "\n" + response.data.dados);
+      }
+    } catch (error) {
+      if (error.response) {
+        Alert(
+          error.response.data.dados == null
+            ? error.response.data.mensagem
+            : error.response.data.mensagem + "\n" + error.response.data.dados
+        );
+      } else {
+        Alert("Erro no front-end" + "\n" + error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    // Limpar estado quando o componente for desmontado
+    return () => {
+      setLogin("");
+      setSenha("");
+      setErrors({});
+    };
+  }, []);
+
+  // validação
+  const [valida, setValida] = useState({
+    login: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    senha: {
+      validado: valDefault,
+      mensagem: [],
+    },
+  });
+
+  function validaLogin() {
+    let objTemp = {
+      validado: valSucesso,
+      mensagem: [],
+    };
+
+    if (login === "") {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Preencha o campo com RM ou E-mail");
+    } else if (login.length < 6) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Informação inválida");
+    }
+
+    setValida((prevState) => ({
+      ...prevState,
+      login: objTemp,
+    }));
+
+    return objTemp.mensagem.length === 0;
+  }
+
+  function validaSenha() {
+    let objTemp = {
+      validado: valSucesso,
+      mensagem: [],
+    };
+
+    if (senha === "") {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Preencha o campo senha");
+    } else if (senha.length < 6) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Número de caracteres inválido");
+    }
+
+    setValida((prevState) => ({
+      ...prevState,
+      senha: objTemp,
+    }));
+
+    return objTemp.mensagem.length === 0;
+  }
 
   return (
     <ImageBackground source={imgDesign} style={styles.background}>
@@ -58,25 +153,34 @@ export default function Login({ navigation }) {
         />
         <View style={styles.contentContainer}>
           <Image source={imgLogin} style={styles.logo} />
+          {/* <View className={styles.conteudo} onSubmit={handleSubmit}> */}
           <Text style={styles.paragraph}>Login</Text>
           <TextInput
             placeholder="RM ou e-mail"
-            style={[styles.input, errors.rm && styles.inputError]}
-            value={rm}
-            onChangeText={setRm}
+            style={[
+              styles.input,
+              valida.login.validado === valErro && styles.inputError,
+            ]}
+            value={login}
+            onChangeText={(text) => setLogin(text)}
           />
-          {errors.rm && <Text style={styles.errorText}>{errors.rm}</Text>}
+          {valida.login.mensagem.length > 0 && (
+            <Text style={styles.errorMessage}>
+              {valida.login.mensagem[0]}
+            </Text>
+          )}
+          
           <View style={styles.password}>
             <TextInput
               placeholder="Senha"
               style={[
                 styles.input,
                 styles.passwordInput,
-                errors.password && styles.inputError,
+                valida.senha.validado === valErro && styles.inputError,
               ]}
               secureTextEntry={!passwordVisible}
-              value={password}
-              onChangeText={setPassword}
+              value={senha}
+              onChangeText={(text) => setSenha(text)}
             />
             <Pressable
               onPress={togglePasswordVisibility}
@@ -89,8 +193,10 @@ export default function Login({ navigation }) {
               />
             </Pressable>
           </View>
-          {errors.password && (
-            <Text style={styles.errorText}>{errors.password}</Text>
+          {valida.senha.mensagem.length > 0 && (
+            <Text style={styles.errorMessage}>
+              {valida.senha.mensagem[0]}
+            </Text>
           )}
           <Pressable
             onPress={() => navigation.navigate("signUp")}
@@ -100,6 +206,7 @@ export default function Login({ navigation }) {
           >
             <Text style={styles.touchText}>Não tem cadastro? Cadastre-se</Text>
           </Pressable>
+
           <Pressable
             onPress={() => navigation.navigate("esqueceuSenha1")}
             style={({ pressed }) =>
@@ -108,8 +215,9 @@ export default function Login({ navigation }) {
           >
             <Text style={styles.touchText}>Esqueceu a senha?</Text>
           </Pressable>
+
           <Pressable
-            onPress={handleLogin}
+            onPress={handleSubmit}
             style={({ pressed }) =>
               pressed
                 ? [styles.loginButton, styles.btnPress]
@@ -119,6 +227,7 @@ export default function Login({ navigation }) {
             <Text style={styles.loginText}>Fazer login</Text>
           </Pressable>
         </View>
+        {/* </View> */}
       </ScrollView>
     </ImageBackground>
   );
