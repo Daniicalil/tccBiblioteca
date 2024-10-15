@@ -10,40 +10,52 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
-import { RadioButton } from "react-native-paper";
+import { RadioButton, IconButton } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import imgSignup from "../../../../assets/imagens_telas/img_cadastro.png";
 import imgDesign from "../../../../assets/imagens_telas/designPage.png";
 
+import api from "../../../services/api";
 import styles from "./styles";
 
 export default function SignUp({ navigation }) {
+  const [cursos, setCursos] = useState([]);
+  const [errors, setErrors] = useState({});
+
   const [usuario, setUsuario] = useState({
     usu_rm: "",
     usu_nome: "",
     usu_email: "",
     usu_senha: "",
     confSenha: "",
-    usu_sexo: 0,
-    cur_cod: 0,
+    usu_sexo: "",
+    cur_cod: "",
     usu_foto: "",
   });
 
-  const [cursos, setCursos] = useState([]);
+  const [value, setValue] = useState(usuario.usu_sexo);
 
-  const [errors, setErrors] = useState({});
+  const sexos = [
+    { label: "Feminino", value: "0" },
+    { label: "Masculino", value: "1" },
+    { label: "Neutro", value: "2" },
+    { label: "Padrão", value: "3" },
+  ];
 
   const valDefault = styles.formControl;
   const valSucesso = styles.formControl + " " + styles.success;
   const valErro = styles.formControl + " " + styles.error;
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
+    setShowPassword(!showPassword);
   };
 
-  const togglePasswordVisibilityConf = () => {
-    setPasswordVisibleConf(!passwordVisibleConf);
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   useEffect(() => {
@@ -100,8 +112,11 @@ export default function SignUp({ navigation }) {
     },
   });
 
-  const handleChange = (e) => {
-    setUsuario((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (name, value) => {
+    setUsuario({
+      ...usuario,
+      [name]: value,
+    });
   };
 
   // const [selectCursos, setSelectCursos] = useState('');
@@ -277,8 +292,8 @@ export default function SignUp({ navigation }) {
     return testeResult;
   }
 
-  async function handleSubmit(event) {
-    event.preventDefault();
+  async function handleSubmit() {
+    // event.preventDefault();
     let itensValidados = 0;
 
     itensValidados += validaNome();
@@ -293,17 +308,21 @@ export default function SignUp({ navigation }) {
       try {
         const response = await api.post("/usuarios", usuario);
         if (response.data.sucesso) {
-          openModalAvisoCad();
+          Alert.alert("Cadastro realizado com sucesso");
+          // openModalAvisoCad();
         }
       } catch (error) {
         if (error.response) {
-          alert(
-            error.response.data.mensagem + "\n" + error.response.data.dados
-          );
+          Alert.alert("Erro no cadastro", error.response.data.mensagem);
         } else {
-          alert("Erro no front-end" + "\n" + error);
+          Alert.alert("Erro", "Erro no front-end" + "\n" + error);
         }
       }
+    } else {
+      Alert.alert(
+        "Erro de validação",
+        "Por favor, corrija os erros e tente novamente."
+      );
     }
   }
   console.log(usuario);
@@ -320,164 +339,201 @@ export default function SignUp({ navigation }) {
           <Image source={imgSignup} style={styles.logo} />
           <Text style={styles.paragraph}>Cadastro</Text>
 
-          <div style={valida.rm.validado + " " + styles.valRM} id="valRM">
-            <div style={styles.divInput}>
+          <View style={valida.rm.validado + " " + styles.valRM} id="valRM">
+            <View style={styles.divInput}>
               <TextInput
                 keyboardType="numeric"
-                name="usu_rm"
                 placeholder="RM"
+                name="usu_rm"
                 style={styles.input}
-                onChange={handleChange}
+                onChangeText={(value) => handleChange("usu_rm", value)}
               />
-            </div>
+            </View>
             {valida.rm.mensagem.map((mens) => (
-              <small key={mens} id="rm" style={styles.small}>
+              <Text key={mens} id="rm" style={styles.small}>
                 {mens}
-              </small>
+              </Text>
             ))}
-          </div>
+          </View>
 
-          <div style={valida.nome.validado + " " + styles.valNome} id="valNome">
-            <div style={styles.divInput}>
+          <View
+            style={valida.nome.validado + " " + styles.valNome}
+            id="valNome"
+          >
+            <View style={styles.divInput}>
               <TextInput
                 name="usu_nome"
                 placeholder="Nome completo"
                 style={styles.input}
-                onChange={handleChange}
+                onChangeText={(value) => handleChange("usu_nome", value)}
               />
-
-            </div>
-            {
-               valida.nome.mensagem.map(mens => <small key={mens} id="nome" style={styles.small}>{mens}</small>)
-            }
-          </div>
-
-          <div style={valida.email.validado + ' ' + styles.valNome} id="valEmail">
-            <div style={styles.divInput}>
-            <TextInput
-              keyboardType="email-address"
-              name="usu_email"
-              placeholder="E-mail"
-              style={styles.input}
-              onChange={handleChange}
-            />
-
-            </div>
-            {
-               valida.email.mensagem.map(mens => <small key={mens} id="email" style={styles.small}>{mens}</small>)
-            }
-          </div>
-
-          <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={selectedTecnico}
-              style={styles.picker}
-              onValueChange={(itemValue) => setSelectedTecnico(itemValue)}
-            >
-              {tecnico.map((tec, index) => (
-                <Picker.Item
-                  key={tec.value}
-                  label={tec.label}
-                  value={tec.value}
-                  enabled={index !== 0} // Desabilita a primeira opção
-                  style={index === 0 ? styles.firstItem : styles.defaultItem} // Estilo condicional
-                />
-              ))}
-            </Picker>
+            </View>
+            {valida.nome.mensagem.map((mens) => (
+              <Text key={mens} id="nome" style={styles.small}>
+                {mens}
+              </Text>
+            ))}
           </View>
 
-          <View style={styles.password}>
-            <TextInput
-              placeholder="Senha"
-              style={[
-                styles.input,
-                styles.passwordInput,
-                errors.password && styles.inputError,
-              ]}
-              secureTextEntry={!passwordVisible}
-              value={password}
-              onChangeText={setPassword}
-            />
-            <Pressable
-              onPress={togglePasswordVisibility}
-              style={styles.passwordVisibilityIcon}
-            >
-              <Ionicons
-                name={passwordVisible ? "eye-off" : "eye"}
-                size={24}
-                color="black"
+          <View
+            style={valida.email.validado + " " + styles.valNome}
+            id="valEmail"
+          >
+            <View style={styles.divInput}>
+              <TextInput
+                keyboardType="email-address"
+                name="usu_email"
+                placeholder="E-mail"
+                style={styles.input}
+                onChangeText={(value) => handleChange("usu_email", value)}
               />
-            </Pressable>
+            </View>
+            {valida.email.mensagem.map((mens) => (
+              <Text key={mens} id="email" style={styles.small}>
+                {mens}
+              </Text>
+            ))}
+          </View>
+
+          <View style={styles.pickerContainer}>
+            <View
+              className={[
+                valida.cur_cod.validado ? styles.success : styles.error,
+                styles.valSelectCursos
+              ]}
+              id="valSelectCursos"
+            >
+              <View className={styles.divInput}>
+                <Picker
+                  selectedValue={usuario.cur_cod}
+                  style={styles.picker}
+                  onValueChange={(value) => handleChange("cur_cod", value)}
+                >
+                  {cursos.map((cur, index) => (
+                    <Picker.Item
+                      key={cur.cur_cod}
+                      label={cur.cur_nome}
+                      value={cur.cur_cod}
+                      enabled={index !== 0} // Desabilita a primeira opção
+                      style={
+                        index === 0 ? styles.firstItem : styles.defaultItem
+                      } // Estilo condicional
+                    />
+                  ))}
+                </Picker>
+              </View>
+            </View>
+          </View>
+          {valida.cur_cod.mensagem.map((mens) => (
+                <Text key={mens} style={styles.small}>{mens}</Text>
+              ))}
+
+          <View style={styles.password}>
+            <View
+              style={valida.senha.validado ? styles.success : styles.error}
+              id="validaSn1"
+            >
+              <View style={styles.divInput}>
+                <TextInput
+                  name="usu_senha"
+                  placeholder="Senha"
+                  style={[
+                    styles.input,
+                    styles.passwordInput,
+                    errors.password && styles.inputError,
+                  ]}
+                  secureTextEntry={!showPassword}
+                  onChangeText={(value) => handleChange("usu_senha", value)}
+                />
+                <Pressable
+                  onPress={togglePasswordVisibility}
+                  style={styles.passwordVisibilityIcon}
+                >
+                  <Ionicons
+                    name={showPassword ? "eye-off" : "eye"}
+                    size={24}
+                    color="black"
+                  />
+                </Pressable>
+              </View>
+              {valida.senha.mensagem.map((mens) => (
+                <Text key={mens} style={styles.small}>
+                  {mens}
+                </Text>
+              ))}
+            </View>
           </View>
 
           <View style={styles.confirmPassword}>
-            <TextInput
-              placeholder="Confirmar senha"
-              style={[
-                styles.input,
-                styles.passwordInput,
-                errors.password && styles.inputError,
-              ]}
-              secureTextEntry={!passwordVisibleConf}
-              value={passwordConf}
-              onChangeText={setPasswordConf}
-            />
-            <Pressable
-              onPress={togglePasswordVisibilityConf}
-              style={styles.passwordVisibilityIcon}
+            <View
+              style={valida.confSenha.validado ? styles.success : styles.error}
+              id="validaSn2"
             >
-              <Ionicons
-                name={passwordVisibleConf ? "eye-off" : "eye"}
-                size={24}
-                color="black"
-              />
-            </Pressable>
+              <View style={styles.divInput}>
+                <TextInput
+                  name="confSenha"
+                  placeholder="Confirmar senha"
+                  style={[
+                    styles.input,
+                    styles.passwordInput,
+                    errors.password && styles.inputError,
+                  ]}
+                  secureTextEntry={!showConfirmPassword}
+                  onChangeText={(value) => handleChange("confSenha", value)}
+                />
+                <Pressable
+                  onPress={toggleConfirmPasswordVisibility}
+                  style={styles.passwordVisibilityIcon}
+                >
+                  <Ionicons
+                    name={showConfirmPassword ? "eye-off" : "eye"}
+                    size={24}
+                    color="black"
+                  />
+                </Pressable>
+              </View>
+              {valida.confSenha.mensagem.map((mens) => (
+                <Text key={mens} style={styles.small}>
+                  {mens}
+                </Text>
+              ))}
+            </View>
           </View>
-          {errors.password && (
-            <Text style={styles.errorText}>{errors.password}</Text>
-          )}
 
           <RadioButton.Group
             onValueChange={(newValue) => setValue(newValue)}
             value={value}
           >
-            <Text style={styles.sexo}>Sexo:</Text>
-            <View style={styles.radioOptions}>
-              <View style={styles.radioOption}>
-                <RadioButton
-                  value="Feminino"
-                  color="#FF735C"
-                  uncheckedColor="#CCC"
-                />
-                <Text style={styles.radioText}>Feminino</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton
-                  value="Masculino"
-                  color="#FF735C"
-                  uncheckedColor="#CCC"
-                />
-                <Text style={styles.radioText}>Masculino</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton
-                  value="Neutro"
-                  color="#FF735C"
-                  uncheckedColor="#CCC"
-                />
-                <Text style={styles.radioText}>Neutro</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton
-                  value="Padrao"
-                  color="#FF735C"
-                  uncheckedColor="#CCC"
-                />
-                <Text style={styles.radioText}>Padrão</Text>
+            <View style={styles.sexoForm} name="sexo" id="sexo">
+              <View
+                style={[
+                  styles.valSexo,
+                  valida.sexo.validado ? styles.success : styles.error,
+                ]}
+                id="valSexo"
+              >
+                <Text style={styles.sexo}>Sexo:</Text>
+                <View style={styles.divRadio}>
+                  {sexos.map((sexo) => (
+                    <View key={sexo.value} style={styles.buttonRadio}>
+                      <RadioButton
+                        value={sexo.value}
+                        color="#FF735C"
+                        uncheckedColor="#CCC"
+                        status={value === sexo.value ? "checked" : "unchecked"}
+                      />
+                      <Text>{sexo.label}</Text>
+                    </View>
+                  ))}
+                </View>
+                {valida.sexo.mensagem.map((mens) => (
+                  <Text key={mens} style={styles.small}>
+                    {mens}
+                  </Text>
+                ))}
               </View>
             </View>
           </RadioButton.Group>
-          {errors.value && <Text style={styles.errorText}>{errors.value}</Text>}
 
           <Pressable
             onPress={() => navigation.navigate("login")}
@@ -489,7 +545,7 @@ export default function SignUp({ navigation }) {
           </Pressable>
 
           <Pressable
-            onPress={handleSignUp}
+            onPress={handleSubmit}
             style={({ pressed }) =>
               pressed
                 ? [styles.signUpButton, styles.btnPress]

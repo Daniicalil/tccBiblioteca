@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   contentContainer: {
-    alignItems: "center",
+    display: "flex",
   },
   scrollContainer: {
     flexGrow: 1,
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
     width: 250,
     height: 250,
+    alignSelf: "center",
   },
   paragraph: {
     textAlign: "center",
@@ -29,10 +30,13 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   input: {
-    width: "70%",
+    width: "100%",
+    maxWidth: "75%",
+    alignSelf: 'center',
     height: 44,
     backgroundColor: "#FFF",
-    marginBottom: 10,
+    marginBottom: 0,
+    marginTop: 10,
     paddingLeft: 15,
     padding: 8,
     borderRadius: 30,
@@ -45,9 +49,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   pickerContainer: {
-    width: "70%",
+    width: "75%",
     height: 44,
-    marginBottom: 10,
+    marginBottom: 0,
+    marginTop: 10,
     borderWidth: 1,
     borderColor: "#CCC",
     borderRadius: 30,
@@ -68,24 +73,31 @@ const styles = StyleSheet.create({
   },
   password: {
     flexDirection: "row",
-    alignItems: "center",
+    alignSelf: "center",
   },
   passwordInput: {
     paddingRight: 40,
+    width: 800,
+    maxWidth: "86%"
   },
   passwordVisibilityIcon: {
     padding: 10,
     position: "absolute",
-    right: 8,
-    bottom: 8,
+    right: 30,
+    bottom: 0,
   },
   confirmPassword: {
     flexDirection: "row",
     alignItems: "center",
+    alignSelf: "center",
+  },
+  sexoForm: {
+    alignSelf: "center",
   },
   radioOptions: {
     marginTop: 4,
     flexDirection: "row",
+    alignSelf: "center"
   },
   radioOption: {
     flexDirection: "row",
@@ -113,6 +125,7 @@ const styles = StyleSheet.create({
     height: 42,
     justifyContent: "center",
     alignItems: "center",
+    alignSelf: "center",
     borderRadius: 30,
     marginBottom: 20,
   },
@@ -129,6 +142,90 @@ const styles = StyleSheet.create({
     // fontWeight: 'bold',
     fontSize: 16,
   },
+  sucesso: {
+    /* position: absolute;
+        right: 20%;  */
+    display: "none",
+    marginLeft: 0.5,
+    fontSize: 10,
+    color: "#2ecc71",
+  },
+  erro: {
+    /* visibility: hidden; */
+    display: "none",
+    marginLeft: 0.5,
+    fontSize: 10,
+    color: "#e74c3c",
+  },
+  divInput: {
+    // display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
+  sexoForm: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignSelf: "center"
+  },
+   divRadio: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center"
+  },
+  small: {
+    /* visibility: hidden;  */
+    /* display: none; */
+    color: "#e74c3c",
+    fontSize: 14,
+    marginTop: 0.5,
+    alignSelf: "center",
+  },
+  
+  select: {
+    paddingHorizontal: 16, // equivalente a 1rem
+    width: '90%',
+    fontSize: 18, // equivalente a 1.4rem
+    height: 50, // equivalente a 5rem
+    borderRadius: 10, // equivalente a 1rem
+    borderWidth: 2,
+    borderColor: '#7F0000',
+    color: '#7F0000',
+    textAlign: 'center',
+  },
+  optionFocus: {
+    color: '#FAFAFA',
+    backgroundColor: '#7F0000',
+  },
+  selectFocus: {
+    borderWidth: 2, // Simula o comportamento do foco
+    borderColor: '#B71C1C',
+  },
+  inputFocus: {
+    borderWidth: 2,
+    borderColor: '#B71C1C',
+  },
+  formControlSuccessInput: {
+    borderColor: '#2ecc71',
+  },
+  formControlErrorInput: {
+    borderColor: '#e74c3c',
+  },
+  successMessage: {
+    display: 'flex', // Exibe o campo de sucesso
+  },
+  errorMessage: {
+    display: 'flex', // Exibe o campo de erro
+  },
+  successSelect: {
+    borderColor: '#2ecc71',
+  },
+  errorSelect: {
+    borderColor: '#e74c3c',
+  }
 });
 
 export default styles;
