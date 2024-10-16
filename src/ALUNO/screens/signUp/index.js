@@ -112,11 +112,8 @@ export default function SignUp({ navigation }) {
     },
   });
 
-  const handleChange = (name, value) => {
-    setUsuario({
-      ...usuario,
-      [name]: value,
-    });
+  const handleChange = (e) => {
+    setUsuario((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   // const [selectCursos, setSelectCursos] = useState('');
@@ -292,8 +289,8 @@ export default function SignUp({ navigation }) {
     return testeResult;
   }
 
-  async function handleSubmit() {
-    // event.preventDefault();
+  async function handleSubmit(event) {
+    event.preventDefault();
     let itensValidados = 0;
 
     itensValidados += validaNome();
@@ -339,41 +336,43 @@ export default function SignUp({ navigation }) {
           <Image source={imgSignup} style={styles.logo} />
           <Text style={styles.paragraph}>Cadastro</Text>
 
-          <View style={valida.rm.validado + " " + styles.valRM} id="valRM">
-            <View style={styles.divInput}>
-              <TextInput
-                keyboardType="numeric"
-                placeholder="RM"
-                name="usu_rm"
-                style={styles.input}
-                onChangeText={(value) => handleChange("usu_rm", value)}
-              />
-            </View>
-            {valida.rm.mensagem.map((mens) => (
-              <Text key={mens} id="rm" style={styles.small}>
-                {mens}
-              </Text>
-            ))}
+          {/* <View style={[valida.rm.validado ? styles.validated : styles.invalid, styles.valRM]} id="valRM"> */}
+          <View style={styles.divInput}>
+            <TextInput
+              keyboardType="numeric"
+              placeholder="RM"
+              name="usu_rm"
+              style={styles.input}
+              onChangeText={(value) => handleChange("usu_rm", value)}
+              value={usuario.usu_rm}
+            />
           </View>
+          {valida.rm.mensagem.map((mens) => (
+            <Text key={mens} id="rm" style={styles.small}>
+              {mens}
+            </Text>
+          ))}
+          {/* </View> */}
 
-          <View
+          {/* <View
             style={valida.nome.validado + " " + styles.valNome}
             id="valNome"
-          >
-            <View style={styles.divInput}>
-              <TextInput
-                name="usu_nome"
-                placeholder="Nome completo"
-                style={styles.input}
-                onChangeText={(value) => handleChange("usu_nome", value)}
-              />
-            </View>
-            {valida.nome.mensagem.map((mens) => (
-              <Text key={mens} id="nome" style={styles.small}>
-                {mens}
-              </Text>
-            ))}
+          > */}
+          <View style={styles.divInput}>
+            <TextInput
+              name="usu_nome"
+              placeholder="Nome completo"
+              style={styles.input}
+              onChangeText={(value) => handleChange("usu_nome", value)}
+              value={usuario.usu_nome}
+            />
           </View>
+          {valida.nome.mensagem.map((mens) => (
+            <Text key={mens} id="nome" style={styles.small}>
+              {mens}
+            </Text>
+          ))}
+          {/* </View> */}
 
           <View
             style={valida.email.validado + " " + styles.valNome}
@@ -386,6 +385,7 @@ export default function SignUp({ navigation }) {
                 placeholder="E-mail"
                 style={styles.input}
                 onChangeText={(value) => handleChange("usu_email", value)}
+                value={usuario.usu_email}
               />
             </View>
             {valida.email.mensagem.map((mens) => (
@@ -396,37 +396,43 @@ export default function SignUp({ navigation }) {
           </View>
 
           <View style={styles.pickerContainer}>
-            <View
+            {/* <View
               className={[
                 valida.cur_cod.validado ? styles.success : styles.error,
                 styles.valSelectCursos
               ]}
               id="valSelectCursos"
-            >
-              <View className={styles.divInput}>
-                <Picker
-                  selectedValue={usuario.cur_cod}
-                  style={styles.picker}
-                  onValueChange={(value) => handleChange("cur_cod", value)}
-                >
-                  {cursos.map((cur, index) => (
-                    <Picker.Item
-                      key={cur.cur_cod}
-                      label={cur.cur_nome}
-                      value={cur.cur_cod}
-                      enabled={index !== 0} // Desabilita a primeira opção
-                      style={
-                        index === 0 ? styles.firstItem : styles.defaultItem
-                      } // Estilo condicional
-                    />
-                  ))}
-                </Picker>
-              </View>
+            > */}
+            <View className={styles.radioOptions}>
+              <Picker
+                selectedValue={usuario.cur_cod}
+                style={styles.radioOption}
+                onValueChange={(value) => handleChange("cur_cod", value)}
+                value={usuario.cur_cod}
+              >
+                <Picker.Item
+                  label="Sel. curso técnico ou médio"
+                  value={null}
+                  enabled={false}
+                  style={styles.firstItem}
+                />
+                {cursos.map((cur) => (
+                  <Picker.Item
+                    key={cur.cur_cod}
+                    label={cur.cur_nome}
+                    value={cur.cur_cod}
+                    style={styles.defaultItem}
+                  />
+                ))}
+              </Picker>
             </View>
+            {/* </View> */}
           </View>
           {valida.cur_cod.mensagem.map((mens) => (
-                <Text key={mens} style={styles.small}>{mens}</Text>
-              ))}
+            <Text key={mens} style={styles.small}>
+              {mens}
+            </Text>
+          ))}
 
           <View style={styles.password}>
             <View
@@ -437,13 +443,10 @@ export default function SignUp({ navigation }) {
                 <TextInput
                   name="usu_senha"
                   placeholder="Senha"
-                  style={[
-                    styles.input,
-                    styles.passwordInput,
-                    errors.password && styles.inputError,
-                  ]}
+                  style={[styles.input, styles.passwordInput]}
                   secureTextEntry={!showPassword}
                   onChangeText={(value) => handleChange("usu_senha", value)}
+                  value={usuario.usu_senha}
                 />
                 <Pressable
                   onPress={togglePasswordVisibility}
@@ -473,13 +476,10 @@ export default function SignUp({ navigation }) {
                 <TextInput
                   name="confSenha"
                   placeholder="Confirmar senha"
-                  style={[
-                    styles.input,
-                    styles.passwordInput,
-                    errors.password && styles.inputError,
-                  ]}
+                  style={[styles.input, styles.passwordInput]}
                   secureTextEntry={!showConfirmPassword}
                   onChangeText={(value) => handleChange("confSenha", value)}
+                  value={usuario.confSenha}
                 />
                 <Pressable
                   onPress={toggleConfirmPasswordVisibility}
@@ -501,7 +501,10 @@ export default function SignUp({ navigation }) {
           </View>
 
           <RadioButton.Group
-            onValueChange={(newValue) => setValue(newValue)}
+            onValueChange={(newValue) => {
+              console.log("Novo valor selecionado:", newValue); // Verifica o valor
+              setValue(newValue);
+            }}
             value={value}
           >
             <View style={styles.sexoForm} name="sexo" id="sexo">

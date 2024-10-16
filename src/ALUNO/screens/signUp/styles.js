@@ -48,6 +48,36 @@ const styles = StyleSheet.create({
     borderColor: "red",
     borderWidth: 1,
   },
+  validated: {
+    borderColor: 'green', // Muda a cor da borda para verde
+  },
+  // Estilo para quando o campo é inválido
+  invalid: {
+    borderColor: 'red', // Muda a cor da borda para vermelho
+  },
+  // Ícone de sucesso
+  sucesso: {
+    color: 'green',
+    fontSize: 20,
+    position: 'absolute',
+    right: 10,
+    top: 12,
+  },
+  // Ícone de erro
+  erro: {
+    color: 'red',
+    fontSize: 20,
+    position: 'absolute',
+    right: 10,
+    top: 12,
+  },
+  error:  {
+    borderColor: '#e74c3c',
+    color: '#e74c3c',
+  },
+  success: {
+    borderColor: "#2ecc71"
+  },
   pickerContainer: {
     width: "75%",
     height: 44,
@@ -91,8 +121,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
   },
-  sexoForm: {
-    alignSelf: "center",
+  sexo: {
+    marginTop: 10,
   },
   radioOptions: {
     marginTop: 4,
@@ -133,6 +163,12 @@ const styles = StyleSheet.create({
     color: "red",
     marginBottom: 8,
     marginTop: -6,
+  },
+  buttonRadio: {
+    marginTop: 4,
+    flexDirection: 'row',  // Alinha o RadioButton e o label em linha
+    alignItems: 'center',  // Centraliza o conteúdo verticalmente
+    marginVertical: 5,     // Adiciona um espaço entre as opções de sexo
   },
   btnPress: {
     opacity: 0.5,
@@ -185,35 +221,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   
-  select: {
-    paddingHorizontal: 16, // equivalente a 1rem
-    width: '90%',
-    fontSize: 18, // equivalente a 1.4rem
-    height: 50, // equivalente a 5rem
-    borderRadius: 10, // equivalente a 1rem
-    borderWidth: 2,
-    borderColor: '#7F0000',
-    color: '#7F0000',
-    textAlign: 'center',
-  },
-  optionFocus: {
-    color: '#FAFAFA',
-    backgroundColor: '#7F0000',
-  },
-  selectFocus: {
-    borderWidth: 2, // Simula o comportamento do foco
-    borderColor: '#B71C1C',
-  },
-  inputFocus: {
-    borderWidth: 2,
-    borderColor: '#B71C1C',
-  },
-  formControlSuccessInput: {
-    borderColor: '#2ecc71',
-  },
-  formControlErrorInput: {
-    borderColor: '#e74c3c',
-  },
+  
+  
   successMessage: {
     display: 'flex', // Exibe o campo de sucesso
   },
