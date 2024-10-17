@@ -8,10 +8,32 @@ import {
 } from "../../../componentes/cabecalho/forms";
 
 import styles from "./styles";
+import api from "../../../services/api";
 import imgContato from "../../../../assets/imagens_telas/contato.jpg";
 import IconeEditar from "../../../../assets/imagens_telas/editar_perfil.png";
 
 export default function InformacoesContato({ navigation }) {
+  const [infoContato, setInfoContato] = useState([]);
+
+  useEffect(() => {
+    informacoes();
+  }, []);
+
+  async function informacoes() {
+    const dados = { cont_cod: 1 };
+    try {
+      const response = await api.post('/contatos', dados);
+      console.log(response.data.dados);
+      setInfoContato(response.data.dados);
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.mensagem + '\n' + error.response.data.dados);
+      } else {
+        alert('Erro no front-end' + '\n' + error);
+      }
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.inicio}>
@@ -29,18 +51,24 @@ export default function InformacoesContato({ navigation }) {
           <Text style={styles.paragraph}>Informações de Contato</Text>
         </View>
         <Image source={imgContato} style={styles.imgcontato} />
-        <Text style={styles.escola}>ETEC PROF. MASSUYUKI KAWANO</Text>
-        <Text style={styles.informacoes}>
-          (14) 3496 1520 - (14) 3491 5393{"\n"}
-          RUA: BEZERRA DE MENEZES, 215{"\n"}
-          CEP 17605-440{"\n"}
-          E136DIR@CPS.SP.GOV.BR{"\n"}
-        </Text>
+        {infoContato.length > 0 ? (
+          infoContato.map(infoCont => (
+            <View key={infoCont.cont_cod} className={styles.informacoes}>
+              <Text style={styles.escola}>{infoCont.esc_nome}</Text>
+              <Text style={styles.informacoes}>{infoCont.esc_endereco}</Text>
+              <Text style={styles.informacoes}>{infoCont.esc_tel}</Text>
+              <Text style={styles.informacoes}>{infoCont.esc_cel}</Text>
+              <Text style={styles.informacoes}>{infoCont.esc_email}</Text>
+            </View>
+          ))
+        ) : (
+          <h1>Não há resultados para a requisição</h1>
+        )}
       </View>
 
       <View style={styles.viewEditar}>
         <Pressable
-          onPress={() => navigation.navigate("informacoescontatoEditar")}
+          onPress={() => navigation.navigate("informacoescontatoEditar", { contCod: cont_cod }) }
           style={({ pressed }) =>
             pressed ? [styles.botaoEditar, styles.btnPress] : styles.botaoEditar
           }
