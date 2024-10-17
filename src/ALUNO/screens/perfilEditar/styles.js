@@ -41,6 +41,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 60,
   },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: "center",
+  },
   icon: {
     position: "absolute",
     left: 28,
@@ -86,7 +90,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   texto: {
-    marginLeft: 70,
+    marginLeft: 50,
   },
   input: {
     width: "75%",
@@ -128,6 +132,53 @@ const styles = StyleSheet.create({
   seletores: {
     flexDirection: "row",
     alignItems: "flex-start",
+  },
+  radioOptions: {
+    marginTop: 4,
+    flexDirection: "row",
+    alignSelf: "center"
+  },
+  radioOption: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 4,
+  },
+  radioContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center"
+  },
+  sexo: {
+    marginTop: 10,
+    marginLeft: 10,
+  },
+  sexoForm: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignSelf: "center"
+  },
+  form: {
+    justifyContent: "center",
+    alignSelf: "center"
+  },
+  pickerContainer: {
+    width: "75%",
+    height: 44,
+    marginBottom: 0,
+    marginTop: 3,
+    borderWidth: 1,
+    borderColor: "#CCC",
+    borderRadius: 30,
+    alignSelf: "center",
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+  },
+  firstItem: {
+    color: "#999", // Cor para o primeiro item
+    fontSize: 14,
   },
   touchText: {
     color: "#FF735C",

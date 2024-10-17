@@ -1,6 +1,6 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { View, Text, Image, Pressable } from "react-native";
+import { View, Text, Image, Pressable, Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import {
   RetangGreen,
@@ -14,25 +14,26 @@ import IconeEditar from "../../../../assets/imagens_telas/editar_perfil.png";
 
 export default function InformacoesContato({ navigation }) {
   const [infoContato, setInfoContato] = useState([]);
+  const [contCod, setContCod] = useState(1);
 
   useEffect(() => {
     informacoes();
   }, []);
 
   async function informacoes() {
-    const dados = { cont_cod: 1 };
+    const dados = { cont_cod: contCod };
     try {
-      const response = await api.post('/contatos', dados);
+      const response = await api.post("/contatos", dados);
       console.log(response.data.dados);
       setInfoContato(response.data.dados);
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.mensagem + '\n' + error.response.data.dados);
+        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
       } else {
-        alert('Erro no front-end' + '\n' + error);
+        alert("Erro no front-end" + "\n" + error);
       }
     }
-  };
+  }
 
   return (
     <View style={styles.container}>
@@ -51,9 +52,10 @@ export default function InformacoesContato({ navigation }) {
           <Text style={styles.paragraph}>Informações de Contato</Text>
         </View>
         <Image source={imgContato} style={styles.imgcontato} />
+
         {infoContato.length > 0 ? (
-          infoContato.map(infoCont => (
-            <View key={infoCont.cont_cod} className={styles.informacoes}>
+          infoContato.map((infoCont) => (
+            <View key={infoCont.cont_cod} style={styles.informacoes}>
               <Text style={styles.escola}>{infoCont.esc_nome}</Text>
               <Text style={styles.informacoes}>{infoCont.esc_endereco}</Text>
               <Text style={styles.informacoes}>{infoCont.esc_tel}</Text>
@@ -62,13 +64,15 @@ export default function InformacoesContato({ navigation }) {
             </View>
           ))
         ) : (
-          <h1>Não há resultados para a requisição</h1>
+          <Text>Não há resultados para a requisição</Text>
         )}
       </View>
 
       <View style={styles.viewEditar}>
         <Pressable
-          onPress={() => navigation.navigate("informacoescontatoEditar", { contCod: cont_cod }) }
+          onPress={() =>
+            navigation.navigate("informacoescontatoEditar", { contCod })
+          }
           style={({ pressed }) =>
             pressed ? [styles.botaoEditar, styles.btnPress] : styles.botaoEditar
           }

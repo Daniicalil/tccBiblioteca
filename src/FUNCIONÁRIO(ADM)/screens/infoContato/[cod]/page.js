@@ -1,6 +1,6 @@
 
 // import { produtos } from '../../../mocks/dados';
-import InfoContatoEditar from '../../infoContatoEditar/page';
+import InformacoesContatoEditar from "../../infoContatoEditar";
 
 export default function InfoCod({ params }) {
 
@@ -8,7 +8,7 @@ export default function InfoCod({ params }) {
 
     return (
 
-        <InfoContatoEditar codInfo={codInfo} />
+        <InformacoesContatoEditar codInfo={codInfo} />
 
     );
 }

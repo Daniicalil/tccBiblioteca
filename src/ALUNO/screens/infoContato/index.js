@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { ScrollView, View, Text, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
@@ -52,7 +52,7 @@ export default function InformacoesContato({ navigation }) {
         <Image source={imgContato} style={styles.imgcontato} />
 
         {infoContato.length > 0 ? (
-          infoContato.map(infoCont => (
+          infoContato.map((infoCont) => (
             <View key={infoCont.cont_cod} className={styles.informacoes}>
               <Text style={styles.escola}>{infoCont.esc_nome}</Text>
               <Text style={styles.informacoes}>{infoCont.esc_endereco}</Text>
@@ -62,7 +62,7 @@ export default function InformacoesContato({ navigation }) {
             </View>
           ))
         ) : (
-          <h1>Não há resultados para a requisição</h1>
+          <Text>Não há resultados para a requisição</Text>
         )}
       </View>
     </ScrollView>

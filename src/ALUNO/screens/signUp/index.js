@@ -396,13 +396,6 @@ export default function SignUp({ navigation }) {
           </View>
 
           <View style={styles.pickerContainer}>
-            {/* <View
-              className={[
-                valida.cur_cod.validado ? styles.success : styles.error,
-                styles.valSelectCursos
-              ]}
-              id="valSelectCursos"
-            > */}
             <View className={styles.radioOptions}>
               <Picker
                 selectedValue={usuario.cur_cod}

@@ -153,6 +153,9 @@ const styles = StyleSheet.create({
   btnPress: {
     backgroundColor: "#3F7263",
   },
+  aviso: {
+    alignSelf: "center"
+  }
 });
 
 export default styles;

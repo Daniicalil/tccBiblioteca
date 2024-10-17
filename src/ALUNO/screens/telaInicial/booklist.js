@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   Pressable,
+  Alert
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
@@ -23,12 +24,12 @@ import styles from "./styles";
 import api from "../../../services/api";
 
 const searchOptions = [
-  { value: 'liv_nome', label: 'Livro' },
-  { value: 'aut_nome', label: 'Autor' },
-  { value: 'edt_nome', label: 'Editora' },
-  { value: 'gen_nome', label: 'Gênero' },
-  { value: 'liv_cod', label: 'Código' },
-  { value: 'curso', label: 'Curso' },
+  { value: "liv_nome", label: "Livro" },
+  { value: "aut_nome", label: "Autor" },
+  { value: "edt_nome", label: "Editora" },
+  { value: "gen_nome", label: "Gênero" },
+  { value: "liv_cod", label: "Código" },
+  { value: "curso", label: "Curso" },
 ];
 
 export default function BookList() {
@@ -107,15 +108,15 @@ export default function BookList() {
   const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
 
   const imageLoader = ({ src, width, quality }) => {
-    return `${apiUrl}:${apiPorta}${src}?w=${width}&q=${quality || 75}`
-  }
+    return `${apiUrl}:${apiPorta}${src}?w=${width}&q=${quality || 75}`;
+  };
 
   const [books, setBooks] = useState([]);
-  const [selectedSearchOption, setSelectedSearchOption] = useState('liv_nome');
-  const [livNome, setlivNome] = useState('')
+  const [selectedSearchOption, setSelectedSearchOption] = useState("liv_nome");
+  const [livNome, setlivNome] = useState("");
 
   function atLivNome(nome) {
-    setlivNome(nome) //Atualiza o estado livNome com o nome do livro que está sendo pesquisado.
+    setlivNome(nome); //Atualiza o estado livNome com o nome do livro que está sendo pesquisado.
   }
 
   useEffect(() => {
@@ -125,18 +126,18 @@ export default function BookList() {
   async function listaLivros() {
     const dados = {
       [selectedSearchOption]: livNome, // Dinamicamente envia o campo baseado no radio button
-      liv_nome: livNome
+      liv_nome: livNome,
     };
 
     try {
-      const response = await api.post('/rec_listar', dados);
+      const response = await api.post("/rec_listar", dados);
       console.log(response.data.dados);
       setBooks(response.data.dados);
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.mensagem + '\n' + error.response.data.dados);
+        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
       } else {
-        alert('Erro no front-end' + '\n' + error);
+        alert("Erro no front-end" + "\n" + error);
       }
     }
   }
@@ -171,12 +172,16 @@ export default function BookList() {
       <StatusBar backgroundColor="#3F7263" transLucent={false} />
       <RetangGreen />
       <RetangOrange />
-      <BarraPesquisa livNome={livNome} atLivNome={atLivNome} listaLivros={listaLivros} />
+      <BarraPesquisa
+        livNome={livNome}
+        atLivNome={atLivNome}
+        listaLivros={listaLivros}
+      />
 
       <View style={styles.radioContainer}>
         <RadioButton.Group
-          onValueChange={() => setSelectedSearchOption(value)}
-          checked={selectedSearchOption === value}
+          onValueChange={(newValue) => setSelectedSearchOption(newValue)} // Ajustar aqui
+          value={selectedSearchOption} // Definir valor corretamente aqui
         >
           <View style={styles.seletores}>
             <View style={styles.radioOption}>
@@ -227,9 +232,9 @@ export default function BookList() {
       <Text style={styles.paragraph}>Recomendações dos professores</Text>
       <FlatList
         style={Flatstyles.FlatList}
-        data={filteredBooks}
+        data={sortedBooks}
         renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()} // Use index as keyExtractor
+        keyExtractor={(item) => item.liv_cod.toString()} // Use index as keyExtractor
         numColumns={3}
         contentContainerStyle={styles.flatListContainer}
       />

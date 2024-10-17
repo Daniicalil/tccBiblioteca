@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   },
   inicio: {
     alignItems: "center",
+    width: "100%",
   },
   retangGreen: {
     width: "100%",
@@ -59,11 +60,13 @@ const styles = StyleSheet.create({
     width: 220,
     height: 140,
     paddingTop: 10,
+    alignSelf: "center",
   },
   escola: {
     fontWeight: "bold",
     fontSize: 16,
-    paddingTop: 20,
+    // paddingTop: 20,
+    width: "100%"
   },
   informacoes: {
     top: 20,
@@ -92,7 +95,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#3F7263",
   },
   informacoesInput: {
-    width: "85%",
+    width: "100%",
+    height: "auto",
     borderRadius: 30,
     borderColor: "#000",
     borderWidth: 1,
@@ -102,16 +106,24 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   escolaInput: {
-    width: "85%",
+    width: "100%",
+    height: "auto",
     borderRadius: 30,
     borderColor: "#000",
     borderWidth: 1,
-    padding: 10,
+    paddingTop: 12,
+    paddingLeft: 20,
     textAlignVertical: "top", // Alinha o texto no topo
     alignSelf: "center",
     marginBottom: 15,
-    marginTop: 15,
+    marginTop: 10,
   },
+  space: {
+    width: "100%",
+  },
+  inputs: {
+    width: "75%"
+  }
 });
 
 export default styles;
