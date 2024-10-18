@@ -75,7 +75,7 @@ export default function PerfilEditar({ codUsu }) {
       const { status } =
         await ImagePicker.requestMediaLibraryPermissionsAsync();
       if (status !== "granted") {
-        alert("Desculpe, precisamos de permissões para acessar a galeria!");
+        Alert.alert("Desculpe, precisamos de permissões para acessar a galeria!");
       }
     })();
   }, []);
@@ -143,9 +143,9 @@ export default function PerfilEditar({ codUsu }) {
       console.log(response.data);
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+        Alert.alert(error.response.data.mensagem + "\n" + error.response.data.dados);
       } else {
-        alert("Erro no front-end" + "\n" + error);
+        Alert.alert("Erro no front-end" + "\n" + error);
       }
     }
   }
@@ -193,7 +193,7 @@ export default function PerfilEditar({ codUsu }) {
       !cur_nome ||
       !usu_sexo
     ) {
-      alert("Todos os campos devem ser preenchidos");
+      Alert.alert("Todos os campos devem ser preenchidos");
       return;
     }
 

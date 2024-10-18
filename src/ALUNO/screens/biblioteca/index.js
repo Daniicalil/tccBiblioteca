@@ -251,46 +251,26 @@ export default function Biblioteca() {
 
       <View style={styles.radioContainer}>
         <RadioButton.Group
-          onValueChange={(value) => setSelectedSearchOption(value)}
+          onValueChange={setSelectedSearchOption}
           value={selectedSearchOption}
         >
           <View style={styles.seletores}>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="liv_nome"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-                checked={selectedSearchOption === "liv_nome"}
-              />
-              <Text style={styles.radioLabel}>Livro</Text>
-            </View>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="aut_nome"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-                checked={selectedSearchOption === "aut_nome"}
-              />
-              <Text style={styles.radioLabel}>Autor</Text>
-            </View>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="edt_nome"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-                checked={selectedSearchOption === "edt_nome"}
-              />
-              <Text style={styles.radioLabel}>Editora</Text>
-            </View>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="liv_cod"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-                checked={selectedSearchOption === "liv_cod"}
-              />
-              <Text style={styles.radioLabel}>Código</Text>
-            </View>
+            {[
+              { label: 'Livro', value: 'liv_nome' },
+              { label: 'Autor', value: 'aut_nome' },
+              { label: 'Editora', value: 'edt_nome' },
+              { label: 'Código', value: 'liv_cod' },
+            ].map((option) => (
+              <View key={option.value} style={styles.radioOption}>
+                <RadioButton
+                  value={option.value}
+                  color="#FF735C"
+                  uncheckedColor="#CCC"
+                  checked={selectedSearchOption === option.value}
+                />
+                <Text style={styles.radioLabel}>{option.label}</Text>
+              </View>
+            ))}
           </View>
         </RadioButton.Group>
       </View>
