@@ -19,7 +19,7 @@ const Line = () => {
   return <View style={styles.line} />;
 };
 
-export default function InfoLivroBiblioteca({ route }) {
+export default function InfoLivroBiblioteca({ route, codLi }) {
   const navigation = useNavigation();
   const { book } = route.params;
 

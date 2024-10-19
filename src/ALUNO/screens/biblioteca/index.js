@@ -199,18 +199,19 @@ export default function Biblioteca() {
 
   useEffect(() => {
     listaLivros();
-  }, [books]);
+  }, []);
 
   async function listaLivros() {
+    const dados = { [selectedSearchOption]: livNome };
     try {
-      const response = await api.post("/livros");
+      const response = await api.post("/livros", dados);
       console.log(response.data.dados);
       setBooks(response.data.dados);
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+        Alert.alert(error.response.data.mensagem + "\n" + error.response.data.dados);
       } else {
-        alert("Erro no front-end" + "\n" + error);
+        Alert.alert("Erro no front-end" + "\n" + error);
       }
     }
   }
@@ -275,8 +276,12 @@ export default function Biblioteca() {
         </RadioButton.Group>
       </View>
 
+      const ListaDeLivros = ({ books }) => {
+        const sortedBooks = sortBooksAlphabetically(books);
+        return (
       <>
-        {sortBooksAlphabetically.length > 0 ? (
+      
+        {sortedBooks.length > 0 ? (
           <FlatList
             style={Flatstyles.FlatList}
             data={sortBooksAlphabetically(books)} // Usar a lista de livros ordenada
@@ -291,6 +296,8 @@ export default function Biblioteca() {
           </Text>
         )}
       </>
+        )
+}
     </View>
   );
 }
