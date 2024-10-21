@@ -31,7 +31,36 @@ export default function InformacoesReserva({ navigation, route }) {
   //   },
   // ]);
 
+  const [reserva, setReserva] = useState([]);
   const [selectedSearchOption, setSelectedSearchOption] = useState('liv_nome');
+
+  const [livNome, setlivNome] = useState('')
+
+  function atLivNome(nome) {
+    setlivNome(nome)
+  }
+
+  useEffect(() => {
+    listaLivros();
+  }, []);
+
+  async function listaLivros() {
+    const dados = {
+      usu_cod: 18,
+      [selectedSearchOption]: livNome
+    };
+    try {
+      const response = await api.post('/reservas', dados);
+      console.log(response.data.dados);
+      setReserva(response.data.dados);
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.mensagem + '\n' + error.response.data.dados);
+      } else {
+        alert('Erro no front-end' + '\n' + error);
+      }
+    }
+  }
 
   const { startDate = null, endDate = null } = route.params || {};
 
@@ -76,7 +105,7 @@ export default function InformacoesReserva({ navigation, route }) {
           />
           <Text style={styles.paragraph}>Informações do livro reservado</Text>
         </View>
-        <BarraPesquisa />
+        <BarraPesquisa livNome={livNome} atLivNome={atLivNome} listaLivros={listaLivros} />
 
         <View style={styles.radioContainer}>
           <RadioButton.Group
@@ -84,16 +113,22 @@ export default function InformacoesReserva({ navigation, route }) {
             value={selectedSearchOption} liv_nome aut_nome emp_data_emp
           >
             <View style={styles.seletores}>
-            {[
-              { label: "Livro", value: "liv_nome" },
-              { label: "Autor", value: "aut_nome" },
-              { label: "Data da reserva", value: "emp_data_emp" },
-              { label: "Código", value: "liv_cod" },
-            ].map((option) => (
-              <View style={styles.radioOption}>
-                <RadioButton value="liv_nome" color="#FF735C" />
-                <Text style={styles.radioLabel}>Livro</Text>
-              </View>
+              {[
+                { label: "Livro", value: "liv_nome" },
+                { label: "Autor", value: "aut_nome" },
+                { label: "Data da reserva", value: "emp_data_emp" },
+                { label: "Código", value: "liv_cod" },
+              ].map((option) => (
+                <View key={option.value} style={styles.radioOption}>
+                  <RadioButton
+                    value={option.value}
+                    color="#FF735C"
+                    uncheckedColor="#CCC"
+                    checked={selectedSearchOption === option.value}
+                  />
+                  <Text style={styles.radioLabel}>{option.label}</Text>
+                </View>
+              ))}
             </View>
           </RadioButton.Group>
         </View>
@@ -160,9 +195,9 @@ export default function InformacoesReserva({ navigation, route }) {
                           pressed
                             ? [styles.buttonConf, styles.btnConfPress]
                             : [
-                                styles.buttonConf,
-                                { opacity: !isDateAvailable ? 0.5 : 1 },
-                              ]
+                              styles.buttonConf,
+                              { opacity: !isDateAvailable ? 0.5 : 1 },
+                            ]
                         }
                         onPress={
                           isDateAvailable ? () => handleConfirm(index) : null
@@ -179,9 +214,9 @@ export default function InformacoesReserva({ navigation, route }) {
                           pressed
                             ? [styles.buttonCanc, styles.btnCancPress]
                             : [
-                                styles.buttonCanc,
-                                { opacity: !isDateAvailable ? 0.5 : 1 },
-                              ]
+                              styles.buttonCanc,
+                              { opacity: !isDateAvailable ? 0.5 : 1 },
+                            ]
                         }
                         onPress={
                           isDateAvailable ? () => handleCancel(index) : null
