@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { View, Text, TextInput, Pressable, Alert, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  Alert,
+  ScrollView,
+} from "react-native";
 import { RadioButton, Avatar } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
 import {
@@ -19,14 +26,8 @@ import useBotaoConfirmarAcao from "../../../componentes/alertConfirmacao";
 import defaultProfileImage from "../../../../assets/imagens_telas/perfil.jpg"; // Imagem padrão
 
 export default function PerfilEditar({ codUsu }) {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
-
-  const imageLoader = ({ src, width, quality }) => {
-    return `${apiUrl}:${apiPorta}${src}?w=${width}&q=${quality || 75}`;
-  };
-
   const navigation = useNavigation();
+
   const [cursos, setCursos] = useState([]);
   const [perfilEdt, setPerfilEdt] = useState({
     usu_cod: "",
@@ -75,7 +76,9 @@ export default function PerfilEditar({ codUsu }) {
       const { status } =
         await ImagePicker.requestMediaLibraryPermissionsAsync();
       if (status !== "granted") {
-        Alert.alert("Desculpe, precisamos de permissões para acessar a galeria!");
+        Alert.alert(
+          "Desculpe, precisamos de permissões para acessar a galeria!"
+        );
       }
     })();
   }, []);
@@ -89,7 +92,9 @@ export default function PerfilEditar({ codUsu }) {
     });
 
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      console.log("Selected image URI:", result.assets[0].uri);
+      setImageSrc(result.assets[0].uri); // Use this line for the selected image URI
+      setPerfilEdt((prev) => ({ ...prev, usu_foto: result.assets[0].uri }));
     }
   };
 
@@ -101,13 +106,10 @@ export default function PerfilEditar({ codUsu }) {
     });
 
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      console.log("Selected image URI:", result.assets[0].uri);
+      setImageSrc(result.assets[0].uri); // Use this line for the selected image URI
+      setPerfilEdt((prev) => ({ ...prev, usu_foto: result.assets[0].uri }));
     }
-  };
-
-  const handleImageChange = (imageURL) => {
-    setImageSrc(imageURL);
-    setPerfilEdt((prev) => ({ ...prev, usu_foto: imageURL }));
   };
 
   const handleImagePick = () => {
@@ -143,9 +145,11 @@ export default function PerfilEditar({ codUsu }) {
       console.log(response.data);
     } catch (error) {
       if (error.response) {
-        Alert.alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+        Alert.alert(
+          error.response.data.mensagem + "\n" + error.response.data.dados
+        );
       } else {
-        Alert.alert("Erro no front-end" + "\n" + error);
+        alert("Erro no front-end" + "\n" + error);
       }
     }
   }
@@ -161,11 +165,12 @@ export default function PerfilEditar({ codUsu }) {
         if (response.data.sucesso) {
           const edtPerfilApi = response.data.dados[0];
           setPerfilEdt(edtPerfilApi);
+          setImageSrc(edtPerfilApi.usu_foto || defaultProfileImage);
         } else {
-          error(response.data.mensagem);
+          Alert.alert(response.data.mensagem);
         }
       } catch (error) {
-        error(
+        alert(
           error.response ? error.response.data.mensagem : "Erro no front-end"
         );
       }
@@ -173,7 +178,6 @@ export default function PerfilEditar({ codUsu }) {
 
     handleCarregaPerfil();
   }, []);
-  
 
   const handleSave = async () => {
     const {
@@ -197,8 +201,6 @@ export default function PerfilEditar({ codUsu }) {
       return;
     }
 
-    setIsSaving(true); // Inicia o salvamento
-
     try {
       const response = await api.patch(`/usuarios/${perfilEdt.usu_cod}`, {
         ...perfilEdt,
@@ -216,23 +218,9 @@ export default function PerfilEditar({ codUsu }) {
           ? error.response.data.mensagem
           : "Erro ao salvar informações. Tente novamente."
       );
-    } finally {
-      setIsSaving(false); // Finaliza o salvamento
     }
   };
   // console.log(livro);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setPerfilEdt((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const sexo = [
-    { label: "Feminino", value: "0" },
-    { label: "Masculino", value: "1" },
-    { label: "Neutro", value: "2" },
-    { label: "Padrão", value: "3" },
-  ];
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -259,9 +247,8 @@ export default function PerfilEditar({ codUsu }) {
               <Avatar.Image
                 size={120}
                 color="#3F7263"
-                source={imageSrc ? { uri: imageSrc } : { uri: defaultProfileImage }}
+                source={{ uri: imageSrc || defaultProfileImage }}
                 style={styles.fotoPadraoPerfil}
-                loader={imageLoader}
               />
               <Pressable
                 onPress={handleImagePick}
@@ -274,92 +261,76 @@ export default function PerfilEditar({ codUsu }) {
                 <Entypo name="camera" size={22} color="black" />
               </Pressable>
             </View>
-
             <Text style={styles.texto}>RM:</Text>
             <View className={styles.inputGroup}>
               <TextInput
                 style={styles.input}
                 value={perfilEdt.usu_rm}
-                onChange={(e) => {
-                  const value = Number(e.target.value);
-                  setPerfilEdt({
-                    ...perfilEdt,
-                    usu_rm: isNaN(value) ? 0 : value,
-                  });
-                }}
                 editable={false}
               />
             </View>
-
             <Text style={styles.texto}>Nome social:</Text>
             <View className={styles.inputGroup}>
               <TextInput
                 style={styles.input}
                 value={perfilEdt.usu_social}
-                onChange={(e) =>
-                  setPerfilEdt({ ...perfilEdt, usu_social: e.target.value })
+                onChangeText={(text) =>
+                  setPerfilEdt((prev) => ({ ...prev, usu_social: text }))
                 }
               />
             </View>
-
             <Text style={styles.texto}>Nome completo:</Text>
             <View className={styles.inputGroup}>
               <TextInput
                 style={styles.input}
                 value={perfilEdt.usu_nome}
-                onChange={(e) =>
-                  setPerfilEdt({ ...perfilEdt, usu_nome: e.target.value })
-                }
+                // onChangeText={(text) =>
+                //   setPerfilEdt((prev) => ({ ...prev, usu_nome: text }))
+                // }
                 editable={false}
               />
             </View>
-
             <Text style={styles.texto}>E-mail:</Text>
             <View className={styles.inputGroup}>
               <TextInput
                 style={styles.input}
                 value={perfilEdt.usu_email}
-                onChange={(e) =>
-                  setPerfilEdt({ ...perfilEdt, usu_email: e.target.value })
+                onChangeText={(text) =>
+                  setPerfilEdt((prev) => ({ ...prev, usu_email: text }))
                 }
               />
             </View>
-
             <Text style={styles.texto}>Sel. curso técnico ou médio</Text>
             <View style={styles.pickerContainer}>
-              {/* <View
-              className={[
-                valida.cur_cod.validado ? styles.success : styles.error,
-                styles.valSelectCursos
-              ]}
-              id="valSelectCursos"
-            > */}
               <View className={styles.radioOptions}>
                 <Picker
                   selectedValue={perfilEdt.cur_cod}
                   style={styles.radioOption}
-                  onValueChange={(value) =>
-                    setPerfilEdt((prev) => ({ ...prev, cur_cod: value }))
+                  onValueChange={(itemValue) =>
+                    setPerfilEdt((prev) => ({ ...prev, cur_cod: itemValue }))
                   }
                   value={perfilEdt.cur_cod}
                 >
                   <Picker.Item
                     label="Sel. curso técnico ou médio"
-                    value={null}
+                    value=""
                     enabled={false}
                     style={styles.firstItem}
                   />
-                  {cursos.map((cur) => (
-                    <Picker.Item
-                      key={cur.cur_cod}
-                      label={cur.cur_nome}
-                      value={cur.cur_cod}
-                      style={styles.defaultItem}
-                    />
-                  ))}
+                  {cursos.length > 0 ? (
+                    cursos.map((cur) => (
+                      <Picker.Item
+                        key={cur.cur_cod}
+                        label={cur.cur_nome}
+                        value={cur.cur_cod}
+                        style={styles.defaultItem}
+                      />
+                    ))
+                  ) : (
+                    <Picker.Item label="Nenhum curso disponível" value="" />
+                  )}
                 </Picker>
               </View>
-              {/* </View> */}
             </View>
 
             <View style={styles.form}>
@@ -371,18 +342,23 @@ export default function PerfilEditar({ codUsu }) {
                 value={perfilEdt.usu_sexo}
               >
                 <View style={styles.sexoForm}>
-                  {sexo.map((sex) => (
-                    <View key={sex.value} style={styles.radioContainer}>
-                      <RadioButton value={sex.value} />
+                  {[
+                    { label: "Feminino", value: "0" },
+                    { label: "Masculino", value: "1" },
+                    { label: "Neutro", value: "2" },
+                    { label: "Padrão", value: "3" },
+                  ].map((opcao) => (
+                    <View key={opcao.value} style={styles.radioContainer}>
+                      <RadioButton value={opcao.value} />
                       <Text style={styles.label}>
-                        {sex.label.charAt(0).toUpperCase() + sex.label.slice(1)}
+                        {opcao.label.charAt(0).toUpperCase() +
+                          opcao.label.slice(1)}
                       </Text>
                     </View>
                   ))}
                 </View>
               </RadioButton.Group>
             </View>
-
             <Pressable
               onPress={() => navigation.replace("esqueceuSenha1")}
               style={({ pressed }) =>
@@ -393,7 +369,6 @@ export default function PerfilEditar({ codUsu }) {
             >
               <Text style={styles.touchText}>Esqueceu a senha?</Text>
             </Pressable>
-
             <View style={styles.viewSalvar}>
               <Pressable
                 onPress={showConfirmAlert}

@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, View, Text, Image } from "react-native";
+import { ScrollView, View, Text, Image, Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { RadioButton } from "react-native-paper";
 
@@ -16,6 +16,8 @@ import Verity from "../../../../assets/Capa_dos_livros/verity.jpg";
 import OsMiseraveis from "../../../../assets/Capa_dos_livros/os miseráveis.jpg";
 
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
+
+import api from "../../../services/api";
 import styles from "./styles";
 
 const Line = () => {
@@ -23,51 +25,78 @@ const Line = () => {
 };
 
 export default function Emprestimos({ navigation }) {
-  const [emprestimos] = useState([
-    {
-      livro: {
-        liv_foto_capa: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
-        liv_nome: "O diário de Anne Frank",
-        aut_nome: "Anne Frank",
-      },
-      usu_nome: "Clara Oliveira da Silva",
-      dataReserva: "12/03/2024",
-      periodo: {
-        inicio: "12/03/2024",
-        fim: "27/03/2024",
-      },
-    },
-    {
-      livro: {
-        liv_foto_capa: require("../../../../assets/Capa_dos_livros/verity.jpg"),
-        liv_nome: "Verity",
-        aut_nome: "Colleen Hoover",
-      },
-      usu_nome: "Ana Carolina da Silva Santos",
-      dataReserva: "10/03/2024",
-      periodo: {
-        inicio: "10/03/2024",
-        fim: "25/03/2024",
-      },
-    },
-    {
-      livro: {
-        liv_foto_capa: require("../../../../assets/Capa_dos_livros/os miseráveis.jpg"),
-        liv_nome: "Os Miseráveis",
-        aut_nome: "Victor Hugo",
-      },
-      usu_nome: "João Pedro Oliveira Souza",
-      dataReserva: "25/03/2024",
-      periodo: {
-        inicio: "25/03/2024",
-        fim: "09/04/2024",
-      },
-    },
-  ]);
+  // const [emprestimos] = useState([
+  //   {
+  //     livro: {
+  //       liv_foto_capa: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
+  //       liv_nome: "O diário de Anne Frank",
+  //       aut_nome: "Anne Frank",
+  //     },
+  //     usu_nome: "Clara Oliveira da Silva",
+  //     dataReserva: "12/03/2024",
+  //     periodo: {
+  //       inicio: "12/03/2024",
+  //       fim: "27/03/2024",
+  //     },
+  //   },
+  //   {
+  //     livro: {
+  //       liv_foto_capa: require("../../../../assets/Capa_dos_livros/verity.jpg"),
+  //       liv_nome: "Verity",
+  //       aut_nome: "Colleen Hoover",
+  //     },
+  //     usu_nome: "Ana Carolina da Silva Santos",
+  //     dataReserva: "10/03/2024",
+  //     periodo: {
+  //       inicio: "10/03/2024",
+  //       fim: "25/03/2024",
+  //     },
+  //   },
+  //   {
+  //     livro: {
+  //       liv_foto_capa: require("../../../../assets/Capa_dos_livros/os miseráveis.jpg"),
+  //       liv_nome: "Os Miseráveis",
+  //       aut_nome: "Victor Hugo",
+  //     },
+  //     usu_nome: "João Pedro Oliveira Souza",
+  //     dataReserva: "25/03/2024",
+  //     periodo: {
+  //       inicio: "25/03/2024",
+  //       fim: "09/04/2024",
+  //     },
+  //   },
+  // ]);
 
-  const [selectedOption, setSelectedOption] = useState("liv_nome"); // Estado para controle de seleção
+  const [selectedSearchOption, setSelectedSearchOption] = useState("usu_nome");
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [emprestimo, setEmprestimo] = useState([]);
+
+  const [livNome, setlivNome] = useState("");
+
+  function atLivNome(nome) {
+    setlivNome(nome);
+  }
+
+  useEffect(() => {
+    listaLivros();
+  }, []);
+
+  async function listaLivros() {
+    const dados = { [selectedSearchOption]: livNome };
+    try {
+      const response = await api.post("/emprestimos", dados);
+      console.log(response.data.dados);
+      setEmprestimo(response.data.dados);
+    } catch (error) {
+      if (error.response) {
+        Alert.alert(
+          error.response.data.mensagem + "\n" + error.response.data.dados
+        );
+      } else {
+        alert("Erro no front-end" + "\n" + error);
+      }
+    }
+  }
 
   return (
     <ScrollView style={styles.container}>
@@ -85,80 +114,68 @@ export default function Emprestimos({ navigation }) {
           />
           <Text style={styles.paragraph}>Empréstimos</Text>
         </View>
-        <BarraPesquisa />
+        <BarraPesquisa
+          livNome={livNome}
+          atLivNome={atLivNome}
+          listaLivros={listaLivros}
+        />
 
         <View style={styles.radioContainer}>
           <RadioButton.Group
-            onValueChange={(value) => setSelectedOption(value)}
-            value={selectedOption}
+            onValueChange={setSelectedSearchOption}
+            value={selectedSearchOption}
           >
             <View style={styles.seletores}>
-              <View style={styles.radioOption}>
-                <RadioButton
-                  value="liv_nome"
-                  color="#FF735C"
-                  uncheckedColor="#CCC"
-                />
-                <Text style={styles.radioLabel}>Livro</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton
-                  value="aut_nome"
-                  color="#FF735C"
-                  uncheckedColor="#CCC"
-                />
-                <Text style={styles.radioLabel}>Autor</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton
-                  value="usu_nome"
-                  color="#FF735C"
-                  uncheckedColor="#CCC"
-                />
-                <Text style={styles.radioLabel}>Usuário</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton
-                  value="dataReserva"
-                  color="#FF735C"
-                  uncheckedColor="#CCC"
-                />
-                <Text style={styles.radioLabel}>Data da reserva</Text>
-              </View>
+              {[
+                { label: "Usuário", value: "usu_nome" },
+                { label: "Data da reserva", value: "emp_data_emp" },
+                { label: "Livro", value: "liv_nome" },
+                { label: "Autor", value: "aut_nome" },
+              ].map((option) => (
+                <View key={option.value} style={styles.radioOption}>
+                  <RadioButton
+                    value={option.value}
+                    color="#FF735C"
+                    uncheckedColor="#CCC"
+                    checked={selectedSearchOption === option.value}
+                  />
+                  <Text style={styles.radioLabel}>{option.label}</Text>
+                </View>
+              ))}
             </View>
           </RadioButton.Group>
         </View>
 
-        {emprestimos.length === 0 ? (
-          <Text style={styles.paragraph}>Nenhum empréstimo disponível.</Text>
-        ) : (
-          emprestimos.map((infos, index) => (
-            <View key={index} style={styles.lineSquare}>
+        {emprestimo.length > 0 ? (
+          emprestimo.map(emp => (
+            <View key={emp.usu_cod} style={styles.lineSquare}>
               <View style={styles.infoLivro}>
                 <Image
-                  source={infos.livro.liv_foto_capa}
+                  source={emp.liv_foto_capa}
                   style={styles.capaLivros}
                 />
                 <View style={styles.sectionTitle}>
-                  <Text style={styles.titleLivro}>{infos.livro.liv_nome}</Text>
-                  <Text style={styles.autor}>Por: {infos.livro.aut_nome}</Text>
+                  <Text style={styles.titleLivro}>{emp.liv_nome}</Text>
+                  <Text style={styles.autor}>Por: {emp.aut_nome}</Text>
                 </View>
               </View>
               <Line />
               <View style={styles.dadosReservado}>
                 <Text style={styles.reservado}>
-                  Reservado por: {infos.usu_nome}
+                  Reservado por: {emp.usu_nome}
                 </Text>
                 <Text style={styles.dataReserva}>
-                  Reserva realizada no dia: {infos.dataReserva}
+                  Reserva realizada no dia: {emp.emp_data_emp}
                 </Text>
                 <Text style={styles.periodoReserva}>
-                  Período da reserva: {infos.periodo.inicio} até{" "}
-                  {infos.periodo.fim}
+                  Período da reserva: {emp.periodo.inicio} até{" "}
+                  {emp.periodo.fim}
                 </Text>
               </View>
             </View>
           ))
+        ) : (
+          <Text>Não há resultados para a requisição</Text>
         )}
       </View>
     </ScrollView>

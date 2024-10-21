@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { ScrollView, View, Text, Pressable, Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
@@ -11,6 +11,8 @@ import {
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
+
+import api from "../../../services/api";
 import styles from "./styles";
 import useBotaoConfirmarAcao from "../../../componentes/alertConfirmacao";
 
@@ -18,36 +20,39 @@ const Line = () => {
   return <View style={styles.line} />;
 };
 
+const situacao = ["Ativo", "Inativo", "Pendente"];
+
 export default function Solicitacao({ navigation }) {
-  const [infoUsuario, setInfoUsuario] = useState([
-    {
-      usu_nome: "Clara Oliveira da Silva",
-      usu_email: "clara.oliveira.silva@example.com",
-      usu_rm: "550726",
-      usu_cad: "13/03/2024",
-      optionLevel: "",
-      confirmedLevel: "",
-      isSelected: false,
-    },
-    {
-      usu_nome: "Ana Beatriz Silva",
-      usu_email: "ana.silva@example.com",
-      usu_rm: "782134",
-      usu_cad: "15/03/2024",
-      optionLevel: "",
-      confirmedLevel: "",
-      isSelected: false,
-    },
-    {
-      usu_nome: "Ana Carolina Silva",
-      usu_email: "ana.carolina@exemplo.com",
-      usu_rm: "483726",
-      usu_cad: "18/03/2024",
-      optionLevel: "",
-      confirmedLevel: "",
-      isSelected: false,
-    },
-  ]);
+  // const [infoUsuario, setInfoUsuario] = useState([
+  //   {
+  //     usu_nome: "Clara Oliveira da Silva",
+  //     usu_email: "clara.oliveira.silva@example.com",
+  //     usu_rm: "550726",
+  //     usu_cad: "13/03/2024",
+  //     optionLevel: "",
+  //     confirmedLevel: "",
+  //     isSelected: false,
+  //   },
+  //   {
+  //     usu_nome: "Ana Beatriz Silva",
+  //     usu_email: "ana.silva@example.com",
+  //     usu_rm: "782134",
+  //     usu_cad: "15/03/2024",
+  //     optionLevel: "",
+  //     confirmedLevel: "",
+  //     isSelected: false,
+  //   },
+  //   {
+  //     usu_nome: "Ana Carolina Silva",
+  //     usu_email: "ana.carolina@exemplo.com",
+  //     usu_rm: "483726",
+  //     usu_cad: "18/03/2024",
+  //     optionLevel: "",
+  //     confirmedLevel: "",
+  //     isSelected: false,
+  //   },
+  // ]);
+
   const handleCheckboxChange = (index) => {
     const updatedInfoUsuario = [...infoUsuario];
     updatedInfoUsuario[index].isSelected =
@@ -55,40 +60,97 @@ export default function Solicitacao({ navigation }) {
     setInfoUsuario(updatedInfoUsuario);
   };
 
-  const [selectedOption, setSelectedOption] = useState("usu_nome"); // Estado para controle de seleção
-
+  const [selectedSearchOption, setSelectedSearchOption] = useState("usu_nome");
+  const [selectedUsers, setSelectedUsers] = useState(new Set());
+  const [usuarioTipo, setUsuarioTipo] = useState("");
+  const [showModalConfirm, setShowModalConfirm] = useState(false);
+  const [solicitacoesFiltradas, setSolicitacoesFiltradas] = useState([]);
+  const [listaUsuarios, setListaUsuarios] = useState([]);
   const [optionLevel, setOptionLevel] = useState("");
-  const [confirmedLevel, setConfirmedLevel] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const [livNome, setlivNome] = useState("");
 
-  const handleConfirm = (index) => {
-    const updatedInfoUsuario = [...infoUsuario];
-
-    if (updatedInfoUsuario[index].optionLevel === "") {
-      Alert.alert("Erro", "Por favor, selecione um nível de acesso.");
-    } else {
-      Alert.alert(
-        "Confirmação",
-        "Você realmente deseja confirmar este nível para este usuário?",
-        [
-          {
-            text: "Cancelar",
-            style: "cancel",
-          },
-          {
-            text: "Confirmar",
-            onPress: () => {
-              updatedInfoUsuario[index].confirmedLevel =
-                updatedInfoUsuario[index].optionLevel;
-              setInfoUsuario(updatedInfoUsuario);
-            },
-          },
-        ]
+  const handleConfirm = async () => {
+    if (selectedUsers.size === 0) {
+      alert(
+        "Nenhum usuário selecionado. Por favor, selecione um usuário antes de confirmar."
       );
+      return;
+    }
+
+    const updatedData = Array.from(selectedUsers).map((usu_cod) => ({
+      usu_cod,
+      usu_tipo: parseInt(usuarioTipo),
+      usu_ativo: 1,
+      usu_aprovado: 1,
+    }));
+
+    try {
+      await api.patch("/analizarUcu", { usuarios: updatedData });
+      setShowModalConfirm(false);
+      router.push("../usuarios/usu_pendentes");
+    } catch (error) {
+      alert("Erro ao atualizar usuários.");
+      console.error(error);
     }
   };
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const toggleUserSelection = (usu_cod) => {
+    setSelectedUsers((prevSelectedUsers) => {
+      const updatedSelection = new Set(prevSelectedUsers);
+      if (updatedSelection.has(usu_cod)) {
+        updatedSelection.delete(usu_cod);
+      } else {
+        updatedSelection.add(usu_cod);
+      }
+      return updatedSelection;
+    });
+  };
+
+  useEffect(() => {
+    async function handleListaUsuarios() {
+      try {
+        const response = await api.post("/usu_pendentes");
+        setListaUsuarios(response.data.dados);
+        setSolicitacoesFiltradas(response.data.dados);
+      } catch (error) {
+        alert("Erro ao buscar usuários pendentes.");
+      }
+    }
+    handleListaUsuarios();
+  }, []);
+
+  const filtrarSolicitacoes = (situacao) => {
+    const filtradas = listaUsuarios.filter(
+      (solicit) => solicit.situacao === situacao
+    );
+    setSolicitacoesFiltradas(filtradas);
+  };
+
+  function atLivNome(nome) {
+    setlivNome(nome);
+  }
+
+  useEffect(() => {
+    listaLivros();
+  }, []);
+
+  async function listaLivros() {
+    const dados = { [selectedSearchOption]: livNome };
+    try {
+      const response = await api.post("/emprestimos", dados);
+      console.log(response.data.dados);
+      setEmprestimo(response.data.dados);
+    } catch (error) {
+      if (error.response) {
+        Alert.alert(
+          error.response.data.mensagem + "\n" + error.response.data.dados
+        );
+      } else {
+        alert("Erro no front-end" + "\n" + error);
+      }
+    }
+  }
 
   return (
     <ScrollView style={styles.container}>
@@ -105,43 +167,37 @@ export default function Solicitacao({ navigation }) {
           />
           <Text style={styles.paragraph}>Solicitações de usuários</Text>
         </View>
-        <BarraPesquisa />
+        <BarraPesquisa
+          livNome={livNome}
+          atLivNome={atLivNome}
+          listaLivros={listaLivros}
+        />
 
         <View style={styles.radioContainer}>
           <RadioButton.Group
-            onValueChange={(value) => setSelectedOption(value)}
-            value={selectedOption}
+            onValueChange={setSelectedSearchOption}
+            value={selectedSearchOption}
           >
             <View style={styles.seletores}>
-              <View style={styles.radioOption}>
-                <RadioButton
-                  value="usu_cad"
-                  color="#FF735C"
-                  uncheckedColor="#CCC"
-                />
-                <Text style={styles.radioLabel}>Data de cadastro</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton
-                  value="usu_nome"
-                  color="#FF735C"
-                  uncheckedColor="#CCC"
-                />
-                <Text style={styles.radioLabel}>Usuário</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton
-                  value="usu_rm"
-                  color="#FF735C"
-                  uncheckedColor="#CCC"
-                />
-                <Text style={styles.radioLabel}>RM</Text>
-              </View>
+              {[
+                { label: "Usuário", value: "usu_nome" },
+                { label: "Tipo de usuário", value: "usu_tipo" },
+                { label: "RM", value: "usu_rm" },
+              ].map((option) => (
+                <View key={option.value} style={styles.radioOption}>
+                  <RadioButton
+                    value={option.value}
+                    color="#FF735C"
+                    uncheckedColor="#CCC"
+                    checked={selectedSearchOption === option.value}
+                  />
+                  <Text style={styles.radioLabel}>{option.label}</Text>
+                </View>
+              ))}
             </View>
           </RadioButton.Group>
         </View>
 
-        {/* Mover o Picker para cá, logo abaixo dos RadioButtons */}
         <View style={styles.buttonsSelecao}>
           <View style={styles.pickerContainer}>
             <Picker
@@ -157,12 +213,10 @@ export default function Solicitacao({ navigation }) {
               }}
             >
               <Picker.Item label="Selecione uma opção" value="" />
-              <Picker.Item
-                label="Funcionário(a) - ADM"
-                value="Funcionário(a) - ADM"
-              />
-              <Picker.Item label="Professor(a)" value="Professor(a)" />
-              <Picker.Item label="Aluno(a)" value="Aluno(a)" />
+              <Picker.Item label="Funcionário(a) - ADM" value="2" />
+              <Picker.Item label="Professor(a)" value="1" />
+              <Picker.Item label="Aluno(a)" value="0" />
+              <Picker.Item label="Negar acesso" value="5" />
             </Picker>
           </View>
 
@@ -172,37 +226,37 @@ export default function Solicitacao({ navigation }) {
                 ? [styles.buttonConf, styles.btnConfPress]
                 : styles.buttonConf
             }
-            onPress={() => {
-              infoUsuario.forEach((_, index) => {
-                handleConfirm(index); // Chama a confirmação para cada usuário
-              });
-            }}
+            onPress={handleConfirm}
           >
             <Text style={styles.buttonTextConfSel}>Confirmar</Text>
           </Pressable>
         </View>
 
-        {infoUsuario.map((infosUsu, index) => (
-          <View key={infosUsu.usu_rm} style={styles.lineSquare}>
-            <View style={styles.dados}>
-              <Text style={styles.dataCadastro}>
-                Cadastro realizado no dia: {infosUsu.usu_cad}
-              </Text>
-              <Text style={styles.nome}>Nome: {infosUsu.usu_nome}</Text>
-              <Text style={styles.nome}>RM: {infosUsu.usu_rm}</Text>
-              <Text style={styles.email}>E-mail: {infosUsu.usu_email}</Text>
+        {solicitacoesFiltradas.length > 0 ? (
+          solicitacoesFiltradas.map((solicit) => (
+            <View key={solicit.usu_cod} style={styles.lineSquare}>
+              <View style={styles.dados}>
+                <Text style={styles.nome}>Nome: {solicit.usu_nome}</Text>
+                <Text style={styles.nome}>RM: {solicit.usu_rm}</Text>
+                <Text style={styles.email}>E-mail: {solicit.usu_email}</Text>
+                <Text style={styles.email}>
+                  Curso técnico ou médio: {solicit.cur_nome}
+                </Text>
 
-              {/* Checkbox */}
-              <View style={styles.checkboxContainer}>
-                <Checkbox
-                  status={infosUsu.isSelected ? "checked" : "unchecked"}
-                  onPress={() => handleCheckboxChange(index)}
-                  color="#FF735C"
-                />
+                {/* Checkbox */}
+                <View style={styles.checkboxContainer}>
+                  <Checkbox
+                    status={selectedUsers.has(solicit.usu_cod) ? 'checked' : 'unchecked'}
+                    onPress={() => toggleUserSelection(solicit.usu_cod)}
+                    color="#FF735C"
+                  />
+                </View>
               </View>
             </View>
-          </View>
-        ))}
+          ))
+        ) : (
+          <Text>Não há resultados para a requisição</Text>
+        )}
       </View>
     </ScrollView>
   );

@@ -87,7 +87,7 @@ export default function InfoLivroRecomendacao({ route, codLivroRec }) {
 
   const removeRecommendation = async () => {
     try {
-      const response = await api.post("/remove_recomendacao", { codLivroRec });
+      const response = await api.delete("/recomendacao", { codLivroRec });
       if (response.data.sucesso) {
         Alert.alert("Sucesso", "Recomendação removida com sucesso!");
         navigation.navigate('recomendacao')
