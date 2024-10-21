@@ -23,13 +23,32 @@ import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 import api from "../../../services/api";
 import styles from "./styles";
 
-const searchOptions = [
-  { value: "liv_nome", label: "Livro" },
-  { value: "aut_nome", label: "Autor" },
-  { value: "edt_nome", label: "Editora" },
-  { value: "gen_nome", label: "Gênero" },
-  { value: "liv_cod", label: "Código" },
-];
+const sortBooksAlphabetically = (livros) => {
+  if (!Array.isArray(livros)) return [];
+  return livros.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
+};
+
+const ListaDeLivros = ({ livros }) => {
+  const sortedBooks = sortBooksAlphabetically(livros);
+  return (
+    <>
+      {sortedBooks.length > 0 ? (
+        <FlatList
+          style={Flatstyles.FlatList}
+          data={sortedBooks} // Usar a lista de livros ordenada
+          renderItem={renderItem}
+          keyExtractor={(item) => item.liv_cod.toString()} // Use index as keyExtractor
+          numColumns={3}
+          contentContainerStyle={styles.flatListContainer}
+        />
+      ) : (
+        <Text style={styles.noResultsText}>
+          Não há resultados para a requisição
+        </Text>
+      )}
+    </>
+  );
+};
 
 export default function Biblioteca() {
   const navigation = useNavigation();
@@ -177,19 +196,8 @@ export default function Biblioteca() {
   //   },
   // ];
 
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
-
-  const imageLoader = ({ src, width, quality }) => {
-    return `${apiUrl}:${apiPorta}${src}?w=${width}&q=${quality || 75}`;
-  };
-
-  const [books, setBooks] = useState([]);
+  const [livros, setLivros] = useState([]);
   const [selectedSearchOption, setSelectedSearchOption] = useState("liv_nome");
-
-  const sortBooksAlphabetically = (booksList) => {
-    return booksList.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
-  };
 
   const [livNome, setlivNome] = useState("");
 
@@ -206,12 +214,14 @@ export default function Biblioteca() {
     try {
       const response = await api.post("/livros", dados);
       console.log(response.data.dados);
-      setBooks(response.data.dados);
+      setLivros(response.data.dados);
     } catch (error) {
       if (error.response) {
-        Alert.alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+        Alert.alert(
+          error.response.data.mensagem + "\n" + error.response.data.dados
+        );
       } else {
-        Alert.alert("Erro no front-end" + "\n" + error);
+        alert("Erro no front-end" + "\n" + error);
       }
     }
   }
@@ -220,7 +230,7 @@ export default function Biblioteca() {
     <View style={styles.item}>
       <Pressable
         onPress={() =>
-          navigation.navigate("infolivrobiblioteca", { book: item.liv_cod })
+          navigation.navigate("infolivrobiblioteca", { livros: item.liv_cod })
         }
       >
         <Image source={{ uri: item.liv_foto_capa }} style={styles.image} />
@@ -240,7 +250,7 @@ export default function Biblioteca() {
           size={30}
           color="black"
           style={styles.icon}
-          onPress={() => voltar.goBack()}
+          onPress={() => navigation.goBack()}
         />
         <Text style={styles.paragraph}>Biblioteca</Text>
       </View>
@@ -257,10 +267,10 @@ export default function Biblioteca() {
         >
           <View style={styles.seletores}>
             {[
-              { label: 'Livro', value: 'liv_nome' },
-              { label: 'Autor', value: 'aut_nome' },
-              { label: 'Editora', value: 'edt_nome' },
-              { label: 'Código', value: 'liv_cod' },
+              { label: "Livro", value: "liv_nome" },
+              { label: "Autor", value: "aut_nome" },
+              { label: "Editora", value: "edt_nome" },
+              { label: "Código", value: "liv_cod" },
             ].map((option) => (
               <View key={option.value} style={styles.radioOption}>
                 <RadioButton
@@ -275,29 +285,7 @@ export default function Biblioteca() {
           </View>
         </RadioButton.Group>
       </View>
-
-      const ListaDeLivros = ({ books }) => {
-        const sortedBooks = sortBooksAlphabetically(books);
-        return (
-      <>
-      
-        {sortedBooks.length > 0 ? (
-          <FlatList
-            style={Flatstyles.FlatList}
-            data={sortBooksAlphabetically(books)} // Usar a lista de livros ordenada
-            renderItem={renderItem}
-            keyExtractor={(item) => item.liv_cod.toString()} // Use index as keyExtractor
-            numColumns={3}
-            contentContainerStyle={styles.flatListContainer}
-          />
-        ) : (
-          <Text style={styles.noResultsText}>
-            Não há resultados para a requisição
-          </Text>
-        )}
-      </>
-        )
-}
+      <ListaDeLivros livros={listaLivros} />
     </View>
   );
 }

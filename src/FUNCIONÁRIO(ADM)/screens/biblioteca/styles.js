@@ -15,6 +15,11 @@ const styles = StyleSheet.create({
     left: 28,
     top: 10,
   },
+  headerContainer: {
+    backgroundColor: "#fff",
+    display: "flex",
+    flex: 1,
+  },
   paragraph: {
     marginTop: "3%",
     marginBottom: "6%",
@@ -107,6 +112,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
+  noResultsText: {
+    textAlign: "center"
+  }
 });
 
 export default styles;

@@ -28,6 +28,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF735C',
     marginBottom: '3%',
   },
+  headerContainer: {
+    backgroundColor: "#fff",
+    display: "flex",
+    flex: 1,
+  },
   titleContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -105,6 +110,7 @@ const styles = StyleSheet.create({
   flatListContainer: {
     justifyContent: 'center',
     paddingHorizontal: 8,
+    backgroundColor: "#FFF"
   },
   scrollViewContainer: {
     backgroundColor: '#fff',
@@ -113,6 +119,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  noResultsText: {
+    textAlign: "center"
+  }
 });
 
 export default styles;

@@ -6,6 +6,7 @@ import {
   ImageBackground,
   StatusBar,
   Image,
+  Linking 
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import imgDesign from "../../../../assets/imagens_telas/sobrenos.jpg";
@@ -90,6 +91,15 @@ export default function SobreNos({ navigation }) {
                     </Text>
                   </View>
                 </View>
+              </View>
+              <View style={styles.suporte}>
+                <Text>Entre em contato: </Text>
+                <Text
+                  style={styles.email}
+                  onPress={() => Linking.openURL("mailto:danikawari@gmail.com")}
+                >
+                  danikawari@gmail.com
+                </Text>
               </View>
             </View>
           </View>

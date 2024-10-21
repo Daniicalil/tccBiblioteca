@@ -106,6 +106,15 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "#000",
   },
+  suporte: {
+    marginBottom: 8,
+    display: "flex",
+    flexDirection: "row",
+    alignSelf: "center"
+  },
+  email: {
+    color: "#ff735c",
+  }
 });
 
 export default styles;

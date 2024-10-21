@@ -23,14 +23,32 @@ import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 import styles from "./styles";
 import api from "../../../services/api";
 
-const searchOptions = [
-  { value: "liv_nome", label: "Livro" },
-  { value: "aut_nome", label: "Autor" },
-  { value: "edt_nome", label: "Editora" },
-  { value: "gen_nome", label: "Gênero" },
-  { value: "liv_cod", label: "Código" },
-  { value: "curso", label: "Curso" },
-];
+const sortBooksAlphabetically = (livros) => {
+  if (!Array.isArray(livros)) return [];
+  return livros.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
+};
+
+const ListaDeLivros = ({ livros }) => {
+  const sortedBooks = sortBooksAlphabetically(livros);
+  return (
+    <>
+      {sortedBooks.length > 0 ? (
+        <FlatList
+          style={Flatstyles.FlatList}
+          data={sortedBooks} // Usar a lista de livros ordenada
+          renderItem={renderItem}
+          keyExtractor={(item) => item.liv_cod.toString()} // Use index as keyExtractor
+          numColumns={3}
+          contentContainerStyle={styles.flatListContainer}
+        />
+      ) : (
+        <Text style={styles.noResultsText}>
+          Não há resultados para a requisição
+        </Text>
+      )}
+    </>
+  );
+};
 
 export default function BookList() {
   const navigation = useNavigation();
@@ -104,15 +122,9 @@ export default function BookList() {
   //   },
   // ]);
 
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
-
-  const imageLoader = ({ src, width, quality }) => {
-    return `${apiUrl}:${apiPorta}${src}?w=${width}&q=${quality || 75}`;
-  };
-
-  const [books, setBooks] = useState([]);
+  const [livros, setLivros] = useState([]);
   const [selectedSearchOption, setSelectedSearchOption] = useState("liv_nome");
+
   const [livNome, setlivNome] = useState("");
 
   function atLivNome(nome) {
@@ -124,43 +136,29 @@ export default function BookList() {
   }, []);
 
   async function listaLivros() {
-    const dados = {
-      [selectedSearchOption]: livNome, // Dinamicamente envia o campo baseado no radio button
-      liv_nome: livNome,
-    };
-
+    const dados = { [selectedSearchOption]: livNome };
     try {
       const response = await api.post("/rec_listar", dados);
       console.log(response.data.dados);
-      setBooks(response.data.dados);
+      setLivros(response.data.dados);
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+        Alert.alert(error.response.data.mensagem + "\n" + error.response.data.dados);
       } else {
         alert("Erro no front-end" + "\n" + error);
       }
     }
   }
 
-  const sortBooksAlphabetically = (booksList) => {
-    return booksList.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
-  };
-
-  // Ordena a lista de livros
-  const sortedBooks = sortBooksAlphabetically(books);
-
-  // Mantém a lista de livros filtrados como a lista completa
-  const [filteredBooks] = useState(sortedBooks);
-
   const renderItem = ({ item }) => (
     <View style={styles.item}>
       <Pressable
         onPress={() =>
-          navigation.navigate("infolivrorecomendacao", { book: item })
+          navigation.navigate("infolivrorecomendacao", { livros: item.liv_cod })
         }
       >
         <Text style={styles.course}>{item.cur_nome}</Text>
-        <Image source={item.liv_foto_capa} style={styles.image} />
+        <Image source={{ uri: item.liv_foto_capa }} style={styles.image} />
         <Text style={styles.titleBook}>{item.liv_nome}</Text>
         <Text style={styles.author}>{item.aut_nome}</Text>
       </Pressable>
@@ -180,64 +178,34 @@ export default function BookList() {
 
       <View style={styles.radioContainer}>
         <RadioButton.Group
-          onValueChange={(newValue) => setSelectedSearchOption(newValue)} // Ajustar aqui
-          value={selectedSearchOption} // Definir valor corretamente aqui
+           onValueChange={setSelectedSearchOption}
+           value={selectedSearchOption}
         >
           <View style={styles.seletores}>
-            <View style={styles.radioOption}>
+            {[
+              { value: "liv_nome", label: "Livro" },
+              { value: "aut_nome", label: "Autor" },
+              { value: "edt_nome", label: "Editora" },
+              { value: "gen_nome", label: "Gênero" },
+              { value: "curso", label: "Curso" },
+            ].map((option) => (
+            <View key={option.value} style={styles.radioOption}>
               <RadioButton
-                value="liv_nome"
+                value={option.value}
                 color="#FF735C"
                 uncheckedColor="#CCC"
+                checked={selectedSearchOption === option.value}
               />
-              <Text style={styles.radioLabel}>Livro</Text>
+              <Text style={styles.radioLabel}>{option.label}</Text>
             </View>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="aut_nome"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-              />
-              <Text style={styles.radioLabel}>Autor</Text>
-            </View>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="edt_nome"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-              />
-              <Text style={styles.radioLabel}>Editora</Text>
-            </View>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="liv_cod"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-              />
-              <Text style={styles.radioLabel}>Código</Text>
-            </View>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="course"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-              />
-              <Text style={styles.radioLabel}>Curso</Text>
-            </View>
+            ))}
           </View>
         </RadioButton.Group>
       </View>
 
       <Funcionamento />
       <Text style={styles.paragraph}>Recomendações dos professores</Text>
-      <FlatList
-        style={Flatstyles.FlatList}
-        data={sortedBooks}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.liv_cod.toString()} // Use index as keyExtractor
-        numColumns={3}
-        contentContainerStyle={styles.flatListContainer}
-      />
+      <ListaDeLivros livros={listaLivros} />
     </View>
   );
 }

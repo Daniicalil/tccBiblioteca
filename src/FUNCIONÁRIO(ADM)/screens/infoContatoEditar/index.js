@@ -35,10 +35,10 @@ export default function InformacoesContatoEditar({ codInfo }) {
           const infoApi = response.data.dados[0];
           setInfoContatoEdt(infoApi);
         } else {
-          setError(response.data.mensagem);
+          Alert.alert(response.data.mensagem);
         }
       } catch (error) {
-        setError(
+        alert(
           error.response ? error.response.data.mensagem : "Erro no front-end"
         );
       }

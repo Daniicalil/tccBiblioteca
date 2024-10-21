@@ -21,9 +21,8 @@ const Line = () => {
 
 export default function InfoLivroBiblioteca({ route, codLivro }) {
   const navigation = useNavigation();
-  const { book } = route.params; //muda a tela da biblioteca
+
   const [livro, setLivro] = useState(null);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const handleCarregaLivro = async () => {
@@ -35,10 +34,10 @@ export default function InfoLivroBiblioteca({ route, codLivro }) {
           const livroApi = response.data.dados[0];
           setLivro(livroApi);
         } else {
-          setError(response.data.mensagem);
+          Alert.alert(response.data.mensagem);
         }
       } catch (error) {
-        setError(error.response ? error.response.data.mensagem : 'Erro no front-end');
+        alert(error.response ? error.response.data.mensagem : 'Erro no front-end');
       }
     };
 

@@ -134,6 +134,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
+  noResultsText: {
+    textAlign: "center"
+  }
 });
 
 export default styles;
