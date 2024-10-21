@@ -8,28 +8,30 @@ import {
 import { RadioButton } from "react-native-paper";
 
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
+
+import api from "../../../services/api"
 import styles from "./styles";
 
 const Line = () => <View style={styles.line} />;
 
 export default function InformacoesReserva({ navigation, route }) {
-  const [infoReserva] = useState([
-    {
-      livro: {
-        liv_foto_capa: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
-        liv_nome: "O diário de Anne Frank",
-        aut_nome: "Anne Frank",
-      },
-      usu_nome: "Clara Oliveira da Silva",
-      dataReserva: "12/03/2024",
-      periodo: {
-        inicio: "12/03/2024",
-        fim: "27/03/2024",
-      },
-    },
-  ]);
+  // const [infoReserva] = useState([
+  //   {
+  //     livro: {
+  //       liv_foto_capa: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
+  //       liv_nome: "O diário de Anne Frank",
+  //       aut_nome: "Anne Frank",
+  //     },
+  //     usu_nome: "Clara Oliveira da Silva",
+  //     dataReserva: "12/03/2024",
+  //     periodo: {
+  //       inicio: "12/03/2024",
+  //       fim: "27/03/2024",
+  //     },
+  //   },
+  // ]);
 
-  const [selectedOption, setSelectedOption] = useState("liv_nome"); // Estado para controle de seleção
+  const [selectedSearchOption, setSelectedSearchOption] = useState('liv_nome');
 
   const { startDate = null, endDate = null } = route.params || {};
 
@@ -78,21 +80,19 @@ export default function InformacoesReserva({ navigation, route }) {
 
         <View style={styles.radioContainer}>
           <RadioButton.Group
-            onValueChange={(value) => setSelectedOption(value)}
-            value={selectedOption}
+            onValueChange={setSelectedSearchOption}
+            value={selectedSearchOption} liv_nome aut_nome emp_data_emp
           >
             <View style={styles.seletores}>
+            {[
+              { label: "Livro", value: "liv_nome" },
+              { label: "Autor", value: "aut_nome" },
+              { label: "Data da reserva", value: "emp_data_emp" },
+              { label: "Código", value: "liv_cod" },
+            ].map((option) => (
               <View style={styles.radioOption}>
                 <RadioButton value="liv_nome" color="#FF735C" />
                 <Text style={styles.radioLabel}>Livro</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton value="aut_nome" color="#FF735C" />
-                <Text style={styles.radioLabel}>Autor</Text>
-              </View>
-              <View style={styles.radioOption}>
-                <RadioButton value="dataReserva" color="#FF735C" />
-                <Text style={styles.radioLabel}>Data da reserva</Text>
               </View>
             </View>
           </RadioButton.Group>
