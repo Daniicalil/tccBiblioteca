@@ -26,7 +26,7 @@ import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 import api from "../../../services/api";
 import styles from "./styles";
 
-export default function BookList() {
+export default function GerenciarLivroExistente() {
   const navigation = useNavigation();
   // Estado para armazenar o status de ativação de cada livro
   const [bookStatus, setBookStatus] = useState({});
@@ -106,9 +106,9 @@ export default function BookList() {
   // ];
 
   const [livros, setLivros] = useState([]);
-  const [selectedSearchOption, setSelectedSearchOption] = useState('liv_nome');
+  const [selectedSearchOption, setSelectedSearchOption] = useState("liv_nome");
 
-  const [livNome, setLivNome] = useState('');
+  const [livNome, setLivNome] = useState("");
 
   useEffect(() => {
     listaLivros();
@@ -117,58 +117,64 @@ export default function BookList() {
   async function listaLivros() {
     const dados = { [selectedSearchOption]: livNome };
     try {
-      const response = await api.post('/liv_gerenciar', dados);
+      const response = await api.post("/liv_gerenciar", dados);
       console.log(response.data.dados);
       setLivros(response.data.dados);
     } catch (error) {
-      Alert.alert('Erro', error.response ? error.response.data.mensagem : 'Erro no front-end');
+      Alert.alert(
+        "Erro",
+        error.response ? error.response.data.mensagem : "Erro no front-end"
+      );
     }
   }
 
-  // Função para inicializar o estado dos livros como desativados
-  useEffect(() => {
-    const initialStatus = {};
-    livros.forEach((livros) => {
-      initialStatus[livros.liv_nome] = true; // Define todos como ativados
-    });
-    setBookStatus(initialStatus);
-  }, []);
-
-  // Função para alternar o estado de ativação/desativação de um livro
   const toggleBookStatus = async (liv_cod) => {
-    const updatedBooks = livros.map(livro =>
-      livro.liv_cod === liv_cod ? { ...livro, liv_ativo: livro.liv_ativo === 1 ? 0 : 1 } : book
+    const updatedBooks = livros.map((livro) =>
+      livro.liv_cod === liv_cod
+        ? { ...livro, liv_ativo: livro.liv_ativo === 1 ? 0 : 1 }
+        : livro
     );
     setLivros(updatedBooks);
 
     try {
-      const bookToUpdate = updatedBooks.find(b => b.liv_cod === liv_cod);
-      const payload = { liv_cod: bookToUpdate.liv_cod, liv_ativo: bookToUpdate.liv_ativo };
-      const response = await api.patch('/liv_inativar', payload);
+      const bookToUpdate = updatedBooks.find((b) => b.liv_cod === liv_cod);
+      const payload = {
+        liv_cod: bookToUpdate.liv_cod,
+        liv_ativo: bookToUpdate.liv_ativo,
+      };
+      const response = await api.patch("/liv_inativar", payload);
 
-      if (!response.data.sucesso) {
+      if (response.data.sucesso) {
+        console.log(`Status do livro ${liv_cod} atualizado com sucesso.`);
+      } else {
         throw new Error("Erro ao atualizar o status do livro.");
       }
     } catch (error) {
-      console.error('Erro ao atualizar o status do livro:', error);
-      Alert.alert('Erro', 'Erro ao atualizar o status do livro. Tente novamente.');
+      console.error("Erro ao atualizar o status do livro:", error);
+      const revertedBooks = livros.map((livro) =>
+        livro.liv_cod === liv_cod
+          ? { ...livro, liv_ativo: livro.liv_ativo === 1 ? 0 : 1 }
+          : livro
+      );
+      setLivros(revertedBooks);
+      Alert.alert("Erro ao atualizar o status do livro. Tente novamente.");
     }
   };
 
-  const sortBooksAlphabetically = (booksList) => {
-    return booksList.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
+  const sortBooksAlphabetically = (livros) => {
+    return livros.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
   };
 
   useEffect(() => {
-    // Se você quiser exibir a lista ordenada sem filtragem, você pode ordenar os livros aqui
-    // setFilteredBooks(sortBooksAlphabetically(books));
+    const sortedBooks = sortBooksAlphabetically(livros);
+    setLivros(sortedBooks);
   }, [livros]);
 
   const renderItem = ({ item }) => (
     <View
       style={[
         styles.item,
-        { opacity: bookStatus[item.liv_nome] ? 1 : 0.5 }, // Aplica opacidade condicionalmente
+        { opacity: bookStatus[item.liv_cod] ? 1 : 0.5 }, // Aplica opacidade condicionalmente
       ]}
     >
       <Image source={item.liv_foto_capa} style={styles.image} />
@@ -179,14 +185,36 @@ export default function BookList() {
       <View style={styles.switchContainer}>
         <Switch
           style={styles.toggle}
-          value={!!bookStatus[item.liv_nome]} // !!recebe um valor booleano para definir se ele está ativado ou desativado. Converte undefined para false
-          onValueChange={() => toggleBookStatus(item.liv_nome)}
-          thumbColor={bookStatus[item.liv_nome] ? "#3F7263" : "#f4f3f4"} // Cor do botão
+          value={!!bookStatus[item.liv_cod]} // !!recebe um valor booleano para definir se ele está ativado ou desativado. Converte undefined para false
+          onValueChange={() => toggleBookStatus(item.liv_cod)}
+          thumbColor={bookStatus[item.liv_cod] ? "#3F7263" : "#f4f3f4"} // Cor do botão
           trackColor={{ false: "#767577", true: "#ccc" }} // Cor da trilha
         />
       </View>
     </View>
   );
+
+  const ListaDeLivros = ({ livros }) => {
+    const sortedBooks = sortBooksAlphabetically(livros);
+    return (
+      <>
+        {sortedBooks.length > 0 ? (
+          <FlatList
+            style={Flatstyles.FlatList}
+            data={sortedBooks} // Usar a lista de livros ordenada
+            renderItem={renderItem}
+            keyExtractor={(item) => item.liv_cod.toString()} // Use index as keyExtractor
+            numColumns={3}
+            contentContainerStyle={styles.bookListContainer}
+          />
+        ) : (
+          <Text style={styles.noResultsText}>
+            Não há resultados para a requisição
+          </Text>
+        )}
+      </>
+    );
+  };
 
   return (
     <View style={styles.headerContainer}>
@@ -203,58 +231,40 @@ export default function BookList() {
         />
         <Text style={styles.paragraph}>Gerenciar livro existente</Text>
       </View>
-      <BarraPesquisa />
+      <BarraPesquisa
+        livNome={livNome}
+        setLivNome={setLivNome}
+        listaLivros={listaLivros}
+      />
 
       <View style={styles.radioContainer}>
         <RadioButton.Group
-          onValueChange={(value) => setSelectedOption(value)}
-          value={selectedOption}
+          onValueChange={setSelectedSearchOption}
+          value={selectedSearchOption}
         >
           <View style={styles.seletores}>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="liv_nome"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-              />
-              <Text style={styles.radioLabel}>Livro</Text>
-            </View>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="aut_nome"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-              />
-              <Text style={styles.radioLabel}>Autor</Text>
-            </View>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="edt_nome"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-              />
-              <Text style={styles.radioLabel}>Editora</Text>
-            </View>
-            <View style={styles.radioOption}>
-              <RadioButton
-                value="liv_cod"
-                color="#FF735C"
-                uncheckedColor="#CCC"
-              />
-              <Text style={styles.radioLabel}>Código</Text>
-            </View>
+            {[
+              { label: "Livro", value: "liv_nome" },
+              { label: "Autor", value: "aut_nome" },
+              { label: "Editora", value: "edt_nome" },
+              { label: "Gênero", value: "gen_nome" },
+              { label: "Código", value: "liv_cod" },
+            ].map((option) => (
+              <View key={option.value} style={styles.radioOption}>
+                <RadioButton
+                  value={option.value}
+                  color="#FF735C"
+                  uncheckedColor="#CCC"
+                  checked={selectedSearchOption === option.value}
+                />
+                <Text style={styles.radioLabel}>{option.label}</Text>
+              </View>
+            ))}
           </View>
         </RadioButton.Group>
       </View>
 
-      <FlatList
-        style={Flatstyles.FlatList}
-        data={sortBooksAlphabetically(books)} // Usar a lista de livros ordenada
-        keyExtractor={(item) => item.liv_nome}
-        renderItem={renderItem}
-        numColumns={3}
-        contentContainerStyle={styles.bookListContainer}
-      />
+      <ListaDeLivros livros={listaLivros} />
 
       <Pressable
         onPress={() => navigation.goBack()}
