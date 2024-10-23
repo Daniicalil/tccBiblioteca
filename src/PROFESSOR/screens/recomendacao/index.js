@@ -220,7 +220,7 @@ export default function Recomendacao() {
           pressed ? [styles.buttonAdd, styles.btnAddPress] : styles.buttonAdd
         }
       >
-        <Text style={styles.buttonTextAdd}>+ Adicionar</Text>
+        <Text style={styles.buttonTextAdd}>+ Adicionar recomendação</Text>
       </Pressable>
       <ListaDeLivros livros={listaLivros} />
     </View>

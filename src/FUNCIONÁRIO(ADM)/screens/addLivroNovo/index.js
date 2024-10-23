@@ -139,46 +139,46 @@ export default function AddLivroNovo({ navigation }) {
     }
   };
 
-  const handleAddLivroNovo = () => {
-    if (
-      livro &&
-      autor &&
-      editora &&
-      genero &&
-      resumo &&
-      quant &&
-      image
-    ) {
-      Alert.alert(
-        "Confirmação",
-        "Você realmente deseja adicionar este livro?",
-        [
-          {
-            text: "Confirmar",
-            onPress: () => {
-              Alert.alert(
-                "Livro adicionado",
-                "Livro novo adicionado com sucesso!",
-                [
-                  {
-                    text: "OK",
-                    onPress: () => navigation.navigate("biblioteca"),
-                  },
-                ],
-                { cancelable: false }
-              );
-            },
-          },
-          {
-            text: "Cancelar",
-            style: "cancel",
-          },
-        ]
-      );
-    } else {
-      Alert.alert("Erro", "Por favor, preencha todos os campos.");
-    }
-  };
+  // const handleAddLivroNovo = () => {
+  //   if (
+  //     livro &&
+  //     autor &&
+  //     editora &&
+  //     genero &&
+  //     resumo &&
+  //     quant &&
+  //     image
+  //   ) {
+  //     Alert.alert(
+  //       "Confirmação",
+  //       "Você realmente deseja adicionar este livro?",
+  //       [
+  //         {
+  //           text: "Confirmar",
+  //           onPress: () => {
+  //             Alert.alert(
+  //               "Livro adicionado",
+  //               "Livro novo adicionado com sucesso!",
+  //               [
+  //                 {
+  //                   text: "OK",
+  //                   onPress: () => navigation.navigate("biblioteca"),
+  //                 },
+  //               ],
+  //               { cancelable: false }
+  //             );
+  //           },
+  //         },
+  //         {
+  //           text: "Cancelar",
+  //           style: "cancel",
+  //         },
+  //       ]
+  //     );
+  //   } else {
+  //     Alert.alert("Erro", "Por favor, preencha todos os campos.");
+  //   }
+  // };
 
   const handleImagePick = () => {
     Alert.alert(
@@ -215,7 +215,7 @@ export default function AddLivroNovo({ navigation }) {
   const openModalEditora = () => setShowModalEditora(true);
   const closeModalEditora = () => setShowModalEditora(false);
 
-  const handleEditora = (autor) => {
+  const handleEditora = (editora) => {
     setEditora(editora);
     closeModalEditora();
   };
@@ -224,7 +224,7 @@ export default function AddLivroNovo({ navigation }) {
   const openModalGenero = () => setShowModalGenero(true);
   const closeModalGenero = () => setShowModalGenero(false);
 
-  const handleGenero = (autor) => {
+  const handleGenero = (genero) => {
     setGenero(genero);
     closeModalGenero();
   };
@@ -542,7 +542,7 @@ export default function AddLivroNovo({ navigation }) {
                 {genero.map((gen) => (
                   <Picker.Item
                     key={gen.value}
-                    label={gen.label}
+                    label={gen.gen_nome}
                     value={gen.value}
                     style={styles.defaultItem}
                   />

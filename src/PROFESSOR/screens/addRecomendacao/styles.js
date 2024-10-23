@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   pickerContainer: {
     width: "85%",
-    marginBottom: 20,
+    marginBottom: 3,
     borderWidth: 1,
     borderColor: "#000",
     borderRadius: 8,
@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
   textPicker: {
     fontSize: 16,
     left: 36,
+    marginTop: 10,
   },
   input: {
     height: 200, // Altura do TextInput
@@ -75,6 +76,47 @@ const styles = StyleSheet.create({
     textAlignVertical: "top", // Alinha o texto no topo
     alignSelf: "center",
   },
+  divRadio: {
+    display: "flex",
+    flexDirection: "row",
+    // justifyContent: "center",
+    alignItems: "center",
+    // alignSelf: "center"
+  },
+  inputError: {
+    borderColor: "red",
+    borderWidth: 1,
+  },
+  validated: {
+    borderColor: 'green', // Muda a cor da borda para verde
+  },
+  // Estilo para quando o campo é inválido
+  invalid: {
+    borderColor: 'red', // Muda a cor da borda para vermelho
+  },
+  // Ícone de sucesso
+  sucesso: {
+    color: 'green',
+    fontSize: 20,
+    position: 'absolute',
+    right: 10,
+    top: 12,
+  },
+  // Ícone de erro
+  erro: {
+    color: 'red',
+    fontSize: 20,
+    position: 'absolute',
+    right: 10,
+    top: 12,
+  },
+  error:  {
+    borderColor: '#e74c3c',
+    color: '#e74c3c',
+  },
+  success: {
+    borderColor: "#2ecc71"
+  },
   recommendationMod: {
     fontSize: 14,
     marginBottom: 4,
@@ -83,10 +125,28 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   RadioButtonQuad: {
-    flexDirection: "row",
+    // flexDirection: "row",
     top: 24,
-    left: 2,
-    justifyContent: "space-evenly",
+    left: 0,
+    // justifyContent: "space-evenly",
+  },
+  radioOptions: {
+    marginTop: 4,
+    // flexDirection: "row",
+    alignSelf: "center"
+  },
+  radioOption: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 4,
+  },
+  buttonRadio: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 0,     // Adiciona um espaço entre as opções de sexo
+  },
+  textRadio: {
+    marginLeft: 0
   },
   button: {
     backgroundColor: "#FF735C",
@@ -106,6 +166,63 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
   },
+  sucesso: {
+    /* position: absolute;
+        right: 20%;  */
+    display: "none",
+    marginLeft: 0.5,
+    fontSize: 10,
+    color: "#2ecc71",
+  },
+  erro: {
+    /* visibility: hidden; */
+    display: "none",
+    marginLeft: 0.5,
+    fontSize: 10,
+    color: "#e74c3c",
+  },
+  divInput: {
+    // display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
+  sexoForm: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignSelf: "center"
+  },
+   divRadio: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center"
+  },
+  small: {
+    /* visibility: hidden;  */
+    /* display: none; */
+    color: "#e74c3c",
+    fontSize: 14,
+    marginTop: 0.5,
+    alignSelf: "center",
+  },
+  
+  
+  
+  successMessage: {
+    display: 'flex', // Exibe o campo de sucesso
+  },
+  errorMessage: {
+    display: 'flex', // Exibe o campo de erro
+  },
+  successSelect: {
+    borderColor: '#2ecc71',
+  },
+  errorSelect: {
+    borderColor: '#e74c3c',
+  }
 });
 
 export default styles;
