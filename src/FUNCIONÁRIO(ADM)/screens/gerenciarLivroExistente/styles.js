@@ -24,6 +24,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#000",
   },
+  headerContainer: {
+    backgroundColor: "#fff",
+    display: "flex",
+    flex: 1,
+  },
   bookListContainer: {
     flex: 1,
   },
@@ -138,6 +143,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 8,
   },
+  noResultsText: {
+    textAlign: "center"
+  }
 });
 
 export default styles;

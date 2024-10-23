@@ -29,8 +29,7 @@ import styles from "./styles";
 export default function GerenciarLivroExistente() {
   const navigation = useNavigation();
   // Estado para armazenar o status de ativação de cada livro
-  const [bookStatus, setBookStatus] = useState({});
-
+ 
   // Lista de livros
   // const books = [
   //   {
@@ -106,6 +105,7 @@ export default function GerenciarLivroExistente() {
   // ];
 
   const [livros, setLivros] = useState([]);
+  const [bookStatus, setBookStatus] = useState({});
   const [selectedSearchOption, setSelectedSearchOption] = useState("liv_nome");
 
   const [livNome, setLivNome] = useState("");
@@ -129,18 +129,14 @@ export default function GerenciarLivroExistente() {
   }
 
   const toggleBookStatus = async (liv_cod) => {
-    const updatedBooks = livros.map((livro) =>
-      livro.liv_cod === liv_cod
-        ? { ...livro, liv_ativo: livro.liv_ativo === 1 ? 0 : 1 }
-        : livro
-    );
-    setLivros(updatedBooks);
+    const newStatus = !bookStatus[liv_cod];
+  setBookStatus((prevStatus) => ({ ...prevStatus, [liv_cod]: newStatus }));
 
     try {
-      const bookToUpdate = updatedBooks.find((b) => b.liv_cod === liv_cod);
+      const livro = livros.find((b) => b.liv_cod === liv_cod);
       const payload = {
-        liv_cod: bookToUpdate.liv_cod,
-        liv_ativo: bookToUpdate.liv_ativo,
+        liv_cod: livro.liv_cod,
+        liv_ativo: newStatus ? 1 : 0,
       };
       const response = await api.patch("/liv_inativar", payload);
 
@@ -151,19 +147,15 @@ export default function GerenciarLivroExistente() {
       }
     } catch (error) {
       console.error("Erro ao atualizar o status do livro:", error);
-      const revertedBooks = livros.map((livro) =>
-        livro.liv_cod === liv_cod
-          ? { ...livro, liv_ativo: livro.liv_ativo === 1 ? 0 : 1 }
-          : livro
-      );
-      setLivros(revertedBooks);
+      setBookStatus((prevStatus) => ({ ...prevStatus, [liv_cod]: !newStatus }));
       Alert.alert("Erro ao atualizar o status do livro. Tente novamente.");
     }
   };
 
   const sortBooksAlphabetically = (livros) => {
+    if (!Array.isArray(livros)) return [];
     return livros.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
-  };
+  }; 
 
   useEffect(() => {
     const sortedBooks = sortBooksAlphabetically(livros);
@@ -191,7 +183,7 @@ export default function GerenciarLivroExistente() {
           trackColor={{ false: "#767577", true: "#ccc" }} // Cor da trilha
         />
       </View>
-    </View>
+    </View> 
   );
 
   const ListaDeLivros = ({ livros }) => {
@@ -264,16 +256,16 @@ export default function GerenciarLivroExistente() {
         </RadioButton.Group>
       </View>
 
-      <ListaDeLivros livros={listaLivros} />
+      <ListaDeLivros livros={livros} />
 
-      <Pressable
+      {/* <Pressable
         onPress={() => navigation.goBack()}
         style={({ pressed }) =>
           pressed ? [styles.button, styles.btnPress] : styles.button
         }
       >
         <Text style={styles.buttonText}>Salvar alterações</Text>
-      </Pressable>
+      </Pressable> */}
     </View>
   );
 }

@@ -26,6 +26,10 @@ import useBotaoConfirmarAcao from "../../../componentes/alertConfirmacao";
 import defaultProfileImage from "../../../../assets/imagens_telas/perfil.jpg"; // Imagem padrão
 
 export default function PerfilEditar({ codUsu }) {
+
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
+
   const navigation = useNavigation();
 
   const [cursos, setCursos] = useState([]);

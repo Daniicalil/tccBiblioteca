@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
   },
-  paragraph: {
+  paragraph: { 
     marginTop: "3%",
     marginBottom: "6%",
     fontSize: 18,

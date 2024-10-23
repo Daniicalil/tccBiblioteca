@@ -14,6 +14,7 @@ import * as ImagePicker from "expo-image-picker";
 import { Picker } from "@react-native-picker/picker";
 import Constants from "expo-constants";
 
+import api from "../../../services/api";
 import styles from "./styles";
 import {
   RetangGreen,
@@ -24,34 +25,82 @@ import ModalAddEditora from "../../../componentes/modalAddEditora";
 import ModalAddGenero from "../../../componentes/modalAddGenero";
 
 export default function AddLivroNovo({ navigation }) {
-  const [name, setName] = useState("");
-  const [selectedAutor, setSelectedAutor] = useState("");
-  const [selectedEditora, setSelectedEditora] = useState("");
-  const [selectedGenero, setSelectedGenero] = useState("");
-  const [resumo, setResumo] = useState("");
-  const [quant, setQuant] = useState("");
+  const [autor, setAutor] = useState([]);
+  const [editora, setEditora] = useState([]);
+  const [genero, setGenero] = useState([]);
   const [image, setImage] = useState(null);
 
-  const autores = [
-    { label: "(Selecione)", value: "" },
-    { label: "opção 1", value: "opcao1" },
-    { label: "opção 2", value: "opcao2" },
-    { label: "opção 3", value: "opcao3" },
-  ];
+  const [livro, setLivro] = useState({
+    liv_cod: "",
+    liv_pha_cod: "",
+    liv_categ_cod: "",
+    liv_nome: "",
+    liv_desc: "",
+    edt_nome: "",
+    edt_cod: "",
+    liv_foto_capa: "",
+    aut_nome: "",
+    aut_cod: "",
+    disponivel: "",
+    generos: "",
+    gen_cod: "",
+  });
 
-  const editoras = [
-    { label: "(Selecione)", value: "" },
-    { label: "opção 1", value: "opcao1" },
-    { label: "opção 2", value: "opcao2" },
-    { label: "opção 3", value: "opcao3" },
-  ];
+  const valDefault = styles.formControl;
+  const valSucesso = styles.formControl + " " + styles.success;
+  const valErro = styles.formControl + " " + styles.error;
 
-  const generos = [
-    { label: "(Selecione)", value: "" },
-    { label: "opção 1", value: "opcao1" },
-    { label: "opção 2", value: "opcao2" },
-    { label: "opção 3", value: "opcao3" },
-  ];
+  useEffect(() => {
+    listaAutores();
+    listaEditoras();
+    listaGeneros();
+  }, []);
+
+  async function listaAutores() {
+    try {
+      const response = await api.post("/autores");
+      setAutor(response.data.dados);
+      console.log(response.data);
+    } catch (error) {
+      if (error.response) {
+        Alert.alert(
+          error.response.data.mensagem + "\n" + error.response.data.dados
+        );
+      } else {
+        alert("Erro no front-end" + "\n" + error);
+      }
+    }
+  }
+
+  async function listaEditoras() {
+    try {
+      const response = await api.post("/editoras");
+      setEditora(response.data.dados);
+      console.log(response.data);
+    } catch (error) {
+      if (error.response) {
+        Alert.alert(
+          error.response.data.mensagem + "\n" + error.response.data.dados
+        );
+      } else {
+        alert("Erro no front-end" + "\n" + error);
+      }
+    }
+  }
+
+  async function listaGeneros() {
+    try {
+      const response = await api.post("/generos");
+      setGenero(response.data.dados);
+      console.log(response.data);
+    } catch (error) {
+      if (error.response) {
+        Alert.alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+      } else {
+        alert("Erro no front-end" + "\n" + error);
+      }
+    }
+  }
 
   useEffect(() => {
     (async () => {
@@ -92,10 +141,10 @@ export default function AddLivroNovo({ navigation }) {
 
   const handleAddLivroNovo = () => {
     if (
-      name &&
-      setSelectedAutor &&
-      setSelectedEditora &&
-      setSelectedGenero &&
+      livro &&
+      autor &&
+      editora &&
+      genero &&
       resumo &&
       quant &&
       image
@@ -180,6 +229,204 @@ export default function AddLivroNovo({ navigation }) {
     closeModalGenero();
   };
 
+  const [valida, setValida] = useState({
+    livro: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    aut_cod: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    edt_cod: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    gen_cod: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    capa: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    quant: {
+      validado: valDefault,
+      mensagem: [],
+    },
+    resumo: {
+      validado: valDefault,
+      mensagem: [],
+    },
+  });
+
+  const handleChange = (e) => {
+    setLivro((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  function validaSelectAutor() {
+    let objTemp = {
+      validado: valSucesso, // css referente ao estado de validação
+      mensagem: [], // array de mensagens de validação
+    };
+
+    if (!livro.aut_cod) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Por favor, selecione uma opção no campo.");
+    }
+
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      aut_cod: objTemp, // atualiza apenas o campo 'nome'
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  function validaSelectEditora() {
+    let objTemp = {
+      validado: valSucesso, // css referente ao estado de validação
+      mensagem: [], // array de mensagens de validação
+    };
+
+    if (!livro.edt_cod) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Por favor, selecione uma opção no campo.");
+    }
+
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      edt_cod: objTemp, // atualiza apenas o campo 'nome'
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  function validaSelectGenero() {
+    let objTemp = {
+      validado: valSucesso, // css referente ao estado de validação
+      mensagem: [], // array de mensagens de validação
+    };
+
+    if (!livro.gen_cod) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Por favor, selecione uma opção no campo.");
+    }
+
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      gen_cod: objTemp, // atualiza apenas o campo 'nome'
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  function validaLivro() {
+    let objTemp = {
+      validado: valSucesso, // css referente ao estado de validação
+      mensagem: [], // array de mensagens de validação
+    };
+
+    if (livro.liv_nome === "") {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("O nome do livro é obrigatório");
+    } else if (livro.liv_nome.length < 5) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Insira o nome do livro");
+    }
+
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      livro: objTemp, // atualiza apenas o campo 'nome'
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  function validaQuant() {
+    let objTemp = {
+      validado: valSucesso, // css referente ao estado de validação
+      mensagem: [], // array de mensagens de validação
+    };
+
+    if (livro.disponivel === "") {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("A quantidade de livros é obrigatória");
+    } else if (livro.disponivel.length <= 0) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("A quantidade de livros deve ser maior que 0");
+    }
+
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      quant: objTemp, // atualiza apenas o campo 'nome'
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  function validaResumo() {
+    let objTemp = {
+      validado: valSucesso, // css referente ao estado de validação
+      mensagem: [], // array de mensagens de validação
+    };
+
+    if (livro.liv_desc === "") {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("O resumo do livro é obrigatório");
+    } else if (livro.liv_desc.length < 5) {
+      objTemp.validado = valErro;
+      objTemp.mensagem.push("Insira o resumo do livro");
+    }
+
+    setValida((prevState) => ({
+      ...prevState, // mantém os valores anteriores
+      resumo: objTemp, // atualiza apenas o campo 'nome'
+    }));
+
+    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+    return testeResult;
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    let itensValidados = 0;
+
+    // Validar campos
+    itensValidados += validaQuant();
+    itensValidados += validaLivro();
+    itensValidados += validaSelectAutor();
+    itensValidados += validaSelectEditora();
+    itensValidados += validaSelectGenero();
+    itensValidados += validaResumo();
+    // itensValidados += validaFoto();
+
+    // Verificar se todos os campos estão validados
+    if (itensValidados === 6) {
+      try {
+        const response = await api.post("/usuarios", livro);
+        if (response.data.sucesso) {
+          Alert.alert("Cadastro do livro realizado com sucesso");
+          navigate.navigation("biblioteca")
+        }
+      } catch (error) {
+        if (error.response) {
+          Alert.alert(
+            error.response.data.mensagem + "\n" + error.response.data.dados
+          );
+        } else {
+          alert("Erro no front-end" + "\n" + error);
+        }
+      }
+    }
+  }
+  console.log(livro);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
@@ -198,80 +445,148 @@ export default function AddLivroNovo({ navigation }) {
         </View>
 
         <View style={styles.inputContainer}>
-          <Text style={styles.textInput}>Nome:</Text>
-          <TextInput
-            style={styles.input}
-            value={name}
-            multiline
-            onChangeText={setName}
-          />
+          <Text style={styles.textInput}>Nome do livro:</Text>
+          <View style={styles.divInput}>
+            <TextInput
+              name="liv_nome"
+              style={styles.input}
+              onChangeText={(value) => handleChange("liv_nome", value)}
+              value={livro.liv_nome}
+            />
+          </View>
+          {valida.livro.mensagem.map((mens) => (
+            <Text key={mens} id="nome" style={styles.small}>
+              {mens}
+            </Text>
+          ))}
 
           <Text style={styles.textInput}>Autor:</Text>
           <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={selectedAutor}
-              style={styles.picker}
-              onValueChange={(itemValue) => setSelectedAutor(itemValue)}
-            >
-              {autores.map((autor) => (
+            <View className={styles.radioOptions}>
+              <Picker
+                selectedValue={livro.aut_cod}
+                style={styles.picker}
+                onValueChange={(value) => handleChange("aut_cod", value)}
+                value={livro.aut_cod}
+              >
                 <Picker.Item
-                  key={autor.value}
-                  label={autor.label}
-                  value={autor.value}
+                  label="Selecione autor(a)"
+                  value={null}
+                  enabled={false}
+                  style={styles.firstItem}
                 />
-              ))}
-            </Picker>
+                {autor.map((aut) => (
+                  <Picker.Item
+                    key={aut.aut_cod}
+                    label={aut.aut_nome}
+                    value={aut.aut_cod}
+                    style={styles.defaultItem}
+                  />
+                ))}
+              </Picker>
+            </View>
           </View>
+          {valida.aut_cod.mensagem.map((mens) => (
+            <Text key={mens} style={styles.small}>
+              {mens}
+            </Text>
+          ))}
 
           <Text style={styles.textInput}>Editora:</Text>
           <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={selectedEditora}
-              style={styles.picker}
-              onValueChange={(itemValue) => setSelectedEditora(itemValue)}
-            >
-              {editoras.map((editora) => (
+            <View className={styles.radioOptions}>
+              <Picker
+                selectedValue={livro.edt_cod}
+                style={styles.picker}
+                onValueChange={(value) => handleChange("edt_cod", value)}
+                value={livro.edt_cod}
+              >
                 <Picker.Item
-                  key={editora.value}
-                  label={editora.label}
-                  value={editora.value}
+                  label="Selecione a editora"
+                  value={null}
+                  enabled={false}
+                  style={styles.firstItem}
                 />
-              ))}
-            </Picker>
+                {editora.map((edt) => (
+                  <Picker.Item
+                    key={edt.edt_cod}
+                    label={edt.edt_nome}
+                    value={edt.edt_cod}
+                    style={styles.defaultItem}
+                  />
+                ))}
+              </Picker>
+            </View>
           </View>
+          {valida.edt_cod.mensagem.map((mens) => (
+            <Text key={mens} style={styles.small}>
+              {mens}
+            </Text>
+          ))}
 
           <Text style={styles.textInput}>Gênero:</Text>
           <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={selectedGenero}
-              style={styles.picker}
-              onValueChange={(itemValue) => setSelectedGenero(itemValue)}
-            >
-              {generos.map((genero) => (
+            <View className={styles.radioOptions}>
+              <Picker
+                selectedValue={livro.gen_cod}
+                style={styles.picker}
+                onValueChange={(value) => handleChange("gen_cod", value)}
+                value={livro.gen_cod}
+              >
                 <Picker.Item
-                  key={genero.value}
-                  label={genero.label}
-                  value={genero.value}
+                  label="Selecione o gênero"
+                  value={null}
+                  enabled={false}
+                  style={styles.firstItem}
                 />
-              ))}
-            </Picker>
+                {genero.map((gen) => (
+                  <Picker.Item
+                    key={gen.value}
+                    label={gen.label}
+                    value={gen.value}
+                    style={styles.defaultItem}
+                  />
+                ))}
+              </Picker>
+            </View>
           </View>
+          {valida.gen_cod.mensagem.map((mens) => (
+            <Text key={mens} style={styles.small}>
+              {mens}
+            </Text>
+          ))}
 
           <Text style={styles.textInput}>Resumo:</Text>
-          <TextInput
-            style={styles.inputResumo}
-            value={resumo}
-            multiline
-            onChangeText={setResumo}
-          />
+          <View style={styles.divInput}>
+            <TextInput
+              name="liv_desc"
+              style={styles.inputResumo}
+              onChangeText={(value) => handleChange("liv_desc", value)}
+              value={livro.liv_desc}
+              multiline
+            />
+          </View>
+          {valida.resumo.mensagem.map((mens) => (
+            <Text key={mens} id="nome" style={styles.small}>
+              {mens}
+            </Text>
+          ))}
 
           <Text style={styles.textInput}>Quantidade:</Text>
-          <TextInput
-            style={styles.inputQuant}
-            value={quant}
-            keyboardType="numeric"
-            onChangeText={setQuant}
-          />
+          <View style={styles.divInput}>
+            <TextInput
+              keyboardType="numeric"
+              name="disponivel"
+              style={styles.inputQuant}
+              onChangeText={(value) => handleChange("disponivel", value)}
+              value={livro.disponivel}
+            />
+          </View>
+          {valida.quant.mensagem.map((mens) => (
+            <Text key={mens} id="rm" style={styles.small}>
+              {mens}
+            </Text>
+          ))}
         </View>
 
         <View style={styles.containerImagem}>
@@ -318,7 +633,7 @@ export default function AddLivroNovo({ navigation }) {
 
         <View style={styles.viewEditar}>
           <Pressable
-            onPress={handleAddLivroNovo}
+            onPress={handleSubmit}
             style={({ pressed }) =>
               pressed ? [styles.button, styles.btnPress] : styles.button
             }

@@ -21,7 +21,6 @@ import styles from "./styles";
 
 export default function SignUp({ navigation }) {
   const [cursos, setCursos] = useState([]);
-  const [errors, setErrors] = useState({});
 
   const [usuario, setUsuario] = useState({
     usu_rm: "",
@@ -69,7 +68,7 @@ export default function SignUp({ navigation }) {
       console.log(response.data);
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+        Alert.alert(error.response.data.mensagem + "\n" + error.response.data.dados);
       } else {
         alert("Erro no front-end" + "\n" + error);
       }
@@ -374,10 +373,10 @@ export default function SignUp({ navigation }) {
           ))}
           {/* </View> */}
 
-          <View
+          {/* <View
             style={valida.email.validado + " " + styles.valNome}
             id="valEmail"
-          >
+          > */}
             <View style={styles.divInput}>
               <TextInput
                 keyboardType="email-address"
@@ -393,7 +392,7 @@ export default function SignUp({ navigation }) {
                 {mens}
               </Text>
             ))}
-          </View>
+          {/* </View> */}
 
           <View style={styles.pickerContainer}>
             <View className={styles.radioOptions}>
