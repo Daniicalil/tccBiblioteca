@@ -150,6 +150,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center"
   },
+  buttonRadio: {
+    marginTop: 4,
+    flexDirection: 'row',  // Alinha o RadioButton e o label em linha
+    alignItems: 'center',  // Centraliza o conteúdo verticalmente
+    marginVertical: 5,     // Adiciona um espaço entre as opções de sexo
+  },
   sexo: {
     marginTop: 10,
     marginLeft: 10,
@@ -158,6 +164,13 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
+    alignSelf: "center"
+  },
+   divRadio: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     alignSelf: "center"
   },
   form: {

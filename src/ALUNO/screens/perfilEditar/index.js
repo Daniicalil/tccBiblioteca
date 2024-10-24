@@ -18,7 +18,6 @@ import { Entypo } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { Picker } from "@react-native-picker/picker";
 import { useNavigation } from "@react-navigation/native";
-import { CgOptions } from "react-icons/cg";
 
 import styles from "./styles";
 import api from "../../../services/api";
@@ -26,7 +25,6 @@ import useBotaoConfirmarAcao from "../../../componentes/alertConfirmacao";
 import defaultProfileImage from "../../../../assets/imagens_telas/perfil.jpg"; // Imagem padrão
 
 export default function PerfilEditar({ codUsu }) {
-
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
 
@@ -41,7 +39,7 @@ export default function PerfilEditar({ codUsu }) {
     usu_email: "",
     usu_senha: "",
     usu_sexo: "",
-    usu_foto: "",
+    usu_foto: null,
     usu_ativo: "",
     cur_cod: "",
     cur_nome: "",
@@ -49,40 +47,22 @@ export default function PerfilEditar({ codUsu }) {
 
   const [imageSrc, setImageSrc] = useState(defaultProfileImage);
 
-  const showConfirmAlert = useBotaoConfirmarAcao(
-    "Tem certeza que deseja salvar as informações?",
-    async () => {
-      // Lógica a ser executada após a confirmação
-      await handleSave();
-      console.log("Informações salvas");
-    },
-    "perfil"
-  );
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      title: "Editar Perfil",
-      headerLeft: () => (
-        <FontAwesome
-          name="angle-left"
-          size={30}
-          color="black"
-          style={styles.icon}
-          onPress={() => navigation.goBack()}
-        />
-      ),
-    });
-  }, [navigation]);
+  // const showConfirmAlert = useBotaoConfirmarAcao(
+  //   "Tem certeza que deseja salvar as informações?",
+  //   async () => {
+  //     // Lógica a ser executada após a confirmação
+  //     await handleSave();
+  //     console.log("Informações salvas");
+  //   },
+  //   "perfil"
+  // );
 
   useEffect(() => {
     (async () => {
-      // Solicitar permissões para acessar a galeria de imagens
       const { status } =
         await ImagePicker.requestMediaLibraryPermissionsAsync();
       if (status !== "granted") {
-        Alert.alert(
-          "Desculpe, precisamos de permissões para acessar a galeria!"
-        );
+        alert("Desculpe, precisamos de permissão para acessar a galeria!");
       }
     })();
   }, []);
@@ -91,21 +71,21 @@ export default function PerfilEditar({ codUsu }) {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [1, 1],
+      aspect: [3, 3],
       quality: 1,
     });
 
     if (!result.canceled) {
-      console.log("Selected image URI:", result.assets[0].uri);
-      setImageSrc(result.assets[0].uri); // Use this line for the selected image URI
-      setPerfilEdt((prev) => ({ ...prev, usu_foto: result.assets[0].uri }));
+      const uri = result.assets[0].uri;
+      setImageSrc(uri); // Atualize imageSrc
+      setPerfilEdt((prev) => ({ ...prev, usu_foto: uri }));
     }
   };
 
   const takePhoto = async () => {
     let result = await ImagePicker.launchCameraAsync({
       allowsEditing: true,
-      aspect: [1, 1],
+      aspect: [3, 3],
       quality: 1,
     });
 
@@ -122,16 +102,16 @@ export default function PerfilEditar({ codUsu }) {
       "Escolha uma opção",
       [
         {
-          text: "Escolher da Galeria",
-          onPress: pickImage,
+          text: "Cancelar",
+          style: "cancel",
         },
         {
           text: "Tirar Foto",
           onPress: takePhoto,
         },
         {
-          text: "Cancelar",
-          style: "cancel",
+          text: "Escolher da Galeria",
+          onPress: pickImage,
         },
       ],
       { cancelable: true }
@@ -184,24 +164,8 @@ export default function PerfilEditar({ codUsu }) {
   }, []);
 
   const handleSave = async () => {
-    const {
-      usu_rm,
-      usu_nome,
-      usu_nome_completo,
-      usu_email,
-      cur_nome,
-      usu_sexo,
-    } = perfilEdt;
-
-    if (
-      !usu_rm ||
-      !usu_nome ||
-      !usu_nome_completo ||
-      !usu_email ||
-      !cur_nome ||
-      !usu_sexo
-    ) {
-      Alert.alert("Todos os campos devem ser preenchidos");
+    if (!perfilEdt.nome_social || !perfilEdt.email) {
+      alert("Preencha todos os campos obrigatórios!");
       return;
     }
 
@@ -212,7 +176,7 @@ export default function PerfilEditar({ codUsu }) {
       });
 
       if (response.data.sucesso) {
-        Alert.alert("Usuário atualizado com sucesso!");
+        Alert.alert("Perfil atualizado com sucesso!");
         navigation.navigate("../perfil"); // Redireciona após o sucesso
       }
     } catch (error) {
@@ -225,6 +189,14 @@ export default function PerfilEditar({ codUsu }) {
     }
   };
   // console.log(livro);
+
+  const [value, setValue] = useState(perfilEdt.usu_sexo);
+  const sexos = [
+    { label: "Feminino", value: "0" },
+    { label: "Masculino", value: "1" },
+    { label: "Neutro", value: "2" },
+    { label: "Padrão", value: "3" },
+  ];
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -251,7 +223,11 @@ export default function PerfilEditar({ codUsu }) {
               <Avatar.Image
                 size={120}
                 color="#3F7263"
-                source={{ uri: imageSrc || defaultProfileImage }}
+                source={
+                  perfilEdt.usu_foto
+                    ? { uri: String(perfilEdt.usu_foto) }
+                    : require("../../../../assets/imagens_telas/perfil.jpg") // Caminho da imagem padrão
+                }
                 style={styles.fotoPadraoPerfil}
               />
               <Pressable
@@ -266,7 +242,7 @@ export default function PerfilEditar({ codUsu }) {
               </Pressable>
             </View>
             <Text style={styles.texto}>RM:</Text>
-            <View className={styles.inputGroup}>
+            <View sty={styles.inputGroup}>
               <TextInput
                 style={styles.input}
                 value={perfilEdt.usu_rm}
@@ -274,7 +250,7 @@ export default function PerfilEditar({ codUsu }) {
               />
             </View>
             <Text style={styles.texto}>Nome social:</Text>
-            <View className={styles.inputGroup}>
+            <View sty={styles.inputGroup}>
               <TextInput
                 style={styles.input}
                 value={perfilEdt.usu_social}
@@ -284,7 +260,7 @@ export default function PerfilEditar({ codUsu }) {
               />
             </View>
             <Text style={styles.texto}>Nome completo:</Text>
-            <View className={styles.inputGroup}>
+            <View sty={styles.inputGroup}>
               <TextInput
                 style={styles.input}
                 value={perfilEdt.usu_nome}
@@ -295,7 +271,7 @@ export default function PerfilEditar({ codUsu }) {
               />
             </View>
             <Text style={styles.texto}>E-mail:</Text>
-            <View className={styles.inputGroup}>
+            <View sty={styles.inputGroup}>
               <TextInput
                 style={styles.input}
                 value={perfilEdt.usu_email}
@@ -304,9 +280,9 @@ export default function PerfilEditar({ codUsu }) {
                 }
               />
             </View>
-            <Text style={styles.texto}>Sel. curso técnico ou médio</Text>
+            <Text style={styles.texto}>Sel. curso técnico ou médio:</Text>
             <View style={styles.pickerContainer}>
-              <View className={styles.radioOptions}>
+              <View>
                 <Picker
                   selectedValue={perfilEdt.cur_cod}
                   style={styles.radioOption}
@@ -315,12 +291,6 @@ export default function PerfilEditar({ codUsu }) {
                   }
                   value={perfilEdt.cur_cod}
                 >
-                  <Picker.Item
-                    label="Sel. curso técnico ou médio"
-                    value=""
-                    enabled={false}
-                    style={styles.firstItem}
-                  />
                   {cursos.length > 0 ? (
                     cursos.map((cur) => (
                       <Picker.Item
@@ -331,35 +301,37 @@ export default function PerfilEditar({ codUsu }) {
                       />
                     ))
                   ) : (
-                    <Picker.Item label="Nenhum curso disponível" value="" />
+                    <Picker.Item label="Nenhum curso selecionado" value="" />
                   )}
                 </Picker>
               </View>
             </View>
 
             <View style={styles.form}>
-              <Text style={styles.sexo}>Sexo:</Text>
               <RadioButton.Group
-                onValueChange={(value) =>
-                  setPerfilEdt((prev) => ({ ...prev, usu_sexo: value }))
-                }
-                value={perfilEdt.usu_sexo}
+                onValueChange={(newValue) => {
+                  console.log("Novo valor selecionado:", newValue); // Verifica o valor
+                  setValue(newValue);
+                }}
+                value={value}
               >
                 <View style={styles.sexoForm}>
-                  {[
-                    { label: "Feminino", value: "0" },
-                    { label: "Masculino", value: "1" },
-                    { label: "Neutro", value: "2" },
-                    { label: "Padrão", value: "3" },
-                  ].map((opcao) => (
-                    <View key={opcao.value} style={styles.radioContainer}>
-                      <RadioButton value={opcao.value} />
-                      <Text style={styles.label}>
-                        {opcao.label.charAt(0).toUpperCase() +
-                          opcao.label.slice(1)}
-                      </Text>
-                    </View>
-                  ))}
+                  <Text style={styles.sexo}>Sexo:</Text>
+                  <View style={styles.divRadio}>
+                    {sexos.map((sexo) => (
+                      <View key={sexo.value} style={styles.buttonRadio}>
+                        <RadioButton
+                          value={sexo.value}
+                          color="#FF735C"
+                          uncheckedColor="#CCC"
+                          status={
+                            value === sexo.value ? "checked" : "unchecked"
+                          }
+                        />
+                        <Text style={styles.label}>{sexo.label}</Text>
+                      </View>
+                    ))}
+                  </View>
                 </View>
               </RadioButton.Group>
             </View>
@@ -375,7 +347,7 @@ export default function PerfilEditar({ codUsu }) {
             </Pressable>
             <View style={styles.viewSalvar}>
               <Pressable
-                onPress={showConfirmAlert}
+                onPress={handleSave}
                 style={({ pressed }) =>
                   pressed
                     ? [styles.botaoSalvar, styles.btnPress]

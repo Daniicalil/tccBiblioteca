@@ -15,30 +15,26 @@ import styles from "./styles";
 export default function AddRecomendacao({ navigation }) {
   const [curso, setCurso] = useState([]);
   const [livro, setLivro] = useState([]);
-  const [selectedMode, setSelectedMode] = useState(null);
-
-  const handleModeChange = (newValue) => {
-    console.log("Novo valor selecionado:", newValue);
-    setValue(newValue); // Atualiza o valor selecionado
-  };
-
-  const modulos = [
-    { label: "1º Mód.", value: "0" },
-    { label: "2º Mód.", value: "1" },
-    { label: "3º Mód.", value: "2" },
-    { label: "4º Mód.", value: "3" },
-  ];
 
   const [recomendacao, setRecomendacao] = useState({
     rcm_cod: "",
     cur_nome: "",
-    rcm_mod1: "",
-    rcm_mod2: "",
-    rcm_mod3: "",
-    rcm_mod4: "",
+    rcm_mod1: 0,
+    rcm_mod2: 0,
+    rcm_mod3: 0,
+    rcm_mod4: 0,
+    liv_cod: "",
+    liv_nome: "",
   });
 
-  const [value, setValue] = useState();
+  const [selectedValue, setSelectedValue] = useState("");
+
+  const modulos = [
+    { label: "1º Mód.", value: "rcm_mod1" },
+    { label: "2º Mód.", value: "rcm_mod2" },
+    { label: "3º Mód.", value: "rcm_mod3" },
+    { label: "4º Mód.", value: "rcm_mod4" },
+  ];
 
   const valDefault = styles.formControl;
   const valSucesso = styles.formControl + " " + styles.success;
@@ -46,6 +42,7 @@ export default function AddRecomendacao({ navigation }) {
 
   useEffect(() => {
     listaCursos();
+    listaLivro();
   }, []);
 
   async function listaCursos() {
@@ -64,10 +61,6 @@ export default function AddRecomendacao({ navigation }) {
     }
   }
 
-  useEffect(() => {
-    listaLivro();
-  }, []);
-
   async function listaLivro() {
     try {
       const response = await api.post("/livros");
@@ -84,6 +77,33 @@ export default function AddRecomendacao({ navigation }) {
     }
   }
 
+  function handleApiError(error) {
+    if (error.response) {
+      Alert.alert(
+        error.response.data.mensagem + "\n" + error.response.data.dados
+      );
+    } else {
+      alert("Erro no front-end" + "\n" + error);
+    }
+  }
+
+  const handleChange = (e) => {
+    setRecomendacao((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleRadioButtonChange = (newValue) => {
+    setSelectedValue(newValue);
+
+    // Define o módulo selecionado como 1 e os outros como 0
+    setRecomendacao((prev) => ({
+      ...prev,
+      rcm_mod1: newValue === "rcm_mod1" ? 1 : 0,
+      rcm_mod2: newValue === "rcm_mod2" ? 1 : 0,
+      rcm_mod3: newValue === "rcm_mod3" ? 1 : 0,
+      rcm_mod4: newValue === "rcm_mod4" ? 1 : 0,
+    }));
+  };
+
   const [valida, setValida] = useState({
     cur_cod: {
       validado: valDefault,
@@ -99,17 +119,18 @@ export default function AddRecomendacao({ navigation }) {
     },
   });
 
-  const handleChange = (e) => {
-    setRecomendacao((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
   function validaModulo() {
     let objTemp = {
       validado: valSucesso,
       mensagem: [],
     };
 
-    if (recomendacao.usu_sexo == 0) {
+    if (
+      recomendacao.rcm_mod1 === 0 &&
+      recomendacao.rcm_mod2 === 0 &&
+      recomendacao.rcm_mod3 === 0 &&
+      recomendacao.rcm_mod4 === 0 
+    ) {
       objTemp.validado = valErro;
       objTemp.mensagem.push("Selecione o módulo recomendado");
     }
@@ -193,56 +214,6 @@ export default function AddRecomendacao({ navigation }) {
   }
   console.log(recomendacao);
 
-  //tem como uma rota puxar todas as informações do livro em um picker para escolher o livro na recomendação
-
-  const SquareRadioButton = ({ label, checked, onPress }) => (
-    <Pressable onPress={onPress}>
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <View style={{ marginRight: 8 }}>
-          {checked ? (
-            <Icon name="square" size={22} color="#3F7263" />
-          ) : (
-            <Icon name="square-o" size={22} color="#B9B9B9" />
-          )}
-        </View>
-        <Text>{label}</Text>
-      </View>
-    </Pressable>
-  );
-
-  // const handleAddRecommendation = () => {
-  //   if (selectedCurso && selectedLivro && description && selectedMode) {
-  //     Alert.alert(
-  //       "Confirmação",
-  //       "Você realmente deseja adicionar esta recomendação?",
-  //       [
-  //         {
-  //           text: "Cancelar",
-  //           style: "cancel",
-  //         },
-  //         {
-  //           text: "Confirmar",
-  //           onPress: () => {
-  //             Alert.alert(
-  //               "Recomendação realizada",
-  //               "Recomendação adicionada com sucesso!",
-  //               [
-  //                 {
-  //                   text: "OK",
-  //                   onPress: () => navigation.navigate("recomendacao"),
-  //                 },
-  //               ],
-  //               { cancelable: false }
-  //             );
-  //           },
-  //         },
-  //       ]
-  //     );
-  //   } else {
-  //     Alert.alert("Erro", "Por favor, preencha todos os campos.");
-  //   }
-  // };
-
   return (
     <View style={styles.container}>
       {/* <StatusBar backgroundColor='#3F7263' translucent={false} /> */}
@@ -285,19 +256,19 @@ export default function AddRecomendacao({ navigation }) {
       ))}
 
       <Text style={styles.textPicker}>Livro recomendado:</Text>
-      {/* <View style={styles.pickerContainer}>
+      <View style={styles.pickerContainer}>
         <View className={styles.radioOptions}>
           <Picker
-            selectedValue={recomendacao}
+            selectedValue={recomendacao.liv_cod}
             style={styles.picker}
-            onValueChange={(value) => handleChange("", value)}
+            onValueChange={(value) => handleChange("liv_cod", value)}
             value={recomendacao.liv_cod}
           >
-            {recomendacao.map((livro) => (
+            {livro.map((liv) => (
               <Picker.Item
-                key={livro.value}
-                label={livro.label}
-                value={livro.value}
+                key={liv.liv_cod}
+                label={`${liv.liv_nome} - ${liv.aut_nome}`}
+                value={liv.liv_cod}
               />
             ))}
           </Picker>
@@ -307,7 +278,7 @@ export default function AddRecomendacao({ navigation }) {
         <Text key={mens} style={styles.small}>
           {mens}
         </Text>
-      ))} */}
+      ))}
 
       {/* <Text style={styles.textPicker}>Descrição do professor:</Text>
           <TextInput
@@ -316,7 +287,10 @@ export default function AddRecomendacao({ navigation }) {
             multiline
             onChangeText={setDescription}
           /> */}
-      <RadioButton.Group onValueChange={handleModeChange} value={value}>
+      <RadioButton.Group
+        onValueChange={handleRadioButtonChange}
+        value={selectedValue}
+      >
         <Text style={styles.recommendationMod}>Recomendado para:</Text>
         <View style={styles.RadioButtonQuad}>
           <View style={styles.divRadio}>
@@ -326,7 +300,6 @@ export default function AddRecomendacao({ navigation }) {
                   value={mod.value}
                   color="#FF735C"
                   uncheckedColor="#CCC"
-                  status={value === mod.value ? "checked" : "unchecked"}
                 />
                 <Text>{mod.label}</Text>
               </View>
