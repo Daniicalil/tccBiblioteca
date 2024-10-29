@@ -111,8 +111,8 @@ export default function SignUp({ navigation }) {
     },
   });
 
-  const handleChange = (e) => {
-    setUsuario((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (fieldName, value) => {
+    setUsuario((prev) => ({ ...prev, [fieldName]: value }));
   };
 
   // const [selectCursos, setSelectCursos] = useState('');
@@ -147,7 +147,7 @@ export default function SignUp({ navigation }) {
       mensagem: [], // array de mensagens de validação
     };
 
-    if (usuario.usu_nome === "") {
+    if (!usuario.usu_nome) {
       objTemp.validado = valErro;
       objTemp.mensagem.push("O nome do usuário é obrigatório");
     } else if (usuario.usu_nome.length < 5) {
@@ -170,7 +170,7 @@ export default function SignUp({ navigation }) {
       mensagem: [], // array de mensagens de validação
     };
 
-    if (usuario.usu_rm === "") {
+    if (!usuario.usu_rm) {
       objTemp.validado = valErro;
       objTemp.mensagem.push("O RM do usuário é obrigatório");
     } else if (usuario.usu_rm.length < 6) {
@@ -199,7 +199,7 @@ export default function SignUp({ navigation }) {
       mensagem: [],
     };
 
-    if (usuario.usu_email === "") {
+    if (!usuario.usu_email) {
       objTemp.validado = valErro;
       objTemp.mensagem.push("O e-mail do usuário é obrigatório");
     } else if (!checkEmail(usuario.usu_email)) {
@@ -226,7 +226,7 @@ export default function SignUp({ navigation }) {
     const senhaForteRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-    if (usuario.usu_senha === "") {
+    if (!usuario.usu_senha) {
       objTemp.validado = valErro;
       objTemp.mensagem.push("O preenchimento da senha é obrigatório");
     } else if (!senhaForteRegex.test(usuario.usu_senha)) {
@@ -251,7 +251,7 @@ export default function SignUp({ navigation }) {
       mensagem: [],
     };
 
-    if (usuario.confSenha === "") {
+    if (!usuario.confSenha) {
       objTemp.validado = valErro;
       objTemp.mensagem.push("A confirmação da senha é obrigatória");
     } else if (usuario.confSenha !== usuario.usu_senha) {
@@ -274,7 +274,7 @@ export default function SignUp({ navigation }) {
       mensagem: [],
     };
 
-    if (usuario.usu_sexo == 0) {
+    if (!usuario.usu_sexo == 0) {
       objTemp.validado = valErro;
       objTemp.mensagem.push("Selecione o sexo do usuário");
     }
@@ -343,7 +343,7 @@ export default function SignUp({ navigation }) {
               name="usu_rm"
               style={styles.input}
               onChangeText={(value) => handleChange("usu_rm", value)}
-              value={usuario.usu_rm}
+              value={usuario.usu_rm || ""}
             />
           </View>
           {valida.rm.mensagem.map((mens) => (
@@ -363,7 +363,7 @@ export default function SignUp({ navigation }) {
               placeholder="Nome completo"
               style={styles.input}
               onChangeText={(value) => handleChange("usu_nome", value)}
-              value={usuario.usu_nome}
+              value={usuario.usu_nome || ""}
             />
           </View>
           {valida.nome.mensagem.map((mens) => (
@@ -384,7 +384,7 @@ export default function SignUp({ navigation }) {
                 placeholder="E-mail"
                 style={styles.input}
                 onChangeText={(value) => handleChange("usu_email", value)}
-                value={usuario.usu_email}
+                value={usuario.usu_email || ""}
               />
             </View>
             {valida.email.mensagem.map((mens) => (
@@ -400,7 +400,7 @@ export default function SignUp({ navigation }) {
                 selectedValue={usuario.cur_cod}
                 style={styles.radioOption}
                 onValueChange={(value) => handleChange("cur_cod", value)}
-                value={usuario.cur_cod}
+                value={usuario.cur_cod || ""}
               >
                 <Picker.Item
                   label="Sel. curso técnico ou médio"
@@ -438,7 +438,7 @@ export default function SignUp({ navigation }) {
                   style={[styles.input, styles.passwordInput]}
                   secureTextEntry={!showPassword}
                   onChangeText={(value) => handleChange("usu_senha", value)}
-                  value={usuario.usu_senha}
+                  value={usuario.usu_senha || ""}
                 />
                 <Pressable
                   onPress={togglePasswordVisibility}
@@ -471,7 +471,7 @@ export default function SignUp({ navigation }) {
                   style={[styles.input, styles.passwordInput]}
                   secureTextEntry={!showConfirmPassword}
                   onChangeText={(value) => handleChange("confSenha", value)}
-                  value={usuario.confSenha}
+                  value={usuario.confSenha || ""}
                 />
                 <Pressable
                   onPress={toggleConfirmPasswordVisibility}

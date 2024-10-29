@@ -23,11 +23,12 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     borderRadius: 5,
     padding: 10,
-    marginBottom: 20,
+    marginBottom: 3,
   },
   buttonsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    marginTop: 10,
   },
   modalButtonAdd: {
     backgroundColor: "#FF735C",
@@ -52,6 +53,16 @@ const styles = StyleSheet.create({
   buttonTextCanc: {
     textAlign: "center",
     color: "#000",
+  },
+
+  small: {
+    /* visibility: hidden;  */
+    /* display: none; */
+    color: "#e74c3c",
+    fontSize: 14,
+    marginTop: 0.5,
+    alignSelf: "center",
+    marginBottom: 5,
   },
 });
 

@@ -24,6 +24,8 @@ import ModalAddAutor from "../../../componentes/modalAddAutor";
 import ModalAddEditora from "../../../componentes/modalAddEditora";
 import ModalAddGenero from "../../../componentes/modalAddGenero";
 
+import ModaisLiv_ from "../../../componentes/modaisLiv_"
+
 export default function AddLivroNovo({ navigation }) {
   const [autor, setAutor] = useState([]);
   const [editora, setEditora] = useState([]);
@@ -95,7 +97,9 @@ export default function AddLivroNovo({ navigation }) {
       console.log(response.data);
     } catch (error) {
       if (error.response) {
-        Alert.alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+        Alert.alert(
+          error.response.data.mensagem + "\n" + error.response.data.dados
+        );
       } else {
         alert("Erro no front-end" + "\n" + error);
       }
@@ -393,26 +397,35 @@ export default function AddLivroNovo({ navigation }) {
     return testeResult;
   }
 
+  const [showModaisLiv, setShowModaisLiv] = useState(false);
+  const openModaisLiv = () => setShowModaisLiv(true);
+  const closeModaisLiv = () => setShowModaisLiv(false);
+  const handleLiv = () => {
+    setShowModaisLiv(false);
+    router.push("../biblioteca");
+  };
+
   async function handleSubmit(event) {
     event.preventDefault();
     let itensValidados = 0;
 
     // Validar campos
-    itensValidados += validaQuant();
-    itensValidados += validaLivro();
-    itensValidados += validaSelectAutor();
-    itensValidados += validaSelectEditora();
-    itensValidados += validaSelectGenero();
-    itensValidados += validaResumo();
+    // itensValidados += validaQuant();
+    // itensValidados += validaLivro();
+    // itensValidados += validaSelectAutor();
+    // itensValidados += validaSelectEditora();
+    // itensValidados += validaSelectGenero();
+    // itensValidados += validaResumo();
     // itensValidados += validaFoto();
 
     // Verificar se todos os campos estão validados
-    if (itensValidados === 6) {
+    if (itensValidados === 0) {
       try {
+        openModaisLiv();
         const response = await api.post("/usuarios", livro);
         if (response.data.sucesso) {
           Alert.alert("Cadastro do livro realizado com sucesso");
-          navigate.navigation("biblioteca")
+          navigate.navigation("biblioteca");
         }
       } catch (error) {
         if (error.response) {
@@ -642,6 +655,11 @@ export default function AddLivroNovo({ navigation }) {
           </Pressable>
         </View>
       </View>
+      <ModaisLiv_
+        show={showModaisLiv}
+        onClose={closeModaisLiv}
+        onConfirm={handleLiv}
+      />
     </ScrollView>
   );
 }
