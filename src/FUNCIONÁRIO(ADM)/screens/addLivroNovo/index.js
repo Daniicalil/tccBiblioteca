@@ -458,6 +458,18 @@ export default function AddLivroNovo({ navigation }) {
         </View>
 
         <View style={styles.inputContainer}>
+
+        <Text style={styles.textInput}>Código do livro:</Text>
+          <View style={styles.divInput}>
+            <TextInput
+              keyboardType="numeric"
+              name="liv_cod"
+              style={styles.inputQuant}
+              onChangeText={(value) => handleChange("liv_cod", value)}
+              value={livro.liv_cod}
+            />
+          </View>
+
           <Text style={styles.textInput}>Nome do livro:</Text>
           <View style={styles.divInput}>
             <TextInput
