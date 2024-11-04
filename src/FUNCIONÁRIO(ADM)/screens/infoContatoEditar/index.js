@@ -26,8 +26,10 @@ export default function InformacoesContatoEditar({ codInfo }) {
   });
 
   useEffect(() => {
+    if (!codInfo) return;
+
     const handleCarregainfo = async () => {
-      const dadosApi = { cont_cod: codInfo };
+      const dadosApi = { cont_cod: 1 };
 
       try {
         const response = await api.post("/contatos", dadosApi);
@@ -45,7 +47,7 @@ export default function InformacoesContatoEditar({ codInfo }) {
     };
 
     handleCarregainfo();
-  }, []);
+  }, [codInfo]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,9 +68,7 @@ export default function InformacoesContatoEditar({ codInfo }) {
     try {
       const response = await api.patch(
         `/cont_editar/${infoContatoEdt.cont_cod}`,
-        {
           ...infoContatoEdt,
-        }
       );
 
       if (response.data.sucesso) {

@@ -14,14 +14,13 @@ import IconeEditar from "../../../../assets/imagens_telas/editar_perfil.png";
 
 export default function InformacoesContato({ navigation }) {
   const [infoContato, setInfoContato] = useState([]);
-  const [contCod, setContCod] = useState(1);
 
   useEffect(() => {
     informacoes();
   }, []);
 
   async function informacoes() {
-    const dados = { cont_cod: contCod };
+    const dados = { cont_cod: 1 };
     try {
       const response = await api.post("/contatos", dados);
       console.log(response.data.dados);
@@ -71,7 +70,7 @@ export default function InformacoesContato({ navigation }) {
       <View style={styles.viewEditar}>
         <Pressable
           onPress={() =>
-            navigation.navigate("informacoescontatoEditar", { contCod })
+            navigation.navigate("informacoescontatoEditar", { cont_cod: 1 })
           }
           style={({ pressed }) =>
             pressed ? [styles.botaoEditar, styles.btnPress] : styles.botaoEditar
