@@ -4,11 +4,13 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 
 import styles from "./styles";
 
-export const BarraPesquisa = () => {
+export const BarraPesquisa = ({ livNome, atLivNome, listaLivros }) => {
   return (
     <Searchbar
       placeholder="Pesquisar"
-      onChangeText={(val) => setSearch(val)}
+      value={livNome}
+      onChangeText={atLivNome}
+      onIconPress={listaLivros}
       style={styles.barraPesq}
       inputStyle={styles.placeholderStyle}
       icon={({ size, color }) => (

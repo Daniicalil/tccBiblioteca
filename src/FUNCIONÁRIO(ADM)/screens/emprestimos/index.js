@@ -11,10 +11,6 @@ import {
 } from "../../../componentes/cabecalho/forms";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-import AnneFrank from "../../../../assets/Capa_dos_livros/o diário de anne frank.jpg";
-import Verity from "../../../../assets/Capa_dos_livros/verity.jpg";
-import OsMiseraveis from "../../../../assets/Capa_dos_livros/os miseráveis.jpg";
-
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 
 import api from "../../../services/api";
@@ -25,57 +21,16 @@ const Line = () => {
 };
 
 export default function Emprestimos({ navigation }) {
-  // const [emprestimos] = useState([
-  //   {
-  //     livro: {
-  //       liv_foto_capa: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
-  //       liv_nome: "O diário de Anne Frank",
-  //       aut_nome: "Anne Frank",
-  //     },
-  //     usu_nome: "Clara Oliveira da Silva",
-  //     dataReserva: "12/03/2024",
-  //     periodo: {
-  //       inicio: "12/03/2024",
-  //       fim: "27/03/2024",
-  //     },
-  //   },
-  //   {
-  //     livro: {
-  //       liv_foto_capa: require("../../../../assets/Capa_dos_livros/verity.jpg"),
-  //       liv_nome: "Verity",
-  //       aut_nome: "Colleen Hoover",
-  //     },
-  //     usu_nome: "Ana Carolina da Silva Santos",
-  //     dataReserva: "10/03/2024",
-  //     periodo: {
-  //       inicio: "10/03/2024",
-  //       fim: "25/03/2024",
-  //     },
-  //   },
-  //   {
-  //     livro: {
-  //       liv_foto_capa: require("../../../../assets/Capa_dos_livros/os miseráveis.jpg"),
-  //       liv_nome: "Os Miseráveis",
-  //       aut_nome: "Victor Hugo",
-  //     },
-  //     usu_nome: "João Pedro Oliveira Souza",
-  //     dataReserva: "25/03/2024",
-  //     periodo: {
-  //       inicio: "25/03/2024",
-  //       fim: "09/04/2024",
-  //     },
-  //   },
-  // ]);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
 
   const [selectedSearchOption, setSelectedSearchOption] = useState("usu_nome");
-
   const [emprestimo, setEmprestimo] = useState([]);
-
   const [livNome, setlivNome] = useState("");
 
-  function atLivNome(nome) {
+  const atLivNome = (nome) => {
     setlivNome(nome);
-  }
+  };
 
   useEffect(() => {
     listaLivros();
@@ -85,8 +40,10 @@ export default function Emprestimos({ navigation }) {
     const dados = { [selectedSearchOption]: livNome };
     try {
       const response = await api.post("/emprestimos", dados);
-      console.log(response.data.dados);
-      setEmprestimo(response.data.dados);
+      const emprestimos = Array.isArray(response.data.dados)
+        ? response.data.dados.filter((item) => !Buffer.isBuffer(item))
+        : [];
+      setEmprestimo(emprestimos);
     } catch (error) {
       if (error.response) {
         Alert.alert(
@@ -137,7 +94,7 @@ export default function Emprestimos({ navigation }) {
                     value={option.value}
                     color="#FF735C"
                     uncheckedColor="#CCC"
-                    checked={selectedSearchOption === option.value}
+                    onValueChange={() => setSelectedSearchOption(option.value)}
                   />
                   <Text style={styles.radioLabel}>{option.label}</Text>
                 </View>
@@ -147,13 +104,10 @@ export default function Emprestimos({ navigation }) {
         </View>
 
         {emprestimo.length > 0 ? (
-          emprestimo.map(emp => (
+          emprestimo.map((emp) => (
             <View key={emp.usu_cod} style={styles.lineSquare}>
               <View style={styles.infoLivro}>
-                <Image
-                  source={emp.liv_foto_capa}
-                  style={styles.capaLivros}
-                />
+                <Image source={emp.liv_foto_capa} style={styles.capaLivros} />
                 <View style={styles.sectionTitle}>
                   <Text style={styles.titleLivro}>{emp.liv_nome}</Text>
                   <Text style={styles.autor}>Por: {emp.aut_nome}</Text>
@@ -168,8 +122,7 @@ export default function Emprestimos({ navigation }) {
                   Reserva realizada no dia: {emp.emp_data_emp}
                 </Text>
                 <Text style={styles.periodoReserva}>
-                  Período da reserva: {emp.periodo.inicio} até{" "}
-                  {emp.periodo.fim}
+                  Período da reserva: {emp.periodo.inicio} até {emp.periodo.fim}
                 </Text>
               </View>
             </View>

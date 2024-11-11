@@ -70,7 +70,20 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     fontSize: 14,
   },
-  item: {
+  bookList: {
+    marginTop: 2,
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 2,
+    justifyContent: "center",
+    alignItems: "center",
+    maxWidth: "98%",
+    margin: 0,
+    marginBottom: 2,
+    cursor: "pointer",
+    width: "100%",
+  },
+  bookItem: {
     width: "31.2%",
     alignItems: "center",
     margin: "1%",
@@ -98,6 +111,15 @@ const styles = StyleSheet.create({
   },
   flatList: {
     flex: 1,
+  },
+  inativo: {
+    opacity: 0.5,
+  },
+  bookInfo: {
+    padding: 1,
+  },
+  toggleContainer: {
+    marginLeft: "auto",
   },
   image: {
     marginTop: 6,
@@ -144,8 +166,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   noResultsText: {
-    textAlign: "center"
-  }
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    display: "flex",
+    alignSelf: "center",
+  },
 });
 
 export default styles;
