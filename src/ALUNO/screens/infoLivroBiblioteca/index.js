@@ -19,17 +19,20 @@ const Line = () => {
   return <View style={styles.line} />;
 };
 
-export default function InfoLivroBiblioteca({ route, codLivro }) {
-  const navigation = useNavigation();
+export default function InfoLivroBiblioteca({ codLivro }) {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
 
   const [livro, setLivro] = useState(null);
+  const [error, setError] = useState(null);
+  const navigation = useNavigation();
 
   useEffect(() => {
     const handleCarregaLivro = async () => {
       const dadosApi = { liv_cod: codLivro };
 
       try {
-        const response = await api.post('/livros', dadosApi);
+        const response = await api.post("/livros", dadosApi);
         if (response.data.sucesso) {
           const livroApi = response.data.dados[0];
           setLivro(livroApi);
@@ -37,7 +40,9 @@ export default function InfoLivroBiblioteca({ route, codLivro }) {
           Alert.alert(response.data.mensagem);
         }
       } catch (error) {
-        alert(error.response ? error.response.data.mensagem : 'Erro no front-end');
+        alert(
+          error.response ? error.response.data.mensagem : "Erro no front-end"
+        );
       }
     };
 
@@ -64,7 +69,10 @@ export default function InfoLivroBiblioteca({ route, codLivro }) {
         {livro ? (
           <>
             <View style={styles.lineSquare}>
-              <Image source={livro.liv_foto_capa} style={styles.capaLivros} />
+              <Image
+                source={{ uri: `${apiUrl}:${apiPorta}${livro.liv_foto_capa}` }}
+                style={styles.capaLivros}
+              />
               <Line />
               <View style={styles.sectionTitle}>
                 <Text style={styles.general}>Visão geral</Text>
@@ -96,7 +104,7 @@ export default function InfoLivroBiblioteca({ route, codLivro }) {
             </View>
 
             <Pressable
-              onPress={() => navigation.navigate("reservarlivro")}
+              onPress={() => navigation.navigate('ReservarLivro', { codLivro: livro?.liv_cod })}
               style={({ pressed }) =>
                 pressed ? [styles.button, styles.btnPress] : styles.button
               }

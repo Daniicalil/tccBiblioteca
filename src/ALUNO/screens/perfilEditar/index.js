@@ -27,20 +27,72 @@ import defaultProfileImage from "../../../../assets/imagens_telas/perfil.jpg"; /
 export default function PerfilEditar({ codUsu }) {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
-
   const navigation = useNavigation();
-
   const [cursos, setCursos] = useState([]);
+  const [selectedSexo, setSelectedSexo] = useState("");
+  const [cursoSelecionadoAluno, setCursoSelecionadoAluno] = useState(null);
+  const [cursoSelecionadoEscola, setCursoSelecionadoEscola] = useState(null);
+  console.log(cursoSelecionadoAluno);
+
+  const handleClickAluno = (cur_cod) => {
+    setCursoSelecionadoAluno(cur_cod);
+  };
+  const handleClickEscola = (cur_cod) => {
+    setCursoSelecionadoEscola(cur_cod);
+  };
+
+  const handleAddCurso = async (cur_cod) => {
+    try {
+      const response = await api.post(`/usuarios_cursos`, {
+        usu_cod: codUsu,
+        cur_cod: cursoSelecionadoEscola,
+      });
+      if (response.data.sucesso) {
+        alert("Curso adicionado com sucesso!");
+        listaCursos();
+        handleCarregaPerfil();
+      }
+    } catch (error) {
+      console.error("Erro ao adicionar curso:", error);
+      Alert.alert(
+        error.response
+          ? error.response.data.mensagem
+          : "Erro ao adicionar curso. Tente novamente."
+      );
+    }
+  };
+
+  const handleRemoveCurso = async (cur_cod) => {
+    try {
+      const response = await api.delete(
+        `/usuarios_cursos/${cursoSelecionadoAluno}`
+      );
+      if (response.data.sucesso) {
+        alert("Curso removido com sucesso!");
+        listaCursos();
+        handleCarregaPerfil();
+      }
+    } catch (error) {
+      console.error("Erro ao remover curso:", error);
+      Alert.alert(
+        error.response
+          ? error.response.data.mensagem
+          : "Erro ao remover curso. Tente novamente."
+      );
+    }
+  };
+
   const [perfilEdt, setPerfilEdt] = useState({
     usu_cod: "",
     usu_rm: "",
     usu_social: "",
     usu_nome: "",
     usu_email: "",
-    usu_senha: "",
+    usu_senha: null,
     usu_sexo: "",
-    usu_foto: null,
+    usu_foto: "",
     usu_ativo: "",
+    ucu_cod: "",
     cur_cod: "",
     cur_nome: "",
   });
@@ -119,12 +171,14 @@ export default function PerfilEditar({ codUsu }) {
   };
 
   useEffect(() => {
-    listaCursos();
-  }, []);
+    if (codUsu) listaCursos();
+  }, [codUsu]);
 
   async function listaCursos() {
+    const dados = { usu_cod: codUsu };
+
     try {
-      const response = await api.post("/cursos");
+      const response = await api.post("/dispUsucursos", dados);
       setCursos(response.data.dados);
       console.log(response.data);
     } catch (error) {
@@ -140,31 +194,37 @@ export default function PerfilEditar({ codUsu }) {
 
   // Busca os dados do perfil ao montar o componente
   useEffect(() => {
-    const handleCarregaPerfil = async () => {
-      const dados = { usu_cod: 29 };
-      // codUsu
-
-      try {
-        const response = await api.post("/usuarios", dados); // Ajuste o endpoint conforme necessário
-        if (response.data.sucesso) {
-          const edtPerfilApi = response.data.dados[0];
-          setPerfilEdt(edtPerfilApi);
-          setImageSrc(edtPerfilApi.usu_foto || defaultProfileImage);
-        } else {
-          Alert.alert(response.data.mensagem);
-        }
-      } catch (error) {
-        alert(
-          error.response ? error.response.data.mensagem : "Erro no front-end"
-        );
-      }
-    };
+    if (!codUsu) return;
 
     handleCarregaPerfil();
-  }, []);
+  }, [codUsu]);
+
+  const handleCarregaPerfil = async () => {
+    const dados = { usu_cod: codUsu };
+
+    try {
+      const response = await api.post("/usuarios", dados);
+      if (response.data.sucesso) {
+        const edtPerfilApi = response.data.dados[0];
+        setPerfilEdt(edtPerfilApi);
+        setSelectedSexo(edtPerfilApi.usu_sexo);
+      } else {
+        Alert.alert(response.data.mensagem);
+      }
+    } catch (error) {
+      alert(
+        error.response ? error.response.data.mensagem : "Erro no front-end"
+      );
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setPerfilEdt((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSave = async () => {
-    if (!perfilEdt.nome_social || !perfilEdt.email) {
+    if (!perfilEdt.usu_email || !perfilEdt.usu_sexo) {
       alert("Preencha todos os campos obrigatórios!");
       return;
     }
@@ -226,7 +286,7 @@ export default function PerfilEditar({ codUsu }) {
                 source={
                   perfilEdt.usu_foto
                     ? { uri: String(perfilEdt.usu_foto) }
-                    : require("../../../../assets/imagens_telas/perfil.jpg") // Caminho da imagem padrão
+                    : require("../../../../assets/imagens_telas/perfil.jpg")
                 }
                 style={styles.fotoPadraoPerfil}
               />
@@ -245,7 +305,7 @@ export default function PerfilEditar({ codUsu }) {
             <View sty={styles.inputGroup}>
               <TextInput
                 style={styles.input}
-                value={perfilEdt.usu_rm}
+                value={Number(perfilEdt.usu_rm)}
                 editable={false}
               />
             </View>
@@ -255,7 +315,7 @@ export default function PerfilEditar({ codUsu }) {
                 style={styles.input}
                 value={perfilEdt.usu_social}
                 onChangeText={(text) =>
-                  setPerfilEdt((prev) => ({ ...prev, usu_social: text }))
+                  setPerfilEdt({ ...perfilEdt, usu_social: text })
                 }
               />
             </View>
@@ -264,46 +324,98 @@ export default function PerfilEditar({ codUsu }) {
               <TextInput
                 style={styles.input}
                 value={perfilEdt.usu_nome}
-                // onChangeText={(text) =>
-                //   setPerfilEdt((prev) => ({ ...prev, usu_nome: text }))
-                // }
                 editable={false}
               />
             </View>
             <Text style={styles.texto}>E-mail:</Text>
-            <View sty={styles.inputGroup}>
+            <View style={styles.inputGroup}>
               <TextInput
                 style={styles.input}
                 value={perfilEdt.usu_email}
                 onChangeText={(text) =>
-                  setPerfilEdt((prev) => ({ ...prev, usu_email: text }))
+                  setPerfilEdt({ ...perfilEdt, usu_email: text })
                 }
               />
             </View>
-            <Text style={styles.texto}>Sel. curso técnico ou médio:</Text>
-            <View style={styles.pickerContainer}>
-              <View>
-                <Picker
-                  selectedValue={perfilEdt.cur_cod}
-                  style={styles.radioOption}
-                  onValueChange={(itemValue) =>
-                    setPerfilEdt((prev) => ({ ...prev, cur_cod: itemValue }))
-                  }
+
+            <View style={styles.listaCursos}>
+              <View style={styles.inputCursos}>
+                <Text style={styles.texto}>Cursos já selecionados:</Text>
+                <ul
+                  id="cur_cod"
+                  name="cur_cod"
                   value={perfilEdt.cur_cod}
+                  onChangeText={handleChange}
+                  style={styles.opcaoCursos}
+                >
+                  {perfilEdt.cursos.length > 0 ? (
+                    perfilEdt.cursos.map((cur) => (
+                      <li
+                        key={cur.cur_cod}
+                        value={cur.ucu_cod}
+                        onClick={() => handleClickAluno(cur.ucu_cod)}
+                        style={
+                          cursoSelecionadoAluno === cur.ucu_cod
+                            ? styles.selected
+                            : ""
+                        }
+                      >
+                        {cur.cur_nome}
+                      </li>
+                    ))
+                  ) : (
+                    <p>Não há cursos registrados.</p>
+                  )}
+                </ul>
+              </View>
+              <View style={styles.buttons}>
+                <button
+                  style={styles.cursosButton}
+                  onClick={() =>
+                    cursoSelecionadoEscola &&
+                    handleAddCurso(cursoSelecionadoAluno)
+                  }
+                >
+                  <IoChevronBack size={20} color="#FFF" />
+                </button>
+                <button
+                  style={styles.cursosButton}
+                  onClick={() =>
+                    cursoSelecionadoAluno &&
+                    handleRemoveCurso(cursoSelecionadoEscola)
+                  }
+                >
+                  <IoChevronForward size={20} color="#FFF" />
+                </button>
+              </View>
+              <View style={styles.inputCursos}>
+                <label style={styles.textInput}>Selecione o curso:</label>
+                <ul
+                  id="cur_cod"
+                  name="cur_cod"
+                  value={perfilEdt.cur_cod}
+                  onChangeText={handleChange}
+                  style={styles.opcaoCursos}
                 >
                   {cursos.length > 0 ? (
                     cursos.map((cur) => (
-                      <Picker.Item
+                      <li
                         key={cur.cur_cod}
-                        label={cur.cur_nome}
                         value={cur.cur_cod}
-                        style={styles.defaultItem}
-                      />
+                        onClick={() => handleClickEscola(cur.cur_cod)}
+                        style={
+                          cursoSelecionadoEscola === cur.cur_cod
+                            ? styles.selected
+                            : ""
+                        }
+                      >
+                        {cur.cur_nome}
+                      </li>
                     ))
                   ) : (
-                    <Picker.Item label="Nenhum curso selecionado" value="" />
+                    <p>Não há cursos registrados.</p>
                   )}
-                </Picker>
+                </ul>
               </View>
             </View>
 
@@ -318,17 +430,32 @@ export default function PerfilEditar({ codUsu }) {
                 <View style={styles.sexoForm}>
                   <Text style={styles.sexo}>Sexo:</Text>
                   <View style={styles.divRadio}>
-                    {sexos.map((sexo) => (
-                      <View key={sexo.value} style={styles.buttonRadio}>
+                    {[
+                      { label: "Feminino", value: "0" },
+                      { label: "Masculino", value: "1" },
+                      { label: "Neutro", value: "2" },
+                      { label: "Padrão", value: "3" },
+                    ].map((opcao) => (
+                      <View key={opcao.value} style={styles.buttonRadio}>
                         <RadioButton
-                          value={sexo.value}
+                          value={opcao.value}
                           color="#FF735C"
                           uncheckedColor="#CCC"
                           status={
-                            value === sexo.value ? "checked" : "unchecked"
+                            value === opcao.value ? "checked" : "unchecked"
                           }
+                          checked={
+                            Number(perfilEdt.usu_sexo) === Number(opcao.value)
+                          }
+                          onChangeText={(e) => {
+                            setSelectedSexo(e.target.value); // Atualiza selectedSexo
+                            setPerfilEdt({
+                              ...perfilEdt,
+                              usu_sexo: e.target.value,
+                            }); // Atualiza perfilEdt
+                          }}
                         />
-                        <Text style={styles.label}>{sexo.label}</Text>
+                        <Text style={styles.label}>{opcao.label}</Text>
                       </View>
                     ))}
                   </View>

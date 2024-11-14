@@ -22,7 +22,9 @@ const Line = () => {
   return <View style={styles.line} />;
 };
 
-export default function InfoLivroRecomendacao({ route, codLivroRec }) {
+export default function InfoLivroRecomendacao({ codLivroRec }) {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
   const navigation = useNavigation();
 
   const [modulo1, setModulo1] = useState(false);
@@ -30,20 +32,7 @@ export default function InfoLivroRecomendacao({ route, codLivroRec }) {
   const [modulo3, setModulo3] = useState(false);
   const [modulo4, setModulo4] = useState(false);
 
-  const [livroRec, setLivroRec] = useState({
-    rcm_cod: "",
-    cur_nome: "",
-    cur_cod: "",
-    liv_cod: "",
-    liv_foto_capa: "",
-    liv_nome: "",
-    liv_desc: "",
-    aut_nome: "",
-    gen_nome: "",
-    generos: "",
-    edt_nome: "",
-    disponivel: "",
-  });
+  const [livroRec, setLivroRec] = useState(null);
 
   useEffect(() => {
     handleCarregaLivro();
@@ -70,8 +59,6 @@ export default function InfoLivroRecomendacao({ route, codLivroRec }) {
           if (response.data.dados.length > 0) {
             setLivroRec(livroApi);
           }
-        } else {
-          Alert.alert("Nenhum resultado encontrado.");
         }
       } catch (error) {
         if (error.response) {
@@ -83,14 +70,15 @@ export default function InfoLivroRecomendacao({ route, codLivroRec }) {
         }
       }
     }
-  }, []);
+    handleCarregaLivro();
+  }, [codLivroRec]);
 
   const removeRecommendation = async () => {
     try {
       const response = await api.delete("/recomendacao", { codLivroRec });
       if (response.data.sucesso) {
         Alert.alert("Sucesso", "Recomendação removida com sucesso!");
-        navigation.navigate('recomendacao')
+        navigation.navigate("recomendacao");
       } else {
         Alert.alert("Erro", response.data.mensagem);
       }
@@ -118,7 +106,6 @@ export default function InfoLivroRecomendacao({ route, codLivroRec }) {
     );
   };
 
-
   return (
     <ScrollView style={styles.container}>
       <View style={styles.inicio}>
@@ -145,10 +132,15 @@ export default function InfoLivroRecomendacao({ route, codLivroRec }) {
           <Text style={styles.buttonTextRem}>- Remover</Text>
         </Pressable>
 
-        {livroRec.liv_cod ? (
+        {livroRec ? (
           <>
             <View style={styles.lineSquare}>
-              <Image source={livroRec.liv_foto_capa} style={styles.capaLivros} />
+              <Image
+                source={{
+                  uri: `${apiUrl}:${apiPorta}${livro.liv_foto_capa}`,
+                }}
+                style={styles.capaLivros}
+              />
               <Line />
               <View style={styles.sectionTitle}>
                 <Text style={styles.general}>Visão geral</Text>
@@ -183,43 +175,43 @@ export default function InfoLivroRecomendacao({ route, codLivroRec }) {
               <Text style={styles.recommendation}>{livroRec.cur_nome}</Text>
 
               <View style={styles.RadioButtonQuad}>
-                <SquareRadioButton
-                  label="1º Mod. "
-                  name="modulo1"
-                  value="1º modulo"
-                  checked={modulo1}
-                  onChange={() => setModulo1(!modulo1)}
-                  disabled={true}
-                />
-                <SquareRadioButton
-                  label="2º Mod."
-                  name="modulo2"
-                  value="2º modulo"
-                  checked={modulo2}
-                  onChange={() => setModulo2(!modulo2)}
-                  disabled={true}
-                />
-                <SquareRadioButton
-                  label="3º Mod."
-                  name="modulo3"
-                  value="3º modulo"
-                  checked={modulo3}
-                  onChange={() => setModulo3(!modulo3)}
-                  disabled={true}
-                />
-                <SquareRadioButton
-                 label="4º Mod."
-                 name="modulo4"
-                 value="4º modulo"
-                 checked={modulo4}
-                 onChange={() => setModulo4(!modulo4)}
-                 disabled={true}
-                />
+                <View style={styles.checkboxContainer}>
+                  <CheckBox
+                    value={modulo1}
+                    onValueChange={() => setModulo1(!modulo1)}
+                    disabled
+                  />
+                  <Text style={styles.checkboxLabel}>1º Módulo</Text>
+                </View>
+                <View style={styles.checkboxContainer}>
+                  <CheckBox
+                    value={modulo2}
+                    onValueChange={() => setModulo2(!modulo2)}
+                    disabled
+                  />
+                  <Text style={styles.checkboxLabel}>2º Módulo</Text>
+                </View>
+                <View style={styles.checkboxContainer}>
+                  <CheckBox
+                    value={modulo3}
+                    onValueChange={() => setModulo3(!modulo3)}
+                    disabled
+                  />
+                  <Text style={styles.checkboxLabel}>3º Módulo</Text>
+                </View>
+                <View style={styles.checkboxContainer}>
+                  <CheckBox
+                    value={modulo4}
+                    onValueChange={() => setModulo4(!modulo4)}
+                    disabled
+                  />
+                  <Text style={styles.checkboxLabel}>4º Módulo</Text>
+                </View>
               </View>
             </View>
 
             <Pressable
-              onPress={() => navigation.navigate("reservarlivro")}
+              onPress={() => navigation.navigate("reservarlivro", { codLivro: livroRec.liv_cod })}
               style={({ pressed }) => [
                 styles.button,
                 pressed && styles.btnPress,

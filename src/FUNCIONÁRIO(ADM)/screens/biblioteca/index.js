@@ -25,6 +25,8 @@ import api from "../../../services/api";
 import styles from "./styles";
 
 export default function Biblioteca() {
+  const apiUrl = process.env.API_URL;
+  const apiPorta = process.env.API_PORTA;
   const navigation = useNavigation();
 
   const [books, setBooks] = useState([]);
@@ -130,18 +132,18 @@ export default function Biblioteca() {
         </Text>
       </Pressable>
       <View style={styles.bookList}>
-        {books.length > 0 ? (
-          books.map((livro) => (
+        {sortBooksAlphabetically.length > 0 ? (
+          sortBooksAlphabetically.map(livro => (
             <View style={styles.item}>
               <Pressable
                 onPress={() =>
-                  navigation.navigate("infolivrobiblioteca", {
-                    books: livro.liv_cod,
-                  })
+                  navigation.navigate("infoLivroBiblioteca", { livroId: livro.liv_cod })
                 }
               >
                 <Image
-                  source={{ uri: `${apiUrl}:${apiPorta}${livro.liv_foto_capa}` }}
+                  source={{
+                    uri: `${apiUrl}:${apiPorta}${livro.liv_foto_capa}`,
+                  }}
                   style={styles.image}
                 />
                 <Text style={styles.titleBook}>{livro.liv_nome}</Text>
