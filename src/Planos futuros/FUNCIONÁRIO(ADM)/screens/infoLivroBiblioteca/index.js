@@ -6,7 +6,7 @@ import { IoPencilSharp } from "react-icons/io5";
 import {
   RetangGreen,
   RetangOrange,
-} from "../../../componentes/cabecalho/forms";
+} from "../../../../componentes/cabecalho/forms";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -14,7 +14,7 @@ import Autor from "../../../../assets/imagens_telas/autora.png";
 import Editora from "../../../../assets/imagens_telas/editora.png";
 import Genero from "../../../../assets/imagens_telas/genero.png";
 
-import api from "../../../services/api";
+import api from "../../../../services/api";
 import styles from "./styles";
 
 const Line = () => {
@@ -129,7 +129,11 @@ export default function InfoLivroBiblioteca({ codLivro }) {
             </View>
 
             <Pressable
-              onPress={() => navigation.navigate('reservarLivro', { codLivro: livro?.liv_cod })}
+              onPress={() =>
+                navigation.navigate("reservarLivro", {
+                  codLivro: livro?.liv_cod,
+                })
+              }
               style={({ pressed }) =>
                 pressed ? [styles.button, styles.btnPress] : styles.button
               }

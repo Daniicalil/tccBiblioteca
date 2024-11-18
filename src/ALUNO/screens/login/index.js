@@ -10,6 +10,8 @@ import {
   ImageBackground,
   Alert,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import imgLogin from "../../../../assets/imagens_telas/6737457.png";
 import imgDesign from "../../../../assets/imagens_telas/designPage.png";
@@ -41,7 +43,9 @@ import styles from "./styles";
 //     }
 //   }
 
-//   async function logar() {
+//   async function logar(login, senha) {
+// const navigation = useNavigation();
+
 //     try {
 //       const dados = {
 //         usu_email_rm: login,
@@ -59,9 +63,11 @@ import styles from "./styles";
 //           curso: usuario.cur_cod,
 //         };
 //         // signin(JSON.stringify(objLogado));
-//         localStorage.clear();
-//         localStorage.setItem("user", JSON.stringify(objLogado));
-//         navigation.navigate("Home");
+
+// await AsyncStorage.clear();
+// await AsyncStorage.setItem("user", JSON.stringify(objLogado));
+
+//         navigation.navigate('telaInicial');
 //       } else {
 //         Alert("Erro: " + response.data.mensagem + "\n" + response.data.dados);
 //       }
@@ -233,6 +239,11 @@ import styles from "./styles";
 //   );
 // }
 
+
+
+
+//CÓDIGO PARA FAZER LOGIN SEM A API --------------------------------------------------------------------------------------------------------------------------------------------------
+
 export default function Login({ navigation }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [password, setPassword] = useState("");
@@ -296,7 +307,9 @@ export default function Login({ navigation }) {
             <Text style={styles.showPassword}>Mostrar</Text>
           </Pressable>
         </View>
-        {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
+        {errors.password && (
+          <Text style={styles.errorText}>{errors.password}</Text>
+        )}
 
         <Pressable onPress={() => navigation.navigate("signUp")}>
           <Text style={styles.touchText}>Não tem cadastro? Cadastre-se</Text>

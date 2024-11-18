@@ -18,10 +18,10 @@ import { RadioButton } from "react-native-paper";
 import {
   RetangGreen,
   RetangOrange,
-} from "../../../componentes/cabecalho/forms";
-import { BarraPesquisa } from "../../../componentes/barraPesquisa";
+} from "../../../../componentes/cabecalho/forms";
+import { BarraPesquisa } from "../../../../componentes/barraPesquisa";
 
-import api from "../../../services/api";
+import api from "../../../../services/api";
 import styles from "./styles";
 
 export default function Biblioteca() {
@@ -133,11 +133,13 @@ export default function Biblioteca() {
       </Pressable>
       <View style={styles.bookList}>
         {sortBooksAlphabetically.length > 0 ? (
-          sortBooksAlphabetically.map(livro => (
+          sortBooksAlphabetically.map((livro) => (
             <View style={styles.item}>
               <Pressable
                 onPress={() =>
-                  navigation.navigate("infoLivroBiblioteca", { livroId: livro.liv_cod })
+                  navigation.navigate("infoLivroBiblioteca", {
+                    livroId: livro.liv_cod,
+                  })
                 }
               >
                 <Image

@@ -116,6 +116,81 @@ const styles = StyleSheet.create({
   //   right: 8,
   //   bottom: 8,
   // },
+  listaCursos: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    jsustifyContent: "center",
+    alignItems: "center",
+  },
+  inputCursos: {
+    width: "100%",
+    justifyContent: "center",
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+  },
+  opcaoCursosContainer: {
+    paddingLeft: 15,
+    padding: 8,
+    backgroundColor: "#FFF",
+    width: "75%",
+    height: 42,
+    padding: 8,
+    margin: 2,
+    borderColor: "#CCC",
+    borderWidth: 1,
+    borderRadius: 30,
+    color: "#000",
+  },
+  opcaoCursos: {
+    paddingLeft: 15,
+    padding: 8,
+    color: "#000",
+    alignItems: "center",
+    display: "flex",
+  },
+  buttons: {
+    width: "100%",
+    flex: 1,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 10,
+  },
+  cursosButton: {
+    height: 6,
+    marginTop: 1,
+    marginBottom: 1,
+    backgroundColor: "#FF735C",
+    color: "#FFF",
+    border: "none",
+    borderRadius: 30,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    width: "15%",
+    height: 38,
+  },
+  btnPressCursos: {
+    opacity: 0.5,
+  },
+  // cursosButton:hover {
+  //     opacity: 0.5,
+  //     transition: 0.5s,
+  // },
+  selected: {
+    backgroundColor: "#3F7263",
+    color: "#FFF",
+    width: "100%",
+    borderRadius: 30,
+    padding: 1,
+  },
+  textInput: {
+    width: "100%",
+    margin: "auto",
+    marginLeft: 50,
+  },
   contentContainer: {
     // justifyContent: 'center',
     alignItems: "center",
@@ -136,7 +211,7 @@ const styles = StyleSheet.create({
   radioOptions: {
     marginTop: 4,
     flexDirection: "row",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   radioOption: {
     flexDirection: "row",
@@ -148,13 +223,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   buttonRadio: {
     marginTop: 4,
-    flexDirection: 'row',  // Alinha o RadioButton e o label em linha
-    alignItems: 'center',  // Centraliza o conteúdo verticalmente
-    marginVertical: 5,     // Adiciona um espaço entre as opções de sexo
+    flexDirection: "row", // Alinha o RadioButton e o label em linha
+    alignItems: "center", // Centraliza o conteúdo verticalmente
+    marginVertical: 5, // Adiciona um espaço entre as opções de sexo
   },
   sexo: {
     marginTop: 10,
@@ -164,18 +239,18 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    alignSelf: "center"
+    alignSelf: "center",
   },
-   divRadio: {
+  divRadio: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   form: {
     justifyContent: "center",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   pickerContainer: {
     width: "75%",
@@ -209,6 +284,7 @@ const styles = StyleSheet.create({
   },
   botaoSalvar: {
     marginTop: "3%",
+    marginBottom: "3%",
     backgroundColor: "#FF735C",
     width: "26%",
     height: 42,

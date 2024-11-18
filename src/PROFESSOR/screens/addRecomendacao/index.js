@@ -267,7 +267,7 @@ export default function AddRecomendacao({ navigation }) {
             {livro.map((liv) => (
               <Picker.Item
                 key={liv.liv_cod}
-                label={`${liv.liv_nome} - ${liv.aut_nome}`}
+                label={`${liv.liv_cod} - ${liv.liv_nome} - ${liv.aut_nome}`}
                 value={liv.liv_cod}
               />
             ))}

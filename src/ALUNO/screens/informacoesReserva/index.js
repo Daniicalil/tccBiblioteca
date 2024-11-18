@@ -138,10 +138,13 @@ export default function InformacoesReserva({ navigation, route }) {
         </View>
 
         {reserva.length > 0 ? (
-          reserva.map((reserv, index) => (
+          reserva.map((reserv) => (
             <View key={reserv.usu_cod} style={styles.lineSquare}>
               <View style={styles.infoLivro}>
-                <Image source={reserv.liv_foto_capa} style={styles.capaLivros} />
+                <Image
+                  source={reserv.liv_foto_capa}
+                  style={styles.capaLivros}
+                />
                 <View style={styles.livro}>
                   <Text style={styles.titleLivro}>{reserv.liv_nome}</Text>
                   <Text style={styles.autor}>Por: {reserv.aut_nome}</Text>
@@ -150,76 +153,19 @@ export default function InformacoesReserva({ navigation, route }) {
 
               <Line />
               <View style={styles.dadosReservado}>
-                <Text style={styles.reservado}>Reservado por: {reserv.usu_nome}</Text>
-                <Text style={styles.dataReserva}>
-                  Reserva realizada no dia: {reserv.emp_data_emp}
+                <Text style={styles.reservado}>
+                  Reservado por: {reserv.usu_nome}
                 </Text>
-                <Text style={styles.periodoReserva}>
-                  Período da reserva: {reserv.periodo?.inicio || "Data não disponível"}{" "}
-                  até {reserv.periodo?.fim || "Data não disponível"}
+                <Text style={styles.dataReserva}>
+                  Data do Empréstimo: {reserv.Empréstimo || "Data não disponível"}
+                </Text>
+                <Text style={styles.dataReserva}>
+                  Data de Devolução: {reserv.Devolução || "Data não disponível"}
                 </Text>
               </View>
               <Line />
-              <Text style={styles.conf}>Confirmar retirada do livro</Text>
-              <View style={styles.buttonsReserva}>
-                {reservasStatus[index].isConfirmed ? (
-                  <View style={styles.confirmation}>
-                    <Text style={styles.confirmationText}>Livro retirado</Text>
-                    <FontAwesome name="check-circle" size={24} color="green" />
-                  </View>
-                ) : reservasStatus[index].isCanceled ? (
-                  <View style={styles.cancellation}>
-                    <Text style={styles.cancellationText}>
-                      Retirada cancelada
-                    </Text>
-                    <FontAwesome name="times-circle" size={24} color="red" />
-                  </View>
-                ) : (
-                  <>
-                    <Pressable
-                      style={({ pressed }) =>
-                        pressed
-                          ? [styles.buttonConf, styles.btnConfPress]
-                          : [
-                              styles.buttonConf,
-                              { opacity: !isDateAvailable ? 0.5 : 1 },
-                            ]
-                      }
-                      onPress={
-                        isDateAvailable ? () => handleConfirm(index) : null
-                      }
-                      disabled={!isDateAvailable}
-                    >
-                      <Text style={styles.buttonTextConfReserv}>
-                        Retirada confirmada
-                      </Text>
-                    </Pressable>
-
-                    <Pressable
-                      style={({ pressed }) =>
-                        pressed
-                          ? [styles.buttonCanc, styles.btnCancPress]
-                          : [
-                              styles.buttonCanc,
-                              { opacity: !isDateAvailable ? 0.5 : 1 },
-                            ]
-                      }
-                      onPress={
-                        isDateAvailable ? () => handleCancel(index) : null
-                      }
-                      disabled={!isDateAvailable}
-                    >
-                      <Text style={styles.buttonTextCancReserv}>
-                        Cancelar retirada
-                      </Text>
-                    </Pressable>
-                  </>
-                )}
-              </View>
               <Text style={styles.observacao}>
-                OBS: se após 3 dias da data inicial da reserva não for declarada
-                nenhuma informação a respeito da retirada, a reserva será
-                automaticamente cancelada.
+                OBS: Lembre-se de devolver o livro até a data!
               </Text>
             </View>
           ))

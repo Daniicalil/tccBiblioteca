@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Pressable,
   Alert,
+  ScrollView,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -112,8 +113,8 @@ export default function Biblioteca() {
         </RadioButton.Group>
       </View>
       <View style={styles.bookList}>
-        {sortBooksAlphabetically.length > 0 ? (
-          sortBooksAlphabetically.map(livro => (
+        {books.length > 0 ? (
+          books.map(livro => (
             <View style={styles.item}>
               <Pressable
                 onPress={() =>

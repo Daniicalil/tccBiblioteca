@@ -7,6 +7,7 @@ import {
   Pressable,
   Alert,
   ScrollView,
+  FlatList,
 } from "react-native";
 import { RadioButton, Avatar } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
@@ -18,6 +19,7 @@ import { Entypo } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { Picker } from "@react-native-picker/picker";
 import { useNavigation } from "@react-navigation/native";
+import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 
 import styles from "./styles";
 import api from "../../../services/api";
@@ -340,82 +342,76 @@ export default function PerfilEditar({ codUsu }) {
 
             <View style={styles.listaCursos}>
               <View style={styles.inputCursos}>
-                <Text style={styles.texto}>Cursos já selecionados:</Text>
-                <ul
-                  id="cur_cod"
-                  name="cur_cod"
-                  value={perfilEdt.cur_cod}
-                  onChangeText={handleChange}
-                  style={styles.opcaoCursos}
-                >
-                  {perfilEdt.cursos.length > 0 ? (
+                <Text style={styles.textInput}>Cursos já selecionados:</Text>
+                <ScrollView style={styles.opcaoCursosContainer}>
+                  {perfilEdt.cursos && perfilEdt.cursos.length > 0 ? (
                     perfilEdt.cursos.map((cur) => (
-                      <li
-                        key={cur.cur_cod}
-                        value={cur.ucu_cod}
-                        onClick={() => handleClickAluno(cur.ucu_cod)}
-                        style={
-                          cursoSelecionadoAluno === cur.ucu_cod
-                            ? styles.selected
-                            : ""
-                        }
+                      <TouchableOpacity
+                        key={cur.ucu_cod}
+                        onPress={() => handleClickAluno(cur.ucu_cod)}
+                        style={[
+                          styles.opcaoCursos,
+                          cursoSelecionadoAluno === cur.ucu_cod &&
+                            styles.selected,
+                        ]}
                       >
-                        {cur.cur_nome}
-                      </li>
+                        <Text>{cur.cur_nome}</Text>
+                      </TouchableOpacity>
                     ))
                   ) : (
-                    <p>Não há cursos registrados.</p>
+                    <Text>Não há cursos registrados.</Text>
                   )}
-                </ul>
+                </ScrollView>
               </View>
               <View style={styles.buttons}>
-                <button
-                  style={styles.cursosButton}
-                  onClick={() =>
+                <Pressable
+                  style={({ pressed }) =>
+                    pressed
+                      ? [styles.cursosButton, styles.btnPressCursos]
+                      : styles.cursosButton
+                  }
+                  onPress={() =>
                     cursoSelecionadoEscola &&
                     handleAddCurso(cursoSelecionadoAluno)
                   }
                 >
-                  <IoChevronBack size={20} color="#FFF" />
-                </button>
-                <button
-                  style={styles.cursosButton}
-                  onClick={() =>
+                  <SimpleLineIcons name="arrow-up" size={20} color="white" />
+                </Pressable>
+                <Pressable
+                  style={({ pressed }) =>
+                    pressed
+                      ? [styles.cursosButton, styles.btnPressCursos]
+                      : styles.cursosButton
+                  }
+                  onPress={() =>
                     cursoSelecionadoAluno &&
                     handleRemoveCurso(cursoSelecionadoEscola)
                   }
                 >
-                  <IoChevronForward size={20} color="#FFF" />
-                </button>
+                  <SimpleLineIcons name="arrow-down" size={20} color="white" />
+                </Pressable>
               </View>
               <View style={styles.inputCursos}>
-                <label style={styles.textInput}>Selecione o curso:</label>
-                <ul
-                  id="cur_cod"
-                  name="cur_cod"
-                  value={perfilEdt.cur_cod}
-                  onChangeText={handleChange}
-                  style={styles.opcaoCursos}
-                >
+                <Text style={styles.textInput}>Selecione o curso:</Text>
+                <ScrollView style={styles.opcaoCursosContainer}>
                   {cursos.length > 0 ? (
                     cursos.map((cur) => (
-                      <li
+                      <TouchableOpacity
                         key={cur.cur_cod}
-                        value={cur.cur_cod}
-                        onClick={() => handleClickEscola(cur.cur_cod)}
-                        style={
-                          cursoSelecionadoEscola === cur.cur_cod
-                            ? styles.selected
-                            : ""
-                        }
+                        onPress={() => handleClickEscola(cur.cur_cod)}
+                        style={[
+                          styles.opcaoCursos,
+                          cursoSelecionadoEscola === cur.cur_cod &&
+                            styles.selected,
+                        ]}
                       >
-                        {cur.cur_nome}
-                      </li>
+                        <Text>{cur.cur_nome}</Text>
+                      </TouchableOpacity>
                     ))
                   ) : (
-                    <p>Não há cursos registrados.</p>
+                    <Text>Não há cursos registrados.</Text>
                   )}
-                </ul>
+                </ScrollView>
               </View>
             </View>
 

@@ -6,6 +6,8 @@ import {
 } from "@react-navigation/drawer";
 import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
 import StylesButtonDrawer from "./stylesDrawer";
 
@@ -70,6 +72,17 @@ const styles = StyleSheet.create({
 const Drawer = createDrawerNavigator();
 
 export default function NavegacaoDrawer({ navigation }) {
+
+  const handleLogOff = async () => {
+    try {
+      await AsyncStorage.removeItem('user');
+
+      navigation.navigate('login');
+    } catch (error) {
+      console.error('Erro ao fazer logoff: ', error);
+    }
+  };
+
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -161,7 +174,7 @@ export default function NavegacaoDrawer({ navigation }) {
               </Pressable>
               <Pressable
                 style={StylesButtonDrawer.buttonDrawer}
-                onPress={() => navigation.goBack()}
+                onPress={handleLogOff}
               >
                 <View style={StylesButtonDrawer.icon}>
                   <SimpleLineIcons name="logout" size={18} color="red" />

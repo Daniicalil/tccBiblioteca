@@ -74,8 +74,11 @@ export default function InfoLivroRecomendacao({ codLivroRec }) {
   }, [codLivroRec]);
 
   const removeRecommendation = async () => {
+    const dadosApi = {
+      rcm_cod: codLivroRec,
+    };
     try {
-      const response = await api.delete("/recomendacao", { codLivroRec });
+      const response = await api.delete("/recomendacao", dadosApi);
       if (response.data.sucesso) {
         Alert.alert("Sucesso", "Recomendação removida com sucesso!");
         navigation.navigate("recomendacao");
