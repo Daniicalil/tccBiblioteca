@@ -8,14 +8,15 @@ import {
   Alert,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { API_URL, API_PORT } from "@env";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "./styles";
 import api from "../../services/api";
 
 export default function Recomendacoes() {
   // Configuração do URL da API
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
+  const apiUrl = API_URL;   // URL da API
+  const apiPorta = API_PORT; // Porta da API
 
   const [books, setBooks] = useState([]);
   const [livNome, setlivNome] = useState("");

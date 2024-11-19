@@ -4,6 +4,7 @@ import { ScrollView, View, Text, Image, Pressable, Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
+import { API_URL, API_PORT } from "@env";
 
 import {
   RetangGreen,
@@ -23,8 +24,9 @@ const Line = () => {
 };
 
 export default function InfoLivroRecomendacao({ codLivroRec }) {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
+  const apiUrl = API_URL;   // URL da API
+  const apiPorta = API_PORT; // Porta da API
+  
   const navigation = useNavigation();
 
   const [modulo1, setModulo1] = useState(false);

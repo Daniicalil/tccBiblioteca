@@ -11,6 +11,7 @@ import {
   Alert,
 } from "react-native";
 import { RadioButton, IconButton } from "react-native-paper";
+import { API_URL, API_PORT } from "@env";
 import { Ionicons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import imgSignup from "../../../../assets/imagens_telas/img_cadastro.png";
@@ -20,6 +21,8 @@ import api from "../../../services/api";
 import styles from "./styles";
 
 export default function SignUp({ navigation }) {
+  const apiUrl = API_URL; // URL da API
+  const apiPorta = API_PORT; // Porta da API
   const [cursos, setCursos] = useState([]);
 
   const [usuario, setUsuario] = useState({
@@ -68,7 +71,9 @@ export default function SignUp({ navigation }) {
       console.log(response.data);
     } catch (error) {
       if (error.response) {
-        Alert.alert(error.response.data.mensagem + "\n" + error.response.data.dados);
+        Alert.alert(
+          error.response.data.mensagem + "\n" + error.response.data.dados
+        );
       } else {
         alert("Erro no front-end" + "\n" + error);
       }
@@ -377,21 +382,21 @@ export default function SignUp({ navigation }) {
             style={valida.email.validado + " " + styles.valNome}
             id="valEmail"
           > */}
-            <View style={styles.divInput}>
-              <TextInput
-                keyboardType="email-address"
-                name="usu_email"
-                placeholder="E-mail"
-                style={styles.input}
-                onChangeText={(value) => handleChange("usu_email", value)}
-                value={usuario.usu_email || ""}
-              />
-            </View>
-            {valida.email.mensagem.map((mens) => (
-              <Text key={mens} id="email" style={styles.small}>
-                {mens}
-              </Text>
-            ))}
+          <View style={styles.divInput}>
+            <TextInput
+              keyboardType="email-address"
+              name="usu_email"
+              placeholder="E-mail"
+              style={styles.input}
+              onChangeText={(value) => handleChange("usu_email", value)}
+              value={usuario.usu_email || ""}
+            />
+          </View>
+          {valida.email.mensagem.map((mens) => (
+            <Text key={mens} id="email" style={styles.small}>
+              {mens}
+            </Text>
+          ))}
           {/* </View> */}
 
           <View style={styles.pickerContainer}>

@@ -20,6 +20,7 @@ import * as ImagePicker from "expo-image-picker";
 import { Picker } from "@react-native-picker/picker";
 import { useNavigation } from "@react-navigation/native";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
+import { API_URL, API_PORT } from "@env";
 
 import styles from "./styles";
 import api from "../../../services/api";
@@ -27,8 +28,8 @@ import useBotaoConfirmarAcao from "../../../componentes/alertConfirmacao";
 import defaultProfileImage from "../../../../assets/imagens_telas/perfil.jpg"; // Imagem padrão
 
 export default function PerfilEditar({ codUsu }) {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
+  const apiUrl = API_URL; // URL da API
+  const apiPorta = API_PORT; // Porta da API
   const navigation = useNavigation();
   const [cursos, setCursos] = useState([]);
   const [selectedSexo, setSelectedSexo] = useState("");

@@ -8,11 +8,15 @@ import {
   Text,
   Alert,
 } from "react-native";
+import { API_URL, API_PORT } from "@env";
 import styles from "./styles";
 import useBotaoConfirmarAcao from "../alertConfirmacao";
 import api from "../../services/api";
 
 const ModalAvisoCadastro = ({ show, onClose, onConfirm }) => {
+  const apiUrl = API_URL; // URL da API
+  const apiPorta = API_PORT; // Porta da API
+
   return (
     <Modal
       transparent={true}

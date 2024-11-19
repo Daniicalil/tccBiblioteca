@@ -9,6 +9,7 @@ import {
   RetangGreen,
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
+import { API_URL, API_PORT } from "@env";
 
 import styles from "./styles";
 import api from "../../../services/api";
@@ -16,8 +17,8 @@ import FotoPadraoPerfil from "../../../../assets/imagens_telas/perfil.jpg";
 import IconeEditar from "../../../../assets/imagens_telas/editar_perfil.png";
 
 export default function Perfil() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
+  const apiUrl = API_URL; // URL da API
+  const apiPorta = API_PORT; // Porta da API
   const navigation = useNavigation();
   const [selectedSexo, setSelectedSexo] = useState(null);
   const [perfil, setPerfil] = useState([]);
@@ -142,8 +143,6 @@ export default function Perfil() {
                 ))}
               </RadioButton.Group>
             </View>
-
-            
           </View>
         ))
       ) : (
@@ -158,19 +157,17 @@ export default function Perfil() {
         <Text style={styles.touchText}>Esqueceu a senha?</Text>
       </Pressable>
       <View style={styles.viewEditar}>
-              <Pressable
-                onPress={() =>
-                  navigation.navigate("perfilEditar", { userId: perfil.usu_cod })
-                }
-                style={({ pressed }) =>
-                  pressed
-                    ? [styles.botaoEditar, styles.btnPress]
-                    : styles.botaoEditar
-                }
-              >
-                <Image source={IconeEditar} style={styles.iconeEditar} />
-              </Pressable>
-            </View>
+        <Pressable
+          onPress={() =>
+            navigation.navigate("perfilEditar", { userId: perfil.usu_cod })
+          }
+          style={({ pressed }) =>
+            pressed ? [styles.botaoEditar, styles.btnPress] : styles.botaoEditar
+          }
+        >
+          <Image source={IconeEditar} style={styles.iconeEditar} />
+        </Pressable>
+      </View>
     </View>
   );
 }

@@ -19,14 +19,15 @@ import {
   RetangGreen,
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
+import { API_URL, API_PORT } from "@env";
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 
 import api from "../../../services/api";
 import styles from "./styles";
 
 export default function Biblioteca() {
-  const apiUrl = process.env.API_URL;
-  const apiPorta = process.env.API_PORTA;
+  const apiUrl = API_URL; // URL da API
+  const apiPorta = API_PORT; // Porta da API
   const navigation = useNavigation();
 
   const [books, setBooks] = useState([]);
@@ -114,11 +115,13 @@ export default function Biblioteca() {
       </View>
       <View style={styles.bookList}>
         {books.length > 0 ? (
-          books.map(livro => (
+          books.map((livro) => (
             <View style={styles.item}>
               <Pressable
                 onPress={() =>
-                  navigation.navigate("infoLivroBiblioteca", { livroId: livro.liv_cod })
+                  navigation.navigate("infoLivroBiblioteca", {
+                    livroId: livro.liv_cod,
+                  })
                 }
               >
                 <Image

@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import { API_URL, API_PORT } from "@env";
 import { Ionicons } from "@expo/vector-icons";
 import imgLogin from "../../../../assets/imagens_telas/6737457.png";
 import imgDesign from "../../../../assets/imagens_telas/designPage.png";
@@ -19,6 +20,8 @@ import styles from "./styles";
 // import api from "../../../services/api";
 
 // export default function Login({ navigation }) {
+const apiUrl = API_URL; // URL da API
+const apiPorta = API_PORT; // Porta da API
 //   const [passwordVisible, setPasswordVisible] = useState(false);
 //   const [errors, setErrors] = useState({});
 
@@ -238,9 +241,6 @@ import styles from "./styles";
 //     </ImageBackground>
 //   );
 // }
-
-
-
 
 //CÓDIGO PARA FAZER LOGIN SEM A API --------------------------------------------------------------------------------------------------------------------------------------------------
 

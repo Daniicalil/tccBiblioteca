@@ -7,6 +7,7 @@ import {
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
 import { useNavigation } from "@react-navigation/native";
+import { API_URL, API_PORT } from "@env";
 
 import Autor from "../../../../assets/imagens_telas/autora.png";
 import Editora from "../../../../assets/imagens_telas/editora.png";
@@ -20,8 +21,8 @@ const Line = () => {
 };
 
 export default function InfoLivroBiblioteca({ codLivro }) {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
+  const apiUrl = API_URL; // URL da API
+  const apiPorta = API_PORT; // Porta da API
 
   const [livro, setLivro] = useState(null);
   const [error, setError] = useState(null);
@@ -104,7 +105,11 @@ export default function InfoLivroBiblioteca({ codLivro }) {
             </View>
 
             <Pressable
-              onPress={() => navigation.navigate('ReservarLivro', { codLivro: livro?.liv_cod })}
+              onPress={() =>
+                navigation.navigate("ReservarLivro", {
+                  codLivro: livro?.liv_cod,
+                })
+              }
               style={({ pressed }) =>
                 pressed ? [styles.button, styles.btnPress] : styles.button
               }

@@ -4,6 +4,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { RadioButton } from "react-native-paper";
+import { API_URL, API_PORT } from "@env";
 import {
   RetangGreen,
   RetangOrange,
@@ -13,6 +14,9 @@ import api from "../../../services/api";
 import styles from "./styles";
 
 export default function AddRecomendacao({ navigation }) {
+  const apiUrl = API_URL;   // URL da API
+  const apiPorta = API_PORT; // Porta da API
+
   const [curso, setCurso] = useState([]);
   const [livro, setLivro] = useState([]);
 

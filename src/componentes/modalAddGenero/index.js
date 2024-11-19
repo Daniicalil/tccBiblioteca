@@ -8,11 +8,15 @@ import {
   Text,
   Alert,
 } from "react-native";
+import { API_URL, API_PORT } from "@env";
 import styles from "./styles";
 import useBotaoConfirmarAcao from "../alertConfirmacao";
 import api from "../../services/api";
 
 const ModalAddGenero = ({ show, onClose }) => {
+  const apiUrl = API_URL;   // URL da API
+  const apiPorta = API_PORT; // Porta da API
+
   const [genero, setGenero] = useState({});
 
   // Usando o hook de confirmação, passando a mensagem, ação e tela para navegar

@@ -13,6 +13,7 @@ import { StatusBar } from "expo-status-bar";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { FontAwesome } from "@expo/vector-icons";
 import { RadioButton } from "react-native-paper";
+import { API_URL, API_PORT } from "@env";
 
 import {
   RetangGreen,
@@ -52,8 +53,8 @@ const ListaDeLivros = ({ livros }) => {
 };
 
 export default function BookList() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
+  const apiUrl = API_URL;   // URL da API
+  const apiPorta = API_PORT; // Porta da API
 
   const navigation = useNavigation();
 

@@ -9,9 +9,13 @@ import {
 } from "react-native";
 import styles from "./styles";
 import useBotaoConfirmarAcao from "../alertConfirmacao";
+import { API_URL, API_PORT } from "@env";
 import api from "../../services/api";
 
 const ModalAddAutor = ({ show, onClose }) => {
+  const apiUrl = API_URL; // URL da API
+  const apiPorta = API_PORT; // Porta da API
+
   const [livAutores, setLivAutores] = useState({ aut_cod: 0, liv_cod: 0 });
   const [livEditora, setLivEditora] = useState({ edt_cod: 0, liv_cod: 0 });
   const [livGenero, setLivGenero] = useState({ gen_cod: 0, liv_cod: 0 });

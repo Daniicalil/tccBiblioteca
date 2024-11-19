@@ -6,6 +6,7 @@ import {
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
 import { RadioButton } from "react-native-paper";
+import { API_URL, API_PORT } from "@env";
 
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 
@@ -15,21 +16,8 @@ import styles from "./styles";
 const Line = () => <View style={styles.line} />;
 
 export default function InformacoesReserva({ navigation, route }) {
-  // const [infoReserva] = useState([
-  //   {
-  //     livro: {
-  //       liv_foto_capa: require("../../../../assets/Capa_dos_livros/o diário de anne frank.jpg"),
-  //       liv_nome: "O diário de Anne Frank",
-  //       aut_nome: "Anne Frank",
-  //     },
-  //     usu_nome: "Clara Oliveira da Silva",
-  //     dataReserva: "12/03/2024",
-  //     periodo: {
-  //       inicio: "12/03/2024",
-  //       fim: "27/03/2024",
-  //     },
-  //   },
-  // ]);
+  const apiUrl = API_URL; // URL da API
+  const apiPorta = API_PORT; // Porta da API
 
   const [reserva, setReserva] = useState([]);
   const [selectedSearchOption, setSelectedSearchOption] = useState("liv_nome");
@@ -157,7 +145,8 @@ export default function InformacoesReserva({ navigation, route }) {
                   Reservado por: {reserv.usu_nome}
                 </Text>
                 <Text style={styles.dataReserva}>
-                  Data do Empréstimo: {reserv.Empréstimo || "Data não disponível"}
+                  Data do Empréstimo:{" "}
+                  {reserv.Empréstimo || "Data não disponível"}
                 </Text>
                 <Text style={styles.dataReserva}>
                   Data de Devolução: {reserv.Devolução || "Data não disponível"}

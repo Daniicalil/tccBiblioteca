@@ -6,12 +6,15 @@ import {
   RetangGreen,
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
+import { API_URL, API_PORT } from "@env";
 
 import styles from "./styles";
 import api from "../../../services/api";
 import imgContato from "../../../../assets/imagens_telas/contato.jpg";
 
 export default function InformacoesContato({ navigation }) {
+  const apiUrl = API_URL; // URL da API
+  const apiPorta = API_PORT; // Porta da API
   const [infoContato, setInfoContato] = useState([]);
 
   useEffect(() => {
@@ -21,17 +24,17 @@ export default function InformacoesContato({ navigation }) {
   async function informacoes() {
     const dados = { cont_cod: 1 };
     try {
-      const response = await api.post('/contatos', dados);
+      const response = await api.post("/contatos", dados);
       console.log(response.data.dados);
       setInfoContato(response.data.dados);
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.mensagem + '\n' + error.response.data.dados);
+        alert(error.response.data.mensagem + "\n" + error.response.data.dados);
       } else {
-        alert('Erro no front-end' + '\n' + error);
+        alert("Erro no front-end" + "\n" + error);
       }
     }
-  };
+  }
 
   return (
     <ScrollView style={styles.container}>
