@@ -17,11 +17,11 @@ import { Ionicons } from "@expo/vector-icons";
 import imgLogin from "../../../../assets/imagens_telas/6737457.png";
 import imgDesign from "../../../../assets/imagens_telas/designPage.png";
 import styles from "./styles";
-// import api from "../../../services/api";
+import api from "../../../services/api";
 
-// export default function Login({ navigation }) {
-const apiUrl = API_URL; // URL da API
-const apiPorta = API_PORT; // Porta da API
+// export default function Login() {
+//   const apiUrl = API_URL; // URL da API
+//   const apiPorta = API_PORT; // Porta da API
 //   const [passwordVisible, setPasswordVisible] = useState(false);
 //   const [errors, setErrors] = useState({});
 
@@ -36,19 +36,27 @@ const apiPorta = API_PORT; // Porta da API
 //     setPasswordVisible(!passwordVisible);
 //   };
 
-//   function handleSubmit(event) {
-//     event.preventDefault();
+//   function handleSubmit() {
 //     const validLogin = validaLogin();
 //     const validSenha = validaSenha();
-
+  
 //     if (validLogin && validSenha) {
+//       // Se as validações passarem, tenta logar
 //       logar();
+//     } else {
+//       // Feedback se a validação falhar
+//       if (!validLogin) {
+//         Alert.alert("Erro", "O login informado é inválido.");
+//       }
+//       if (!validSenha) {
+//         Alert.alert("Erro", "A senha informada é inválida.");
+//       }
 //     }
 //   }
+  
+//   const navigation = useNavigation();
 
-//   async function logar(login, senha) {
-// const navigation = useNavigation();
-
+//   const logar = async (login, senha) => {
 //     try {
 //       const dados = {
 //         usu_email_rm: login,
@@ -57,7 +65,7 @@ const apiPorta = API_PORT; // Porta da API
 
 //       const response = await api.post("/usu_login", dados);
 
-//       if (response.data.sucesso == true) {
+//       if (response.data.sucesso) {
 //         const usuario = response.data.dados;
 //         const objLogado = {
 //           cod: usuario.usu_cod,
@@ -67,22 +75,22 @@ const apiPorta = API_PORT; // Porta da API
 //         };
 //         // signin(JSON.stringify(objLogado));
 
-// await AsyncStorage.clear();
-// await AsyncStorage.setItem("user", JSON.stringify(objLogado));
+//         await AsyncStorage.clear();
+//         await AsyncStorage.setItem("user", JSON.stringify(objLogado));
 
 //         navigation.navigate('telaInicial');
 //       } else {
-//         Alert("Erro: " + response.data.mensagem + "\n" + response.data.dados);
+//         Alert.alert("Erro: " + response.data.mensagem + "\n" + response.data.dados);
 //       }
 //     } catch (error) {
 //       if (error.response) {
-//         Alert(
+//         Alert.alert(
 //           error.response.data.dados == null
 //             ? error.response.data.mensagem
 //             : error.response.data.mensagem + "\n" + error.response.data.dados
 //         );
 //       } else {
-//         Alert("Erro no front-end" + "\n" + error);
+//         alert("Erro no front-end" + "\n" + error);
 //       }
 //     }
 //   }
@@ -226,7 +234,7 @@ const apiPorta = API_PORT; // Porta da API
 //           </Pressable>
 
 //           <Pressable
-//             onPress={handleSubmit}
+//             onPress={() => handleSubmit()}
 //             style={({ pressed }) =>
 //               pressed
 //                 ? [styles.loginButton, styles.btnPress]
