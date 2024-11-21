@@ -1,14 +1,8 @@
-
 // import { produtos } from '../../../mocks/dados';
 import InformacoesContatoEditar from "../../../../FUNCIONÁRIO(ADM)/screens/infoContatoEditar";
 
-export default function InfoCod({ params }) {
+export default function InfoCod({ route }) {
+  const codInfo = parseInt(route.params.cod);
 
-    const codInfo = parseInt(params.cod);
-
-    return (
-
-        <InformacoesContatoEditar codInfo={codInfo} />
-
-    );
+  return <InformacoesContatoEditar codInfo={codInfo} />;
 }

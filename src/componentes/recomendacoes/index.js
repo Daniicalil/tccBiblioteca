@@ -6,6 +6,7 @@ import {
   FlatList,
   Pressable,
   Alert,
+  StyleSheet,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { API_URL, API_PORT } from "@env";
@@ -14,16 +15,58 @@ import styles from "./styles";
 import api from "../../services/api";
 
 export default function Recomendacoes() {
-  // Configuração do URL da API
-  const apiUrl = API_URL;   // URL da API
+  const apiUrl = API_URL; // URL da API
   const apiPorta = API_PORT; // Porta da API
 
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([
+    {
+      liv_cod: 1,
+      liv_nome: "O Senhor dos Anéis",
+      aut_nome: "J.R.R. Tolkien",
+      liv_foto_capa: "https://via.placeholder.com/150",
+      cur_nome: "Literatura",
+    },
+    {
+      liv_cod: 2,
+      liv_nome: "1984",
+      aut_nome: "George Orwell",
+      liv_foto_capa: "https://via.placeholder.com/150",
+      cur_nome: "Filosofia",
+    },
+    {
+      liv_cod: 3,
+      liv_nome: "Dom Quixote",
+      aut_nome: "Miguel de Cervantes",
+      liv_foto_capa: "https://via.placeholder.com/150",
+      cur_nome: "História",
+    },
+  ]);
   const [livNome, setlivNome] = useState("");
   const navigation = useNavigation();
 
-  async function listaLivros(curso) {
-    const dados = { cur_cod: curso };
+  const sortedBooks = books.sort((a, b) =>
+    a.liv_nome.localeCompare(b.liv_nome)
+  );
+
+  function atLivNome(nome) {
+    setlivNome(nome);
+  }
+
+  //   useEffect(() => {
+  //   const checkUser = async () => {
+  //     const user = JSON.parse(await AsyncStorage.getItem("user"));
+  //     if (!user) {
+  //       navigation.navigate("login")
+  //     } else {
+  //       listaLivros(user.usu_cod);
+  //     }
+  //   };
+  //   checkUser();
+  // }, []);
+
+  async function listaLivros(usuario, books) {
+    const sortedBooks = sortBooksAlphabetically(books);
+    // const dados = { usu_cod: usuario };
 
     try {
       const response = await api.post("/rec_listar", dados);
@@ -31,34 +74,12 @@ export default function Recomendacoes() {
     } catch (error) {
       if (error.response) {
         Alert.alert(
-          "Erro",
           error.response.data.mensagem + "\n" + error.response.data.dados
         );
       } else {
-        Alert.alert("Erro", "Erro no front-end\n" + error.message);
+        Alert.alert("Erro no front-end\n" + error);
       }
     }
-  }
-
-  //   useEffect(() => {
-  //   const checkUser = async () => {
-  //     const user = JSON.parse(await AsyncStorage.getItem("user"));
-  //     if (!user) {
-  //       listaLivros(user.cur_cod);
-  //     } else {
-  //       navigation.navigate("login")
-  //     }
-  //   };
-  //   checkUser();
-  // }, []);
-
-  // Ordena os livros pelo título em ordem alfabética
-  const sortedBooks = books.sort((a, b) =>
-    a.liv_nome.localeCompare(b.liv_nome)
-  );
-
-  function atLivNome(nome) {
-    setlivNome(nome);
   }
 
   const renderBookItem = ({ item }) => (
@@ -81,19 +102,26 @@ export default function Recomendacoes() {
   );
 
   return (
-    <View style={styles.main}>
-      <View style={styles.bookSection}></View>
-      <View style={styles.container}>
-        {sortedBooks.length > 0 ? (
-          <FlatList
-            data={sortedBooks}
-            renderItem={renderBookItem}
-            keyExtractor={(item) => item.liv_cod.toString()}
-          />
-        ) : (
-          <Text style={styles.aviso}>Não há resultados para a requisição</Text>
-        )}
-      </View>
-    </View>
+    <>
+      {sortedBooks.length > 0 ? (
+        <FlatList
+          style={Flatstyles.FlatList}
+          data={sortedBooks}
+          renderItem={renderBookItem}
+          keyExtractor={(item) => item.liv_cod.toString()}
+          numColumns={3}
+          contentContainerStyle={styles.flatListContainer}
+        />
+      ) : (
+        <Text style={styles.aviso}>Não há resultados para a requisição</Text>
+      )}
+    </>
   );
 }
+
+const Flatstyles = StyleSheet.create({
+  FlatList: {
+    padding: 6,
+    backgroundColor: "#FFF",
+  },
+});

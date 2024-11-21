@@ -14,6 +14,10 @@ item: {
     shadowRadius: 8,
     elevation: 3,
   },
+  container: {
+    backgroundColor: "white",
+    flex: 1,
+  },
   course: {
     marginTop: 10,
     fontSize: 12,

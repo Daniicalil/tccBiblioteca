@@ -108,9 +108,8 @@ const styles = StyleSheet.create({
     flex: 1, 
   },
   flatListContainer: {
-    justifyContent: 'center',
+    justifyContent: "center",
     paddingHorizontal: 8,
-    backgroundColor: "#FFF"
   },
   scrollViewContainer: {
     backgroundColor: '#fff',

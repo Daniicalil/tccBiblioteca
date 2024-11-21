@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { ScrollView, View, Text, Image, Pressable, Alert } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";

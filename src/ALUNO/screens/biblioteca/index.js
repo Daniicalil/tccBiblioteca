@@ -25,12 +25,81 @@ import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 import api from "../../../services/api";
 import styles from "./styles";
 
-export default function Biblioteca() {
-  const apiUrl = API_URL; // URL da API
-  const apiPorta = API_PORT; // Porta da API
-  const navigation = useNavigation();
+const apiUrl = API_URL; // URL da API
+const apiPorta = API_PORT; // Porta da API
 
-  const [books, setBooks] = useState([]);
+const sortBooksAlphabetically = (books) => {
+  if (!Array.isArray(books)) return [];
+  return books.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
+};
+
+const ListaDeLivros = ({ books }) => {
+  const navigation = useNavigation();
+  const sortedBooks = sortBooksAlphabetically(books);
+
+  const renderItem = ({ item }) => (
+    <View style={styles.item}>
+      <Pressable
+        onPress={() =>
+          navigation.navigate("infoLivroBiblioteca", {
+            books: item.liv_cod,
+          })
+        }
+      >
+        <Image
+          source={{
+            uri: `${apiUrl}:${apiPorta}${item.liv_foto_capa}`,
+          }}
+          style={styles.image}
+        />
+        <Text style={styles.titleBook}>{item.liv_nome}</Text>
+        <Text style={styles.author}>{item.aut_nome}</Text>
+      </Pressable>
+    </View>
+  );
+
+  return (
+    <>
+      {sortedBooks.length > 0 ? (
+        <FlatList
+          style={Flatstyles.FlatList}
+          data={sortedBooks}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.liv_cod.toString()}
+          numColumns={3}
+          contentContainerStyle={styles.flatListContainer}
+        />
+      ) : (
+        <Text style={styles.noResultsText}>
+          Não há resultados para a requisição
+        </Text>
+      )}
+    </>
+  );
+};
+
+export default function Biblioteca({ navigation }) {
+  const [books, setBooks] = useState([{
+    liv_cod: 1,
+    liv_nome: "O Senhor dos Anéis",
+    aut_nome: "J.R.R. Tolkien",
+    liv_foto_capa: "https://via.placeholder.com/150",
+    cur_nome: "Literatura",
+  },
+  {
+    liv_cod: 2,
+    liv_nome: "1984",
+    aut_nome: "George Orwell",
+    liv_foto_capa: "https://via.placeholder.com/150",
+    cur_nome: "Filosofia",
+  },
+  {
+    liv_cod: 3,
+    liv_nome: "Dom Quixote",
+    aut_nome: "Miguel de Cervantes",
+    liv_foto_capa: "https://via.placeholder.com/150",
+    cur_nome: "História",
+  },]);
   const [selectedSearchOption, setSelectedSearchOption] = useState("liv_nome");
   const [livNome, setlivNome] = useState("");
   function atLivNome(nome) {
@@ -46,7 +115,7 @@ export default function Biblioteca() {
     try {
       const response = await api.post("/livros", dados);
       console.log(response.data.dados);
-      setLivros(response.data.dados);
+      setBooks(response.data.dados);
     } catch (error) {
       if (error.response) {
         Alert.alert(
@@ -58,18 +127,13 @@ export default function Biblioteca() {
     }
   }
 
-  const sortBooksAlphabetically = (livros) => {
-    if (!Array.isArray(livros)) return [];
-    return livros.sort((a, b) => a.liv_nome.localeCompare(b.liv_nome));
-  };
-
   useEffect(() => {
     const sortedBooks = sortBooksAlphabetically(books);
     setBooks(sortedBooks);
   }, [books]);
 
   return (
-    <ScrollView style={styles.headerContainer}>
+    <View style={styles.headerContainer}>
       <RetangGreen />
       <RetangOrange />
       <View style={styles.titleContainer}>
@@ -113,40 +177,14 @@ export default function Biblioteca() {
           </View>
         </RadioButton.Group>
       </View>
-      <View style={styles.bookList}>
-        {books.length > 0 ? (
-          books.map((livro) => (
-            <View style={styles.item}>
-              <Pressable
-                onPress={() =>
-                  navigation.navigate("infoLivroBiblioteca", {
-                    livroId: livro.liv_cod,
-                  })
-                }
-              >
-                <Image
-                  source={{
-                    uri: `${apiUrl}:${apiPorta}${livro.liv_foto_capa}`,
-                  }}
-                  style={styles.image}
-                />
-                <Text style={styles.titleBook}>{livro.liv_nome}</Text>
-                <Text style={styles.author}>{livro.aut_nome}</Text>
-              </Pressable>
-            </View>
-          ))
-        ) : (
-          <Text style={styles.noResultsText}>
-            Não há resultados para a requisição.
-          </Text>
-        )}
-      </View>
-    </ScrollView>
+      <ListaDeLivros books={books} />
+    </View>
   );
 }
 
 const Flatstyles = StyleSheet.create({
   FlatList: {
     padding: 6,
+    backgroundColor: "#FFF",
   },
 });

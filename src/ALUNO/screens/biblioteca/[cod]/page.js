@@ -1,14 +1,8 @@
-
 // import { produtos } from '../../../mocks/dados';
-import InfoLivroBiblioteca from '../../infoLivroBiblioteca/index';
+import InfoLivroBiblioteca from "../../infoLivroBiblioteca/index";
 
-export default function LivrosCod({ params }) {
+export default function LivrosCod({ route }) {
+  const codLivro = parseInt(route.params.cod);
 
-    const codLivro = parseInt(params.cod);
-
-    return (
-
-        <InfoLivroBiblioteca codLivro={codLivro} />
-
-    );
+  return <InfoLivroBiblioteca codLivro={codLivro} />;
 }

@@ -1,14 +1,8 @@
-
 // import { produtos } from '../../../mocks/dados';
 import PerfilEditar from "../../perfilEditar";
 
-export default function UsuCod({ params }) {
+export default function UsuCod({ route }) {
+  const codUsu = parseInt(route.params.cod);
 
-    const codUsu = parseInt(params.cod);
-
-    return (
-
-        <PerfilEditar codUsu={codUsu} />
-
-    );
+  return <PerfilEditar codUsu={codUsu} />;
 }

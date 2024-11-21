@@ -20,9 +20,11 @@ import {
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
-
 import api from "../../../services/api";
 import styles from "./styles";
+
+const apiUrl = API_URL;   // URL da API
+const apiPorta = API_PORT; // Porta da API
 
 const sortBooksAlphabetically = (livros) => {
   if (!Array.isArray(livros)) return [];
@@ -30,15 +32,32 @@ const sortBooksAlphabetically = (livros) => {
 };
 
 const ListaDeLivros = ({ livros }) => {
+  const navigation = useNavigation();
   const sortedBooks = sortBooksAlphabetically(livros);
+
+  const renderItem = ({ item }) => (
+    <View style={styles.item}>
+      <Pressable
+        onPress={() =>
+          navigation.navigate("infolivrorecomendacao", { livros: item.liv_cod })
+        }
+      >
+        <Text style={styles.course}>{item.cur_nome}</Text>
+        <Image source={{ uri: `${apiUrl}:${apiPorta}${item.liv_foto_capa}` }} style={styles.image} />
+        <Text style={styles.titleBook}>{item.liv_nome}</Text>
+        <Text style={styles.author}>{item.aut_nome}</Text>
+      </Pressable>
+    </View>
+  );
+
   return (
     <>
       {sortedBooks.length > 0 ? (
         <FlatList
           style={Flatstyles.FlatList}
-          data={sortedBooks} // Usar a lista de livros ordenada
+          data={sortedBooks}
           renderItem={renderItem}
-          keyExtractor={(item) => item.liv_cod.toString()} // Use index as keyExtractor
+          keyExtractor={(item) => item.liv_cod.toString()}
           numColumns={3}
           contentContainerStyle={styles.flatListContainer}
         />
@@ -51,15 +70,31 @@ const ListaDeLivros = ({ livros }) => {
   );
 };
 
-export default function Recomendacao() {
-  const apiUrl = API_URL;   // URL da API
-  const apiPorta = API_PORT; // Porta da API
-
-  const navigation = useNavigation();
-
-  const [livros, setLivros] = useState([]);
+export default function Recomendacao({ navigation }) {
+  const [livros, setLivros] = useState([
+    {
+      liv_cod: 1,
+      liv_nome: "O Senhor dos Anéis",
+      aut_nome: "J.R.R. Tolkien",
+      liv_foto_capa: "https://via.placeholder.com/150",
+      cur_nome: "Literatura",
+    },
+    {
+      liv_cod: 2,
+      liv_nome: "1984",
+      aut_nome: "George Orwell",
+      liv_foto_capa: "https://via.placeholder.com/150",
+      cur_nome: "Filosofia",
+    },
+    {
+      liv_cod: 3,
+      liv_nome: "Dom Quixote",
+      aut_nome: "Miguel de Cervantes",
+      liv_foto_capa: "https://via.placeholder.com/150",
+      cur_nome: "História",
+    },
+  ]);
   const [selectedSearchOption, setSelectedSearchOption] = useState("liv_nome");
-
   const [livNome, setlivNome] = useState("");
 
   function atLivNome(nome) {
@@ -86,21 +121,6 @@ export default function Recomendacao() {
       }
     }
   }
-
-  const renderItem = ({ item }) => (
-    <View style={styles.item}>
-      <Pressable
-        onPress={() =>
-          navigation.navigate("infolivrorecomendacao", { livros: item.liv_cod })
-        }
-      >
-        <Text style={styles.course}>{item.course}</Text>
-        <Image source={{ uri: item.liv_foto_capa }} style={styles.image} />
-        <Text style={styles.titleBook}>{item.liv_nome}</Text>
-        <Text style={styles.author}>{item.aut_nome}</Text>
-      </Pressable>
-    </View>
-  );
 
   return (
     <View style={styles.headerContainer}>
@@ -157,7 +177,7 @@ export default function Recomendacao() {
       >
         <Text style={styles.buttonTextAdd}>+ Adicionar recomendação</Text>
       </Pressable>
-      <ListaDeLivros livros={listaLivros} />
+      <ListaDeLivros livros={livros} />
     </View>
   );
 }
