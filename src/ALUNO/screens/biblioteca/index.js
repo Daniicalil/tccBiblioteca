@@ -44,7 +44,7 @@ const ListaDeLivros = ({ books }) => {
       >
         <Image
           source={{
-            uri: `${apiUrl}:${apiPorta}${item.liv_foto_capa}`,
+            uri: item.liv_foto_capa,
           }}
           style={styles.image}
         />
@@ -86,25 +86,33 @@ export default function Biblioteca({ navigation }) {
     listaLivros();
   }, []);
 
+  useEffect(() => {
+    const sortedBooks = sortBooksAlphabetically(books);
+    setBooks(sortedBooks);
+  }, [books]);
+
   const listaLivros = async () => {
-    await api.post("/livros")
-    .then((response) => {
-      console.log(response.data.livros);
-      setBooks(response.data.livros);
-    }).catch((error) => {
-      if (error.response) {
-        Alert.alert(
-          error.response.data.mensagem + "\n" + error.response.data.dados
-        );
-      } else {
-        alert("Erro no front-end" + "\n" + error);
-      }
-    });
-  }
+    await api
+      .post("/livros")
+      .then((response) => {
+        console.log(response.data.livros);
+        setBooks(response.data.livros);
+      })
+      .catch((error) => {
+        if (error.response) {
+          Alert.alert(
+            error.response.data.mensagem + "\n" + error.response.data.dados
+          );
+        } else {
+          alert("Erro no front-end" + "\n" + error);
+        }
+      });
+  };
 
   useEffect(() => {
-    listaLivros();
-  }, []);
+    const sortedBooks = sortBooksAlphabetically(books);
+    setBooks(sortedBooks);
+  }, [books]);
 
   return (
     <View style={styles.headerContainer}>

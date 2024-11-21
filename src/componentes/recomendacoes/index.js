@@ -9,45 +9,16 @@ import {
   StyleSheet,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { API_URL, API_PORT } from "@env";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "./styles";
 import api from "../../services/api";
 
 export default function Recomendacoes() {
-  const apiUrl = API_URL; // URL da API
-  const apiPorta = API_PORT; // Porta da API
 
-  const [books, setBooks] = useState([
-    {
-      liv_cod: 1,
-      liv_nome: "O Senhor dos Anéis",
-      aut_nome: "J.R.R. Tolkien",
-      liv_foto_capa: "https://via.placeholder.com/150",
-      cur_nome: "Literatura",
-    },
-    {
-      liv_cod: 2,
-      liv_nome: "1984",
-      aut_nome: "George Orwell",
-      liv_foto_capa: "https://via.placeholder.com/150",
-      cur_nome: "Filosofia",
-    },
-    {
-      liv_cod: 3,
-      liv_nome: "Dom Quixote",
-      aut_nome: "Miguel de Cervantes",
-      liv_foto_capa: "https://via.placeholder.com/150",
-      cur_nome: "História",
-    },
-  ]);
+  const [books, setBooks] = useState([]);
   const [livNome, setlivNome] = useState("");
   const navigation = useNavigation();
 
-<<<<<<< HEAD
-=======
-  // Ordena os livros pelo título em ordem alfabética
->>>>>>> parent of af330bd (up 20-11)
   const sortedBooks = books.sort((a, b) =>
     a.liv_nome.localeCompare(b.liv_nome)
   );
@@ -56,7 +27,7 @@ export default function Recomendacoes() {
     setlivNome(nome);
   }
 
-<<<<<<< HEAD
+
   //   useEffect(() => {
   //   const checkUser = async () => {
   //     const user = JSON.parse(await AsyncStorage.getItem("user"));
@@ -69,31 +40,12 @@ export default function Recomendacoes() {
   //   checkUser();
   // }, []);
 
-  async function listaLivros(usuario, books) {
+  const listaLivros = async () => {
     const sortedBooks = sortBooksAlphabetically(books);
-    // const dados = { usu_cod: usuario };
-=======
-//   useEffect(() => {
-//     const checkUser = async () => {
-//       const user = JSON.parse(await AsyncStorage.getItem("user"));
-//       if (!user) {
-//         // navigation.navigate("login");
-//       } else {
-//         listaLivros(user.cur_cod);
-//       }
-//     };
-//     checkUser();
-//   }, []);
-
-  // Função para buscar a lista de livros a partir do curso
-  async function listaLivros(curso) {
-    const dados = { cur_cod: curso };
->>>>>>> parent of af330bd (up 20-11)
-
-    try {
-      const response = await api.post("/rec_listar", dados);
-      setBooks(response.data.dados);
-    } catch (error) {
+    await api.post("/rec_listar")
+    .then((response) => {
+      setBooks(response.data.books);
+    }).catch((error) => {
       if (error.response) {
         Alert.alert(
           error.response.data.mensagem + "\n" + error.response.data.dados
@@ -101,13 +53,13 @@ export default function Recomendacoes() {
       } else {
         Alert.alert("Erro no front-end\n" + error);
       }
-    }
-  }
+    });
+  };
 
-<<<<<<< HEAD
-=======
-  // Função para renderizar cada item do livro
->>>>>>> parent of af330bd (up 20-11)
+useEffect(() => {
+  listaLivros();
+}, []);
+
   const renderBookItem = ({ item }) => (
     <Pressable
       style={styles.item}
@@ -128,12 +80,11 @@ export default function Recomendacoes() {
   );
 
   return (
-<<<<<<< HEAD
     <>
-      {sortedBooks.length > 0 ? (
+      {books.length > 0 ? (
         <FlatList
           style={Flatstyles.FlatList}
-          data={sortedBooks}
+          data={books}
           renderItem={renderBookItem}
           keyExtractor={(item) => item.liv_cod.toString()}
           numColumns={3}
@@ -143,23 +94,6 @@ export default function Recomendacoes() {
         <Text style={styles.aviso}>Não há resultados para a requisição</Text>
       )}
     </>
-=======
-    <View style={styles.main}>
-      <View style={styles.bookSection}>
-      </View>
-      <View style={styles.container}>
-        {sortedBooks.length > 0 ? (
-          <FlatList
-            data={sortedBooks}
-            renderItem={renderBookItem}
-            keyExtractor={(item) => item.liv_nome}
-          />
-        ) : (
-          <Text style={styles.aviso}>Não há resultados para a requisição</Text>
-        )}
-      </View>
-    </View>
->>>>>>> parent of af330bd (up 20-11)
   );
 }
 

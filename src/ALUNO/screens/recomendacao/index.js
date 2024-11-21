@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -11,7 +11,6 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
 import { RadioButton } from "react-native-paper";
-import { API_URL, API_PORT } from "@env";
 import {
   RetangGreen,
   RetangOrange,
@@ -19,9 +18,6 @@ import {
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 import api from "../../../services/api";
 import styles from "./styles";
-
-const apiUrl = API_URL; // URL da API
-const apiPorta = API_PORT; // Porta da API
 
 const sortBooksAlphabetically = (livros) => {
   if (!Array.isArray(livros)) return [];
@@ -40,10 +36,7 @@ const ListaDeLivros = ({ livros }) => {
         }
       >
         <Text style={styles.course}>{item.cur_nome}</Text>
-        <Image
-          source={{ uri: `${apiUrl}:${apiPorta}${item.liv_foto_capa}` }}
-          style={styles.image}
-        />
+        <Image source={{ uri: item.liv_foto_capa }} style={styles.image} />
         <Text style={styles.titleBook}>{item.liv_nome}</Text>
         <Text style={styles.author}>{item.aut_nome}</Text>
       </Pressable>
@@ -71,29 +64,7 @@ const ListaDeLivros = ({ livros }) => {
 };
 
 export default function Recomendacao({ navigation }) {
-  const [livros, setLivros] = useState([
-    {
-      liv_cod: 1,
-      liv_nome: "O Senhor dos Anéis",
-      aut_nome: "J.R.R. Tolkien",
-      liv_foto_capa: "https://via.placeholder.com/150",
-      cur_nome: "Literatura",
-    },
-    {
-      liv_cod: 2,
-      liv_nome: "1984",
-      aut_nome: "George Orwell",
-      liv_foto_capa: "https://via.placeholder.com/150",
-      cur_nome: "Filosofia",
-    },
-    {
-      liv_cod: 3,
-      liv_nome: "Dom Quixote",
-      aut_nome: "Miguel de Cervantes",
-      liv_foto_capa: "https://via.placeholder.com/150",
-      cur_nome: "História",
-    },
-  ]);
+  const [livros, setLivros] = useState([]);
   const [selectedSearchOption, setSelectedSearchOption] = useState("liv_nome");
   const [livNome, setlivNome] = useState("");
 
@@ -103,19 +74,25 @@ export default function Recomendacao({ navigation }) {
 
   async function listaLivros() {
     const dados = { [selectedSearchOption]: livNome };
-    try {
-      const response = await api.post("/rec_listar", dados);
-      setLivros(response.data.dados);
-    } catch (error) {
-      if (error.response) {
-        Alert.alert(
-          error.response.data.mensagem + "\n" + error.response.data.dados
-        );
-      } else {
-        alert("Erro no front-end\n" + error);
-      }
-    }
+    await api
+      .post("/rec_listar")
+      .then((response) => {
+        setLivros(response.data.livros);
+      })
+      .catch((error) => {
+        if (error.response) {
+          Alert.alert(
+            error.response.data.mensagem + "\n" + error.response.data.dados
+          );
+        } else {
+          alert("Erro no front-end\n" + error);
+        }
+      });
   }
+
+useEffect(() => {
+  listaLivros();
+}, []);
 
   return (
     <View style={styles.headerContainer}>
