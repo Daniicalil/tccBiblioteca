@@ -1,9 +1,8 @@
 // api.js
 import axios from "axios";
-import { API_URL, API_PORT } from "@env"; // Importa variáveis do .env
 
 const api = axios.create({
-  baseURL: `${API_URL}:${API_PORT}`, // URL base com IP e porta
+  baseURL: 'http:/172.16.1.46:3000',
 });
 
 export default api;

@@ -19,14 +19,10 @@ import {
   RetangGreen,
   RetangOrange,
 } from "../../../componentes/cabecalho/forms";
-import { API_URL, API_PORT } from "@env";
 import { BarraPesquisa } from "../../../componentes/barraPesquisa";
 
 import api from "../../../services/api";
 import styles from "./styles";
-
-const apiUrl = API_URL; // URL da API
-const apiPorta = API_PORT; // Porta da API
 
 const sortBooksAlphabetically = (books) => {
   if (!Array.isArray(books)) return [];
@@ -79,27 +75,7 @@ const ListaDeLivros = ({ books }) => {
 };
 
 export default function Biblioteca({ navigation }) {
-  const [books, setBooks] = useState([{
-    liv_cod: 1,
-    liv_nome: "O Senhor dos Anéis",
-    aut_nome: "J.R.R. Tolkien",
-    liv_foto_capa: "https://via.placeholder.com/150",
-    cur_nome: "Literatura",
-  },
-  {
-    liv_cod: 2,
-    liv_nome: "1984",
-    aut_nome: "George Orwell",
-    liv_foto_capa: "https://via.placeholder.com/150",
-    cur_nome: "Filosofia",
-  },
-  {
-    liv_cod: 3,
-    liv_nome: "Dom Quixote",
-    aut_nome: "Miguel de Cervantes",
-    liv_foto_capa: "https://via.placeholder.com/150",
-    cur_nome: "História",
-  },]);
+  const [books, setBooks] = useState([]);
   const [selectedSearchOption, setSelectedSearchOption] = useState("liv_nome");
   const [livNome, setlivNome] = useState("");
   function atLivNome(nome) {
@@ -110,13 +86,12 @@ export default function Biblioteca({ navigation }) {
     listaLivros();
   }, []);
 
-  async function listaLivros() {
-    const dados = { [selectedSearchOption]: livNome };
-    try {
-      const response = await api.post("/livros", dados);
-      console.log(response.data.dados);
-      setBooks(response.data.dados);
-    } catch (error) {
+  const listaLivros = async () => {
+    await api.post("/livros")
+    .then((response) => {
+      console.log(response.data.livros);
+      setBooks(response.data.livros);
+    }).catch((error) => {
       if (error.response) {
         Alert.alert(
           error.response.data.mensagem + "\n" + error.response.data.dados
@@ -124,13 +99,12 @@ export default function Biblioteca({ navigation }) {
       } else {
         alert("Erro no front-end" + "\n" + error);
       }
-    }
+    });
   }
 
   useEffect(() => {
-    const sortedBooks = sortBooksAlphabetically(books);
-    setBooks(sortedBooks);
-  }, [books]);
+    listaLivros();
+  }, []);
 
   return (
     <View style={styles.headerContainer}>
